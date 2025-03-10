@@ -1,0 +1,1542 @@
+id,name,subdivision_id
+101,adrar,101
+102,tamest,105
+104,reggane,106
+105,in zghmir,106
+106,tit,103
+108,tsabit,101
+111,zaouiet kounta,106
+112,aoulef,103
+113,timokten,103
+114,tamentit,105
+115,fenoughil,105
+118,sali,106
+119,akabli,103
+121,ouled ahmed timmi,101
+122,bouda,101
+126,sbaa,101
+201,chlef,201
+202,tenes,209
+203,benairia,210
+204,el karimia,206
+205,tadjena,202
+206,taougrite,211
+207,beni haoua,204
+208,sobha,205
+209,harchoun,206
+210,ouled fares,208
+211,sidi akkacha,209
+212,boukadir,205
+213,beni rached,207
+214,talassa,202
+215,harenfa,203
+216,oued goussine,204
+217,dahra,211
+218,ouled abbes,207
+219,sendjas,201
+220,zeboudja,210
+221,oued sly,205
+222,abou el hassen,202
+223,el marsa,213
+224,chettia,208
+225,sidi abderrahmane,209
+226,moussadek,213
+227,el hadjadj,212
+228,labiod medjadja,208
+229,oued fodda,207
+230,ouled ben abdelkader,212
+231,bouzghaia,210
+232,ain merane,203
+233,oum drou,201
+234,breira,204
+235,beni bouateb,206
+301,laghouat,311
+302,ksar el hirane,309
+303,bennasser benchohra,309
+304,sidi makhlouf,311
+305,hisSm delaa,308
+306,hassi rmel,308
+307,AIN MADHI,302
+308,tadjemout,302
+309,kheneg,306
+310,gueltat sidi saad,303
+311,ain sidi ali,307
+312,beidha,303
+313,brida,304
+314,el ghicha,305
+315,hadj mechri,307
+316,sebgag,301
+317,taouiala,304
+318,tadjrouna,306
+319,aflou,301
+320,el assafia,311
+321,oued morra,310
+322,oued mzi,310
+323,el houaita,306
+324,sidi bouzid,301
+401,oum el bouaghi,401
+402,ain beida,403
+403,aïn m'lila,406
+404,behir chergui,410
+405,el amiria,411
+406,sigus,411
+407,el belala,409
+408,ain babouche,402
+409,berriche,403
+410,ouled hamla,406
+411,dhala,407
+412,ain kercha,405
+413,hanchir toumghani,405
+414,el djazia,407
+415,ain diss,402
+416,f'kirina,408
+417,souk naamane,412
+418,zorg,403
+419,el fedjouz boughrara saoudi,404
+420,ouled zouai,412
+421,bir chouhada,412
+422,ksar sbahi,402
+423,oued nini,408
+424,meskiana,409
+425,aïn fakroun,404
+426,rahia,410
+427,aïn zitoun,401
+428,ouled gacem,406
+429,el harmilia,405
+501,batna,501
+502,ghassira,520
+503,maafa,503
+504,merouana,511
+505,seriana,516
+506,menaa,510
+507,el madher,508
+508,tazoult,517
+509,n'gaous,512
+510,guigba,514
+511,inoughissen,509
+512,ouyoun el assafir,517
+513,djerma,508
+514,bitam,505
+515,metkaouak,507
+516,arris,504
+517,kimmel,520
+518,tilatou,515
+519,ain djasser,502
+520,ouled sellam,514
+521,tigherghar,510
+522,ain yagout,508
+523,fesdis,501
+524,sefiane,512
+525,rahbat,514
+526,tighanimine,504
+527,lemsane,513
+528,ksar belezma,511
+529,seggana,515
+530,ichmoul,509
+531,foum toub,509
+532,beni foudhala el hakania,503
+533,oued el ma,511
+534,talkhamt,514
+535,bouzina,510
+536,chemora,506
+537,oued chaaba,501
+538,taxlent,513
+539,gosbat,514
+540,ouled aouf,503
+541,boumagueur,512
+542,barika,505
+543,djezzar,507
+544,tkoutt,520
+545,ain touta,503
+546,hidoussa,511
+547,teniet el abed,518
+548,oued taga,518
+549,ouled fadel,519
+550,timgad,519
+551,ras el aioun,514
+552,chir,518
+553,ouled si slimane,513
+554,zanet beida,516
+555,amdoukal,505
+556,ouled ammar,507
+557,el hassi,502
+558,lazrou,516
+559,boumia,508
+560,boulhilat,506
+561,larbaa,510
+601,bejaia,601
+602,amizour,604
+603,ferraoun,604
+604,taourirt ighil,602
+605,chellata,603
+606,tamokra,607
+607,timezrit,613
+608,souk el thenine,611
+609,m'cisna,609
+610,tinebdar,610
+611,tichi,605
+612,semaoun,604
+613,kendira,604
+614,tifra,610
+615,ighram,603
+616,amalou,609
+617,ighil ali,607
+618,fenaïa ilmaten,606
+619,toudja,606
+620,darguina,608
+621,sidi ayad,610
+622,aokas,605
+623,beni djellil,604
+624,adekar,602
+625,akbou,603
+626,seddouk,609
+627,tazmalt,612
+628,ait r'zine,607
+629,chemini,610
+630,souk oufella,610
+631,taskriout,608
+632,tibane,610
+633,tala hamza,601
+634,barbacha,604
+635,beni ksila,602
+636,ouzellaguen,603
+637,bou hamza,609
+638,beni  melikeche,612
+639,sidi aich,610
+640,el kseur,606
+641,melbou,611
+642,akfadou,610
+643,leflaye,610
+644,kherrata,608
+645,draa kaid,608
+646,tamridjet,611
+647,ait smail,608
+648,boukhelifa,601
+649,tizi n'berber,605
+650,beni maouche,609
+651,oued ghir,601
+652,boudjellil,612
+701,biskra,701
+702,oumache,702
+703,branis,703
+704,chetma,708
+711,sidi okba,708
+712,m'chouneche,708
+713,el haouch,708
+714,ain naga,708
+715,zeribet el oued,710
+716,el feidh,710
+717,el kantara,704
+718,ain zaatout,704
+719,el outaya,704
+720,djemorah,703
+721,tolga,709
+722,lioua,702
+723,lichana,709
+724,ourlal,702
+725,mlili,702
+726,foughala,705
+727,bordj ben azzouz,709
+728,meziraa,710
+729,bouchagroune,709
+730,mekhadma,702
+731,el ghrous,705
+732,el hadjeb,701
+733,khenguet sidi nadji,710
+801,bechar,801
+802,erg ferradj,802
+804,meridja,806
+806,lahmar,809
+809,mechraa houari boumediene,802
+810,kenadsa,806
+813,taghit,812
+815,boukais,809
+816,mougheul,809
+817,abadla,802
+821,beni ounif,804
+901,blida,901
+902,chebli,902
+903,bouinen,904
+904,oued alleug,910
+907,ouled yaich,911
+908,chrea,911
+910,el affroun,906
+911,chiffa,909
+912,hammam melouane,903
+913,ben khéllil,902
+914,soumaa,904
+916,mouzaia,909
+917,souhane,907
+918,meftah,908
+919,ouled selama,903
+920,boufarik,902
+921,larbaa,907
+922,oued djer,906
+923,beni tamou,910
+924,bouarfa,901
+925,beni mered,911
+926,bougara,903
+927,guerrouaou,904
+928,ain romana,909
+929,djebabra,908
+1001,bouira,1001
+1002,el asnam,1006
+1003,guerrouma,1011
+1004,souk el khemis,1013
+1005,kadiria,1010
+1006,hanif,1009
+1007,dirah,1005
+1008,ait laaziz,1001
+1009,taghzout,1008
+1010,raouraoua,1003
+1011,mezdour,1004
+1012,haizer,1008
+1013,lakhdaria,1011
+1014,maala,1011
+1015,el hachimia,1007
+1016,aomar,1010
+1017,chorfa,1012
+1018,bordj okhriss,1004
+1019,el adjiba,1009
+1020,el hakimia,1014
+1021,el khabouzia,1003
+1022,ahl el ksar,1006
+1023,bouderbala,1011
+1024,zbarbar,1011
+1025,ain el hadjar,1002
+1026,djebahia,1010
+1027,aghbalou,1012
+1028,taguedit,1004
+1029,ain turk,1001
+1030,saharidj,1012
+1031,dechmia,1014
+1032,ridane,1005
+1033,bechloul,1006
+1034,boukram,1011
+1035,ain bessam,1002
+1036,bir ghbalou,1003
+1037,m'chedallah,1012
+1038,sour el ghozlane,1014
+1039,maamora,1005
+1040,ouled rached,1006
+1041,ain laloui,1002
+1042,hadjera zerga,1005
+1043,taourirt ath mansour,1009
+1044,el mokrani,1013
+1045,oued el berdi,1007
+1101,tamanrasset,1101
+1102,abalessa,1101
+1105,idles,1105
+1106,tazrouk,1105
+1109,in amguel,1101
+1201,tebessa,1205
+1202,bir el ater,1201
+1203,cheria,1203
+1204,stah guentis,1207
+1205,el aouinet,1204
+1206,el houidjbet,1206
+1207,safsaf ouesra,1201
+1208,hammamet,1202
+1209,negrine,1209
+1210,bir el mokadem,1202
+1211,el kouif,1205
+1212,morsott,1208
+1213,el ogla,1207
+1214,bir dheheb,1208
+1215,el ogla el malha,1201
+1216,guorriguer,1202
+1217,bekkaria,1205
+1218,boukhadra,1204
+1219,ouenza,1210
+1220,el ma labiodh,1206
+1221,oum ali,1201
+1222,tlidjene,1203
+1223,ain zerga,1210
+1224,el meridj,1210
+1225,boulhaf dir,1208
+1226,bedjene,1207
+1227,el mezeraa,1207
+1228,ferkane,1209
+1301,tlemcen,1306
+1302,beni mester,1306
+1303,ain tallout,1301
+1304,remchi,1309
+1305,el fehoul,1309
+1306,sabra,1310
+1307,ghazaouet,1304
+1308,souani,1302
+1309,djebala,1307
+1310,el gor,1311
+1311,oued lakhdar,1308
+1312,ain fezza,1306
+1313,ouled mimoun,1308
+1314,amieur,1306
+1315,ain youcef,1309
+1316,zenata,1309
+1317,beni snous,1303
+1318,bab el assa,1302
+1319,dar yaghmouracene,1304
+1320,fellaoucene,1307
+1321,azails,1303
+1322,sebaa chioukh,1309
+1323,terny beni hdiel,1306
+1324,bensekrane,1308
+1325,ain nehala,1301
+1326,hennaya,1309
+1327,maghnia,1305
+1328,hammam boughrara,1305
+1329,souahlia,1304
+1330,msirda fouaga,1302
+1331,ain fetah,1307
+1332,el aricha,1311
+1333,souk tlata,1302
+1334,sidi abdelli,1308
+1335,sebdou,1311
+1336,jdni ouarsous,1309
+1337,sidi medjahed,1305
+1338,beni boussaid,1305
+1339,marsa ben m'hidi,1302
+1340,nedroma,1307
+1341,sidi djilali,1312
+1342,beni bahdel,1303
+1343,el bouihi,1312
+1344,honaine,1309
+1345,tienet,1304
+1346,ouled riyah,1309
+1347,bouhlou,1310
+1348,beni khellad,1309
+1349,ain ghoraba,1306
+1350,chetouane,1306
+1351,mansourah,1306
+1352,beni semiel,1308
+1353,ain kebira,1307
+1401,tiaret,1401
+1402,medroussa,1410
+1403,ain bouchekif,1404
+1404,sidi ali mellal,1412
+1405,ain dzarit,1408
+1406,ain deheb,1402
+1407,sidi bakhti,1410
+1408,medrissa,1403
+1409,zmalet el emir abdelkader,1407
+1410,madna,1403
+1411,sebt,1411
+1412,mellakou,1410
+1413,dahmouni,1404
+1414,rahouia,1413
+1415,mahdia,1408
+1416,sougueur,1414
+1417,si abdelghani,1414
+1418,ain el hadid,1405
+1419,djebilet rosfa,1403
+1420,naima,1402
+1421,meghila,1411
+1422,guertoufa,1413
+1423,sidi hosni,1411
+1424,djillali ben amar,1409
+1425,sebaïne,1408
+1426,tousnina,1414
+1427,frenda,1405
+1428,ain kermes,1403
+1429,ksar chellala,1407
+1430,rechaiga,1406
+1431,nadorah,1408
+1432,tagdemt,1409
+1433,oued lilli,1412
+1434,mechraa safa,1409
+1435,hamadia,1406
+1436,chehaima,1402
+1437,takhemaret,1405
+1438,sidi abderrahmane,1403
+1439,serghine,1407
+1440,bougara,1406
+1441,faidja,1414
+1442,tidda,1412
+1501,tizi ouzou,1501
+1502,ain el hammam,1502
+1503,akbil,1502
+1504,freha,1511
+1505,souamaa,1515
+1506,mechtrass,1507
+1507,irdjen,1505
+1508,timizart,1511
+1509,makouda,1519
+1510,draa el mizan,1510
+1511,tizi ghenif,1520
+1512,bounouh,1507
+1513,aït chafâa,1504
+1514,frikat,1510
+1515,beni aissi,1505
+1516,beni zmenzer,1514
+1517,iferhounene,1512
+1518,azazga,1503
+1519,iloula oumalou,1508
+1520,yakouren,1503
+1521,larba nait irathen,1513
+1522,tizi rached,1505
+1523,zekri,1503
+1524,ouaguenoun,1518
+1525,ain zaouia,1510
+1526,m'kira,1520
+1527,ait yahia,1502
+1528,ait mahmoud,1505
+1529,maatkas,1514
+1530,aït boumahdi,1516
+1531,abi youcef,1502
+1532,beni douala,1505
+1533,illilten,1512
+1534,bouzguen,1508
+1535,ait aggouacha,1513
+1536,ouadhia,1517
+1537,azzefoun,1504
+1538,tigzirt,1519
+1539,djebel aissa mimoun,1518
+1540,boghni,1507
+1541,ifigha,1508
+1542,ait oumalou,1513
+1543,tirmitine,1514
+1544,akerrou,1503
+1545,yatafene,1506
+1546,beni ziki,1508
+1547,draa ben khedda,1509
+1548,ouacif,1516
+1549,idjeur,1508
+1550,mekla,1515
+1551,tizi n'thlata,1517
+1552,beni yenni,1506
+1553,aghrib,1511
+1554,iflissen,1519
+1555,boudjima,1519
+1556,ait yahia moussa,1520
+1557,souk el tenine,1514
+1558,ait khelili,1515
+1559,sidi naamane,1509
+1560,iboudraren,1506
+1561,agouni gueghrane,1517
+1562,mizrana,1519
+1563,imsouhal,1512
+1564,tadmait,1509
+1565,ait bouadou,1517
+1566,assi youcef,1507
+1567,ait toudert,1516
+1601,alger centre,1601
+1602,sidi m'hamed,1601
+1603,el madania,1601
+1604,belouizdad,1601
+1605,bab el oued,1601
+1606,bologhine,1601
+1607,casbah,1601
+1608,oued koriche,1601
+1609,bir mourad rais,1603
+1610,el biar,1601
+1611,bouzareah,1606
+1612,birkhadem,1603
+1613,el harrach,1610
+1614,baraki,1602
+1615,oued smar,1610
+1616,bourouba,1601
+1617,hussein dey,1601
+1618,kouba,1603
+1619,bachedjerah,1603
+1620,dar el beida,1608
+1621,bab ezzouar,1608
+1622,ben aknoun,1601
+1623,dely ibrahim,1607
+1624,hammamet,1607
+1625,rais hamidou,1601
+1626,djasr kasentina,1603
+1627,el mouradia,1601
+1628,hydra,1601
+1629,mohammadia,1605
+1630,bordj el kiffan,1605
+1631,el magharia,1601
+1632,beni messous,1606
+1633,les eucalyptus,1610
+1634,birtouta,1604
+1635,tessala el merdja,1604
+1636,ouled chebel,1604
+1637,sidi moussa,1602
+1638,ain taya,1601
+1639,bordj el bahri,1601
+1640,el marsa,1601
+1641,h'raoua,1601
+1642,rouiba,1612
+1643,reghaia,1611
+1644,ain benian,1607
+1645,staoueli,1613
+1646,zeralda,1613
+1647,iaxglma,1613
+1648,rahmania,1613
+1649,souidania,1613
+1650,cheraga,1607
+1651,ouled fayet,1607
+1652,el achour,1609
+1653,draria,1609
+1654,douera,1609
+1655,baba hassen,1609
+1656,khraicia,1609
+1657,saoula,1609
+1701,djelfa,1701
+1702,moudjebara,1702
+1703,el guedid,1705
+1704,hassi bahbah,1708
+1705,ain maabed,1708
+1706,sed rahal,1709
+1707,feidh el botma,1712
+1708,birine,1704
+1709,bouira lahdab,1711
+1710,zaccar,1702
+1711,el khemis,1710
+1712,sidi baizid,1706
+1713,mliliha,1706
+1714,el idrissia,1707
+1715,douis,1707
+1716,hassi el euch,1708
+1717,messaad,1709
+1718,guettara,1709
+1719,sidi ladjel,1710
+1720,had sahary,1711
+1721,guernini,1703
+1722,selmana,1709
+1723,ain chouhada,1707
+1724,oum laadham,1712
+1725,dar chioukh,1706
+1726,charef,1705
+1727,beni yacoub,1705
+1728,zaafrane,1708
+1729,deldoul,1709
+1730,ain el ibel,1702
+1731,ain oussera,1703
+1732,benhar,1704
+1733,hassi fedoul,1710
+1734,amourah,1712
+1735,ain feka,1711
+1736,tadmit,1702
+1801,jijel,1805
+1802,erraguene,1803
+1803,el aouana,1803
+1804,ziama mansouriah,1803
+1805,taher,1809
+1806,emir abdelkader,1805
+1807,chekfa,1801
+1808,chahna,1809
+1809,el milia,1804
+1810,sidi maarouf,1808
+1811,settara,1806
+1812,el ancer,1802
+1813,sidi abdelaziz,1807
+1814,kaous,1805
+1815,ghebala,1806
+1816,bouraoui belhadef,1802
+1817,djemila,1810
+1818,selma benziada,1803
+1819,boucif ouled askeur,1801
+1820,el kennar nouchfi,1807
+1821,ouled yahia khedrouche,1804
+1822,boudriaa ben yadjis,1810
+1823,kheiri oued adjoul,1802
+1824,texenna,1810
+1825,djemaa beni habibi,1807
+1826,bordj t'har,1801
+1827,ouled rabah,1808
+1828,oudjana,1809
+1901,setif,1902
+1902,ain el kebira,1904
+1903,beni aziz,1908
+1904,ouled si ahmed,1906
+1905,boutaleb,1903
+1906,ain roua,1913
+1907,draa kebila,1917
+1908,bir el arch,1911
+1909,beni chebana,1910
+1910,ouled tebben,1918
+1911,hamma,1903
+1912,maaouia,1908
+1913,ain legraj,1910
+1914,ain abessa,1901
+1915,dehamcha,1908
+1916,babor,1904
+1917,guidjel,1915
+1918,ain lahdjar,1905
+1919,bousselam,1912
+1920,el eulma,1914
+1921,djemila,1909
+1922,beni ouartilane,1910
+1923,rosfa,1918
+1924,ouled addouane,1904
+1925,belaa,1911
+1926,ain arnat,1902
+1927,amoucha,1907
+1928,ain oulmane,1906
+1929,beidha bordj,1903
+1930,bouandas,1912
+1931,bazer sakhra,1914
+1932,hammam soukhna,1916
+1933,mezloug,1902
+1934,bir haddada,1905
+1935,serdj el ghoul,1904
+1936,harbil,1917
+1937,el ouricia,1901
+1938,tizi n'bechar,1907
+1939,salah bey,1918
+1940,ain azal,1903
+1941,guenzet,1917
+1942,talaifacene,1912
+1943,bougaa,1913
+1944,beni fouda,1909
+1945,tachouda,1909
+1946,beni mouhli,1910
+1947,ouled sabor,1915
+1948,guellal,1915
+1949,ain sebt,1908
+1950,hammam guergour,1917
+1951,ait naoual mezada,1912
+1952,ksar el abtal,1906
+1953,beni hocine,1913
+1954,ait tizi,1912
+1955,maoklane,1913
+1956,guelta zerka,1914
+1957,oued el barad,1907
+1958,taya,1916
+1959,el ouldja,1911
+1960,tella,1916
+2001,saida,2001
+2002,doui thabet,2005
+2003,ain el hadjar,2001
+2004,ouled khaled,2004
+2005,moulay larbi,2001
+2006,youb,2005
+2007,hounet,2005
+2008,sidi amar,2004
+2009,sidi boubekeur,2004
+2010,el hassasna,2002
+2011,maamora,2002
+2012,sidi ahmed,2001
+2013,ain skhouna,2002
+2014,ouled brahim,2003
+2015,tircine,2003
+2016,ain soltane,2003
+2101,skikda,2101
+2102,ain zouit,2101
+2103,el hadaik,2107
+2104,azzaba,2104
+2105,djendel saadi mohamed,2104
+2106,aïn charchar,2102
+2107,bekkouche lakhdar,2102
+2108,ben azzouz,2105
+2109,es sebt,2110
+2110,collo,2106
+2111,beni zid,2106
+2112,kerkera,2106
+2113,ouled attia,2111
+2114,oued zehour,2111
+2115,zitouna,2111
+2116,el harrouch,2108
+2117,zerdazas,2112
+2118,ouled hbaba,2112
+2119,sidi mezghiche,2115
+2120,emdjez edchich,2109
+2121,beni oulbane,2115
+2122,ain bouziane,2108
+2123,ramdane djamel,2113
+2124,beni bechir,2113
+2125,salah bouchaour,2114
+2126,tamalous,2116
+2127,ain kechra,2103
+2128,oum toub,2115
+2129,bin el ouiden,2116
+2130,filfila,2101
+2131,cheraia,2106
+2132,kanoua,2111
+2133,el ghedir,2110
+2134,bouchtata,2107
+2135,ouldja boulballout,2103
+2136,kheneg mayoum,2111
+2137,hamadi krouma,2113
+2138,el marsa,2105
+2201,sidi bel abbes,2201
+2202,tessala,2213
+2203,sidi brahim,2202
+2204,mostefa ben brahim,2201
+2205,telagh,2211
+2206,mezaourou,2211
+2207,boukhanafis,2209
+2208,sidi ali boussidi,2203
+2209,badredine el mokrani,2203
+2210,marhoum,2204
+2211,tafissour,2205
+2212,amarnas,2210
+2213,tilmouni,2201
+2214,sidi lahcene,2210
+2215,ain thrid,2213
+2216,makedra,2202
+2217,tenira,2212
+2218,moulay slissen,2206
+2219,el hacaiba,2206
+2220,hassi zehana,2203
+2221,tabia,2209
+2222,merine,2205
+2223,ras el ma,2207
+2224,aïn tindamine,2206
+2225,ain kada,2203
+2226,m'cid,2208
+2227,sidi khaled,2210
+2228,ain el berd,2202
+2229,sfissef,2208
+2230,ain adden,2208
+2231,oued taourira,2205
+2232,dhaya,2211
+2233,zerouala,2201
+2234,lamtar,2203
+2235,sidi chaib,2204
+2236,sidi daho de zairs,2203
+2237,oued sebaa,2207
+2238,boudjebaa el bordj,2208
+2239,sehala thaoura,2213
+2240,sidi yacoub,2210
+2241,sidi hamadouche,2202
+2242,belarbi,2201
+2243,oued sefioun,2212
+2244,teghalimet,2211
+2245,ben badis,2203
+2246,sidi ali benyoub,2209
+2247,chetouane belaila,2203
+2248,bir el hammam,2204
+2249,taoudmout,2205
+2250,redjem demouche,2207
+2251,benachiba chelia,2212
+2252,hassi dahou,2212
+2301,annaba,2301
+2302,berrahal,2303
+2303,el hadjar,2305
+2304,el eulma,2306
+2305,el bouni,2301
+2306,oued el aneb,2303
+2307,cheurfa,2306
+2308,seraidi,2301
+2309,ain el berda,2302
+2310,chetaibi,2304
+2311,sidi amar,2305
+2312,treat,2303
+2401,guelma,2403
+2402,nechmaya,2403
+2403,bouati mahmoud,2403
+2404,oued zenati,2407
+2405,tamlouka,2401
+2406,oued fragha,2402
+2407,ain sandel,2406
+2408,ras el agba,2407
+2409,dahouara,2404
+2410,belkhir,2406
+2411,ben djarah,2403
+2412,bouhamdane,2405
+2413,ain makhlouf,2401
+2414,ain ben beida,2402
+2415,khezara,2406
+2416,beni mezline,2406
+2417,bou hachana,2406
+2418,guelaat bou sbaa,2403
+2419,hammam debagh,2405
+2420,el fedjoudj,2403
+2421,bordj sabat,2407
+2422,hammam nbail,2404
+2423,ain larbi,2401
+2424,medjez amar,2405
+2425,bouchegouf,2402
+2426,heliopolis,2403
+2427,ain hessania boumediene,2405
+2428,roknia,2405
+2429,sellaoua anouna,2405
+2430,medjez sfa,2402
+2431,boumahra ahmed,2406
+2432,ain reggada,2407
+2433,oued cheham,2404
+2434,djebala khemissi,2406
+2501,constantine,2501
+2502,hamma bouziane,2505
+2503,ibn badis,2502
+2504,zighoud youcef,2507
+2505,didouche mourad,2503
+2506,el khroub,2504
+2507,ain abid,2502
+2508,beni hamiden,2507
+2509,ouled rahmoune,2504
+2510,ain smara,2501
+2511,messaoud boudjriou,2506
+2512,ibn ziad,2506
+2601,medea,2617
+2602,ouzera,2612
+2603,ouled maaref,2601
+2604,ain boucif,2601
+2605,aissaouia,2616
+2606,ouled deide,2604
+2607,el omaria,2609
+2608,derrag,2602
+2609,el guelb el kebir,2607
+2610,bouaiche,2605
+2611,mezerana,2616
+2612,ouled brahim,2609
+2613,tizi mahdi,2612
+2614,sidi ziane,2615
+2615,tamesguida,2617
+2616,el hamdania,2612
+2617,kef lakhdar,2601
+2618,chellalet adhaoura,2606
+2619,bouskene,2603
+2620,rebaia,2604
+2621,bouchrahil,2618
+2622,ouled hellal,2619
+2623,tafraout,2606
+2624,baata,2609
+2625,boghar,2619
+2626,sidi naamane,2618
+2627,ouled bouachra,2614
+2628,sidi zahar,2615
+2629,oued harbil,2611
+2630,benchicao,2612
+2631,sidi damed,2601
+2632,aziz,2602
+2633,souagui,2615
+2634,zoubiria,2613
+2635,ksar el boukhari,2610
+2636,el azizia,2608
+2637,djouab,2615
+2638,chahbounia,2605
+2639,maghraoua,2608
+2640,cheniguel,2606
+2641,ain ouksir,2606
+2642,oum el djalil,2602
+2643,ouamri,2611
+2644,si mahdjoub,2614
+2645,tlatet eddouar,2613
+2646,beni slimane,2603
+2647,berrouaghia,2604
+2648,seghouane,2613
+2649,meftaha,2610
+2650,mihoub,2608
+2651,boughezoul,2605
+2652,tablat,2616
+2653,deux bassins,2616
+2654,draa essamar,2617
+2655,sidi errabia,2603
+2656,bir ben abed,2607
+2657,el ouinet,2601
+2658,ouled antar,2619
+2659,bouaichoune,2614
+2660,hannacha,2611
+2661,sedraia,2607
+2662,moudjbar,2613
+2663,khams djouamaa,2618
+2664,saneg,2610
+2701,mostaganem,2701
+2702,sayada,2708
+2703,fornaka,2703
+2704,stidia,2707
+2705,ain nouissy,2703
+2706,hassi mamèche,2707
+2707,ain tedles,2704
+2708,sour,2704
+2709,oued el kheïr,2704
+2710,sidi belattar,2704
+2711,kheiredine,2708
+2712,sidi ali,2710
+2713,abdelmalek ramdane,2706
+2714,hadjadj,2706
+2715,nekmaria,2711
+2716,sidi lakhdar,2711
+2717,achaacha,2702
+2718,khadra,2702
+2719,bouguirat,2705
+2720,sirat,2705
+2721,ain sidi cherif,2709
+2722,mesra,2709
+2723,mansourah,2712
+2724,souaflia,2705
+2725,ouled boughalem,2702
+2726,ouled maallah,2710
+2727,mazagran,2707
+2728,ain boudinar,2708
+2729,tazgait,2711
+2730,safsaf,2705
+2731,touahria,2712
+2732,el hassiane,2703
+2801,msila,2801
+2802,maadid,2810
+2803,hammam dhalaa,2807
+2804,ouled derradj,2810
+2805,tarmount,2807
+2806,mtarfa,2810
+2807,khoubana,2808
+2808,m'cif,2808
+2809,chellal,2801
+2810,ouled madhi,2801
+2811,magra,2809
+2812,berhoum,2809
+2813,ain  khadra,2809
+2814,ouled addi guebala,2810
+2815,belaiba,2809
+2816,sidi aissa,2811
+2817,ain el hadjel,2802
+2818,sidi hadjeres,2802
+2819,ouanougha,2807
+2820,bou saada,2804
+2821,ouled sidi brahim,2804
+2822,sidi ameur,2804
+2823,tamsa,2804
+2824,ben srour,2805
+2825,ouled slimane,2805
+2826,el houamed,2808
+2827,el hamel,2804
+2828,ouled mansour,2807
+2829,maarif,2801
+2830,dehahna,2809
+2831,bouti sayah,2811
+2832,khettouti sed el djir,2801
+2833,zerzour,2805
+2834,mohammed boudiaf,2805
+2835,benzouh,2804
+2836,bir foda,2803
+2837,ain fares,2803
+2838,sidi m'hamed,2803
+2839,ouled attia,2806
+2840,souamaa,2810
+2841,ain el melh,2803
+2842,medjedel,2806
+2843,slim,2806
+2844,ain errich,2803
+2845,beni ilmane,2811
+2846,oultem,2804
+2847,djebel messaad,2806
+2901,mascara,2901
+2902,bou hanifia,2903
+2903,tizi,2901
+2904,hacine,2903
+2905,maoussa,2907
+2906,tighennif,2914
+2907,hachem,2912
+2908,sidi kada,2914
+2909,zelmata,2912
+2910,oued el abtal,2909
+2911,ain ferah,2909
+2912,ghriss,2906
+2913,froha,2906
+2914,matemore,2907
+2915,makdha,2906
+2916,sidi boussaid,2907
+2917,el bordj,2911
+2918,ain fekan,2910
+2919,benian,2902
+2920,khalouia,2911
+2921,el menaouer,2911
+2922,oued taria,2910
+2923,aouf,2902
+2924,ain fares,2901
+2925,aïn fras,2910
+2926,sig,2913
+2927,oggaz,2913
+2928,alaïmia,2913
+2929,el gaada,2915
+2930,zehana,2915
+2931,mohammadia,2908
+2932,sidi abdelmoumen,2908
+2933,ferraguig,2905
+2934,el ghomri,2905
+2935,sedjerara,2905
+2936,mocta douz,2904
+2937,bou henni,2904
+2938,el guettana,2903
+2939,el mamounia,2901
+2940,el keurt,2901
+2941,gharrous,2902
+2942,guerdjoum,2910
+2943,chorfa,2915
+2944,ras ain amirouche,2913
+2945,nesmoth,2912
+2946,sidi abdeldjebar,2914
+2947,sehailia,2914
+3001,ouargla,3001
+3002,ain beida,3006
+3003,n'goussa,3005
+3004,hassi messaoud,3003
+3005,rouissat,3001
+3011,sidi khouiled,3006
+3012,hassi ben abdellah,3006
+3021,el borma,3003
+3101,oran,3104
+3102,gdyel,3105
+3103,bir el djir,3104
+3104,hassi bounif,3105
+3105,es senia,3104
+3106,arzew,3102
+3107,bethioua,3102
+3108,mersat el hadjadj,3102
+3109,ain turk,3101
+3110,el ançor,3101
+3111,oued tlelat,3106
+3112,tafraoui,3106
+3113,sidi chami,3104
+3114,boufatis,3106
+3115,mers el kebir,3101
+3116,bousfer,3101
+3117,el karma,3104
+3118,el braya,3106
+3119,hassi ben okba,3105
+3120,ben freha,3105
+3121,hassi mefsoukh,3105
+3122,sidi ben yebka,3102
+3123,misserghin,3103
+3124,boutlelis,3103
+3125,ain kerma,3103
+3126,aïn bya,3102
+3201,el bayadh,3201
+3202,rogassa,3210
+3203,stitten,3202
+3204,brezina,3205
+3205,ghassoul,3208
+3206,boualem,3202
+3207,el abiodh sidi cheikh,3209
+3208,ain el orak,3209
+3209,arbaouat,3209
+3210,bougtoub,3203
+3211,el kheiter,3203
+3212,kef el ahmar,3210
+3213,boussemghoun,3204
+3214,chellala,3206
+3215,krakda,3205
+3216,el bnoud,3209
+3217,cheguig,3210
+3218,sidi amar,3202
+3219,el mehara,3207
+3220,tousmouline,3203
+3221,sidi slimane,3202
+3222,sidi tifour,3202
+3301,illizi,3301
+3303,debdeb,3303
+3304,bordj omar driss,3303
+3306,in amenas,3303
+3401,bordj bou arreridj,3401
+3402,ras el oued,3409
+3403,bordj zemoura,3406
+3404,mansoura,3407
+3405,el m'hir,3407
+3406,ben daoud,3407
+3407,el achir,3401
+3408,ain taghrout,3402
+3409,bordj ghdir,3403
+3410,sidi embarek,3402
+3411,el hamadia,3405
+3412,belimour,3403
+3413,medjana,3408
+3414,teniet en nasr,3408
+3415,djaafra,3408
+3416,el main,3408
+3417,ouled brahim,3409
+3418,ouled dahmane,3406
+3419,hasnaoua,3406
+3420,khelil,3402
+3421,taglait,3403
+3422,ksour,3401
+3423,ouled sidi brahim,3407
+3424,tafreg,3408
+3425,colla,3408
+3426,tixter,3409
+3427,el ach,3405
+3428,el anceur,3401
+3429,tassameurt,3406
+3430,ain tesra,3409
+3431,bir kasdali,3402
+3432,ghilassa,3403
+3433,rabta,3405
+3434,haraza,3407
+3501,boumerdes,3501
+3502,boudouaou,3504
+3504,afir,3505
+3505,bordj menaïel,3503
+3506,baghlia,3502
+3507,sidi daoud,3502
+3508,naciria,3508
+3509,djinet,3503
+3510,isser,3506
+3511,zemmouri,3510
+3512,si mustapha,3506
+3513,tidjelabine,3501
+3514,chabet el ameur,3506
+3515,thenia,3509
+3518,timezrit,3506
+3519,corso,3501
+3520,ouled moussa,3507
+3521,larbatache,3507
+3522,bouzegza keddara,3504
+3525,taourga,3502
+3526,ouled aissa,3508
+3527,ben choud,3505
+3528,dellys,3505
+3529,ammal,3509
+3530,beni amrane,3509
+3531,souk el had,3509
+3532,boudouaou el bahri,3504
+3533,ouled hedadj,3504
+3535,leghata,3510
+3536,hammedi,3507
+3537,khemis el khechna,3507
+3538,el kharrouba,3504
+3601,el tarf,3606
+3602,bouhadjar,3603
+3603,ben mhidi,3601
+3604,bougous,3606
+3605,el kala,3606
+3606,ain el assel,3606
+3607,el aioun,3606
+3608,bouteldja,3604
+3609,souarekh,3606
+3610,berrihane,3601
+3611,lac des oiseaux,3604
+3612,chefia,3604
+3613,drean,3605
+3614,chihani,3605
+3615,chebaita mokhtar,3605
+3616,besbes,3602
+3617,asfour,3602
+3618,echatt,3601
+3619,zerizer,3602
+3620,zitouna,3606
+3621,ain kerma,3603
+3622,oued zitoun,3603
+3623,hammam beni salah,3603
+3624,raml souk,3606
+3701,tindouf,3701
+3702,oum el assel,3701
+3801,tissemsilt,3801
+3802,bordj bou naama,3803
+3803,theniet el had,3808
+3804,lazharia,3807
+3805,beni chaib,3803
+3806,lardjem,3806
+3807,melaab,3806
+3808,sidi lantri,3806
+3809,bordj el emir abdelkader,3804
+3810,layoune,3805
+3811,khemisti,3805
+3812,ouled bessem,3801
+3813,ammari,3802
+3814,youssoufia,3804
+3815,sidi boutouchent,3808
+3816,larbaa,3807
+3817,maacem,3802
+3818,sidi abed,3802
+3819,tamalaht,3806
+3820,sidi slimane,3803
+3821,boucaid,3807
+3822,beni lahcene,3803
+3901,el oued,3901
+3902,robbah,3908
+3903,oued el alenda,3901
+3904,bayadha,3908
+3905,nakhla,3908
+3906,guemar,3905
+3907,kouinine,3901
+3908,reguiba,3907
+3909,hamraia,3907
+3910,taghzout,3905
+3911,debila,3902
+3912,hassani abdelkrim,3902
+3913,hassi khelifa,3906
+3914,taleb larbi,3909
+3915,douar el ma,3909
+3916,sidi aoun,3902
+3917,trifaoui,3906
+3918,magrane,3902
+3919,ben guecha,3909
+3920,ourmas,3905
+3925,el ogla,3908
+3926,mih ouansa,3901
+4001,khenchela,4005
+4002,m'toussa,4001
+4003,kais,4006
+4004,baghai,4005
+4005,el hamma,4005
+4006,ain touila,4001
+4007,taouzient,4006
+4008,bouhmama,4003
+4009,el oueldja,4004
+4010,remila,4006
+4011,chechar,4004
+4012,djellal,4004
+4013,babar,4002
+4014,tamza,4005
+4015,ensigha,4005
+4016,ouled rechache,4007
+4017,el mahmal,4007
+4018,msara,4003
+4019,yabous,4003
+4020,khirane,4004
+4021,chelia,4003
+4101,souk ahras,4101
+4102,sedrata,4108
+4103,hanancha,4101
+4104,mechroha,4101
+4105,ouled driss,4106
+4106,tiffech,4110
+4107,zaarouria,4109
+4108,taoura,4109
+4109,drea,4104
+4110,haddada,4103
+4111,khedara,4103
+4112,merahna,4105
+4113,ouled moumen,4103
+4114,bir bouhouche,4102
+4115,m'daourouch,4104
+4116,oum el adhaim,4107
+4117,ain zana,4106
+4118,ain soltane,4108
+4119,ouillen,4109
+4120,sidi fredj,4105
+4121,safel el ouiden,4102
+4122,ragouba,4110
+4123,khemissa,4108
+4124,oued keberit,4104
+4125,terraguelt,4107
+4126,zouabi,4102
+4201,tipaza,4201
+4202,menaceur,4209
+4203,larhat,4205
+4204,douaouda,4208
+4205,bourkika,4202
+4206,khemisti,4203
+4210,aghbal,4206
+4212,hadjout,4207
+4213,sidi amar,4209
+4214,gouraya,4206
+4215,nador,4209
+4216,chaiba,4208
+4217,ain tagourait,4203
+4222,cherchel,4204
+4223,damous,4205
+4224,merad,4207
+4225,fouka,4208
+4226,bou ismail,4203
+4227,ahmar el ain,4202
+4230,bouharoun,4203
+4232,sidi ghiles,4204
+4233,messelmoun,4206
+4234,sidi rached,4201
+4235,kolea,4208
+4236,attatba,4203
+4240,sidi semiane,4204
+4241,beni milleuk,4205
+4242,hadjeret ennous,4204
+4301,mila,4302
+4302,ferdjioua,4305
+4303,chelghoum laid,4304
+4304,oued athmania,4307
+4305,ain mellouk,4307
+4306,teleghma,4313
+4307,oued seguen,4313
+4308,tadjenanet,4311
+4309,benyahia abderrahmane,4311
+4310,oued endja,4308
+4311,ahmed rachedi,4308
+4312,ouled khalouf,4311
+4313,tiberguent,4309
+4314,bouhatem,4303
+4315,rouached,4309
+4316,tessala lemtaï,4314
+4317,grarem gouga,4306
+4318,sidi merouane,4310
+4319,tassadane haddada,4312
+4320,derrahi bousselah,4303
+4321,minar zarza,4312
+4322,amira arras,4314
+4323,terrai bainnane,4314
+4324,hamala,4306
+4325,ain tine,4302
+4326,el mechira,4313
+4327,sidi khelifa,4302
+4328,zeghaia,4308
+4329,el ayadi barbes,4301
+4330,ain beida harriche,4301
+4331,yahia beni guecha,4305
+4332,chigara,4310
+4401,ain defla,4401
+4402,miliana,4413
+4403,boumedfaa,4405
+4404,khemis miliana,4412
+4405,hammam righa,4411
+4406,arib,4409
+4407,djelida,4406
+4408,el amra,4409
+4409,bourached,4406
+4410,el attaf,4410
+4411,el abadia,4408
+4412,djendel,4407
+4413,oued chorfa,4407
+4414,ain lechiakh,4402
+4415,oued djemaa,4402
+4416,rouina,4414
+4417,zeddine,4414
+4418,el hassania,4403
+4419,bir ouled khelifa,4404
+4420,ain soltane,4402
+4421,tarik ibn ziad,4404
+4422,bordj emir khaled,4404
+4423,ain torki,4411
+4424,sidi lakhdar,4412
+4425,ben allal,4413
+4426,ain benian,4411
+4427,hoceinia,4405
+4428,birbouche,4407
+4429,djemaa ouled cheikh,4406
+4430,mekhatria,4409
+4431,bathia,4403
+4432,tacheta zegagha,4408
+4433,ain bouyahia,4408
+4434,el maine,4414
+4435,tiberkanine,4410
+4436,belaas,4403
+4501,naama,4505
+4502,mecheria,4505
+4503,ain sefra,4502
+4504,tiout,4502
+4505,sfissifa,4507
+4506,moghrar,4506
+4507,asla,4503
+4508,djeniene bourezg,4506
+4509,ain ben khelil,4501
+4510,mekmene ben amar,4504
+4511,kasdir,4504
+4512,el biod,4505
+4601,ain temouchent,4601
+4602,chaabet el ham,4606
+4603,ain kihal,4603
+4604,hammam bouhadjar,4610
+4605,bouzedjar,4607
+4606,oued berkeche,4609
+4607,aghlal,4603
+4608,terga,4613
+4609,ain el arbaa,4602
+4610,tamzoura,4611
+4611,chentouf,4610
+4612,sidi ben adda,4604
+4613,aoubellil,4603
+4614,el malah,4608
+4615,sidi boumediene,4602
+4616,oued sabah,4611
+4617,ouled boudjemaa,4613
+4618,ain tolba,4604
+4619,el amria,4607
+4620,hassi el ghella,4608
+4621,el hassasna,4609
+4622,ouled kihal,4606
+4623,beni saf,4605
+4624,sidi safi,4605
+4625,oulhaca gheraba,4612
+4626,tadmaya,4612
+4627,el emir abdelkader,4605
+4628,el messaid,4607
+4701,ghardaia,4701
+4703,dhayet bendhahoua,4704
+4704,berriane,4702
+4705,metlili,4708
+4706,el guerrara,4705
+4707,el atteuf,4703
+4708,zelfana,4709
+4709,sebseb,4708
+4710,bounoura,4703
+4713,mansoura,4707
+4801,relizane,4801
+4802,oued rhiou,4810
+4803,belassel bouzegza,4804
+4804,sidi saada,4812
+4805,ouled aiche,4803
+4806,sidi lazreg,4809
+4807,el hamadna,4805
+4808,sidi m'hamed ben ali,4808
+4809,mediouna,4808
+4810,sidi khetab,4804
+4811,ammi moussa,4803
+4812,zemmoura,4813
+4813,beni dergoun,4813
+4814,djdiouia,4805
+4815,el guettar,4807
+4816,hamri,4805
+4817,el matmar,4806
+4818,sidi m'hamed benaouda,4801
+4819,ain tarek,4802
+4820,oued essalem,4809
+4821,ouarizane,4810
+4822,mazouna,4807
+4823,kalaa,4812
+4824,ain rahma,4806
+4825,yellel,4812
+4826,oued el djemaa,4801
+4827,ramka,4811
+4828,mendes,4809
+4829,lahlef,4810
+4830,beni zentis,4808
+4831,souk el had,4811
+4832,dar ben abdellah,4813
+4833,el hassi,4803
+4834,had echkalla,4802
+4835,bendaoud,4806
+4836,el ouldja,4811
+4837,merdja sidi abed,4810
+4838,ouled sidi mihoub,4805
+4901,timimoun,4901
+4902,charouine,4901
+4903,ksar keddour,4901
+4904,ouled said,4901
+4905,tinerkouk,4901
+4906,deldoul,4901
+4907,metarfa,4901
+4908,aougrout,4901
+4909,talmine,4901
+4910,ouled aissa,4901
+5001,bordj badji mokhtar,5001
+5002,timiaouine,5001
+5101,ouled djellal,5101
+5102,ras el miaad,5102
+5103,besbes,5102
+5104,sidi khaled,5102
+5105,doucen,5101
+5106,chaiba,5101
+5201,beni abbes,5201
+5202,ouled khodeir,5205
+5203,timoudi,5203
+5204,beni ikhlef,5204
+5205,igli,5202
+5206,tabelbala,5206
+5207,el ouata,5204
+5208,kerzaz,5203
+5209,ksabi,5205
+5210,tamtert,5201
+5301,in salah,5301
+5302,in ghar,5302
+5303,foggaret ezzaouia,5301
+5401,in guezzam,5401
+5402,tin zaouatine,5402
+5501,touggourt,5501
+5502,blidet amor,5505
+5503,tebesbest,5501
+5504,nezla,5501
+5505,zaouia el abidia,5501
+5506,sidi slimane,5503
+5507,el hadjira,5502
+5508,taibet,5504
+5509,tamacine,5505
+5510,benaceur,5504
+5511,m'naguer,5504
+5512,megarine,5503
+5513,el allia,5502
+5601,djanet,5601
+5602,bordj el haouasse,5601
+5701,el m'ghair,5701
+5702,still,5701
+5703,mârara,5702
+5704,sidi khelil,5701
+5705,tendla,5702
+5706,djamaa,5702
+5707,oum touyour,5701
+5708,sidi amrane,5702
+5801,el meniaa,5801
+5802,hassi fehal,5801
+5803,hassi gara,5801
