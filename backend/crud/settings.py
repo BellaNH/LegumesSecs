@@ -1,6 +1,8 @@
 
 from pathlib import Path
 from datetime import timedelta
+import os
+import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -87,7 +89,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CORS_ALLOWED_ORIGINS=[
-     'http://localhost:3000'
+     'http://localhost:5173'
 ]
 ROOT_URLCONF = 'crud.urls'
 
@@ -117,9 +119,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
-
+if os.getenv("USE_TEST_DB") =="1":
+    DATABASES["default"] = DATABASES["test_db"]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -159,7 +162,7 @@ STATIC_URL = 'static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : [
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.AllowAny'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -169,5 +172,10 @@ REST_FRAMEWORK = {
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+AUTHENTICATION_BACKENDS = [
+    'api.authenticate.EmailBackend',  # ← ça correspond à backend/backend.py
+    'django.contrib.auth.backends.ModelBackend',
+    
+]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL='api.CustomUser'
