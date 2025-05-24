@@ -17,6 +17,7 @@ from django.db.models import Sum, F
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
+from collections import defaultdict
 
 class UserList(viewsets.ModelViewSet):
     permission_classe=[AllowAny]
@@ -112,6 +113,10 @@ class EspeceList(viewsets.ModelViewSet):
     permission_classes=[IsAuthenticated]
     queryset = Espece.objects.all()
     serializer_class = EspeceSerializer
+    @action(detail=False, methods=['get'], url_path='count')
+    def count_especes(self, request):
+        count = self.queryset.count()
+        return Response(count)
 
 
 class AgriculteurList(viewsets.ModelViewSet):
@@ -247,7 +252,6 @@ class ParcelleList(viewsets.ModelViewSet):
             .order_by("espece__nom", "annee")
         )
 
-        # Organize data per espece
         from collections import defaultdict
         espece_dict = defaultdict(list)
 
@@ -258,7 +262,7 @@ class ParcelleList(viewsets.ModelViewSet):
                 "total_production": entry["total_production"] or 0
             })
 
-        # Fill missing years with 0
+
         result = []
         for espece, records in espece_dict.items():
             year_map = {r["year"]: r["total_production"] for r in records}
@@ -271,6 +275,42 @@ class ParcelleList(viewsets.ModelViewSet):
             })
 
         return Response(result)
+    @action(detail=False, methods=["get"], url_path="top-wilayas")
+    def top_wilayas_by_espece(self, request):
+        current_year = timezone.now().year
+
+        # Aggregate production by espece and wilaya
+        queryset = (
+            Parcelle.objects.filter(annee=current_year, production__isnull=False)
+            .values('espece__nom', 'exploitation__commune__subdivision__wilaya__nom')
+            .annotate(total_production=Sum('production'))
+            .order_by('espece__nom', '-total_production')
+        )
+
+        # Group top 3 wilayas per espece
+        result = []
+        espece_tracker = defaultdict(int)
+
+        for row in queryset:
+            espece = row['espece__nom']
+            if espece_tracker[espece] < 3:
+                result.append({
+                    'espece': espece,
+                    'wilaya': row['exploitation__commune__subdivision__wilaya__nom'],
+                    'total_production': row['total_production'],
+                })
+                espece_tracker[espece] += 1
+
+        return Response(result)
+    @action(detail=False, methods=['get'], url_path='total-production')
+    def total_production(self, request):
+        total = self.queryset.aggregate(Sum('production'))['production__sum'] or 0
+        return Response(total)
+    @action(detail=False, methods=['get'], url_path='total-sup-labouree')
+    def total_sup_labouree(self, request):
+        current_year = timezone.now().year
+        total = self.queryset.filter(annee=current_year).aggregate(Sum('sup_labouree'))['sup_labouree__sum'] or 0
+        return Response(total)
 
 
 
