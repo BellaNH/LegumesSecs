@@ -7,7 +7,10 @@ import { useGlobalContext } from '../../context';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-const FormAgriculteur = ({setShowEditForm,showEditForm,setSelectedAgriId,selectedAgriId})=>{
+import Plus from "../pics/Plus.png"
+import Modifer from "../pics/Modifier.png"
+
+const FormAgriculteur = ({setSelectedAgriId,selectedAgriId})=>{
     const {url,fetchAgriculteurs} = useGlobalContext()
     const [openForm,setOpenForm] = useState(true)
     const navigate = useNavigate()
@@ -98,7 +101,6 @@ const FormAgriculteur = ({setShowEditForm,showEditForm,setSelectedAgriId,selecte
 
        const handleCancel = ()=>{
       setOpenForm(!openForm)
-      setShowEditForm(!showEditForm)
       setData({
         ...data,
         nom:"",
@@ -115,23 +117,35 @@ const FormAgriculteur = ({setShowEditForm,showEditForm,setSelectedAgriId,selecte
       ? "fixed top-0 left-0 w-full h-full bg-[#00000090] z-50 flex justify-center items-center" 
      : ""}>
       {openForm &&
-      <form onSubmit={selectedAgriId? handleModifyAgri : handleSubmit} className='relative left-16 w-[55%] h-[65vh]  z-10 rounded-md  grid grid-cols-2 '>
+      <form onSubmit={selectedAgriId? handleModifyAgri : handleSubmit} 
+      className='relative left-16 w-[55%] h-[50vh]  z-10 rounded-md  grid grid-cols-2 '>
         <div className=' flex flex-col gap-4 px-4 rounded-l-md bg-white '>
-            <h3 className='font-semibold text-xl my-4'>Ajouter un agriculteur</h3>
+          {selectedAgriId?
+                    <div className='flex gap-3 '>
+                      <img src={Modifer} alt='' className='w-6 h-6 mt-5'/>
+                    <h3 className='font-semibold text-green-600 text-xl my-4'>Modifier l'agriculteur</h3>
+                    </div> 
+                    :
+                    <div className='flex gap-3 '>
+                    <img src={Plus} alt='' className='w-6 h-6 mt-5'/>
+                    <h3 className='font-semibold text-green-600 text-xl my-4'>Ajouter un agriculteur</h3>
+                    </div>
+                    
+                    }
             <TextField value={data.nom} name='nom' onChange={handleChange} label="Nom" variant="standard" size="small" sx={{width:'100%'}}/> 
             <TextField value={data.prenom} name='prenom' onChange={handleChange} label="Prenom" variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}}/> 
             
         </div>
-        <div className='flex flex-col gap-4 bg-indigo-700 px-4 rounded-r-md ' >
+        <div className='flex flex-col gap-4 bg-green-700 px-4 rounded-r-md ' >
         <IoMdInformationCircleOutline className="text-white w-8 h-8 mt-4 ml-[85%] mb-3"/>
             <TextField value={data.phoneNum} name='phoneNum' onChange={handleChange} InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'white'}}}} InputProps={{sx:{color:'white','&:before':{borderBottom:'1px solid white'},'&:after':{borderBottom:'1px solid white'}}}} label="Num téléphone" variant="standard" size="small" sx={{width:'100%', '& > :not(style)':{color:'white'},boxShadow:'rgba(149,157,165,0.2) 0px 8px 24px',border:'none' }}/>  
             <TextField value={data.numero_carte_fellah} name='numero_carte_fellah' onChange={handleChange} InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'white'}}}} InputProps={{sx:{color:'white','&:before':{borderBottom:'1px solid white'},'&:after':{borderBottom:'1px solid white'}}}} label="Num Carte fellah" variant="standard" size="small" sx={{width:'100%', '& > :not(style)':{color:'white'},boxShadow:'rgba(149,157,165,0.2) 0px 8px 24px',border:'none' }}/> 
             
-            <div className='flex justify-center gap-6 py-6'>
-            <button type='button' onClick={handleCancel} className='bg-white rounded-md w-auto px-8 py-1'>Cancel</button>
+            <div className='flex justify-center py-6 gap-6 w-[100%]'>
+            <button type='button' onClick={handleCancel} className='bg-white rounded-md w-auto px-8 py-2 text-red-600 font-semibold'>Cancel</button>
             {selectedAgriId
-            ?<button type='submit'  className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>Modifier</button>
-            :<button type='submit'  className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>Ajouter</button>}
+            ?<button type='submit'  className='font-semibold bg-lime-600 rounded-md w-auto px-8 py-2 text-white text-base'>Modifier</button>
+            :<button type='submit'  className='font-semibold bg-green-600 rounded-md w-auto px-8 py-2 text-white text-base'>Ajouter</button>}
 
             </div>
       

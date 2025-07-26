@@ -26,7 +26,7 @@ import Profile from './Pages/Profile/Profile.jsx'
 import { Navigate } from 'react-router-dom'
 import Slider from "./Pages/Utilisateur/PermissionSlider/Slider.jsx"
 import EspeceSurfaceChart from './Pages/Dashboard/EspeceSurfaceChart .jsx'
-
+import Role from "./Pages/Role/Role.jsx"
 
 function App() {
   const [add,setAdd]= useState(0)
@@ -39,11 +39,14 @@ function App() {
       {isAuthenticated && <Sidebar drawerWidth={147} />}
       <Routes>
         <Route path="/slider" element={<Slider/>} />
-        <Route path="" element={isAuthenticated?<DashboardDisplayed/>:<Login />} />
+        <Route path="" element={<DashboardDisplayed/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/role" element={<Role />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/dashboard" element={<DashboardDisplayed />} />
         <Route path="/admin-create-user" element={<AjouterUtilisateur />} />
         <Route path="/utilisateurs" element={<Utilisateurs />} />
+        <Route path="/ajouter-utilisateur" element={<AjouterUtilisateur />} />
         <Route path="/modifier-utilisateur/:id" element={<ModifierUtilisateur/>} />
         <Route path="/wilayas" element={isAuthenticated ? <WilayasPage /> : <Login/>} />
         <Route path="/subdivisions" element={<Subdivision />} />

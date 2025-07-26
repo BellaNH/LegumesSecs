@@ -13,16 +13,20 @@ import { FaSitemap } from "react-icons/fa";
 import { useGlobalContext } from "../context"
 import { useLocation } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-
+import "./Sidebar.css"
 const Sidebar = ()=>{
     const [openMenu,setOpenMenu] = useState("")
-    const {isAuthenticated,user,logout} = useGlobalContext()
+    const {isAuthenticated,user,logout} = useGlobalContext() 
+    const [active,setActive] = useState("")
+    const [open, setOpen] = useState(false);
+
     const toggleDropDownMenu = (menuName)=>{
         setOpenMenu(prev=>(prev===menuName?null:menuName))
+        setOpen(true)
     }
     const location = useLocation();
     const path = location.pathname;
-    const [open, setOpen] = useState(false);
+    
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleMenuOpen = (event) => {
@@ -36,212 +40,321 @@ const Sidebar = ()=>{
     console.log(user)
     const [search, setSearch] = useState("");
 
-   
-    const isAdminBanner = user && user.role === 'admin' && (
-      <p style={{ color: 'green', fontWeight: 'bold', textAlign: 'center', marginTop: '10px',fontSize: '30px', }}> 
-      </p>
-    );
-
-      
-
-    const changeOpenStatus = () => {
-        setOpen(!open);
-    };
     return (
-        <div style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}}  className="w-[20%] h-[100vh] bg-gray-50 pt-8 pl-6 text-indigo-800 ">
-            <div >
-               <NavLink id="profile" className={`cursor-pointer  font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center relative`}>
-                    <p>Profile</p>
-                    <RiArrowDropDownLine id="profile" onClick={()=>toggleDropDownMenu("profile")} className="text-xl absolute right-4 cursor-pointer"/>
-               </NavLink>
-               {openMenu==="profile"?<div className="top-8 bg-gray-100  pl-8 text-black text-[0.8rem] ">
-               <NavLink to="/profile" className="flex gap-4 items-center py-2 cursor-pointer">
-                   <CgProfile className="text-md"/>
-                   <p>Voir le profile</p>
-                   
-               </NavLink>
-               <NavLink to="" onClick={logout} className="flex gap-4 items-center py-2 cursor-pointer">
-                   <IoDocumentOutline />
-                   <p>Se deconnecter</p>
-               </NavLink>
-              </div>:<></>}
-               
-              <></>
-               
-            </div>
-            {(user.role.nom === "admin" ||
-  user.permissions.find(p => p.model === "utilisateur" && p.retrieve === "true")) && (
-  (user.role.nom === "admin" || user.permissions.find(p => p.model === "utilisateur") && p.create === "true") ? (
-    <div>
-      <NavLink
-        id="utilisateurs"
-        className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black hover:rounded-md flex items-center relative"
-      >
-        <p>Utilisateurs</p>
-        <RiArrowDropDownLine
-          id="utilisateurs"
-          onClick={() => toggleDropDownMenu("utilisateurs")}
-          className="text-xl absolute right-4 cursor-pointer"
-        />
-      </NavLink>
+<div
+  style={{
+    scrollbarWidth: "none",
+  }}
+  className="z-50 w-[20%] h-screen sticky top-0 overflow-y-auto bg-gradient-to-b from-green-800 to-green-600 pt-8 pl-6 text-white flex flex-col gap-4 shadow-xl"
+>
 
-      {openMenu === "utilisateurs" && (
-        <div className="top-8 bg-gray-100 pl-8 text-black text-[0.8rem]">
-          <NavLink to="/Admin-Create-User" className="flex gap-4 items-center py-2 cursor-pointer">
-            <FaUserPlus size={30} style={{ color: "green", marginRight: "8px" }} />
+  <div>
+    <NavLink
+      id="profile"
+      onClick={(e) => setActive(e.currentTarget.id)}
+      className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
+        active === "profile"
+          ? "bg-white text-green-700 shadow-inner"
+          : "hover:bg-green-500/40 hover:shadow-md"
+      }`}
+    >
+      <p>Profile</p>
+      <RiArrowDropDownLine
+        id="profile"
+        onClick={() => toggleDropDownMenu("profile")}
+        className="text-2xl"
+      />
+    </NavLink>
+    <div
+      className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
+        openMenu === "profile" ? "max-h-[150px] py-2 px-3" : "max-h-0"
+      }`}
+    >
+      <NavLink
+        to="/profile"
+        className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+      >
+        <CgProfile className="text-lg" />
+        <p>Voir le profil</p>
+      </NavLink>
+      <NavLink
+        to="/login"
+        onClick={logout}
+        className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+      >
+        <IoDocumentOutline />
+        <p>Se déconnecter</p>
+      </NavLink>
+    </div>
+  </div>
+  
+   <NavLink 
+            onClick={(e)=>setActive(e.currentTarget.id)} 
+            id="dashboard"
+            to="/dashboard" 
+            className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
+        active === "dashboard"
+          ? "bg-white text-green-700 shadow-inner"
+          : "hover:bg-green-500/40 hover:shadow-md"
+      }`}
+          >Dashboard
+          </NavLink> 
+          
+  {user &&
+    (user.role.nom === "admin" ||
+      user.permissions.some(
+        (p) => p.model === "Utilisateur" && (p.create || p.retrieve)
+      )) && (
+      <div>
+        <div
+          onClick={(e) => setActive(e.currentTarget.id)}
+          id="utilisateur"
+          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
+            active === "utilisateur"
+              ? "bg-white text-green-700 shadow-inner"
+              : "hover:bg-green-500/40 hover:shadow-md"
+          }`}
+        >
+          <p>Utilisateur</p>
+          <RiArrowDropDownLine
+            id="utilisateur"
+            onClick={() => toggleDropDownMenu("utilisateur")}
+            className="text-2xl"
+          />
+        </div>
+        <div
+          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
+            openMenu === "utilisateur" ? "max-h-[150px] py-2 px-3" : "max-h-0"
+          }`}
+        >
+          <NavLink
+            to="/ajouter-utilisateur"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <FaPlus />
             <p>Ajouter</p>
           </NavLink>
-
-          <NavLink to="/utilisateurs" className="flex gap-4 items-center py-2 cursor-pointer">
-            <FaClipboardList size={20} style={{ color: "purple", marginRight: "8px" }} />
+          <NavLink
+            to="/utilisateurs"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <IoDocumentOutline />
             <p>Consulter</p>
           </NavLink>
         </div>
-      )}
-    </div>
-  ) : (
+      </div>
+    )}
+
+  {user && user.role.nom === "admin" && (
     <NavLink
-        id="utilisateurs"
-        to="/utilisateurs"
-        className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black hover:rounded-md flex items-center relative"
-      >
-        Utilisateurs
-      </NavLink>
-  )
-)}
+      onClick={(e) => setActive(e.currentTarget.id)}
+      id="role"
+      to="/role"
+      className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
+        active === "role"
+          ? "bg-white text-green-700 shadow-inner"
+          : "hover:bg-green-500/40 hover:shadow-md"
+      }`}
+    >
+      Role
+    </NavLink>
+  )}
 
-
-        {(user.role.nom === "admin" ||
-           user.permissions.find(p => p.model === "wilaya" && p.retrieve === "true")) &&
-  
-                <NavLink to="/wilayas" id="Wilaya" className={`cursor-pointer  font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center relative`}>
-                    <p>Wilaya</p>
+  {user && user.role.nom === "admin" && (
+    <NavLink
+      onClick={(e) => setActive(e.currentTarget.id)}
+      to="/wilayas"
+      id="Wilaya"
+      className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
+        active === "Wilaya"
+          ? "bg-white text-green-700 shadow-inner"
+          : "hover:bg-green-500/40 hover:shadow-md"
+      }`}
+    >
+      <p>Wilaya</p>
+    </NavLink>
+  )}
+          {user && user.role.nom==="admin"
+      &&  <NavLink 
+            onClick={(e)=>setActive(e.currentTarget.id)}
+           to="/subdivisions" 
+           id="Subdivision" 
+           className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
+        active === "Subdivision"
+          ? "bg-white text-green-700 shadow-inner"
+          : "hover:bg-green-500/40 hover:shadow-md"
+      }`}>
+          <p>Subdivision</p>
+          </NavLink>
+          }   
+          
+          {user && user.role.nom==="admin"
+          &&
+           <NavLink
+            onClick={(e)=>setActive(e.currentTarget.id)} 
+           to="/communes" 
+           id="commune" 
+          className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
+        active === "commune"
+          ? "bg-white text-green-700 shadow-inner"
+          : "hover:bg-green-500/40 hover:shadow-md"
+      }`}
+           >
+                    <p>Commune</p>
                </NavLink>
-        }
-           {(user.role.nom === "admin" ||
-           user.permissions.find(p => p.model === "subdivision" && p.retrieve === "true")) &&
-           
-           <NavLink to="/subdivisions" id="Subdivision" className={`cursor-pointer  font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center relative`}>
-                    <p>Subdivision</p>
-               </NavLink>
-               
-    }
-    {(user.role.nom === "admin" ||
-           user.permissions.find(p => p.model === "commune" && p.retrieve === "true")) &&
-           
-           <NavLink to="/communes" id="commune" className={`cursor-pointer  font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center relative`}>
-                    <p>commune</p>
-               </NavLink>
-               
-    }
-               
+}
     
-            <div className="font-semibold cursor-pointer py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md ">Dashboard</div> 
- 
-       {(user.role.nom === "admin" ||
-  user.permissions.find(p => p.model === "objectif" && p.retrieve === "true")) && (
-  (user.role.nom === "admin" || user.permissions.find(p => p.model === "objectif" && p.create === "true")) ? (
-    <div>
-               <div id="objectif" className="font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center relative cursor-pointer ">
-                    <p>Objectif</p>
-                    <RiArrowDropDownLine id="objectif" onClick={()=>toggleDropDownMenu("objectif")} className="text-xl absolute right-4 cursor-pointer"/>
-               </div>
-               {openMenu==="objectif"?
-               <div className=" top-8 bg-gray-100  pl-8 text-black text-[0.8rem]">
-               <NavLink to="/ajouterobjectif" className="cursor-pointer flex gap-4 items-center py-2">
-                   <FaPlus/>
-                   <p>Ajouter</p>
-                   
-               </NavLink>
-               <NavLink to="/objectifs" className="cursor-pointer flex gap-4 items-center py-2">
-                   <IoDocumentOutline />
-                   <p>Consulter</p>
-               </NavLink>
-              </div>:
-              <></>}
-               
-            </div>
-  ) : (
-    <NavLink
-        id="objectif"
-        to="/objectifs"
-        className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black hover:rounded-md flex items-center relative"
-      >
-        Objectifs
-      </NavLink>
-  )
-)}
-           {(user.role.nom === "admin" ||
-        user.permissions.find(p => p.model === "espece" && p.retrieve === "true")) &&
-        <NavLink to="/espece" className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center ">Espece</NavLink> 
-        }
-           
-            {(user.role.nom === "admin" ||
-  user.permissions.find(p => p.model === "agriculteurs" && p.retrieve === "true")) && (
-  (user.role.nom === "admin" ||user.permissions.find(p => p.model === "agriculteurs" && p.create === "true")) ? (
-            <div>
-               <div id="agriculteur" className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center relative ">
-                    <p>Agriculteur</p>
-                    <RiArrowDropDownLine id="agriculteur" onClick={()=>toggleDropDownMenu("agriculteur")} className="text-xl absolute right-4 cursor-pointer"/>
-               </div>
-               {openMenu==="agriculteur"?
-               <div className="top-8 bg-gray-100  pl-8 text-black text-[0.8rem]">
-               <NavLink to="/ajouteragriculteur" className="cursor-pointer flex gap-4 items-center py-2">
-                   <FaPlus/>
-                   <p>Ajouter</p>
-                   
-               </NavLink>
-               <NavLink to="/agriculteurs" className="cursor-pointer flex gap-4 items-center py-2">
-                   <IoDocumentOutline />
-                   <p>Consulter</p>
-               </NavLink>
-              </div>:
-              <></>}
-               
-            </div>
-  ) : (
-    <NavLink
-        id="agriculteurs"
-        to="/agriculteurs"
-        className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black hover:rounded-md flex items-center relative"
-      >
-        Agriculteurs
-    </NavLink>
-  )
-)}
-          {(user.role.nom === "admin" ||
-  user.permissions.find(p => p.model === "agriculteurs" && p.retrieve === "true")) && (
-  (user.role.nom === "admin" || user.permissions.find(p => p.model === "agriculteurs" && p.create === "true")) ? (
-            <div>
-               <NavLink id="exploitation" className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black  hover:rounded-md flex items-center relative ">
-                    <p>Exploitation</p>
-                    <RiArrowDropDownLine id="exploitation" onClick={()=>toggleDropDownMenu("exploitation")} className="text-xl absolute right-4 cursor-pointer"/>
-               </NavLink>
-               {openMenu==="exploitation"?
-               <div className=" top-8 bg-gray-100  pl-8 text-black text-[0.8rem]">
-               <NavLink to="/ajouterexploitation" className="cursor-pointer flex gap-4 items-center py-2">
-                   <FaPlus/>
-                   <p>Ajouter</p>
-                   
-               </NavLink>
-               <NavLink to="/exploitations" className="cursor-pointer flex gap-4 items-center py-2">
-               <IoDocumentOutline />
-                   <p>Consulter</p>
-               </NavLink>
-              </div>:
-              <></>}
-               
-            </div> 
-  ) : (
-    <NavLink
-        id="exploitations"
-        to="/exploitations"
-        className="cursor-pointer font-semibold py-2 pl-8 hover:bg-indigo-300 hover:text-black hover:rounded-md flex items-center relative"
-      >
-        Exploitations
-    </NavLink>
-  )
-)}
+      {user && user.role.nom==="admin" 
+      && 
+        <NavLink 
+        onClick={(e)=>setActive(e.currentTarget.id)} 
+        id="espece"
+        to="/espece" 
+         className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
+        active === "espece"
+          ? "bg-white text-green-700 shadow-inner"
+          : "hover:bg-green-500/40 hover:shadow-md"
+      }`}
+        >Espece
+        </NavLink> 
+}
+       {user &&
+    (user.role.nom === "admin" ||
+      user.permissions.some(
+        (p) => p.model === "Objectif" && (p.create || p.retrieve)
+      )) && (
+      <div>
+        <div
+          onClick={(e) => setActive(e.currentTarget.id)}
+          id="objectif"
+          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
+            active === "objectif"
+              ? "bg-white text-green-700 shadow-inner"
+              : "hover:bg-green-500/40 hover:shadow-md"
+          }`}
+        >
+          <p>Objectif</p>
+          <RiArrowDropDownLine
+            id="objectif"
+            onClick={() => toggleDropDownMenu("objectif")}
+            className="text-2xl"
+          />
+        </div>
+        <div
+          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
+            openMenu === "objectif" ? "max-h-[150px] py-2 px-3" : "max-h-0"
+          }`}
+        >
+          <NavLink
+            to="/ajouterobjectif"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <FaPlus />
+            <p>Ajouter</p>
+          </NavLink>
+          <NavLink
+            to="/objectifs"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <IoDocumentOutline />
+            <p>Consulter</p>
+          </NavLink>
+        </div>
+      </div>
+    )}
+
+
+       {user &&
+    (user.role.nom === "admin" ||
+      user.permissions.some(
+        (p) => p.model === "Agriculteur" && (p.create || p.retrieve)
+      )) && (
+      <div>
+        <div
+          onClick={(e) => setActive(e.currentTarget.id)}
+          id="Agriculteur"
+          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
+            active === "Agriculteur"
+              ? "bg-white text-green-700 shadow-inner"
+              : "hover:bg-green-500/40 hover:shadow-md"
+          }`}
+        >
+          <p>Agriculteur</p>
+          <RiArrowDropDownLine
+            id="Agriculteur"
+            onClick={() => toggleDropDownMenu("Agriculteur")}
+            className="text-2xl"
+          />
+        </div>
+        <div
+          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
+            openMenu === "Agriculteur" ? "max-h-[150px] py-2 px-3" : "max-h-0"
+          }`}
+        >
+          <NavLink
+            to="/ajouteragriculteur"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <FaPlus />
+            <p>Ajouter</p>
+          </NavLink>
+          <NavLink
+            to="/agriculteurs"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <IoDocumentOutline />
+            <p>Consulter</p>
+          </NavLink>
+        </div>
+      </div>
+    )}
+
+     {user &&
+    (user.role.nom === "admin" ||
+      user.permissions.some(
+        (p) => p.model === "Exploitation" && (p.create || p.retrieve)
+      )) && (
+      <div>
+        <div
+          onClick={(e) => setActive(e.currentTarget.id)}
+          id="Exploitation"
+          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
+            active === "Exploitation"
+              ? "bg-white text-green-700 shadow-inner"
+              : "hover:bg-green-500/40 hover:shadow-md"
+          }`}
+        >
+          <p>Exploitation</p>
+          <RiArrowDropDownLine
+            id="Exploitation"
+            onClick={() => toggleDropDownMenu("Exploitation")}
+            className="text-2xl"
+          />
+        </div>
+        <div
+          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
+            openMenu === "Exploitation" ? "max-h-[150px] py-2 px-3" : "max-h-0"
+          }`}
+        >
+          <NavLink
+            to="/ajouterexploitation"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <FaPlus />
+            <p>Ajouter</p>
+          </NavLink>
+          <NavLink
+            to="/exploitations"
+            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+          >
+            <IoDocumentOutline />
+            <p>Consulter</p>
+          </NavLink>
+        </div>
+      </div>
+    )}
+
+
             
         </div>
     )

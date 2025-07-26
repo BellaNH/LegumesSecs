@@ -13,7 +13,7 @@ export default function TopWilaya() {
     if(user){
     try {
           const response =   await axios.get(
-              `${url}/api/parcelle/top-wilayas/`,
+              `${url}/api/top_wilayas/`,
               {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -70,8 +70,8 @@ export default function TopWilaya() {
       <h2 className="text-xl font-semibold mb-4">{item.espece}</h2>
       <ol className="space-y-2">
         <li className="flex justify-between">
-          <span className="font-medium">🏆 {item.wilaya}</span>
-          <span>{item.total_production} T</span>
+          <span className="font-medium"> {item.label}</span>
+          <span>{item.total_production} </span>
         </li>
       </ol>
     </div>
@@ -80,16 +80,16 @@ export default function TopWilaya() {
 
 
       <button
-        className=" absolute top-3/4 left-8 transform -translate-y-1/2 bg-indigo-500 text-white px-3 py-1 rounded-full"
+        className=" absolute top-3/4 left-8 transform -translate-y-1/2 bg-green-600 text-white px-3 py-2 rounded-full"
         onClick={() => setIndex(index - 1)}
       >
         <MdOutlineNavigateBefore size={20} />
       </button>
       <button
-        className="absolute top-3/4 right-12 transform -translate-y-1/2 bg-indigo-500 text-white px-3 py-1 rounded-full"
+        className="absolute top-3/4 right-20 transform -translate-y-1/2 bg-green-600 text-white px-3 py-2 rounded-full"
         onClick={() => setIndex(index + 1)}
       >
-        <MdOutlineNavigateNext size={20}/>
+        <MdOutlineNavigateNext  size={20}/>
       </button>
     </div>
   );

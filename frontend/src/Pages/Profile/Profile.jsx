@@ -10,20 +10,31 @@ import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import React, { useEffect, useState } from 'react'; 
 import { useGlobalContext } from '../../context';
+import {Snackbar, Alert } from "@mui/material";
 import axios from "axios"
 const Profile = ()=>{
   const {url,user,setUser,roles} = useGlobalContext()
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState({
+    input1:false,
+    input2:false
+  })
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('')
+  const [selectedInputId,setSelectedInputId] = useState()
+  const [errorMessage, setErrorMessage] = useState(""); 
+const [successMessage, setSuccessMessage] = useState(""); 
+const [openError, setOpenError] = useState(false);
+const [openSuccess, setOpenSuccess] = useState(false);
+
   const [currentUser,setCurrentUser] = useState({
         id:"",
         nom:"",
         prenom:"",
         email:"",
         phoneNum:"",
-        password:""
+        password:"",
+        role_id:""
   })
 useEffect(() => {
   if (user) {
@@ -33,6 +44,7 @@ useEffect(() => {
       nom: user.nom,
       prenom: user.prenom,
       email: user.email,
+      role_id:user.role.id,
       phoneNum: user.phoneNum,
       password: user.password
     }))
@@ -44,8 +56,18 @@ useEffect(() => {
 }, [currentUser]);
 
     
-  const handleClickShowPassword = () => setShowPassword((show) => !show)
+  const handleClickShowPassword = (e) => {
+    const id = e.currentTarget.id 
     
+    setShowPassword((prev)=>({
+      ...prev,
+      [`input${id}`]: !prev[`input${id}`]
+    }
+    ))
+
+    }
+  
+
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -86,120 +108,168 @@ useEffect(() => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-
+      setSuccessMessage(`${currentUser.nom} modifié avec succès ✅`);
+      setOpenSuccess(true);
       console.log(response.data);
-      setError('');
+
     } catch (error) {
-      console.error("Erreur lors de la mise à jour", error);
+      setErrorMessage("Erreur d'enregistrement.");
+      setOpenError(true);
     }
   }
 
   console.log("Submit form here.");
 };
-
+  useEffect(()=>{console.log(selectedInputId)},[selectedInputId])
 
     return (
-    <form onSubmit={handleSubmit} style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} className=" w-[70%] h-[95%] bg-white mx-auto my-auto rounded-md px-8 py-4 flex flex-col gap-4 relative">
-        <div className='grid grid-cols-2 gap-8 w-[95%]'>
-        <div className='flex flex-col gap-1 '>
-           <p className='text-[#5F6368] font-semibold text-[0.9rem]'>Nom</p>
-           <input onChange={handleChange} style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} type='text'
-           value={currentUser?.nom || ""} name='nom' className='bg-white border-2 border-[#d1d5db] border-[1px] outline-0 h-10 rounded-md px-4'/>
-        </div>
-        <div className='flex flex-col gap-1 '>
-           <p className='text-[#5F6368]  font-semibold text-[0.9rem]'>Prenom</p>
-           <input onChange={handleChange} style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} type='text' 
-           value={currentUser?.prenom || ""} name='prenom' className='border-2 border-[#d1d5db] border-[1px] outline-0 h-10 rounded-md px-4'/>
-        </div>
-        </div>
-        
-        <div className='flex flex-col gap-1 w-[95%] '>
-           <p className='text-[#5F6368] font-semibold text-[0.9rem]'>Role</p>
-<TextField 
-  size='small'
-  select
-  disabled
-  value={user?.role?.nom || ""} 
-  name='role'
-  sx={{ backgroundColor: 'rgba(222, 237, 255, 0.95)' }}
+<form
+  onSubmit={handleSubmit}
+  className="w-[65%] h-[98%] bg-white mx-auto my-auto rounded-2xl px-10 py-8 flex flex-col gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300"
 >
-  <MenuItem value={user?.role?.nom || ""}>
-    {user?.role?.nom || ""}
-  </MenuItem>         
-</TextField>
+  <div className="grid grid-cols-2 gap-8 w-full">
+    <div className="flex flex-col gap-2">
+      <p className="text-gray-600 font-medium text-sm">Nom</p>
+      <input
+        onChange={handleChange}
+        type="text"
+        value={currentUser?.nom || ""}
+        name="nom"
+        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
+      />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-gray-600 font-medium text-sm">Prenom</p>
+      <input
+        onChange={handleChange}
+        type="text"
+        value={currentUser?.prenom || ""}
+        name="prenom"
+        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
+      />
+    </div>
+  </div>
 
-        </div>
-        <div className='grid grid-cols-2 gap-8 w-[95%]'>
-        <div className='flex flex-col gap-1 '>
-           <p className='text-[#5F6368]  font-semibold text-[0.9rem]'>Email</p>
-           <input onChange={handleChange} style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} type='text' 
-           value={currentUser?.email || ""} name='email' className='border-2 border-[#d1d5db] border-[1px] outline-0 h-10 rounded-md px-4'/>
-        </div>
-        <div className='flex flex-col gap-1 '>
-           <p className='text-[#5F6368]  font-semibold text-[0.9rem]'>Numero de telephone</p>
-           <input onChange={handleChange} style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} type='text' 
-           value={currentUser?.phoneNum || ""} name='phoneNum' className='border-2 border-[#d1d5db] border-[1px] outline-0 h-10  rounded-md px-4'/>
-        </div>
-        </div>
-        
-        <div className='flex flex-col gap-1 w-[95%] '>
-           <p className='text-[#5F6368]  font-semibold text-[0.9rem]'>Nouveau mot de passe</p>
-           <OutlinedInput
-           style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}}
-            value={currentUser?.password || ""}
-            onChange={handleChange}
-            size='small'
-            name='password'
-            className='rounded-md outline-none'
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={
-                    showPassword ? 'hide the password' : 'display the password'
-                  }
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-      
-          />
-        </div>
-        <div className='flex flex-col gap-1 w-[95%] '>
-           <p className='text-[#5F6368]  font-semibold text-[0.9rem]'>Confirmer le nouveau mot de passe</p>
-           <OutlinedInput
-           style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}}
-            onChange={(e)=>setConfirmPassword(e.target.value)}
-            size='small'
-            className='rounded-md outline-none'
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={
-                    showPassword ? 'hide the password' : 'display the password'
-                  }
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-      
-          />
-        </div>
-        
+  <div className="flex flex-col gap-2 w-full">
+    <p className="text-gray-600 font-medium text-sm">Role</p>
+    <TextField
+      size="small"
+      select
+      disabled
+      value={user?.role?.nom || ""}
+      name="role"
+      sx={{
+        backgroundColor: "rgba(222, 255, 235, 0.9)",
+        borderRadius: "0.375rem",
+      }}
+    >
+      <MenuItem value={user?.role?.nom || ""}>
+        {user?.role?.nom || ""}
+      </MenuItem>
+    </TextField>
+  </div>
 
-        <button type='submit' className=' bg-[#1A73E8] text-white font-semibold text-[0.9rem] rounded-md w-[20%] h-[7%]'>Sauvegarder</button>
-    </form>
+  <div className="grid grid-cols-2 gap-8 w-full">
+    <div className="flex flex-col gap-2">
+      <p className="text-gray-600 font-medium text-sm">Email</p>
+      <input
+        onChange={handleChange}
+        type="text"
+        value={currentUser?.email || ""}
+        name="email"
+        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
+      />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-gray-600 font-medium text-sm">Numero de téléphone</p>
+      <input
+        onChange={handleChange}
+        type="text"
+        value={currentUser?.phoneNum || ""}
+        name="phoneNum"
+        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
+      />
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-2 w-full">
+    <p className="text-gray-600 font-medium text-sm">Nouveau mot de passe</p>
+    <OutlinedInput
+      id="1"
+      value={currentUser?.password || ""}
+      onChange={handleChange}
+      size="small"
+      name="password"
+      type={showPassword.input1 ? "text" : "password"}
+      className="rounded-md outline-none bg-white"
+      endAdornment={
+        <InputAdornment position="end">
+          <IconButton
+            id="1"
+            onClick={handleClickShowPassword}
+            onMouseDown={handleMouseDownPassword}
+            onMouseUp={handleMouseUpPassword}
+            edge="end"
+          >
+            {showPassword.input1 ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
+        </InputAdornment>
+      }
+      sx={{
+        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
+      }}
+    />
+  </div>
+
+  <div className="flex flex-col gap-2 w-full">
+    <p className="text-gray-600 font-medium text-sm">Confirmer le nouveau mot de passe</p>
+    <OutlinedInput
+      id="2"
+      onChange={(e) => setConfirmPassword(e.target.value)}
+      size="small"
+      type={showPassword.input2 ? "text" : "password"}
+      className="rounded-md outline-none bg-white"
+      endAdornment={
+        <InputAdornment position="end">
+          <IconButton
+            id="2"
+            onClick={(e) => handleClickShowPassword(e)}
+            onMouseDown={handleMouseDownPassword}
+            onMouseUp={handleMouseUpPassword}
+            edge="end"
+          >
+            {showPassword.input2 ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
+        </InputAdornment>
+      }
+      sx={{
+        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
+      }}
+    />
+  </div>
+
+  <div className="w-full flex justify-end">
+    <button
+      type="submit"
+      className="bg-green-600 hover:bg-green-700 transition-all duration-200 text-white font-semibold text-sm rounded-lg px-6 py-3 shadow-md"
+    >
+      Sauvegarder
+    </button>
+  </div>
+
+  <Snackbar open={openSuccess} autoHideDuration={4000} onClose={() => setOpenSuccess(false)}>
+    <Alert onClose={() => setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
+      {successMessage}
+    </Alert>
+  </Snackbar>
+
+  <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+    <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
+      {errorMessage}
+    </Alert>
+  </Snackbar>
+</form>
+
     )
 }
 export default Profile

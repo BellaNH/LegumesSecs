@@ -15,18 +15,50 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
-import SearchIcon from '@mui/icons-material/Search'; // Assure-toi d'importer cette icône
+import SearchIcon from '@mui/icons-material/Search'; 
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useGlobalContext } from "../../context";
 import { FaTrash, FaEdit } from 'react-icons/fa';
+import InputAdornment from '@mui/material/InputAdornment';
+import {Snackbar, Alert } from "@mui/material";
+import Localisation from "../pics/Localisation.png"
+
 const SubdivisionManager = () => {
 
-  const {url,user,fetchSubdivisions,searchQuery, setSearchQuery,subdivisions,setSubdivisions} = useGlobalContext()
+  const {url,user} = useGlobalContext()
   const navigate = useNavigate();
+  const [subdivisions,setSubdivisions ] = useState([])
   const [editingId, setEditingId] = useState(null);
   const [editedSubdivName, setEditedSubdivName] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+     const [errorMessage, setErrorMessage] = useState(""); 
+    const [successMessage, setSuccessMessage] = useState(""); 
+    const [openError, setOpenError] = useState(false);
+    const [openSuccess, setOpenSuccess] = useState(false);
 
+
+
+const fetchSubdivisions = async () => {
+  try {
+    const res = await axios.get(`${url}/api/subdivision/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    setSubdivisions(res.data);
+  } catch (error) {
+    console.error("Erreur de chargement des subdivisions", error);
+  }
+};
+
+useEffect(() => {
+  fetchSubdivisions();
+}, []);
+
+const filteredSubdivisions = subdivisions?.filter(sub =>
+  sub.nom?.toLowerCase().includes(searchQuery.toLowerCase())
+);
   const [subdiv,setSubdiv] = useState({})
   const handleChange = (e)=>{
     const {name,value} = e.target
@@ -54,179 +86,149 @@ const SubdivisionManager = () => {
             },
           }
         );
+        setSuccessMessage(`Subdivision est modifiée avec succès ✅`);
+        setOpenSuccess(true);
         setEditingId(null);
         setEditedSubdivName('');
         fetchSubdivisions()
       } catch (error) {
-        console.error('Erreur lors de la mise à jour', error);
+        setErrorMessage("Erreur lors de la mise à jour");
+        setOpenError(true);
       }
     }
-    };
+    }
   const handleDelete = async (id) => {
-    if (window.confirm("Supprimer cette subdivision ?")) {
+    try{
       await axios.delete(`${url}/api/subdivision/${id}/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      setSuccessMessage(`Subdivision est supprimée avec succès ✅`);
+      setOpenSuccess(true);
       fetchSubdivisions()
-      setSubdivisions((prev) => prev.filter((s) => s.id !== id));
+      setSubdivisions((prev) => prev.filter((s) => s.id !== id))
+    }catch(error){
+      setErrorMessage("Erreur lors de suppression");
+      setOpenError(true);
     }
+    
   };
 
 return (
-  <Box sx={{ display: "flex", justifyContent: "center", mt: 5, ml: 10 }}>
-    <Box sx={{ width: "100%" ,display:"flex",flexDirection:"column"}}>
-      <Typography variant="h5" align="center" gutterBottom fontWeight="bold">
-        Liste des Subdivisions
-      </Typography>
-      
-      {/* Barre de recherche stylisée */}
-      <TextField
-        size="small"
-        label="Rechercher une subdivision"
-        variant="outlined"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)} 
-        sx={{ 
-          mb: 2, 
-          width: "50%", 
-          mr: 90, 
-          borderRadius: 12, // ← bord arrondi, tu peux changer à 0 pour un look carré
-          '& .MuiOutlinedInput-root': {
-            borderRadius: 9, // ← ici aussi pour les bords internes
-          }
-        }}
-        InputProps={{
-          startAdornment: (
-            <SearchIcon sx={{ mr: 1, color: "gray" }} />
-          ),
-        }}
-      />
-      {user.permissions[6].create==="true" &&
-      
-      <Button
-          variant="contained"
-          color="success"
-          sx={{ mb: 2, mr: 2 }}
-          onClick={() => navigate("/ajouter-subdivision")}
+<div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[80%] flex flex-col mb-16">
+    <div className='flex align-center gap-2'> 
+          <img src={Localisation} alt="localisation" className='w-10 h-10'/>
+          <h2 className="text-3xl font-bold text-left text-green-600 mb-6">
+           Subdivisions
+         </h2>
+        </div>
+
+    <div className="flex items-center justify-center gap-4 mb-6">
+      <div className="relative w-full">
+        <input
+          type="text"
+          placeholder="Rechercher une subdivision"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md pl-10 focus:outline-none focus:ring-2 focus:ring-green-600"
+        />
+        <div className="absolute left-3 top-2.5 text-gray-400">
+          <SearchIcon />
+        </div>
+      </div>
+
+      <button
+        onClick={() => navigate("/ajouter-subdivision")}
+        className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md text-sm"
       >
         Ajouter
-      </Button>
-      }
-      
-   
-     
+      </button>
+    </div>
 
-      <Paper elevation={3}>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell><strong>ID</strong></TableCell>
-                <TableCell><strong>Nom de la subdivision</strong></TableCell>
-                <TableCell><strong>Wilaya</strong></TableCell>
-                {user.permissions[6].update==="true" || user.permissions[8].delete==="true" &&
-                
-                <TableCell align="center"><strong>Actions</strong></TableCell>}
-                
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {subdivisions.map((sub) => (
-                <TableRow key={sub.id}>
-                  <TableCell>{sub.id}</TableCell>
-                  <TableCell
-                      className="px-4 py-3 border-b"
-                      style={{
-                        paddingLeft: '18px', // Contrôle des espacements
-                        paddingRight: '16px',
-                        fontSize: '20px',
-                      }}
+    <div className="bg-white shadow-md rounded-xl overflow-hidden">
+      <table className="min-w-full table-auto text-left border border-gray-200">
+        <thead className="bg-green-600 text-white">
+          <tr>
+            <th className="px-4 py-3 text-sm font-semibold">ID</th>
+            <th className="px-4 py-3 text-sm font-semibold">Nom de la subdivision</th>
+            <th className="px-4 py-3 text-sm font-semibold">Wilaya</th>
+            <th className="px-4 py-3 text-sm font-semibold text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredSubdivisions.map((sub) => (
+            <tr key={sub.id} className="even:bg-gray-50 hover:bg-green-50 transition duration-200">
+              <td className="px-4 py-3 text-sm">{sub.id}</td>
+
+              <td className="px-4 py-3 text-[16px] text-gray-800">
+                {editingId === sub.id ? (
+                  <input
+                    value={editedSubdivName}
+                    onChange={(e) => setEditedSubdivName(e.target.value)}
+                    className="w-full border border-gray-300 rounded px-3 py-1 text-sm"
+                  />
+                ) : (
+                  sub.nom
+                )}
+              </td>
+
+              <td className="px-4 py-3 text-[16px] text-gray-800">{sub.wilaya.nom}</td>
+
+              <td className="px-4 py-3 text-center">
+                {editingId === sub.id ? (
+                  <button
+                    onClick={(e) => handleUpdate(sub.wilaya.id)}
+                    className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm"
+                  >
+                    Valider
+                  </button>
+                ) : (
+                  <div className="flex justify-center items-center gap-4 text-[18px]">
+                    <button
+                      onClick={() => handleEdit(sub)}
+                      className="text-blue-600 hover:text-blue-800"
                     >
-                      {editingId === sub.id ? (
-                        <input
-                          value={editedSubdivName}
-                          onChange={(e) => setEditedSubdivName(e.target.value)}
-                          className="w-full border border-gray-300 rounded px-2 py-1"
-                          style={{
-                            fontSize: '16px', // Taille de la police de l'input
-                          }}
-                        />
-                      ) : (
-                        sub.nom
-                      )}
-                    </TableCell>
-                  <TableCell
-                      className="px-4 py-3 border-b"
-                      style={{
-                        paddingLeft: '18px', // Contrôle des espacements
-                        paddingRight: '16px',
-                        fontSize: '20px',
-                      }}
+                      <FaEdit />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(sub.id)}
+                      className="text-red-600 hover:text-red-800"
                     >
-                      {sub.wilaya.nom}
-                      
-                    </TableCell>
-              {user.permissions[6].update==="true" || user.permissions[8].delete==="true" &&
+                      <FaTrash />
+                    </button>
+                  </div>
+                )}
+              </td>
+            </tr>
+          ))}
+
+          {subdivisions.length === 0 && (
+            <tr>
+              <td colSpan={4} className="text-center py-4 text-gray-500 italic">
+                Aucune subdivision trouvée.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+                         <Snackbar open={openSuccess} autoHideDuration={4000} onClose={()=>setOpenSuccess(false)}>
+                            <Alert onClose={()=>setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
+                              {successMessage}
+                            </Alert>
+                          </Snackbar>
               
-               <TableCell align="center">
-                    {editingId === sub.id ? (
-                                            <button
-                                              onClick={(e)=>handleUpdate(sub.wilaya.id)}
-                                              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2"
-                                              style={{
-                                                fontSize: '16px', // Taille de la police du bouton
-                                              }}
-                                            >
-                                              Valider
-                                            </button>
-                                          ) : (
-                                            <>
-                                            {user.permissions[6].update==="true" &&
-                                            
-                                            <button
-                                                onClick={() => handleEdit(sub)}
-                                                className="text-blue-600 hover:text-blue-800 mr-4"
-                                                style={{
-                                                  fontSize: '18px', // Taille de la police des icônes
-                                                }}
-                                              >
-                                                <FaEdit />
-                                              </button>
-                                              }
-                                              {user.permissions[6].update==="true" &&
-                                              <button
-                                                onClick={() => handleDelete(sub.id)}
-                                                className="text-red-600 hover:text-red-800"
-                                                style={{
-                                                  fontSize: '18px', // Taille de la police des icônes
-                                                }}
-                                              >
-                                                <FaTrash />
-                                              </button>
-}
-                                            </>
-                                          )}
-                    
-                  </TableCell>
-                  }
-                 
-                </TableRow>
-              ))}
-              {subdivisions.length === 0 && (
-                <TableRow>
-                  <TableCell colSpan={4} align="center">
-                    Aucune subdivision trouvée.
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-    </Box>
-  </Box>
+                            <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+                              <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
+                                {errorMessage}
+                              </Alert>
+                            </Snackbar>
+  </div>
 );
 
   

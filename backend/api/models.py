@@ -4,9 +4,9 @@ import datetime
 from django.utils import timezone
 from safedelete.models import SafeDeleteModel
 from safedelete.config import SOFT_DELETE
+from safedelete.managers import SafeDeleteManager
 
-
-class CustomManager(BaseUserManager):
+class CustomManager(SafeDeleteManager,BaseUserManager):
     def _create_user(self, nom, prenom, email, password , nom_role, phoneNum,**extra_fields):      
         email = self.normalize_email(email)
         extra_fields.setdefault("is_active", True)  # Ensuring users are active by default
@@ -52,13 +52,18 @@ class CustomManager(BaseUserManager):
 
 class SoftDeleteBaseModel(SafeDeleteModel):
     _safedelete_policy = SOFT_DELETE
-    class Meta :
+
+    objects = SafeDeleteManager() 
+
+
+    class Meta:
         abstract = True
 
 class Espece (SoftDeleteBaseModel):
     id = models.AutoField(primary_key=True)
     nom = models.CharField(max_length=100)
-
+    class Meta:
+        ordering=["id"]
     def __str__(self):
         return self.nom
 
@@ -66,8 +71,8 @@ class Espece (SoftDeleteBaseModel):
 class Wilaya (SoftDeleteBaseModel):
     id = models.AutoField(primary_key=True,unique=True)
     nom = models.CharField(unique=True,max_length=100)
-
-    
+    class Meta:
+        ordering=["id"] 
     def __str__(self):
         return  f"{self.nom} "
 
@@ -80,7 +85,8 @@ class SubDivision(SoftDeleteBaseModel):
     )
     id = models.AutoField(primary_key=True,unique=True)
     nom = models.CharField(max_length=100)
-   
+    class Meta:
+        ordering=['id',"wilaya_id"]
     def __str__(self):
          return  f"{self.nom}"
 
@@ -90,21 +96,22 @@ class Commune (SoftDeleteBaseModel):
     )
     id = models.AutoField(primary_key=True,unique=True)
     nom = models.CharField(max_length=100)
+    class Meta:
+        ordering=['id',"subdivision_id"]
     def __str__(self):
          return  f"{self.nom}"
 
 class Role (SoftDeleteBaseModel):
     id = models.AutoField(primary_key=True) 
     nom= models.CharField(max_length=100)
-  
+    class Meta:
+        ordering=["id"]
     def __str__(self):
          return  self.nom 
 
 
 class CustomUser(AbstractBaseUser,PermissionsMixin,SoftDeleteBaseModel):
-    role = models.ForeignKey(
-        Role , on_delete = models.PROTECT
-    ) 
+    role = models.ForeignKey(Role, on_delete=models.CASCADE)
     nom = models.CharField(max_length=15,null=False, blank=False)
     prenom = models.CharField(max_length=15,null=False, blank=False)
     email = models.EmailField(unique=True,null=False, blank=False)
@@ -118,20 +125,23 @@ class CustomUser(AbstractBaseUser,PermissionsMixin,SoftDeleteBaseModel):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["nom", "prenom","phoneNum"]
-
+    class Meta:
+        ordering=["id"]
     def __str__(self):
         return f"{self.nom} {self.prenom} - {self.email}"     
 
 
 class Permissions(SoftDeleteBaseModel):
     user = models.ForeignKey(
-        CustomUser, on_delete = models.PROTECT,related_name='permissions'
+        CustomUser, on_delete = models.CASCADE,related_name='permissions'
     )
     model = models.CharField(max_length=15)
     create = models.BooleanField(default=False)
     retrieve = models.BooleanField(default=False)
     update = models.BooleanField(default=False)
     destroy = models.BooleanField(default=False)
+    class Meta:
+        ordering=["id"]
 
 
 class UserWilaya(SoftDeleteBaseModel):
@@ -141,14 +151,18 @@ class UserWilaya(SoftDeleteBaseModel):
     user = models.OneToOneField(
         CustomUser,on_delete=models.CASCADE
     )
+    class Meta:
+        ordering=["id"]
 
 class UserSubdivision(SoftDeleteBaseModel):
     subdivision = models.ForeignKey(
         SubDivision,on_delete=models.CASCADE
     )
     user = models.OneToOneField(
-        CustomUser,on_delete=models.CASCADE
+        CustomUser,on_delete=models.CASCADE 
     )
+    class Meta:
+        ordering=["id"]
 
 class Agriculteur(SoftDeleteBaseModel):
     id = models.AutoField(primary_key=True)
@@ -156,29 +170,32 @@ class Agriculteur(SoftDeleteBaseModel):
     prenom = models.CharField(max_length=100)
     phoneNum = models.IntegerField(unique=True)  
     numero_carte_fellah = models.IntegerField(unique=True,null=True, blank=True)  
-
+    class Meta:
+        ordering=["id"]
     def __str__(self):  
         return f"{self.nom} {self.prenom}"
 
 
 class Objectif(SoftDeleteBaseModel):
     wilaya = models.ForeignKey(
-        Wilaya , on_delete = models.PROTECT
+        Wilaya , on_delete = models.CASCADE
     )
     espece = models.ForeignKey(
-        Espece , on_delete = models.PROTECT
+        Espece , on_delete = models.CASCADE
     )
     annee = models.IntegerField()
     id=models.AutoField(primary_key=True)
     objectif_production = models.FloatField()
+    class Meta:
+        ordering=['id']
 
      
 class Exploitation(SoftDeleteBaseModel):
     commune = models.ForeignKey(
-        Commune, on_delete=models.PROTECT
+        Commune, on_delete=models.CASCADE
     )
     agriculteur= models.ForeignKey(
-        Agriculteur, on_delete=models.PROTECT,related_name='exploitations'
+        Agriculteur, on_delete=models.CASCADE,related_name='exploitations'
     )
 
     id = models.AutoField(primary_key=True)
@@ -188,6 +205,8 @@ class Exploitation(SoftDeleteBaseModel):
     situation=models.CharField(max_length=500)
     longtitude = models.FloatField(blank=False,null=False)
     latitude = models.FloatField(blank=False,null=False)
+    class Meta:
+        ordering=["id"]
     def __str__(self):
         return self.nom
 
@@ -195,10 +214,10 @@ class Exploitation(SoftDeleteBaseModel):
 
 class Parcelle(SoftDeleteBaseModel):
     exploitation = models.ForeignKey(
-        Exploitation, on_delete=models.PROTECT
+        Exploitation, on_delete=models.CASCADE
     )
     espece = models.ForeignKey(
-       Espece ,on_delete=models.PROTECT
+       Espece ,on_delete=models.CASCADE
     )
     annee = models.IntegerField()
     id = models.AutoField(primary_key=True)
@@ -213,7 +232,8 @@ class Parcelle(SoftDeleteBaseModel):
     production = models.FloatField(null=True,blank=True)
     engrais_de_fond = models.FloatField(null=True,blank=True)
     engrais_de_couverture = models.FloatField(null=True,blank=True)
-
+    class Meta:
+        ordering=["id"]
     def __str__(self):
         return f"{self.exploitation} {self.espece} {self.annee}"
 

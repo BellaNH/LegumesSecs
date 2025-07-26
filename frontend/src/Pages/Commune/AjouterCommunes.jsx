@@ -7,6 +7,8 @@ import {
   MenuItem,
   Container,
   Paper,
+  Snackbar, 
+  Alert
 } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +19,10 @@ const AjouterCommunes = () => {
   const [subdivisionId, setSubdivisionId] = useState("");
   const {url,subdivisions,fetchCommunes,communes,setCommunes}= useGlobalContext()
   const navigate = useNavigate();
-
+  const [errorMessage, setErrorMessage] = useState(""); 
+    const [successMessage, setSuccessMessage] = useState(""); 
+    const [openError, setOpenError] = useState(false);
+    const [openSuccess, setOpenSuccess] = useState(false);
   
 
   const handleSubmit = async (e) => {
@@ -38,10 +43,13 @@ const AjouterCommunes = () => {
         }
       );
       console.log(response.data)
+      setSuccessMessage(`Commune est ajouté avec succès ✅`);
+      setOpenSuccess(true);
       fetchCommunes()
       navigate("/communes");
     } catch (error) {
-      console.error("Erreur lors de l'ajout de la commune :", error);
+      setErrorMessage("Erreur lors de l'ajout de la commune");
+      setOpenError(true);
     }
   }
   };
@@ -81,6 +89,18 @@ const AjouterCommunes = () => {
           </Button>
         </Box>
       </Paper>
+
+                           <Snackbar open={openSuccess} autoHideDuration={4000} onClose={()=>setOpenSuccess(false)}>
+                              <Alert onClose={()=>setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
+                                {successMessage}
+                              </Alert>
+                            </Snackbar>
+                
+                              <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+                                <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
+                                  {errorMessage}
+                                </Alert>
+                              </Snackbar>
     </Container>
   );
 };

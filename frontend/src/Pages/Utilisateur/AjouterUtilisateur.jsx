@@ -5,23 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import Checkbox from '@mui/material/Checkbox';
 import Slider from './PermissionSlider/Slider'
+import User from "../pics/User.png"
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const AjouterUtilisateur = () => {
+  const {subdivisions,wilayas,user,roles,url,
+    setSliderStatus,setCurrentUserPermissions,defaultPermissions} = useGlobalContext()
   const [userId,setUserId] = useState("")
   const [addedUser,setAddedUser] = useState("")
-  const modelNames = ["Agriculteur","Espece","Commune","Exploitation","Objectif",
-   "Parcelle","Subdivision","Utilisateur","Wilaya"];
-   
-  const initialPermissions = ()=> modelNames.map((model)=>(
-    {
-        model:model,
-        create:false,
-        retrieve:false,
-        update:false,
-        destroy:false
-  }
 
-  ))
+  useEffect(()=>{setSliderStatus("create")},[])
   const [formData, setFormData] = useState({
     nom: "",
     prenom:"",
@@ -29,18 +22,22 @@ const AjouterUtilisateur = () => {
     phoneNum:"",
     password: "",
     role_id: "",
-    permissions:initialPermissions()
+    permissions:"",
+    wilaya:null,
+    subdivision:null
   });
- 
+
+
   const [selectedWilaya, setSelectedWilaya] = useState('');
   const [selectedSubdivision, setSelectedSubdivision] = useState('');
   const [selectedRole, setSelectedRole] = useState('')
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Ajout d'un état pour les erreurs
+  const [errorMessage, setErrorMessage] = useState(""); 
+  const [successMessage, setSuccessMessage] = useState(""); 
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
   const navigate = useNavigate();
   const [showPermissionForm, setShowPermissionForm] = useState(false);
-  const {subdivisions,wilayas,user,roles,url} = useGlobalContext()
+  
 
   
 
@@ -49,32 +46,35 @@ const AjouterUtilisateur = () => {
   };
 
 const handleChange = (e, modelName = null) => {
-  const { name, type, checked, value, dataset } = e.target;
+  const { name, type, value, dataset } = e.target;
   console.log(dataset)
-  if (modelName) {
-    setFormData((prevData) => {
-      const updatedPermissions = prevData.permissions.map((perm) =>
-        perm.model === modelName
-          ? { ...perm, [name]: type === "checkbox" ? checked : value }
-          : perm
-      );
-
-      return {
-        ...prevData,
-        permissions: updatedPermissions,
-      };
-    });
-  } else {
+  console.log(name,type,value, dataset)
    if (name === "role_id") {
   const selected = roles.find((r) => r.id === value);
   setSelectedRole(selected?.nom || "");
 }
-
+    
+   if(name ==="wilaya"){
+      setSelectedWilaya(value)
+      setFormData((prev)=>({
+        ...prev,
+        ["subdivision"]:null
+      }))
+    }
+    if(name ==="subdivision"){
+      setSelectedSubdivision(value)
+      setFormData((prev)=>({
+        ...prev,
+        ["wilaya"]:null
+      }))
+    }
+   
+   
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-  }
+  
 };
 useEffect(()=>{console.log(selectedRole),[selectedRole]})
 
@@ -89,196 +89,221 @@ useEffect(()=>{console.log(selectedRole),[selectedRole]})
        console.log(response.data)
       setUserId(response.data.id)
       setAddedUser(response.data)
-      setSuccessMessage(`${formData.nom} est bien enregistré ✅`);
-      setOpenSnackbar(true);
-      setErrorMessage("");
+      setSuccessMessage(`${formData.nom} est ajouté avec succès ✅`);
+      setOpenSuccess(true);
+      console.log(response.data);
+      setFormData(
+        {
+    nom: "",
+    prenom:"",
+    email: "",
+    phoneNum:"",
+    password: "",
+    role_id: "",
+    permissions:"",
+    subdivision:""
+  }
+      )
+      setCurrentUserPermissions(defaultPermissions)
 
     } catch (error) {
-      setErrorMessage(error.response?.data?.detail || "Erreur d'enregistrement ❌");
+      setErrorMessage("Erreur d'enregistrement.");
+      setOpenError(true);
     }
   }
-const handleUserLocation = async (e) => {
-  e.preventDefault();
 
-  if (!addedUser) return;
-
-  try {
-
-    if (selectedWilaya) {
-      const responseWilaya = await axios.post(`${url}/api/userWilaya/`, 
-        {
-          user: userId,
-          wilaya: selectedWilaya,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      console.log("Wilaya response:", responseWilaya.data);
-    }
-
-    if (selectedSubdivision) {
-      const responseSubdiv = await axios.post(`${url}/api/userSubdiv/`, 
-        {
-          user: userId,
-          subdivision: selectedSubdivision,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      console.log("Subdivision response:", responseSubdiv.data);
-    }
-
-    
-    setSuccessMessage(`${formData.nom} est bien enregistré `);
-    setOpenSnackbar(true);
-    setErrorMessage("");
-    navigate("/utilisateurs");
-
-  } catch (error) {
-    console.error("Error during location assignment:", error);
-    setErrorMessage(error.response?.data?.detail || "Erreur d'enregistrement ❌");
-  }
-};
 
 useEffect(()=>{console.log(selectedSubdivision)},[selectedSubdivision])
   
   useEffect(()=>{console.log(formData)},[formData])
   return (
-    <div  className={`relative w-[70%] h-[100%] mx-auto `}>
-      <Paper  elevation={1} sx={{ padding: 2, marginTop: 1,zIndex:0}}>
-        <Typography variant="h6" sx={{ marginBottom: 2, fontWeight: "bold" }}>
-          Ajouter un utilisateur
-        </Typography>
-        <Box component="form" onSubmit={addedUser? handleUserLocation : handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <div className="flex gap-4">
-          <TextField size="small" label="Nom" name="nom" fullWidth required onChange={(e)=>handleChange(e)} />
-          <TextField size="small" label="Prenom" name="prenom" fullWidth required onChange={(e)=>handleChange(e)} />
-          </div>
-          <TextField size="small" label="Email" name="email" type="email" fullWidth required onChange={(e)=>handleChange(e)} />
-          
-          <TextField size="small" label="Mot de passe" name="password" type="password" fullWidth required onChange={(e)=>handleChange(e)} />
-          <div className="flex gap-4">
-          <TextField size="small" label="Num de tel" name="phoneNum" type="integer" fullWidth required onChange={(e)=>handleChange(e)} />
-          <TextField
-            select
-            label="Rôle"
-            name="role_id"
-            value={formData.role_id || ""} 
-            onChange={(e)=>handleChange(e)}
-            fullWidth
-            required
-            size="small"
-          >
-            
-            {roles && roles.filter(role=>role.nom !=="admin").map((role,index)=>(
-              <MenuItem value={role.id} key={index}>{role.nom}</MenuItem>
-            ))}
+    <div className="relative w-[75%] h-[80vh] mx-auto">
+  <Paper
+    elevation={3}
+    sx={{
+      padding: "2.5rem",
+      borderRadius: "1rem",
+      marginTop: "1rem",
+      minHeight: "65%",
+      zIndex: 0,
+      boxShadow: "0 6px 24px rgba(0,0,0,0.08)",
+    }}
+  >
+   <div className='flex align-center gap-4'> 
+                   <img src={User} className="w-8 h-8 mt-1" />
+                   <h2 className="text-3xl font-bold text-left text-green-600 mb-6 mt-1">
+                    Ajouter utilisateur
+                  </h2>
+           </div>
 
-          </TextField>
-          </div>
+    <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <div className="flex gap-6">
+        <TextField
+          value={formData.nom}
+          size="small"
+          label="Nom"
+          name="nom"
+          fullWidth
+          required
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          value={formData.prenom}
+          size="small"
+          label="Prénom"
+          name="prenom"
+          fullWidth
+          required
+          onChange={(e) => handleChange(e)}
+        />
+      </div>
 
-           
-          {addedUser && addedUser.role.nom === "agent_dsa"  && (
-            <TextField
-              size="small"
-              select
-              label="Wilaya"
-              fullWidth
-              required
-              value={selectedWilaya}
-              onChange={(e) => setSelectedWilaya(e.target.value)}
-            >
-              {wilayas.map((w) => (
-                <MenuItem key={w.id} value={w.id}>
-                  {w.nom}
-                </MenuItem>
-              ))}
-            </TextField>
-          )}
-          <div className="flex gap-4">
- 
-          {addedUser && addedUser.role.nom === "agent_subdivision" && (
-            <TextField
-              size="small"
-              select
-              label="Subdivision"
-              fullWidth
-              required
-              value={selectedSubdivision}
-              onChange={(e) => setSelectedSubdivision(e.target.value)}
-            >
-              {subdivisions.map((s) => (
-                <MenuItem key={s.id} value={s.id}>
-                  {s.nom}
-                </MenuItem>
-              ))}
-            </TextField>
-          )}
-          {/* Subdivision */}
-          
-          <button type="button" className="bg-green-50 w-[50%]" 
-          onClick={()=>setShowPermissionForm(true)}>Permissions</button>
-          
-          </div>
-          {showPermissionForm && 
-          <div className="fixed top-0 left-0 w-full h-full bg-[#00000090] z-50 flex justify-center items-center">
-          <Slider 
-          permissions={formData.permissions}
-          resetPermissions={() => initialPermissions()}
-          modelNames={modelNames}
-          setShowPermissionForm={setShowPermissionForm} 
-          showPermissionForm={showPermissionForm}
-          handleChange={handleChange}
-          formData={formData}
-          setFormData={setFormData}
-          onCancel={() => {
-          setFormData(prev => ({
-          ...prev,
-          permissions: initialPermissions(), 
-          }));
+      <TextField
+        value={formData.email}
+        size="small"
+        label="Email"
+        name="email"
+        type="email"
+        fullWidth
+        required
+        onChange={(e) => handleChange(e)}
+      />
+
+      <TextField
+        value={formData.password}
+        size="small"
+        label="Mot de passe"
+        name="password"
+        type="password"
+        fullWidth
+        required
+        onChange={(e) => handleChange(e)}
+      />
+
+      <div className="flex gap-6">
+        <TextField
+          value={formData.phoneNum}
+          size="small"
+          label="Num de téléphone"
+          name="phoneNum"
+          type="tel"
+          fullWidth
+          required
+          onChange={(e) => handleChange(e)}
+        />
+        <TextField
+          select
+          label="Rôle"
+          name="role_id"
+          value={formData.role_id || ""}
+          onChange={(e) => handleChange(e)}
+          fullWidth
+          required
+          size="small"
+          sx={{
+            backgroundColor: "rgba(222, 255, 235, 0.5)",
+            borderRadius: "6px",
           }}
+        >
+          {roles &&
+            roles.filter((role) => role.nom !== "admin").map((role, index) => (
+              <MenuItem value={role.id} key={index}>
+                {role.nom}
+              </MenuItem>
+            ))}
+        </TextField>
+      </div>
+
+      <div className="flex gap-6">
+        <button
+          type="button"
+          onClick={() => setShowPermissionForm(true)}
+          className="w-[50%] text-sm bg-[#E6F4EA] text-green-700 font-medium py-2.5 px-4 rounded-md shadow hover:bg-[#D0F0DD] transition-all duration-200"
+        >
+          Gérer les permissions
+        </button>
+
+        {formData.role_id === 3 && (
+          <TextField
+            name="wilaya"
+            className="w-[50%]"
+            size="small"
+            select
+            label="Wilaya"
+            required
+            value={selectedWilaya}
+            onChange={(e) => handleChange(e)}
+            sx={{
+              backgroundColor: "rgba(222, 255, 235, 0.5)",
+              borderRadius: "6px",
+            }}
+          >
+            {wilayas.map((w) => (
+              <MenuItem key={w.id} value={w.id}>
+                {w.nom}
+              </MenuItem>
+            ))}
+          </TextField>
+        )}
+
+        {formData.role_id === 4 && (
+          <TextField
+            name="subdivision"
+            className="w-[50%]"
+            size="small"
+            select
+            label="Subdivision"
+            required
+            value={selectedSubdivision}
+            onChange={(e) => handleChange(e)}
+            sx={{
+              backgroundColor: "rgba(222, 255, 235, 0.5)",
+              borderRadius: "6px",
+            }}
+          >
+            {subdivisions.map((s) => (
+              <MenuItem key={s.id} value={s.id}>
+                {s.nom}
+              </MenuItem>
+            ))}
+          </TextField>
+        )}
+      </div>
+
+      {showPermissionForm && (
+        <div className="fixed top-0 left-0 w-full h-full bg-[#00000090] z-50 flex justify-center items-center">
+          <Slider
+            formData={formData}
+            setFormData={setFormData}
+            setShowPermissionForm={setShowPermissionForm}
           />
-          </div>
-          
-          }
-          {addedUser?
-          <button className="ml-[75%] h-8 top-16 w-40 px-8 text-sm bg-blue-700 text-white rounded-md"
-           type="submit"  color="primary" >
-          Ajouter
-          </button>:
-          <button className="ml-[75%] h-8 top-16 w-40 px-8 text-sm bg-blue-700 text-white rounded-md"
-           type="submit"  color="primary" >
-          Confirmer
-          </button>}
-     
-          
-          
-        </Box>
-      </Paper>
-
-      {/* Snackbar pour afficher le message de succès */}
-      <Snackbar open={openSnackbar} autoHideDuration={4000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: "100%" }}>
-          {successMessage}
-        </Alert>
-      </Snackbar>
-
-      {/* Affichage des erreurs */}
-      {errorMessage && (
-        <Snackbar open={true} autoHideDuration={4000} onClose={() => setErrorMessage("")}>
-          <Alert onClose={() => setErrorMessage("")} severity="error" sx={{ width: "100%" }}>
-            {errorMessage}
-          </Alert>
-        </Snackbar>
+        </div>
       )}
-  
-    </div>
+
+      <div className="flex justify-end mt-4">
+        <button
+          type="submit"
+          className="bg-green-600 hover:bg-green-700 transition-all duration-200 text-white font-semibold text-sm rounded-lg px-6 py-3 shadow-md"
+        >
+          Ajouter
+        </button>
+      </div>
+    </Box>
+  </Paper>
+
+  <Snackbar open={openSuccess} autoHideDuration={4000} onClose={() => setOpenSuccess(false)}>
+    <Alert onClose={() => setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
+      {successMessage}
+    </Alert>
+  </Snackbar>
+
+  <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+    <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
+      {errorMessage}
+    </Alert>
+  </Snackbar>
+</div>
+
   );
 };
 

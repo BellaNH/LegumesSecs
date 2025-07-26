@@ -10,203 +10,213 @@ import {
   TableRow,
   IconButton,
   Typography,
-  TextField
+  TextField,
+  Snackbar, 
+  Alert
 } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
-import SearchIcon from '@mui/icons-material/Search'; // Assure-toi d'importer cette icône
+import SearchIcon from '@mui/icons-material/Search'; 
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useGlobalContext } from "../../context";
-const SubdivisionManager = () => {
+import InputAdornment from '@mui/material/InputAdornment';
+import Localisation from "../pics/Localisation.png"
+import { FaTrash, FaEdit } from 'react-icons/fa';
+const Commune = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const {url,fetchCommunes,communes,setCommunes,user}= useGlobalContext()
   const navigate = useNavigate()
-  const [editingId, setEditingId] = useState(null)
+  const [id, setid] = useState(null)
   const [editedCommuneName, setEditedCommuneName] = useState('')
-
-
+  const [errorMessage, setErrorMessage] = useState(""); 
+      const [successMessage, setSuccessMessage] = useState(""); 
+      const [openError, setOpenError] = useState(false);
+      const [openSuccess, setOpenSuccess] = useState(false);
+  const [communeInfos,setCommuneInfos] =  useState({
+      nom: "",
+      subdiv_id:""
+  })
+    
+ const filterCommunes = communes?.filter(com =>
+  com.nom?.toLowerCase().includes(searchQuery.toLowerCase())
+);
   const handleDelete = async (id) => {
-    if (window.confirm("Supprimer cette commune ?")) {
+      try{
       await axios.delete(`${url}/api/commune/${id}/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      setCommunes((prev) => prev.filter((s) => s.id !== id));
+      setSuccessMessage(`Commune est supprimée avec succès ✅`);
+      setOpenSuccess(true);
+      fetchCommunes()
+    }catch(error){
+      setErrorMessage("Erreur lors de l'ajout de la commune");
+      setOpenError(true);
     }
+     
+    
   }
 
   const handleEdit = (commune) => {
-    setEditingId(commune.id);
-    setEditedCommuneName(commune.nom);
+  setid(commune.id);
+  setEditedCommuneName(commune.nom);
+  setCommuneInfos({
+    nom: commune.nom,
+    subdiv_id: commune.subdivision?.id || ""  
+  });
+};
+
+const handleChange = (newName) => {
+  setEditedCommuneName(newName);
+  setCommuneInfos((prev) => ({
+    ...prev,
+    nom: newName
+  }));
+};
+
+const handleUpdate = async (communeId) => {
+  const payload = {
+    nom: communeInfos.nom
   };
-  const handleUpdate = async (id) => {
-    console.log(id)
-    if(id){
-      try {
-        await axios.put(
-          `${url}/api/commune/${editingId}/`,
-          { nom: editedCommuneName,
-            subdiv_id:id,
-           },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        setEditingId(null);
-        setEditedCommuneName('');
-        fetchCommunes()
-      } catch (error) {
-        console.error('Erreur lors de la mise à jour', error);
-      }
-    }
-    };
 
+  if (communeInfos.subdiv_id) {
+    payload.subdiv_id = communeInfos.subdiv_id;
+  }
+
+  try {
+    await axios.patch(`${url}/api/commune/${communeId}/`, payload, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    setSuccessMessage(`Commune est modifiée avec succès ✅`);
+    setOpenSuccess(true);
+    setid(null);
+    setEditedCommuneName("");
+    fetchCommunes();
+  } catch (error) {
+    setErrorMessage("Erreur lors de la mise à jour");
+    setOpenError(true);
+  }
+};
+
+   useEffect(()=>{console.log(editedCommuneName)},[editedCommuneName])
+   useEffect(()=>{console.log(communeInfos)},[communeInfos])
 return (
-  <Box sx={{ display: "flex", justifyContent: "center", mt: 5, ml: 10 }}>
-    <Box sx={{ width: "75%" }}>
-      <Typography variant="h5" align="center" gutterBottom fontWeight="bold">
-        Liste des Communes
-      </Typography>
-      <Button
-          variant="contained"
-          color="success"
-          sx={{ mb: 2, mr: 2 }}
+  <div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[80%] flex flex-col mb-16">
+  <div className='flex align-center gap-2'> 
+            <img src={Localisation} alt="localisation" className='w-10 h-10'/>
+            <h2 className="text-3xl font-bold text-left text-green-600 mb-6">
+             Communes
+           </h2>
+  </div>
+
+  <div className="flex items-center justify-center gap-4 mb-6">
+        <div className="relative w-full">
+          <input
+            type="text"
+            placeholder="Rechercher une commune"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md pl-10 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <div className="absolute left-3 top-2.5 text-gray-400">
+            <SearchIcon />
+          </div>
+        </div>
+  
+        <button
           onClick={() => navigate("/ajouter-commune")}
-      >
-        Ajouter
-      </Button>
+          className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md text-sm"
+        >
+          Ajouter
+        </button>
+      </div>
 
-      {/* Barre de recherche stylisée */}
-      <TextField
-        label="Rechercher une Commune"
-        variant="outlined"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)} 
-        sx={{ 
-          mb: 2, 
-          width: "50%", 
-          mr: 90, 
-          borderRadius: 12, // ← bord arrondi, tu peux changer à 0 pour un look carré
-          '& .MuiOutlinedInput-root': {
-            borderRadius: 9, // ← ici aussi pour les bords internes
-          }
-        }}
-        InputProps={{
-          startAdornment: (
-            <SearchIcon sx={{ mr: 1, color: "gray" }} />
-          ),
-        }}
-      />
-
-      <Paper elevation={3}>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell><strong>ID</strong></TableCell>
-                <TableCell><strong>Nom de la commune</strong></TableCell>
-                <TableCell><strong>Subdivision</strong></TableCell>
-                {user && user.permissions[8].update==="true" || user.permissions[8].delete==="true" &&
-                
-                <TableCell align="center"><strong>Actions</strong></TableCell>
-                }
-                
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {communes.map((com) => (
-                <TableRow key={com.id}>
-                  <TableCell>{com.id}</TableCell>
-                  <TableCell
-                                        className="px-4 py-3 border-b"
-                                        style={{
-                                          paddingLeft: '18px', // Contrôle des espacements
-                                          paddingRight: '16px',
-                                          fontSize: '20px',
-                                        }}
-                                      >
-                                        {editingId === com.id ? (
-                                          <input
-                                            value={editedCommuneName}
-                                            onChange={(e) => setEditedCommuneName(e.target.value)}
-                                            className="w-full border border-gray-300 rounded px-2 py-1"
-                                            style={{
-                                              fontSize: '16px', // Taille de la police de l'input
-                                            }}
-                                          />
-                                        ) : (
-                                          com.nom
-                                        )}
-                                      </TableCell>
-                  <TableCell>{com.subdivision.nom || "Aucune Communes"}</TableCell>
-                  {(user.role.nom === "admin" ||
-  user.permissions.find(p => p.model === "Commune" && (p.update === "true" || p.delete === "true"))) &&
-                  
-                  <TableCell align="center">
-                    
-                      {editingId === com.id ? (
-                          <button
-                              onClick={(e)=>handleUpdate(com.id)}
-                              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2"
-                              style={{
-                                fontSize: '16px', // Taille de la police du bouton
-                              }}
-                              >  
-                              Valider
-                          </button>
-                           ) : (
-                           <>
-                      
-                          <button
-                            onClick={() => handleEdit(com)}
-                            className="text-blue-600 hover:text-blue-800 mr-4"
-                            style={{
-                             fontSize: '18px', // Taille de la police des icônes
-                            }}
-                          >
-                            <EditIcon />
-                          </button>
-                          {(user.role.nom === "admin" ||
-  user.permissions?.find(p => p.model === "Commune" &&  p.delete === "true")) &&
-                          <button
-                            onClick={() => handleDelete(com.id)}
-                            className="text-red-600 hover:text-red-800"
-                            style={{
-                            fontSize: '18px', // Taille de la police des icônes
-                            }}
-                            >
-                          <DeleteIcon />
-                          </button>
-}
-                          </>
-                          )}
-                                      
-                          </TableCell>
-                          }
-                  
-                </TableRow>
-              ))}
-              {communes.length === 0 && (
-                <TableRow>
-                  <TableCell colSpan={4} align="center">
-                    Aucune communes trouvée.
-                  </TableCell>
-                </TableRow>
+  <div className="bg-white rounded-xl overflow-hidden shadow-md">
+    <table className="min-w-full text-left table-auto border border-gray-200">
+      <thead className="bg-green-600 text-white">
+        <tr>
+          <th className="px-4 py-3 text-sm font-semibold">ID</th>
+          <th className="px-4 py-3 text-sm font-semibold">Nom</th>
+          <th className="px-4 py-3 text-sm font-semibold">Subdivision</th>
+          <th className="px-4 py-3 text-sm font-semibold text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filterCommunes.map((com) => (
+          <tr key={com.id} className="even:bg-gray-50 hover:bg-green-50 transition duration-200">
+            <td className="px-4 py-3 text-sm">{com.id}</td>
+            <td className="px-4 py-3 text-[16px] text-gray-800">
+              {id === com.id ? (
+                <input
+                  value={editedCommuneName}
+                  onChange={(e) => handleChange(e.target.value)}
+                  className="w-full border border-gray-300 rounded px-3 py-1 text-sm"
+                />
+              ) : (
+                com.nom
               )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-    </Box>
-  </Box>
+            </td>
+            <td className="px-4 py-3 text-[16px] text-gray-800">
+              {com.subdivision?.nom || "Aucune Communes"}
+            </td>
+            <td className="px-4 py-3 text-center">
+              <div className="flex items-center justify-center gap-4">
+                {id === com.id ? (
+                  <button
+                    onClick={() => handleUpdate(com.id)}
+                    className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm"
+                  >
+                    Valider
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => handleEdit(com)}
+                     className="text-blue-600 hover:text-blue-800"
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(com.id)}
+                      className="text-red-600 hover:text-blue-800"
+                    >
+                      <FaTrash />
+                    </button>
+                  </>
+                )}
+              </div>
+            </td>
+          </tr>
+        ))}
+        {communes.length === 0 && (
+          <tr>
+            <td colSpan={4} align="center" className="py-4 text-gray-500 text-sm">
+              Aucune communes trouvée.
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div></div>
+                                <Snackbar open={openSuccess} autoHideDuration={4000} onClose={()=>setOpenSuccess(false)}>
+                                  <Alert onClose={()=>setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
+                                    {successMessage}
+                                  </Alert>
+                                </Snackbar>
+                    
+                                  <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+                                    <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
+                                      {errorMessage}
+                                    </Alert>
+                                  </Snackbar>
+  </div>
 );
 
   
 };
 
-export default SubdivisionManager;
+export default Commune;

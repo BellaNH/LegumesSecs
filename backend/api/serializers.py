@@ -5,14 +5,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
+from .permissions import *
+
+
+
 
 class EspeceSerializer(serializers.ModelSerializer):
     class Meta :
         model = Espece
         fields = "__all__"
-
-
-
 
 
 class WilayaSerializer(serializers.ModelSerializer):
@@ -22,15 +23,23 @@ class WilayaSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-
 class ObjectifSerializer(serializers.ModelSerializer):
     wilaya = WilayaSerializer(read_only=True)
     espece = EspeceSerializer(read_only=True)
-    class Meta :
+    espece_id = serializers.PrimaryKeyRelatedField(
+        queryset=Espece.objects.all(),
+        source='espece',
+        write_only=True
+    )
+    wilaya_id = serializers.PrimaryKeyRelatedField(
+        queryset=Wilaya.objects.all(),
+        source='wilaya',
+        write_only=True
+    )
+
+    class Meta:
         model = Objectif
         fields = "__all__"
-
 
 
 class SubDivisionSerializer(serializers.ModelSerializer):
@@ -54,7 +63,6 @@ class PermissionsSerializer(serializers.ModelSerializer):
         fields = ['model', 'create', 'retrieve', 'update', 'destroy']
      
 
-
 class CustomUserSerializer(serializers.ModelSerializer):   
     permissions = PermissionsSerializer(many=True)
     role_id = serializers.PrimaryKeyRelatedField(
@@ -62,44 +70,106 @@ class CustomUserSerializer(serializers.ModelSerializer):
     )
     role= RoleSerializer(read_only=True)
     password = serializers.CharField(write_only=True) 
+    wilaya = serializers.IntegerField(write_only=True, required=False,allow_null=True)
+    subdivision = serializers.IntegerField(write_only=True, required=False,allow_null=True)
     class Meta:
         model = CustomUser
-        fields = ["id",'nom','prenom','email','password','phoneNum','role','role_id','permissions']
-        
-    
+        fields = ["id",'nom','prenom','email','password','phoneNum','role','role_id','permissions', 'wilaya', 'subdivision']
+    def validate(self, attrs):
 
-
+        attrs['wilaya'] = self.initial_data.get('wilaya', None)
+        attrs['subdivision'] = self.initial_data.get('subdivision', None)
+        print(self.initial_data)
+        return attrs   
 
     def create(self, validated_data):
         permissions_data = validated_data.pop('permissions')
+        final_permissions = build_permissions(permissions_data)
+        wilaya_id = validated_data.pop('wilaya',None)
+        subdiv_id = validated_data.pop('subdivision',None)
+        role =  RoleSerializer(read_only=True)
         password = validated_data.pop("password", None)
         user = CustomUser(**validated_data)
         if password:
-            user.set_password(password)  # Hash the password
+            user.set_password(password)  
         user.save()
-        for perm_data in permissions_data:
+        for perm_data in final_permissions:
             Permissions.objects.create(user=user, **perm_data)
-
+        if user.role.id == 3 and wilaya_id is not None:
+            UserWilaya.objects.create(
+                wilaya_id=wilaya_id,
+                user=user
+            )
+        if user.role.id == 4 and subdiv_id is not None:
+            UserSubdivision.objects.create(
+                subdivision_id=subdiv_id,
+                user=user
+            )
         return user
 
     def update(self, instance, validated_data):
-        permissions_data = validated_data.pop('permissions', None)
-        password = validated_data.pop('password', None)
+        permissions_data = validated_data.pop('permissions', [])
+        final_permissions = build_permissions(permissions_data)
+        wilaya_id = validated_data.pop('wilaya', None)
+        subdivision_id = validated_data.pop('subdivision', None)
 
+        new_role = validated_data.get('role')
+        old_role_id = instance.role.id
+      
         for attr, value in validated_data.items():
+            if attr == 'password' and value:
+                instance.set_password(value)
+            else:
                 setattr(instance, attr, value)
-
-        if password:
-            instance.set_password(password)
 
         instance.save()
 
-        if permissions_data is not None and isinstance(permissions_data, list):
-            instance.permissions.all().delete()
-            for perm_data in permissions_data:
-                Permissions.objects.create(user=instance, **perm_data)
+        instance.permissions.all().delete()
+        for perm_data in final_permissions:
+            Permissions.objects.create(user=instance, **perm_data)
+        if old_role_id == 3 and new_role.id == 4:
+            UserWilaya.objects.filter(user=instance).delete()
+
+            if subdivision_id is not None:
+
+                UserSubdivision.objects.update_or_create(
+                    user=instance,
+                    defaults={'subdivision_id': subdivision_id}
+                )
+
+        elif old_role_id == 4 and new_role.id == 3:
+            UserSubdivision.objects.filter(user=instance).delete()
+
+            if wilaya_id is not None:
+                UserWilaya.objects.update_or_create(
+                    user=instance,
+                    defaults={'wilaya_id': wilaya_id}
+                )
+
+        elif new_role.id == 3:
+            if wilaya_id is not None:
+                UserWilaya.objects.update_or_create(
+                    user=instance,
+                    defaults={'wilaya_id': wilaya_id}
+            )
+            UserSubdivision.objects.filter(user=instance).delete()
+
+        elif new_role.id == 4:
+            if subdivision_id is not None:
+                UserSubdivision.objects.update_or_create(
+                    user=instance,
+                    defaults={'subdivision_id': subdivision_id}
+            )
+            UserWilaya.objects.filter(user=instance).delete()
+
+        else:
+            UserWilaya.objects.filter(user=instance).delete()
+            UserSubdivision.objects.filter(user=instance).delete()
 
         return instance
+
+
+
 
 
 
@@ -173,7 +243,8 @@ class UserSubdivSerializer(serializers.ModelSerializer):
 
 class CommuneSerializer(serializers.ModelSerializer):
     subdiv_id = serializers.PrimaryKeyRelatedField(
-        queryset=SubDivision.objects.all(), source='subdivision', write_only=True
+        queryset=SubDivision.objects.all(), 
+        source='subdivision', write_only=True,required=False
     )
     subdivision = SubDivisionSerializer(read_only=True)
 
@@ -226,13 +297,52 @@ class ParcelleSerializer(serializers.ModelSerializer):
 
 
         return super().create(validated_data)
-
+class ExploitationNestedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exploitation
+        fields = ['id', 'nom']
 
 class AgriculteurSerializer(serializers.ModelSerializer):
-    exploitations = ExploitationSerializer(many=True, read_only=True)
-    class Meta :
+    commune = serializers.SerializerMethodField()
+    subdivision = serializers.SerializerMethodField()
+    wilaya = serializers.SerializerMethodField()
+    exploitation = serializers.SerializerMethodField()
+
+    class Meta:
         model = Agriculteur
-        fields = "__all__"
+        fields = [
+            'id', 'nom', 'prenom', 'phoneNum', 'numero_carte_fellah',
+            'commune', 'subdivision', 'wilaya',
+            'exploitation'  
+        ]
+
+    def get_commune(self, obj):
+        exploitation = obj.exploitations.filter(deleted__isnull=True).first()
+        if exploitation:
+            return {"id": exploitation.commune.id, "nom": exploitation.commune.nom}
+        return None
+
+    def get_subdivision(self, obj):
+        exploitation = obj.exploitations.filter(deleted__isnull=True).first()
+        if exploitation:
+            subdivision = exploitation.commune.subdivision
+            return {"id": subdivision.id, "nom": subdivision.nom}
+        return None
+
+    def get_wilaya(self, obj):
+        exploitation = obj.exploitations.filter(deleted__isnull=True).first()
+        if exploitation:
+            wilaya = exploitation.commune.subdivision.wilaya
+            return {"id": wilaya.id, "nom": wilaya.nom}
+        return None
+
+    def get_exploitation(self, obj):
+        exploitation = obj.exploitations.filter(deleted__isnull=True).first()
+        if exploitation:
+            return {"id": exploitation.id, "nom": exploitation.nom}
+        return None
+
+
 
 
 class ExploitationWithParcellesSerializer(serializers.ModelSerializer):

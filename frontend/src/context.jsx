@@ -4,6 +4,8 @@ import axiosInstance from "./axios.js"
 import {jwtDecode} from "jwt-decode";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
+
+  
   const url = "http://127.0.0.1:8000"
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,7 +13,6 @@ const AppProvider = ({ children }) => {
   const [subdivisions, setSubdivisions] = useState([])
   const [communes, setCommunes] = useState([])
   const [especes, setEspeces] = useState([])
-  const [searchQuery, setSearchQuery] = useState("");
   const [token,setToken] = useState("") 
   const [roles,setRoles] = useState([])
   const [objectifs,setObjectifs] = useState([])
@@ -22,8 +23,31 @@ const AppProvider = ({ children }) => {
   const [modifiedParcelle,setModifiedParcelle] = useState()
   const [selectedAgriculteur,setSelectedAgriculteur] = useState()
   const [selectedExploi,setSelectedExploi] = useState()
+  const [sliderStatus,setSliderStatus] = useState("create")
+  const [currentUserPermissions,setCurrentUserPermissions] = useState([])
+  const [defaultPermissions,setDefaultPermissions] = useState(
+    [
+    {"model": "Agriculteur", "create": false, "retrieve": false, "update": false, "destroy": false},
+    {"model": "Exploitation", "create": false, "retrieve": false, "update": false, "destroy": false},
+    {"model": "Objectif", "create": false, "retrieve": false, "update": false, "destroy": false},
+    {"model": "Utilisateur", "create": false, "retrieve": false, "update": false, "destroy": false},
+
+]
+  )
+
+  const initalizeUserPermissions = ()=>{
+      if(sliderStatus==="create"){
+        setCurrentUserPermissions(defaultPermissions)
+      }
+  }
+ 
+  useEffect(()=>{
+    console.log(sliderStatus)
+    initalizeUserPermissions()
+  },[sliderStatus])
+
   const getAuthHeader = () => {
-    const token = localStorage.getItem("token"); // 🛑 remplace 'access_token' si c'était incorrect
+    const token = localStorage.getItem("token"); 
     return {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -40,16 +64,7 @@ const AppProvider = ({ children }) => {
           Authorization: `Bearer ${token}`
         }
       }).then(response => {
-        setUser(prevData => ({
-      ...prevData,
-      id:response.data.id,
-      nom: response.data.nom,
-      prenom: response.data.prenom,
-      email: response.data.email,
-      phoneNum: response.data.phoneNum,
-      permissions:response.data.permissions,
-      role:response.data.role
-    }))
+        setUser(response.data)
         console.log(response)
         setIsAuthenticated(true);
       }).catch(() => {
@@ -73,7 +88,7 @@ const AppProvider = ({ children }) => {
     }
     const fetchSubdivisions = async () => {
           try {
-            const res = await axios.get(`${url}/api/subdivision/?search=${searchQuery}`, {
+            const res = await axios.get(`${url}/api/subdivision/`, {
               headers: {
                  Authorization: `Bearer ${localStorage.getItem("token")}`,
               },
@@ -140,17 +155,7 @@ const AppProvider = ({ children }) => {
         console.log(error)
       }
     }
-  /*useEffect(()=>{
-    const token = localStorage.getItem("token")
-    {
-      if(token){
-      fetchWilaya()
-      fetchSubdivisions()
-      fetchCommunes()
-      fetchEspeces()
-      console.log(user);
-      }
-    }},[])*/
+
     useEffect(() => {
       if (user) {
         console.log("User is now available:", user);
@@ -162,7 +167,6 @@ const AppProvider = ({ children }) => {
         fetchObjectifs()
         fetchAgriculteurs()
         fetchExploitations()
-        fetchParcelles()
         fetchExploitationWithParcelles()
         
       }
@@ -195,24 +199,10 @@ const AppProvider = ({ children }) => {
     }
     
   }
-  const fetchParcelles = async ()=>{
-    try{
-      const response = await axiosInstance.get(`${url}/api/parcelle`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-          }}
-      )
-      console.log(response)
-      setExploitations(response.data)
-    }catch(error){
-      console.log("parcelles not fetched ")
-    }
-    
-  }
+
   const fetchExploitationWithParcelles = async ()=>{
     try{
-      const response = await axiosInstance.get(`${url}/api/exploitation-parcelles`,
+      const response = await axios.get(`${url}/api/exploitation-parcelles`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -256,7 +246,7 @@ const AppProvider = ({ children }) => {
     }
     catch(error){}
   }
- 
+ useEffect(()=>{console.log(agriculteurs)},[agriculteurs])
 return (
     <AppContext.Provider value={{
       isAuthenticated, 
@@ -272,9 +262,6 @@ return (
       subdivisions, 
       setSubdivisions,
       communes,
-      setCommunes,
-      searchQuery,
-      setSearchQuery,
       especes,
       setEspeces,
       getAuthHeader,
@@ -303,7 +290,12 @@ return (
       setSelectedExploi,
       fetchSubdivisions,
       fetchCommunes,
-      
+      fetchRoles,
+      setSliderStatus,
+      sliderStatus,
+      currentUserPermissions,
+      setCurrentUserPermissions,
+      defaultPermissions,
       }}>
       {children}
     </AppContext.Provider>

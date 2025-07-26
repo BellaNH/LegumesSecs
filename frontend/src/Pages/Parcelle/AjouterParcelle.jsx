@@ -8,13 +8,15 @@ import MenuItem from "@mui/material/MenuItem"
 import axios from "axios";
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import Plus from "../pics/Plus.png"
+import Modifer from "../pics/Modifier.png"
 
-export default function AjouterParcelle({setModifiedParcelleId,modifiedparcelleId,setExploitationId}) {
-  const {fetchExploitationWithParcelles,especes,exploitationId,url,modifiedParcelle} = useGlobalContext()
+export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleId}) {
+  const {fetchExploitationWithParcelles,especes,setExploitationId,exploitationId,url,modifiedParcelle} = useGlobalContext()
   const [wrong,setWrong] = useState(false)
   const [selectedEspece,setSelectedEspece] = useState("")
-  useEffect(()=>{console.log(modifiedparcelleId)},[modifiedparcelleId])
-  const [data,setData] = useState({
+  useEffect(()=>{console.log(exploitationId)},[exploitationId])
+  const [data,setData] = useState({         
     exploitation:exploitationId,
     espece_id:"",  
     annee:"",
@@ -34,10 +36,10 @@ export default function AjouterParcelle({setModifiedParcelleId,modifiedparcelleI
 
   useEffect(()=>{
       const fetchModifiedParcelle = async ()=>{
-      if(modifiedparcelleId){
+      if(modifiedParcelleId){
         try {
           const response = await axios.get(
-            `${url}/api/parcelle/${modifiedparcelleId}/`,
+            `${url}/api/parcelle/${modifiedParcelleId}/`,
             {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -45,7 +47,7 @@ export default function AjouterParcelle({setModifiedParcelleId,modifiedparcelleI
         }
         )
 
-     
+       console.log(response.data)
         setData(prevData => ({
         ...prevData,
         exploitation:exploitationId,
@@ -69,15 +71,15 @@ export default function AjouterParcelle({setModifiedParcelleId,modifiedparcelleI
       }
     }
     fetchModifiedParcelle()
-    },[modifiedparcelleId])
+    },[exploitationId])
  
 
 
    const handleModifyParcelle = async (e)=>{
     e.preventDefault()
-    if(modifiedparcelleId){
+    if(modifiedParcelleId){
       try{
-      const response =  await axios.patch(`${url}/api/parcelle/${modifiedparcelleId}/`, 
+      const response =  await axios.patch(`${url}/api/parcelle/${modifiedParcelleId}/`, 
       data, 
       {
       headers: {
@@ -151,7 +153,8 @@ export default function AjouterParcelle({setModifiedParcelleId,modifiedparcelleI
       
       })
     }
-
+ useEffect(()=>{console.log(data)},[data])
+  useEffect(()=>{console.log(modifiedParcelleId)},[modifiedParcelleId])
   return (
     <div className={exploitationId 
       ? "fixed top-0 left-0 w-full h-full bg-[#00000090] z-50 flex justify-center items-center" 
@@ -159,12 +162,21 @@ export default function AjouterParcelle({setModifiedParcelleId,modifiedparcelleI
 
       {exploitationId &&
       
-      <form onSubmit={modifiedparcelleId ? handleModifyParcelle : handleSubmit} className='w-[95%] h-[75vh]  z-10 rounded-md  grid grid-cols-2'>
+      <form onSubmit={modifiedParcelleId ? handleModifyParcelle : handleSubmit } 
+      className='ml-24 w-[50%] h-[65vh]   z-10 rounded-md  grid grid-cols-2'>
       <div className='flex flex-col gap-4 px-4 rounded-l-md bg-white'>
-      {modifiedparcelleId
-      ?<h3 className='font-semibold text-xl my-4'>Ajouter une parcelle</h3>
-      :<h3 className='font-semibold text-xl my-4'>Modifier une parcelle</h3>
-      }
+    {modifiedParcelleId?
+              <div className='flex gap-3 '>
+                <img src={Modifer} alt='' className='w-6 h-6 mt-5'/>
+              <h3 className='font-semibold text-green-600 text-xl my-4'>Modifier la parcelle</h3>
+              </div> 
+              :
+              <div className='flex gap-3 '>
+              <img src={Plus} alt='' className='w-6 h-6 mt-5'/>
+              <h3 className='font-semibold text-green-600 text-xl my-4'>Ajouter une parcelle</h3>
+              </div>
+              
+              }
       
       <TextField value={data.annee} onChange={handleChange} name="annee" label="Annee" variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%','& > :not(style)':{height:'4.5ch'}}}/>
       <TextField value={data.superficie}  onChange={handleChange} name="superficie" id="standard-basic" label="Superficie" variant="standard"  />
@@ -175,37 +187,132 @@ export default function AjouterParcelle({setModifiedParcelleId,modifiedparcelleI
       </div>
       <TextField value={data.sup_emblavee} onChange={handleChange} name="sup_emblavee" id="standard-basic" label="Superficie emblavée" variant="standard"  />
         </div>
-      <div className='flex flex-col gap-4 bg-indigo-700 px-4 rounded-r-md'>
+      <div className='flex flex-col gap-4 bg-green-700 px-4 rounded-r-md'>
         <IoMdInformationCircleOutline className="text-white w-8 h-8 mt-4 ml-[88%] mb-3"/>
-        <TextField value={data.sup_deserbee} onChange={handleChange} name="sup_deserbee" id="standard-basic" label="Superficie deserbée" variant="standard"  />
-        <TextField value={data.prev_de_production} onChange={handleChange} name="prev_de_production" label="prev de production" variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#ffffff' },width:'100%','& > :not(style)':{height:'4.5ch'}}}/> 
+       <TextField
+  value={data.sup_deserbee}
+  onChange={handleChange}
+  name="sup_deserbee"
+  id="standard-basic"
+  label="Superficie deserbée"
+  variant="standard"
+  InputLabelProps={{
+    sx: {
+      color: 'white',
+      '&.Mui-focused': { color: 'white' },
+    }
+  }}
+  InputProps={{
+    sx: {
+      color: 'white',
+      '&:before': { borderBottom: '1px solid white' },  
+      '&:after': { borderBottom: '2px solid white' },    
+    }
+  }}
+  sx={{ width: '100%' }}
+/>
+
+<TextField
+  value={data.prev_de_production}
+  onChange={handleChange}
+  name="prev_de_production"
+  label="prev de production"
+  variant="outlined"
+  size="small"
+  InputLabelProps={{
+    sx: {
+      color: 'white',
+      '&.Mui-focused': { color: 'white' },
+    }
+  }}
+  InputProps={{
+    sx: {
+      color: 'white',
+      '& fieldset': { borderColor: 'white' },           
+      '&:hover fieldset': { borderColor: 'white' },       
+      '&.Mui-focused fieldset': { borderColor: 'white' }  
+    }
+  }}
+  sx={{
+    backgroundColor: '#ffffff10',
+    width: '100%',
+    '& > :not(style)': { height: '4.5ch' },
+  }}
+/>
+
       <div className='flex justify-center gap-4'>
       <TextField value={data.sup_sinsitree}  onChange={handleChange} name="sup_sinsitree" InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'#e9e7e8'}}}} InputProps={{sx:{color:'#e9e7e8','&:before':{borderBottom:'1px solid #e9e7e8'}}}} label="Superficie sinistrée" variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}} />
       <TextField value={data.sup_recoltee} onChange={handleChange} name="sup_recoltee" InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'#e9e7e8'}}}} InputProps={{sx:{color:'#e9e7e8','&:before':{borderBottom:'1px solid #e9e7e8'}}}} label="Superficie récoltée" variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}}/>  
       </div>
-      <div className='flex justify-center mt-3'>
-      <TextField
-            select
-            label="espece"
-            name="espece_id"
-            value={modifiedparcelleId ? data.espece_id : selectedEspece}
-            fullWidth
-            required  
-            onChange={handleChange}         
-            size="small"
-          > 
-            {especes.map((espece,index)=>(
-              <MenuItem value={espece.id} key={index}>{espece.nom}</MenuItem>
-            ))}
+      <div className='flex justify-center gap-4 mt-3'>
+<TextField
+  select
+  label="espece"
+  name="espece_id"
+  value={exploitationId ? data.espece_id : selectedEspece}
+  fullWidth
+  required
+  onChange={handleChange}
+  size="small"
+  InputLabelProps={{
+    sx: {
+      color: 'white',
+      '&.Mui-focused': { color: 'white' },
+    }
+  }}
+  InputProps={{
+    sx: {
+      color: 'white',
+      '& fieldset': { borderColor: 'white' },
+      '&:hover fieldset': { borderColor: 'white' },
+      '&.Mui-focused fieldset': { borderColor: 'white' },
+    }
+  }}
+  sx={{
+    width: '100%',
+    backgroundColor: '#ffffff10', 
+    '& .MuiSelect-select': { color: 'white' },
+  }}
+>
+  {especes.map((espece, index) => (
+    <MenuItem value={espece.id} key={index}>{espece.nom}</MenuItem>
+  ))}
+</TextField>
 
-          </TextField>
-      <TextField value={data.production} onChange={handleChange} name="production" label="Production" variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#ffffff' },width:'100%','& > :not(style)':{height:'4.5ch'}}}/> 
+<TextField
+  value={data.production}
+  onChange={handleChange}
+  name="production"
+  label="Production"
+  variant="outlined"
+  size="small"
+  InputLabelProps={{
+    sx: {
+      color: 'white',
+      '&.Mui-focused': { color: 'white' },
+    }
+  }}
+  InputProps={{
+    sx: {
+      color: 'white',
+      '& fieldset': { borderColor: 'white' },
+      '&:hover fieldset': { borderColor: 'white' },
+      '&.Mui-focused fieldset': { borderColor: 'white' },
+    }
+  }}
+  sx={{
+    width: '100%',
+    backgroundColor: '#ffffff10',
+    '& > :not(style)': { height: '4.5ch' },
+  }}
+/>
+
       </div> 
       <div className='flex justify-center gap-4 mt-4'>
         <button type='button' onClick={handleCancel} className='bg-white rounded-md w-auto px-8 py-1'>Cancel</button>
-        {modifiedparcelleId
+        {modifiedParcelleId
         ?<button type="submit" className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>Modifier</button>
-        :<button type="submit" className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>Valide</button>
+        :<button type="submit" className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>Ajouter</button>
         }
         
       </div> 

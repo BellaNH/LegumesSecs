@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
+import  { Snackbar, Alert} from "@mui/material";
+import Lentilles from "../pics/Lentilles.png"
 const Espece = () => {
   const [newEspece, setNewEspece] = useState('');
   const [editingId, setEditingId] = useState(null);
   const [editingName, setEditingName] = useState('');
+  const [errorMessage, setErrorMessage] = useState(""); 
+  const [successMessage, setSuccessMessage] = useState(""); 
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
+    
   const {especes, setEspeces,url,fetchEspeces} = useGlobalContext()
 
   const handleAdd = async () => {
@@ -22,10 +29,13 @@ const Espece = () => {
         }
       );
       console.log(response.data)
+      setSuccessMessage(`Espece ajouté avec succès ✅`);
+      setOpenSuccess(true);
       setNewEspece('');
       fetchEspeces()
     } catch (error) {
-      console.error("Erreur lors de l’ajout d'un espece", error);
+      setErrorMessage("Erreur lors de l’ajout d'un espece");
+      setOpenError(true);
     }
   };
 
@@ -36,15 +46,12 @@ const Espece = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-  
-      if (response.status === 204) {
-        setEspeces(especes.filter((wilaya) => wilaya.id !== id));
-        console.log("✔️ Espece supprimée avec succès");
-      } else {
-        console.error("❌ Erreur lors de la suppression :", response);
-      }
+      setSuccessMessage(`Espece supprimé avec succès ✅`);
+      setOpenSuccess(true);
+      setEspeces(especes.filter((wilaya) => wilaya.id !== id));
     } catch (error) {
-      console.error("Erreur côté client :", error.response?.data || error.message);
+      setErrorMessage("Erreur lors de la suppression d'espece");
+      setOpenError(true);
     }
   };  
   
@@ -64,193 +71,115 @@ const Espece = () => {
           },
         }
       );
+      setSuccessMessage(`Espece modifié avec succès ✅`);
+      setOpenSuccess(true);
       setEditingId(null);
       setEditingName('');
       fetchEspeces()
     } catch (error) {
-      console.error('Erreur lors de la mise à jour', error);
+      setErrorMessage("Erreur lors de la mise à jour");
+      setOpenError(true);
     }
   };
 
   return (
-    <div
-      className="p-8 min-h-screen"
-      style={{
-        backgroundColor: '#f7f7f7', // Couleur de fond globale
-        margin: '0', // Pour gérer les marges globales si besoin
-      }}
-    >
-      <div
-        className="max-w-3xl mx-auto"
-        style={{
-          backgroundColor: 'white', // Fond du box
-          padding: '30px', // Espacement interne
-          borderRadius: '1rem', // Coins arrondis
-          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', // Ombre douce
-          marginTop: '20px', // Espace entre le haut et le box
-        }}
+  <div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[80%] flex flex-col ">
+    <div className='flex  gap-4'> 
+                    <img src={Lentilles} className="w-16 h-16" />
+                    <h2 className="text-3xl font-bold text-left text-green-600 mb-6 mt-2">
+                     Espece
+                   </h2>
+            </div>
+
+    <div className="flex items-center justify-center gap-4 mb-6">
+      <input
+        type="text"
+        placeholder="Nouveau Espece"
+        value={newEspece}
+        onChange={(e) => setNewEspece(e.target.value)}
+        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
+      />
+      <button
+        onClick={handleAdd}
+        className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md text-sm"
       >
-        <h2
-          className="text-2xl font-bold text-center"
-          style={{
-            color: '#2D3748', // Couleur du titre
-            marginBottom: '20px', // Marge inférieure du titre
-          }}
-        >
-          📍 Liste des Especes
-        </h2>
-  
-        {/* Champ d’ajout */}
-        <div
-          className="mb-6 flex gap-2"
-          style={{
-            marginBottom: '30px', // Espacement entre le champ et le tableau
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Nouveau Espece"
-            value={newEspece}
-            onChange={(e) => setNewEspece(e.target.value)}
-            className="flex-1 border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            style={{
-              padding: '10px', // Padding interne de l'input
-              fontSize: '16px', // Taille de police
-            }}
-          />
-          <button
-            onClick={handleAdd}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
-            style={{
-              padding: '12px 24px', // Espacement interne du bouton
-              fontSize: '16px', // Taille de la police
-            }}
-          >
-            Ajouter
-          </button>
-        </div>
-  
-        {/* Tableau des wilayas */}
-        {especes.length === 0 ? (
-          <p
-            className="text-center text-gray-500"
-            style={{
-              fontSize: '18px', // Taille du texte
-              fontStyle: 'italic', // Style de police italique
-            }}
-          >
-            Aucun Espece disponible.
-          </p>
-        ) : (
-          <div className="overflow-x-auto">
-            <table
-              className="min-w-full text-left border border-gray-200 rounded-lg overflow-hidden"
-              style={{
-                width: '100%', // S'assure que le tableau prend toute la largeur disponible
-                borderCollapse: 'collapse', // Assure la bonne gestion des bordures
-              }}
-            >
-              <thead className="bg-gray-100">
-                <tr>
-                  <th
-                    className="px-4 py-3 border-b"
-                    style={{
-                      fontSize: '25px', // Taille de la police des titres
-                      fontWeight: 'bold', // Poids de la police
-                      color: '#4A5568', // Couleur du texte
-                    }}
+        Ajouter
+      </button>
+    </div>
+
+    <div className="bg-white shadow-md rounded-xl overflow-hidden">
+      <table className="min-w-full table-auto text-left border border-gray-200">
+        <thead className="bg-green-600 text-white">
+          <tr>
+            <th className="px-4 py-3 text-sm font-semibold">Nom</th>
+            <th className="px-4 py-3 text-sm font-semibold text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {especes.map((espece) => (
+            <tr key={espece.id} className="even:bg-gray-50 hover:bg-green-50 transition duration-200">
+              <td className="px-4 py-3 text-[16px] text-gray-800">
+                {editingId === espece.id ? (
+                  <input
+                    value={editingName}
+                    onChange={(e) => setEditingName(e.target.value)}
+                    className="w-full border border-gray-300 rounded px-3 py-1 text-sm"
+                  />
+                ) : (
+                  espece.nom
+                )}
+              </td>
+              <td className="px-4 py-3 text-right">
+                {editingId === espece.id ? (
+                  <button
+                    onClick={handleUpdate}
+                    className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm"
                   >
-                    Nom
-                  </th>
-                  <th
-                    className="px-4 py-3 border-b text-right"
-                    style={{
-                      fontSize: '25px',
-                      fontWeight: 'bold',
-                      color: '#4A5568',
-                    }}
-                  >
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {especes.map((espece) => (
-                  <tr
-                    key={espece.id}
-                    className="hover:bg-gray-50"
-                    style={{
-                      transition: 'background-color 0.3s ease', // Effet au survol
-                    }}
-                  >
-                    <td
-                      className="px-4 py-3 border-b"
-                      style={{
-                        paddingLeft: '18px', // Contrôle des espacements
-                        paddingRight: '16px',
-                        fontSize: '20px',
-                      }}
+                    Valider
+                  </button>
+                ) : (
+                  <div className="flex justify-end items-center gap-4 text-[18px]">
+                    <button
+                      onClick={() => handleEdit(espece)}
+                      className="text-blue-600 hover:text-blue-800"
                     >
-                      {editingId === espece.id ? (
-                        <input
-                          value={editingName}
-                          onChange={(e) => setEditingName(e.target.value)}
-                          className="w-full border border-gray-300 rounded px-2 py-1"
-                          style={{
-                            fontSize: '16px', // Taille de la police de l'input
-                          }}
-                        />
-                      ) : (
-                        espece.nom
-                      )}
-                    </td>
-                    <td
-                      className="px-4 py-3 border-b text-right"
-                      style={{
-                        paddingLeft: '18px', // Ajuste le padding de la colonne des actions
-                        paddingRight: '16px',
-                      }}
+                      <FaEdit />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(espece.id)}
+                      className="text-red-600 hover:text-red-800"
                     >
-                      {editingId === espece.id ? (
-                        <button
-                          onClick={handleUpdate}
-                          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2"
-                          style={{
-                            fontSize: '16px', // Taille de la police du bouton
-                          }}
-                        >
-                          Valider
-                        </button>
-                      ) : (
-                        <>
-                          <button
-                            onClick={() => handleEdit(espece)}
-                            className="text-blue-600 hover:text-blue-800 mr-4"
-                            style={{
-                              fontSize: '18px', // Taille de la police des icônes
-                            }}
-                          >
-                            <FaEdit />
-                          </button>
-                          <button
-                            onClick={() => handleDelete(espece.id)}
-                            className="text-red-600 hover:text-red-800"
-                            style={{
-                              fontSize: '18px', // Taille de la police des icônes
-                            }}
-                          >
-                            <FaTrash />
-                          </button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
+                      <FaTrash />
+                    </button>
+                  </div>
+                )}
+              </td>
+            </tr>
+          ))}
+          {especes.length === 0 && (
+            <tr>
+              <td colSpan={2} className="text-center py-4 text-gray-500 italic">
+                Aucun Espece disponible.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+       <Snackbar open={openSuccess} autoHideDuration={4000} onClose={()=>setOpenSuccess(false)}>
+                                    <Alert onClose={()=>setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
+                                      {successMessage}
+                                    </Alert>
+                                  </Snackbar>
+                      
+                                    <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+                                      <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
+                                        {errorMessage}
+                                      </Alert>
+                                    </Snackbar>
     </div>
   );
 };
