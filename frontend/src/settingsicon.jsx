@@ -1,4 +1,4 @@
-import { Settings } from "lucide-react"; // Utilise lucide-react pour les icônes
+import { Settings } from "lucide-react"; 
 
 const SettingsIcon = ({ onClick }) => {
   return (
