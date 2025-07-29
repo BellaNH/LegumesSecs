@@ -18,7 +18,11 @@ load_dotenv()
 DEBUG = os.getenv('DEBUG',"False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS","localhost").split(",")
-
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -115,16 +119,7 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER':'postgres',
-        'PASSWORD':'123456789',
-        'HOST':'localhost',
-        'PORT':'5432'
-    },
-}
+
 if os.getenv("USE_TEST_DB") =="1":
     DATABASES["default"] = DATABASES["test_db"]
 
