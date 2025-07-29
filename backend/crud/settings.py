@@ -19,9 +19,7 @@ DEBUG = os.getenv('DEBUG',"False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS","localhost").split(",")
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
 }
 
 INSTALLED_APPS = [
