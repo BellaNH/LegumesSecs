@@ -88,7 +88,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CORS_ALLOWED_ORIGINS=[
-     'http://localhost:5173'
+     'http://localhost:5173',
+     'https://legumessecs.netlify.app/'
 ]
 ROOT_URLCONF = 'crud.urls'
 
@@ -115,7 +116,14 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER':'postgres',
+        'PASSWORD':'123456789',
+        'HOST':'localhost',
+        'PORT':'5432'
+    },
 }
 if os.getenv("USE_TEST_DB") =="1":
     DATABASES["default"] = DATABASES["test_db"]
