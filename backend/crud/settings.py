@@ -1,25 +1,24 @@
-
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
 import os
 import sys
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0&%5bbdbv67g*@cer2)^bl#!wd@&)n&@p%302ej615xro5+tz*'
+#SECRET_KEY = 'django-insecure-0&%5bbdbv67g*@cer2)^bl#!wd@&)n&@p%302ej615xro5+tz*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG',"False") == "True"
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS","localhost").split(",")
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -116,14 +115,7 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER':'postgres',
-        'PASSWORD':'123456789',
-        'HOST':'localhost',
-        'PORT':'5432'
-    },
+    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
 }
 if os.getenv("USE_TEST_DB") =="1":
     DATABASES["default"] = DATABASES["test_db"]
