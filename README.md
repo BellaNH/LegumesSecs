@@ -32,9 +32,9 @@ Ce système est une **plateforme web professionnelle** permettant la **saisie, l
 |--------------|------------------------------|
 | Frontend     | React, Tailwind CSS, MUI     |
 | Backend      | Django REST Framework (DRF)  |
-| Authentification | JWT (stateless auth)      |
+| Authentification | JWT       |
 | Base de données | PostgreSQL                |
-| Design       | Responsive, optimisé pour mobile et desktop |
+| Design       | Responsive |
 
 
 
