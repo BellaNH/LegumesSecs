@@ -60,11 +60,7 @@ const AjouterCommunes = () => {
         <Typography variant="h6" gutterBottom>
           Ajouter une nouvelle commune
         </Typography>
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-        >
+     
           <TextField
             label="Nom de la commune"
             value={nom}
