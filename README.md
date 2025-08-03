@@ -1,40 +1,51 @@
-Agricultural Data Management System
-This system enables the entry, management, visualization, and filtering of agricultural data at the national, regional, or local level.
+# Agricultural Data Management System 
 
-Main Features
-User Interface (Client)
-Access based on the agent’s location.
+Ce système qui permet la **saisie, la gestion, la visualisation et le filtrage de données agricoles** à l’échelle nationale, régionale ou locale.
 
-Agricultural data management system.
+## Fonctionnalités principales
 
-Dynamic global dashboard.
+### Interface utilisateur (client)
+- Accès basé sur la **localisation** de l’agent.
+- Système de gestion des donnees agricoles.
+- Tableau de bord global dynamique.
+- **Filtrage avancé** des données par localisation.
 
-Advanced data filtering by location.
+### Interface administrateur
+- **Système de gestion des utilisateurs** avec RBAC (Role based access control).
+- **Système de gestion des utilisateurs** avec PBAC (Permissision based access control)- Attribution des **permissions CRUD** (Create, Read, Update, Delete) pour chaque utilisateur.
+- Tableau de bord dynamique.
 
-Administrator Interface
-User management system with RBAC (Role-Based Access Control).
 
-User management system with PBAC (Permission-Based Access Control) – Assignment of CRUD permissions (Create, Read, Update, Delete) for each user.
+## Sécurité et gestion des rôles
 
-Dynamic dashboard.
+- Système basé sur le **Role-Based Access Control (RBAC)** :
+- Intégration de **Permission-Based Access Control (PBAC)** :
+- Authentification sécurisée via **JSON Web Token (JWT)**.
 
-Security and Role Management
-System based on Role-Based Access Control (RBAC):
+---
 
-Integration of Permission-Based Access Control (PBAC):
+## 🧰 Stack technique
 
-Secure authentication via JSON Web Token (JWT).
+| Couche       | Technologie                  |
+|--------------|------------------------------|
+| Frontend     | React, Tailwind CSS, MUI     |
+| Backend      | Django REST Framework (DRF)  |
+| Authentification | JWT       |
+| Base de données | PostgreSQL                |
+| Design       | Responsive |
 
-🧰 Tech Stack
-Layer	Technology
-Frontend	React, Tailwind CSS, MUI
-Backend	Django REST Framework (DRF)
-Authentication	JWT
-Database	PostgreSQL
-Design	Responsive
+
+
+
+
+
+
 
 
 https://github.com/user-attachments/assets/8b7a9a34-2b7c-491d-a824-fa6347ee4ac3
+
+https://github.com/user-attachments/assets/8b7a9a34-2b7c-491d-a824-fa6347ee4ac3
+
 
 
 
