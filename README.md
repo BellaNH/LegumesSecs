@@ -31,11 +31,12 @@ This system enables entry, management, visualization, and filtering of agricultu
 | Frontend     | React, Tailwind CSS, MUI     |
 | Backend      | Django REST Framework (DRF)  |
 | Authentification | JWT       |
-| Base de données | PostgreSQL                |
+| Data base | PostgreSQL                |
 | Design       | Responsive |
 
 
 https://github.com/user-attachments/assets/8b7a9a34-2b7c-491d-a824-fa6347ee4ac3
+
 
 
 
