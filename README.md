@@ -1,30 +1,30 @@
 # Agricultural Data Management System 
 
-Ce système qui permet la **saisie, la gestion, la visualisation et le filtrage de données agricoles** à l’échelle nationale, régionale ou locale.
+This system enables entry, management, visualization, and filtering of agricultural data at the national, regional, or local level.
 
-## Fonctionnalités principales
+## Main Features
 
-### Interface utilisateur (client)
-- Accès basé sur la **localisation** de l’agent.
-- Système de gestion des donnees agricoles.
-- Tableau de bord global dynamique.
-- **Filtrage avancé** des données par localisation.
+### User Interface (Client)
+- Access based on the agent’s location.
+- Agricultural data management system.
+- Dynamic global dashboard.
+- **Advanced filtering** of data by location.
 
-### Interface administrateur
-- **Système de gestion des utilisateurs** avec RBAC (Role based access control).
-- **Système de gestion des utilisateurs** avec PBAC (Permissision based access control)- Attribution des **permissions CRUD** (Create, Read, Update, Delete) pour chaque utilisateur.
-- Tableau de bord dynamique.
+### Administrator Interface
+- **User management system** with RBAC (Role-Based Access Control).
+- **User management system** with PBAC (Permissision based access control)-  Assignment of **CRUD permissions** (Create, Read, Update, Delete) for each user.
+- Dynamic dashboard.
 
 
-## Sécurité et gestion des rôles
+## Security and Role Management
 
-- Système basé sur le **Role-Based Access Control (RBAC)** :
-- Intégration de **Permission-Based Access Control (PBAC)** :
-- Authentification sécurisée via **JSON Web Token (JWT)**.
+- System based on **Role-Based Access Control (RBAC)** :
+- Integration of **Permission-Based Access Control (PBAC)** :
+- Secure authentication via **JSON Web Token (JWT)**.
 
 ---
 
-## 🧰 Stack technique
+## 🧰 Tech Stack
 
 | Couche       | Technologie                  |
 |--------------|------------------------------|
@@ -35,16 +35,9 @@ Ce système qui permet la **saisie, la gestion, la visualisation et le filtrage 
 | Design       | Responsive |
 
 
-
-
-
-
-
-
-
 https://github.com/user-attachments/assets/8b7a9a34-2b7c-491d-a824-fa6347ee4ac3
 
-https://github.com/user-attachments/assets/8b7a9a34-2b7c-491d-a824-fa6347ee4ac3
+
 
 
 
