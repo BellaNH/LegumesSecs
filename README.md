@@ -26,7 +26,7 @@ This system enables entry, management, visualization, and filtering of agricultu
 
 ## 🧰 Tech Stack
 
-| Couche       | Technologie                  |
+| Layer        | Technologie                  |
 |--------------|------------------------------|
 | Frontend     | React, Tailwind CSS, MUI     |
 | Backend      | Django REST Framework (DRF)  |
@@ -36,6 +36,7 @@ This system enables entry, management, visualization, and filtering of agricultu
 
 
 https://github.com/user-attachments/assets/8b7a9a34-2b7c-491d-a824-fa6347ee4ac3
+
 
 
 
