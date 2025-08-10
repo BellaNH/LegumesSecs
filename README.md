@@ -1,6 +1,6 @@
 # Agricultural Data Management System 
 
-This system enables entry, management, visualization, and filtering of agricultural data at the national, regional, or local level.
+The Ministry previously used Excel to manage agricultural data—a time-consuming, error-prone method that struggled with complex relationships. To solve this, we built a centralized Agriculture Data Management System for streamlined data entry, management, visualization, and filtering across national, regional, and local levels. 
 
 ## Main Features
 
@@ -36,6 +36,7 @@ This system enables entry, management, visualization, and filtering of agricultu
 
 
 https://github.com/user-attachments/assets/8b7a9a34-2b7c-491d-a824-fa6347ee4ac3
+
 
 
 
