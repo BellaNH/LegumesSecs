@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 import axios from "axios";
 import { useGlobalContext } from "../context"
 import {
@@ -134,7 +134,7 @@ return (
             fullWidth
             variant="contained"
             color="primary"
-            sx={{ mt: 3, py: 1.5 }}
+            sx={{ mt: 3, py: 1.5 ,bgcolor:"#16a34a"}}
           >
             Se connecter
           </Button>
@@ -144,11 +144,12 @@ return (
     component="button"
     variant="body2"
     onClick={() => setForgotOpen(true)}
-    sx={{ color: "#1976d2" }}
+    sx={{ color: "#44c034ff", textDecoration: "none" }}
   >
     Mot de passe oublié ?
   </Link>
 </Box>
+
 
 
         {welcomeMsg && (
@@ -188,7 +189,7 @@ return (
       fontWeight: "bold",
       fontSize: "1.3rem",
       mb: 1,
-      color: "#1976d2",
+      color: "#16a34a",
     }}
   >
     🔐  mot de passe oublié ?
@@ -250,7 +251,7 @@ return (
     <Button
       onClick={handlePasswordReset}
       variant="contained"
-      sx={{ bgcolor: "#1976d2", "&:hover": { bgcolor: "#115293" } }}
+      sx={{ bgcolor: "#16a34a", "&:hover": { bgcolor: "#139442ff" } }}
     >
       Réinitialiser
     </Button>

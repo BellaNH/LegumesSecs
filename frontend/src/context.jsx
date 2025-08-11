@@ -6,7 +6,7 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
 
   
-  const url = "https://legumessecs.onrender.com"
+  const url = "http://127.0.0.1:8000"
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [wilayas,setWilayas] = useState([])

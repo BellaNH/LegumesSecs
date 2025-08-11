@@ -39,10 +39,10 @@ const [prevProdVsProductionData,setPrevProdVsProductionData] = useState("")
   return (
     <div className="w-full h-full p-4 flex flex-col gap-2 text-sm">
  
-      <div className="grid grid-cols-3 px-3 py-2 rounded-xl bg-[#e6f3eb] text-[#14532d] font-semibold shadow-sm">
-        <span>Espèce</span>
-        <span className="text-center">Prévision</span>
-        <span className="text-right">Production</span>
+      <div className="grid grid-cols-3 px-3 py-2 rounded-xl bg-green-600 text-[#14532d] font-semibold shadow-sm">
+        <span className="text-white">Espèce</span>
+        <span className="text-center text-white">Prévision</span>
+        <span className="text-right text-white">Production</span>
       </div>
 
       <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-green-300 pr-1 max-h-[90%]">
@@ -53,7 +53,7 @@ const [prevProdVsProductionData,setPrevProdVsProductionData] = useState("")
               className="grid grid-cols-3 items-center px-3 py-2 rounded-lg mb-1 bg-white hover:bg-[#f0fdf4] text-gray-800 shadow transition duration-150 ease-in-out"
             >
               <span className="truncate">{item.espece}</span>
-              <span className="text-center text-yellow-700 font-medium">
+              <span className="text-center text-yellow-500 font-medium">
                 {item.prev_de_production}
               </span>
               <span className="text-right text-green-700 font-semibold">

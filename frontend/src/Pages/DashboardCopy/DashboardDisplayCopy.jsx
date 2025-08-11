@@ -1,12 +1,12 @@
 import { FaDollarSign, FaTasks } from "react-icons/fa";
 import { AiOutlineProject } from "react-icons/ai";
-import EspeceSurfaceChart from "./EspeceSurfaceChart ";
+import EspeceSurfaceChartCopy from "./EspeceSurfaceChartCopy .jsx";
 import { useEffect } from 'react';
 import React, { useState } from 'react'
-import ProductionChart from "./ProductionChart.jsx";
-import TopWilaya from "./TopWilaya.jsx";
+import ProductionChartCopy from "./ProductionChartCopy.jsx";
+import TopWilayaCopy from "./TopWilayaCopy.jsx";
 import axios from "axios";
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../context.jsx";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { MdOutlineNavigateBefore } from "react-icons/md";
 import Agriculteur from "../pics/Agriculteur.png"
@@ -14,15 +14,19 @@ import Haricotsverts from "../pics/Haricotsverts.png"
 import  BarChart  from "../pics/BarChart.png"
 import  Plante  from "../pics/Plante.png"
 import { FaArrowDown } from "react-icons/fa";
-import PrevProdVsProd from "./PrevProdVsProd.jsx";
+import PrevProdVsProdCopy from "./PrevProdVsProdCopy.jsx";
 import Amande from "../pics/Amande.png"
 import Feu from "../pics/Feu.png"
 import Une from "../pics/Une.png"
 import Deux from "../pics/Deux.png"
 import Trois from "../pics/Trois.png"
 import Jardinage from "../pics/Jardinage.png"
+import Employees from "../pics/Employees.png"
+import Alerte from "../pics/Alerte.png"
+import Usine from "../pics/Usine.png"
+import Graphique from "../pics/Graphique.png"
 
-export default function DashboardDisplay() {
+export default function DashboardDisplayCopy() {
   const {url,user}= useGlobalContext()
   const [totalAgri,setTotalAgri] = useState("")
   const [superficieData,setSuperficieData] = useState("")
@@ -30,7 +34,13 @@ export default function DashboardDisplay() {
   const [numEspeces,setNumEspeces] = useState("")
   const [totalProdction,setTotalProduction] = useState("")
   const [totalSupLabouree,setTotalSupLanouree] = useState("")
-  const [aggregatedSupStats,setAggregatedSupStats] = useState("")
+
+  const aggregatedSupStats = [
+  { produit: "Phones", zoneProduction: 320, pannes: 25, productionTotale: 295 },
+  { produit: "Laptops", zoneProduction: 340, pannes: 30, productionTotale: 310 },
+  { produit: "Accessoires", zoneProduction: 310, pannes: 20, productionTotale: 290 },
+  { produit: "Services", zoneProduction: 360, pannes: 40, productionTotale: 320 },
+];
 
 
  useEffect(()=>{
@@ -180,70 +190,70 @@ useEffect(() => {
     <div className="w-[80%] flex overflow-hidden">
  <div className="ml-8 mt-4 flex flex-col w-[13%] h-[98%] gap-4 ">
   <StatCard 
-    icon={<img src={Agriculteur} className="w-8 mt-4" />} 
-    title="Agriculteurs Active" 
-    value={totalAgri} 
+    icon={<img src={Employees} className="w-8 mt-4" />} 
+    title="Employés actifs" 
+    value="250"
   />
 
   <div
-  className="overflow-hidden relative h-[77%] flex flex-col gap-4 rounded-xl  py-4 border border-green-600  bg-gradient-to-b  shadow-md"
+  className="overflow-hidden relative h-[77%] flex flex-col gap-4 rounded-xl  py-4 border border-indigo-600  bg-gradient-to-b  shadow-md"
 >
 
 
     {aggregatedSupStats && aggregatedSupStats.map((statCard, statCardIndex) => {
-      let position = "next-slide";
-      if (statCardIndex === agrSupStatsIndex) {
-        position = "active-slide";
-      } else if (statCardIndex === (agrSupStatsIndex + 1) % aggregatedSupStats.length) {
-        position = "next-slide";
-      } else if (statCardIndex === (agrSupStatsIndex - 1 + aggregatedSupStats.length) % aggregatedSupStats.length) {
-        position = "last-slide";
-      }
+  let position = "next-slide";
+  if (statCardIndex === agrSupStatsIndex) {
+    position = "active-slide";
+  } else if (statCardIndex === (agrSupStatsIndex + 1) % aggregatedSupStats.length) {
+    position = "next-slide";
+  } else if (statCardIndex === (agrSupStatsIndex - 1 + aggregatedSupStats.length) % aggregatedSupStats.length) {
+    position = "last-slide";
+  }
 
-      return (
-        <div 
-          key={statCardIndex}
-          className={` w-full h-fit pb-4 flex flex-col gap-4 transition-all duration-500 ease-in-out transform absolute
-            ${position === "active-slide" ? "translate-y-0 opacity-100 z-30" : ""}
-            ${position === "last-slide" ? "translate-y-[-100%] opacity-0 " : ""}
-            ${position === "next-slide" ? "translate-y-[100%] opacity-0 " : "opacity-0"}
-          `}
-        >
-          <StatCard
-            icon={<img src={Jardinage} className="w-10 mt-4 " />}  
-            title="Superficie labouree" 
-            value={statCard.total_production} 
+  return (
+    <div 
+      key={statCardIndex}
+      className={` w-full h-fit pb-4 flex flex-col gap-4 transition-all duration-500 ease-in-out transform absolute
+        ${position === "active-slide" ? "translate-y-0 opacity-100 z-30" : ""}
+        ${position === "last-slide" ? "translate-y-[-100%] opacity-0 " : ""}
+        ${position === "next-slide" ? "translate-y-[100%] opacity-0 " : "opacity-0"}
+      `}
+    >
+      <StatCard
+        icon={<img src={Usine} className="w-10 mt-4 " />}  
+        title="Zone de production" 
+        value={statCard.zoneProduction}
+      />
+      <StatCard
+        icon={<img src={Alerte} className="w-10 mt-4" />}  
+        title="Pannes" 
+        value={statCard.pannes}
+      />
+      <StatCard
+        icon={<img src={Graphique} className="w-10 h-8 mt-4" />}  
+        title="Production totale" 
+        value={statCard.productionTotale}
+      />
 
-          />
-          <StatCard
-            icon={<img src={Feu} className="w-10 mt-4" />}  
-            title="Superficie sinistree" 
-            value={statCard.total_sup_labouree} 
-          />
-          <StatCard
-            icon={<img src={Amande} className="w-10 mt-4" />}  
-            title="Total production" 
-            value={statCard.total_sup_sinistree} 
-          />
+      <div className="bg-gradient-to-b from-blue-700 to-[#6dd5ed] w-full h-12 py-1 absolute top-[100%] flex justify-center gap-4  text-white font-semibold text-xl rounded-b-xl">
+        <span className="text-white font-semibold ">{statCard.produit}</span>
+        <FaArrowDown  
+          onClick={() =>
+            setAgrSupStatsIndex((agrSupStatsIndex + 1) % aggregatedSupStats.length)
+          }
+          className="w-5 h-5 text-white ml-2 mt-1 cursor-pointer"
+        />
+      </div>
+    </div>
+  );
+})}
 
-           <div className="bg-green-600 w-full h-12 py-0 absolute top-[100%] flex justify-center items-center gap-4  text-white font-semibold text-xl rounded-b-xl">
-              <span className="text-white font-semibold ">{statCard.espece}</span>
-              <FaArrowDown  
-                onClick={() =>
-                  setAgrSupStatsIndex((agrSupStatsIndex + 1) % aggregatedSupStats.length)
-                }
-                className="w-5 h-5  text-white ml-2 cursor-pointer"
-              />
-            </div>
-        </div>
-      );
-    })}
   </div>
 </div>
 
 
       <div className="absolute top-4 right-4 w-[25vw] h-[50vh]">
-        <TopWilaya/>
+        <TopWilayaCopy/>
       </div>
 
 
@@ -272,7 +282,7 @@ useEffect(() => {
           ${position === "next-slide" ? "opacity-0 translate-x-[200%]" : ""}
         `}
       >
-        <EspeceSurfaceChart data={[chart]} />
+        <EspeceSurfaceChartCopy data={[chart]} />
       </div>
     );
           
@@ -282,7 +292,7 @@ useEffect(() => {
 
 <button
   onClick={() => setIndex(index + 1)}
-  className="absolute top-[55%] right-8 -translate-y-1/2 bg-green-600 text-white px-3 py-2 rounded-full shadow hover:bg-green-700 transition"
+  className="absolute top-[55%] right-8 -translate-y-1/2 bg-[#1D4ED8] text-white px-3 py-2 rounded-full shadow hover:bg-blue-600 transition"
 >
   <MdOutlineNavigateNext size={16} />
 </button>
@@ -294,10 +304,10 @@ useEffect(() => {
        <div
        style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} 
        className="rounded-xl absolute w-[40vw] h-[40%] top-[55%] ml-56">
-        <ProductionChart data={transformedData}/>
+        <ProductionChartCopy data={transformedData}/>
         </div>
        <div className="absolute z-10 right-20 top-[48%] w-[43vh] shadow-lg h-[47vh] ">
-        <PrevProdVsProd/>
+        <PrevProdVsProdCopy/>
       </div>
   
       

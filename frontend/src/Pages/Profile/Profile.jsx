@@ -159,7 +159,7 @@ useEffect(() => {
       value={user?.role?.nom || ""}
       name="role"
       sx={{
-        backgroundColor: "rgba(222, 255, 235, 0.9)",
+        backgroundColor: "rgba(222, 242, 255, 0.9)",
         borderRadius: "0.375rem",
       }}
     >
@@ -251,7 +251,7 @@ useEffect(() => {
   <div className="w-full flex justify-end">
     <button
       type="submit"
-      className="bg-green-600 hover:bg-green-700 transition-all duration-200 text-white font-semibold text-sm rounded-lg px-6 py-3 shadow-md"
+      className="bg-blue-600 hover:bg-blue-700 transition-all duration-200 text-white font-semibold text-sm rounded-lg px-6 py-3 shadow-md"
     >
       Sauvegarder
     </button>

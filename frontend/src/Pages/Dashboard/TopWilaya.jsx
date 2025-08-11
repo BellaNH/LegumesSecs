@@ -3,6 +3,9 @@ import { useGlobalContext } from "../../context";
 import axios from "axios";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { MdOutlineNavigateBefore } from "react-icons/md";
+import Une from "../pics/Une.png";
+import Deux from "../pics/Deux.png";
+import Trois from "../pics/Trois.png";
 export default function TopWilaya() {
  const [topthreeWilaya,setTopThreeWilaya] = useState("")
  const {url,user}= useGlobalContext()
@@ -68,12 +71,29 @@ export default function TopWilaya() {
       `}
     >
       <h2 className="text-xl font-semibold mb-4">{item.espece}</h2>
-      <ol className="space-y-2">
+      <ol className="flex gap-4 align-center mt-2">
+        <img src={Une} alt="" className="w-7"/>
         <li className="flex justify-between">
-          <span className="font-medium"> {item.label}</span>
-          <span>{item.total_production} </span>
+          <span className="font-medium"> {item.top_locations[0].label}</span>
+          <span className="absolute right-6">{item.top_locations[0].total_production} </span>
         </li>
       </ol>
+      {item.top_locations.length > 1 && 
+      <ol className="flex gap-4 align-center mt-2">
+        <img src={Deux} alt="" className="w-7"/>
+        <li className="flex justify-between">
+          <span className="font-medium"> {item?.top_locations[1]?.label}</span>
+          <span className="absolute right-6">{item?.top_locations[1]?.total_production} </span>
+        </li>
+      </ol>}
+      {item.top_locations.length > 2 && 
+      <ol className="flex gap-4 align-center mt-2">
+        <li className="flex justify-between">
+          <span className="font-medium"> {item?.top_locations[2]?.label}</span>
+          <span className="absolute right-6">{item?.top_locations[2]?.total_production} </span>
+        </li>
+      </ol>}
+      
     </div>
   );
 })}

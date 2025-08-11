@@ -18,7 +18,7 @@ DEBUG = True
 
 SECRET_KEY = 'your-very-secret-key'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','legumessecs.onrender.com']
 
 DATABASES = {
     'default': {
