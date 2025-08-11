@@ -1,0 +1,1556 @@
+[
+  {
+    "model": "api.objectif",
+    "pk": 1,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 7,
+      "espece": 3,
+      "annee": 2022,
+      "objectif_production": 122029.53
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 2,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 3,
+      "annee": 2017,
+      "objectif_production": 53164.68
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 3,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 9,
+      "espece": 1,
+      "annee": 2019,
+      "objectif_production": 116757.01
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 4,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 9,
+      "espece": 4,
+      "annee": 2022,
+      "objectif_production": 137903.67
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 5,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 10,
+      "espece": 3,
+      "annee": 2025,
+      "objectif_production": 137242.52
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 6,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 2,
+      "annee": 2023,
+      "objectif_production": 120004.97
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 7,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 4,
+      "annee": 2016,
+      "objectif_production": 103409.24
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 8,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 7,
+      "espece": 3,
+      "annee": 2021,
+      "objectif_production": 119124.37
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 9,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 9,
+      "espece": 2,
+      "annee": 2022,
+      "objectif_production": 75705.2
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 10,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 7,
+      "espece": 2,
+      "annee": 2021,
+      "objectif_production": 101609.96
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 11,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 10,
+      "espece": 4,
+      "annee": 2023,
+      "objectif_production": 120461.02
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 12,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 9,
+      "espece": 3,
+      "annee": 2021,
+      "objectif_production": 112151.13
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 13,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 4,
+      "annee": 2019,
+      "objectif_production": 98512.83
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 14,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 7,
+      "espece": 1,
+      "annee": 2023,
+      "objectif_production": 134368.19
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 15,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 10,
+      "espece": 4,
+      "annee": 2025,
+      "objectif_production": 136003.89
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 16,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 9,
+      "espece": 2,
+      "annee": 2019,
+      "objectif_production": 143971.38
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 17,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 2,
+      "annee": 2016,
+      "objectif_production": 126915.04
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 18,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 5,
+      "annee": 2017,
+      "objectif_production": 141939.55
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 19,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 1,
+      "annee": 2017,
+      "objectif_production": 137433.1
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 20,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 10,
+      "espece": 2,
+      "annee": 2024,
+      "objectif_production": 51635.71
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 21,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 7,
+      "espece": 1,
+      "annee": 2019,
+      "objectif_production": 121854.77
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 22,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 10,
+      "espece": 3,
+      "annee": 2020,
+      "objectif_production": 54405.31
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 23,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 9,
+      "espece": 3,
+      "annee": 2023,
+      "objectif_production": 94152.02
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 24,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 9,
+      "espece": 2,
+      "annee": 2018,
+      "objectif_production": 122932.66
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 25,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 5,
+      "annee": 2019,
+      "objectif_production": 99970.57
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 26,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 7,
+      "espece": 2,
+      "annee": 2019,
+      "objectif_production": 64712.49
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 27,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 16,
+      "espece": 5,
+      "annee": 2022,
+      "objectif_production": 98551.08
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 28,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 7,
+      "espece": 4,
+      "annee": 2020,
+      "objectif_production": 135755.08
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 29,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 10,
+      "espece": 3,
+      "annee": 2017,
+      "objectif_production": 129653.02
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 30,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 10,
+      "espece": 2,
+      "annee": 2019,
+      "objectif_production": 85908.98
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 1,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "nom_1",
+      "prenom": "prenom_1",
+      "phoneNum": 213000001,
+      "numero_carte_fellah": 300001
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 2,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "nom_2",
+      "prenom": "prenom_2",
+      "phoneNum": 213000002,
+      "numero_carte_fellah": 300002
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 3,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "nom_3",
+      "prenom": "prenom_3",
+      "phoneNum": 213000003,
+      "numero_carte_fellah": 300003
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 4,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "nom_4",
+      "prenom": "prenom_4",
+      "phoneNum": 213000004,
+      "numero_carte_fellah": 300004
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 5,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "nom_5",
+      "prenom": "prenom_5",
+      "phoneNum": 213000005,
+      "numero_carte_fellah": 300005
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 1,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 1,
+      "nom": "explo_1",
+      "lieu": "lieu_35",
+      "superficie": 19415.0,
+      "situation": "prive_individu",
+      "longtitude": 32.89,
+      "latitude": 28.86
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 1,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 1,
+      "espece": 2,
+      "annee": 2021,
+      "date_creation": "2021-12-08T00:00:00",
+      "superficie": 14054.29,
+      "sup_labouree": 1342.78,
+      "sup_emblavee": 1698.4,
+      "sup_sinsitree": 434.84,
+      "sup_recoltee": 591.69,
+      "sup_deserbee": 2320.81,
+      "prev_de_production": 7309.06,
+      "production": 2755.87,
+      "engrais_de_fond": 883.27,
+      "engrais_de_couverture": 1004.38
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 2,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 1,
+      "espece": 1,
+      "annee": 2019,
+      "date_creation": "2019-01-08T00:00:00",
+      "superficie": 9187.5,
+      "sup_labouree": 2171.16,
+      "sup_emblavee": 3184.7,
+      "sup_sinsitree": 2081.09,
+      "sup_recoltee": 2198.45,
+      "sup_deserbee": 1676.42,
+      "prev_de_production": 4656.41,
+      "production": 1053.34,
+      "engrais_de_fond": 2202.33,
+      "engrais_de_couverture": 1326.71
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 2,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 1,
+      "nom": "explo_2",
+      "lieu": "lieu_30",
+      "superficie": 43238.47,
+      "situation": "location",
+      "longtitude": 33.42,
+      "latitude": 22.26
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 3,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 2,
+      "espece": 2,
+      "annee": 2020,
+      "date_creation": "2020-02-22T00:00:00",
+      "superficie": 10649.5,
+      "sup_labouree": 3900.8,
+      "sup_emblavee": 4612.93,
+      "sup_sinsitree": 415.38,
+      "sup_recoltee": 4449.17,
+      "sup_deserbee": 2564.99,
+      "prev_de_production": 8378.93,
+      "production": 5100.42,
+      "engrais_de_fond": 2339.55,
+      "engrais_de_couverture": 2941.06
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 3,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 3,
+      "nom": "explo_3",
+      "lieu": "lieu_68",
+      "superficie": 27514.89,
+      "situation": "prive_individu",
+      "longtitude": 6.88,
+      "latitude": 21.03
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 4,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 3,
+      "espece": 1,
+      "annee": 2016,
+      "date_creation": "2016-02-10T00:00:00",
+      "superficie": 6413.0,
+      "sup_labouree": 4611.72,
+      "sup_emblavee": 1003.85,
+      "sup_sinsitree": 4318.88,
+      "sup_recoltee": 2530.8,
+      "sup_deserbee": 4773.54,
+      "prev_de_production": 8136.98,
+      "production": 8627.84,
+      "engrais_de_fond": 2875.04,
+      "engrais_de_couverture": 1500.31
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 5,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 3,
+      "espece": 4,
+      "annee": 2017,
+      "date_creation": "2017-06-23T00:00:00",
+      "superficie": 13363.89,
+      "sup_labouree": 3579.7,
+      "sup_emblavee": 1673.25,
+      "sup_sinsitree": 1775.16,
+      "sup_recoltee": 2860.53,
+      "sup_deserbee": 4927.48,
+      "prev_de_production": 7621.34,
+      "production": 7517.8,
+      "engrais_de_fond": 890.22,
+      "engrais_de_couverture": 1564.54
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 6,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 3,
+      "espece": 2,
+      "annee": 2023,
+      "date_creation": "2023-05-27T00:00:00",
+      "superficie": 3588.72,
+      "sup_labouree": 245.16,
+      "sup_emblavee": 4620.28,
+      "sup_sinsitree": 1311.61,
+      "sup_recoltee": 4115.07,
+      "sup_deserbee": 3517.16,
+      "prev_de_production": 7661.51,
+      "production": 7870.59,
+      "engrais_de_fond": 2312.38,
+      "engrais_de_couverture": 819.87
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 4,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 3,
+      "nom": "explo_4",
+      "lieu": "lieu_62",
+      "superficie": 23801.57,
+      "situation": "location",
+      "longtitude": 5.69,
+      "latitude": 28.99
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 7,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 4,
+      "espece": 3,
+      "annee": 2023,
+      "date_creation": "2023-10-02T00:00:00",
+      "superficie": 4356.56,
+      "sup_labouree": 4973.56,
+      "sup_emblavee": 4924.42,
+      "sup_sinsitree": 1136.9,
+      "sup_recoltee": 1501.39,
+      "sup_deserbee": 2670.59,
+      "prev_de_production": 3207.53,
+      "production": 2903.22,
+      "engrais_de_fond": 2794.51,
+      "engrais_de_couverture": 1340.12
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 5,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 2,
+      "nom": "explo_5",
+      "lieu": "lieu_17",
+      "superficie": 12585.01,
+      "situation": "prive_individu",
+      "longtitude": 34.6,
+      "latitude": 23.92
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 8,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 5,
+      "espece": 4,
+      "annee": 2021,
+      "date_creation": "2021-06-12T00:00:00",
+      "superficie": 4789.51,
+      "sup_labouree": 2995.93,
+      "sup_emblavee": 2884.82,
+      "sup_sinsitree": 315.16,
+      "sup_recoltee": 4319.27,
+      "sup_deserbee": 4799.47,
+      "prev_de_production": 9575.29,
+      "production": 6961.45,
+      "engrais_de_fond": 2880.82,
+      "engrais_de_couverture": 1379.29
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 9,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 5,
+      "espece": 5,
+      "annee": 2025,
+      "date_creation": "2025-07-09T00:00:00",
+      "superficie": 11274.79,
+      "sup_labouree": 4668.93,
+      "sup_emblavee": 4790.29,
+      "sup_sinsitree": 1071.97,
+      "sup_recoltee": 4690.7,
+      "sup_deserbee": 2574.36,
+      "prev_de_production": 2323.3,
+      "production": 5102.04,
+      "engrais_de_fond": 2592.17,
+      "engrais_de_couverture": 1631.04
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 6,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 1,
+      "nom": "explo_6",
+      "lieu": "lieu_41",
+      "superficie": 32365.57,
+      "situation": "prive_individu",
+      "longtitude": 15.41,
+      "latitude": 27.26
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 10,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 6,
+      "espece": 3,
+      "annee": 2022,
+      "date_creation": "2022-11-19T00:00:00",
+      "superficie": 5557.8,
+      "sup_labouree": 4689.09,
+      "sup_emblavee": 1623.83,
+      "sup_sinsitree": 3612.78,
+      "sup_recoltee": 2048.26,
+      "sup_deserbee": 2589.07,
+      "prev_de_production": 3566.6,
+      "production": 8556.76,
+      "engrais_de_fond": 781.06,
+      "engrais_de_couverture": 2713.76
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 7,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 2,
+      "nom": "explo_7",
+      "lieu": "lieu_95",
+      "superficie": 25609.1,
+      "situation": "prive_individu",
+      "longtitude": 16.55,
+      "latitude": 28.21
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 11,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 7,
+      "espece": 1,
+      "annee": 2023,
+      "date_creation": "2023-12-06T00:00:00",
+      "superficie": 17083.19,
+      "sup_labouree": 462.76,
+      "sup_emblavee": 923.5,
+      "sup_sinsitree": 4933.62,
+      "sup_recoltee": 1490.4,
+      "sup_deserbee": 2391.05,
+      "prev_de_production": 1783.06,
+      "production": 6208.39,
+      "engrais_de_fond": 2811.92,
+      "engrais_de_couverture": 1004.38
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 12,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 7,
+      "espece": 5,
+      "annee": 2017,
+      "date_creation": "2017-04-21T00:00:00",
+      "superficie": 13125.98,
+      "sup_labouree": 3278.18,
+      "sup_emblavee": 113.82,
+      "sup_sinsitree": 3573.38,
+      "sup_recoltee": 1079.36,
+      "sup_deserbee": 484.84,
+      "prev_de_production": 2990.05,
+      "production": 1478.0,
+      "engrais_de_fond": 1888.23,
+      "engrais_de_couverture": 747.09
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 8,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 3,
+      "nom": "explo_8",
+      "lieu": "lieu_98",
+      "superficie": 6150.03,
+      "situation": "prive_individu",
+      "longtitude": 15.65,
+      "latitude": 29.38
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 13,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 8,
+      "espece": 1,
+      "annee": 2016,
+      "date_creation": "2016-04-12T00:00:00",
+      "superficie": 9936.99,
+      "sup_labouree": 4413.22,
+      "sup_emblavee": 240.29,
+      "sup_sinsitree": 4537.58,
+      "sup_recoltee": 4181.2,
+      "sup_deserbee": 4692.35,
+      "prev_de_production": 8276.13,
+      "production": 4229.15,
+      "engrais_de_fond": 1837.96,
+      "engrais_de_couverture": 1423.75
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 9,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 1,
+      "nom": "explo_9",
+      "lieu": "lieu_24",
+      "superficie": 40249.29,
+      "situation": "location",
+      "longtitude": 13.02,
+      "latitude": 34.25
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 14,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 9,
+      "espece": 2,
+      "annee": 2021,
+      "date_creation": "2021-07-19T00:00:00",
+      "superficie": 17025.78,
+      "sup_labouree": 3595.82,
+      "sup_emblavee": 622.62,
+      "sup_sinsitree": 107.84,
+      "sup_recoltee": 3112.79,
+      "sup_deserbee": 4670.13,
+      "prev_de_production": 5576.66,
+      "production": 1225.35,
+      "engrais_de_fond": 544.53,
+      "engrais_de_couverture": 1953.45
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 15,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 9,
+      "espece": 3,
+      "annee": 2025,
+      "date_creation": "2025-01-09T00:00:00",
+      "superficie": 2671.44,
+      "sup_labouree": 1964.51,
+      "sup_emblavee": 1528.94,
+      "sup_sinsitree": 1813.34,
+      "sup_recoltee": 2611.83,
+      "sup_deserbee": 1396.64,
+      "prev_de_production": 5533.11,
+      "production": 1237.45,
+      "engrais_de_fond": 2499.57,
+      "engrais_de_couverture": 1264.42
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 10,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 1,
+      "nom": "explo_10",
+      "lieu": "lieu_71",
+      "superficie": 24004.9,
+      "situation": "prive_individu",
+      "longtitude": 10.7,
+      "latitude": 15.3
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 16,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 10,
+      "espece": 3,
+      "annee": 2016,
+      "date_creation": "2016-02-22T00:00:00",
+      "superficie": 1134.47,
+      "sup_labouree": 4511.85,
+      "sup_emblavee": 2161.44,
+      "sup_sinsitree": 1314.99,
+      "sup_recoltee": 4855.47,
+      "sup_deserbee": 2304.67,
+      "prev_de_production": 652.92,
+      "production": 1977.44,
+      "engrais_de_fond": 1523.03,
+      "engrais_de_couverture": 1700.29
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 17,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 10,
+      "espece": 4,
+      "annee": 2016,
+      "date_creation": "2016-02-11T00:00:00",
+      "superficie": 2351.82,
+      "sup_labouree": 3445.83,
+      "sup_emblavee": 4368.97,
+      "sup_sinsitree": 3006.77,
+      "sup_recoltee": 1270.68,
+      "sup_deserbee": 2899.28,
+      "prev_de_production": 6478.47,
+      "production": 8107.34,
+      "engrais_de_fond": 1967.62,
+      "engrais_de_couverture": 1470.69
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 18,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 10,
+      "espece": 5,
+      "annee": 2025,
+      "date_creation": "2025-09-09T00:00:00",
+      "superficie": 8537.05,
+      "sup_labouree": 2365.66,
+      "sup_emblavee": 1402.44,
+      "sup_sinsitree": 408.94,
+      "sup_recoltee": 2851.98,
+      "sup_deserbee": 1920.94,
+      "prev_de_production": 6145.26,
+      "production": 719.04,
+      "engrais_de_fond": 2947.64,
+      "engrais_de_couverture": 2212.8
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 11,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 3,
+      "nom": "explo_11",
+      "lieu": "lieu_3",
+      "superficie": 26951.28,
+      "situation": "location",
+      "longtitude": 22.05,
+      "latitude": 35.67
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 19,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 11,
+      "espece": 4,
+      "annee": 2021,
+      "date_creation": "2021-08-23T00:00:00",
+      "superficie": 14873.54,
+      "sup_labouree": 3551.38,
+      "sup_emblavee": 4128.78,
+      "sup_sinsitree": 2685.1,
+      "sup_recoltee": 553.38,
+      "sup_deserbee": 3609.97,
+      "prev_de_production": 1333.01,
+      "production": 8564.49,
+      "engrais_de_fond": 1211.07,
+      "engrais_de_couverture": 1221.91
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 12,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 1,
+      "nom": "explo_12",
+      "lieu": "lieu_69",
+      "superficie": 15193.26,
+      "situation": "prive_individu",
+      "longtitude": 11.33,
+      "latitude": 25.54
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 20,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 12,
+      "espece": 5,
+      "annee": 2021,
+      "date_creation": "2021-10-08T00:00:00",
+      "superficie": 14717.96,
+      "sup_labouree": 4592.34,
+      "sup_emblavee": 3852.58,
+      "sup_sinsitree": 1237.54,
+      "sup_recoltee": 1035.7,
+      "sup_deserbee": 1158.43,
+      "prev_de_production": 871.93,
+      "production": 9822.51,
+      "engrais_de_fond": 1179.42,
+      "engrais_de_couverture": 2066.79
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 21,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 12,
+      "espece": 2,
+      "annee": 2025,
+      "date_creation": "2025-05-22T00:00:00",
+      "superficie": 11645.15,
+      "sup_labouree": 4449.12,
+      "sup_emblavee": 979.51,
+      "sup_sinsitree": 157.69,
+      "sup_recoltee": 2252.71,
+      "sup_deserbee": 4266.21,
+      "prev_de_production": 1548.48,
+      "production": 1543.02,
+      "engrais_de_fond": 2969.18,
+      "engrais_de_couverture": 2823.66
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 13,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 3,
+      "nom": "explo_13",
+      "lieu": "lieu_62",
+      "superficie": 46251.26,
+      "situation": "location",
+      "longtitude": 12.52,
+      "latitude": 22.42
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 22,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 13,
+      "espece": 5,
+      "annee": 2017,
+      "date_creation": "2017-04-13T00:00:00",
+      "superficie": 18334.43,
+      "sup_labouree": 1277.56,
+      "sup_emblavee": 2469.14,
+      "sup_sinsitree": 377.26,
+      "sup_recoltee": 4676.23,
+      "sup_deserbee": 2605.68,
+      "prev_de_production": 5065.96,
+      "production": 5957.48,
+      "engrais_de_fond": 2801.77,
+      "engrais_de_couverture": 2300.49
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 23,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 13,
+      "espece": 3,
+      "annee": 2017,
+      "date_creation": "2017-08-05T00:00:00",
+      "superficie": 12344.0,
+      "sup_labouree": 3986.76,
+      "sup_emblavee": 1744.64,
+      "sup_sinsitree": 2797.25,
+      "sup_recoltee": 382.85,
+      "sup_deserbee": 3185.09,
+      "prev_de_production": 8695.52,
+      "production": 2793.8,
+      "engrais_de_fond": 501.12,
+      "engrais_de_couverture": 1806.44
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 14,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 2,
+      "nom": "explo_14",
+      "lieu": "lieu_90",
+      "superficie": 2269.88,
+      "situation": "location",
+      "longtitude": 21.58,
+      "latitude": 25.71
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 24,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 14,
+      "espece": 1,
+      "annee": 2024,
+      "date_creation": "2024-11-08T00:00:00",
+      "superficie": 13739.53,
+      "sup_labouree": 529.96,
+      "sup_emblavee": 1365.46,
+      "sup_sinsitree": 4192.98,
+      "sup_recoltee": 1812.47,
+      "sup_deserbee": 4853.86,
+      "prev_de_production": 4484.89,
+      "production": 7489.97,
+      "engrais_de_fond": 510.85,
+      "engrais_de_couverture": 2568.12
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 25,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 14,
+      "espece": 2,
+      "annee": 2023,
+      "date_creation": "2023-03-04T00:00:00",
+      "superficie": 6469.19,
+      "sup_labouree": 1882.76,
+      "sup_emblavee": 316.27,
+      "sup_sinsitree": 3641.52,
+      "sup_recoltee": 1047.74,
+      "sup_deserbee": 1287.18,
+      "prev_de_production": 558.29,
+      "production": 5069.76,
+      "engrais_de_fond": 2539.23,
+      "engrais_de_couverture": 832.86
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 26,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 14,
+      "espece": 5,
+      "annee": 2020,
+      "date_creation": "2020-04-18T00:00:00",
+      "superficie": 12492.71,
+      "sup_labouree": 2674.81,
+      "sup_emblavee": 4915.17,
+      "sup_sinsitree": 4159.31,
+      "sup_recoltee": 1285.18,
+      "sup_deserbee": 3883.16,
+      "prev_de_production": 2566.73,
+      "production": 4362.93,
+      "engrais_de_fond": 1435.21,
+      "engrais_de_couverture": 1159.71
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 15,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 2,
+      "nom": "explo_15",
+      "lieu": "lieu_64",
+      "superficie": 17699.17,
+      "situation": "prive_individu",
+      "longtitude": 18.03,
+      "latitude": 16.73
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 27,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 15,
+      "espece": 2,
+      "annee": 2022,
+      "date_creation": "2022-01-10T00:00:00",
+      "superficie": 14043.04,
+      "sup_labouree": 237.48,
+      "sup_emblavee": 1942.04,
+      "sup_sinsitree": 2119.19,
+      "sup_recoltee": 3054.37,
+      "sup_deserbee": 1343.54,
+      "prev_de_production": 6338.37,
+      "production": 5565.23,
+      "engrais_de_fond": 730.65,
+      "engrais_de_couverture": 2824.46
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 16,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 3,
+      "nom": "explo_16",
+      "lieu": "lieu_28",
+      "superficie": 32720.96,
+      "situation": "location",
+      "longtitude": 8.29,
+      "latitude": 24.07
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 28,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 16,
+      "espece": 3,
+      "annee": 2018,
+      "date_creation": "2018-02-02T00:00:00",
+      "superficie": 7973.71,
+      "sup_labouree": 961.6,
+      "sup_emblavee": 1025.37,
+      "sup_sinsitree": 2864.76,
+      "sup_recoltee": 814.3,
+      "sup_deserbee": 4923.5,
+      "prev_de_production": 6682.94,
+      "production": 7609.17,
+      "engrais_de_fond": 1485.08,
+      "engrais_de_couverture": 586.45
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 17,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 1603,
+      "agriculteur": 2,
+      "nom": "explo_17",
+      "lieu": "lieu_66",
+      "superficie": 10524.87,
+      "situation": "prive_individu",
+      "longtitude": 27.15,
+      "latitude": 23.83
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 29,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 17,
+      "espece": 1,
+      "annee": 2021,
+      "date_creation": "2021-10-01T00:00:00",
+      "superficie": 9935.12,
+      "sup_labouree": 1029.36,
+      "sup_emblavee": 1531.26,
+      "sup_sinsitree": 3930.18,
+      "sup_recoltee": 4073.03,
+      "sup_deserbee": 567.18,
+      "prev_de_production": 9548.2,
+      "production": 6052.18,
+      "engrais_de_fond": 1572.4,
+      "engrais_de_couverture": 2485.07
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 30,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 17,
+      "espece": 1,
+      "annee": 2018,
+      "date_creation": "2018-01-07T00:00:00",
+      "superficie": 13709.65,
+      "sup_labouree": 1541.02,
+      "sup_emblavee": 4555.95,
+      "sup_sinsitree": 3551.61,
+      "sup_recoltee": 3941.2,
+      "sup_deserbee": 4030.74,
+      "prev_de_production": 8424.96,
+      "production": 565.79,
+      "engrais_de_fond": 553.8,
+      "engrais_de_couverture": 2870.23
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 18,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 1,
+      "nom": "explo_18",
+      "lieu": "lieu_19",
+      "superficie": 12284.87,
+      "situation": "location",
+      "longtitude": 21.21,
+      "latitude": 20.31
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 31,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 18,
+      "espece": 4,
+      "annee": 2020,
+      "date_creation": "2020-03-26T00:00:00",
+      "superficie": 11846.01,
+      "sup_labouree": 4282.82,
+      "sup_emblavee": 1697.42,
+      "sup_sinsitree": 4811.78,
+      "sup_recoltee": 759.06,
+      "sup_deserbee": 3296.47,
+      "prev_de_production": 9902.55,
+      "production": 2141.6,
+      "engrais_de_fond": 2289.82,
+      "engrais_de_couverture": 2790.7
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 32,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 18,
+      "espece": 2,
+      "annee": 2019,
+      "date_creation": "2019-04-17T00:00:00",
+      "superficie": 16891.44,
+      "sup_labouree": 3111.55,
+      "sup_emblavee": 1826.74,
+      "sup_sinsitree": 3645.78,
+      "sup_recoltee": 231.63,
+      "sup_deserbee": 1723.23,
+      "prev_de_production": 3906.08,
+      "production": 7067.3,
+      "engrais_de_fond": 1117.14,
+      "engrais_de_couverture": 1074.48
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 33,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 18,
+      "espece": 1,
+      "annee": 2017,
+      "date_creation": "2017-06-27T00:00:00",
+      "superficie": 11611.82,
+      "sup_labouree": 407.1,
+      "sup_emblavee": 2386.69,
+      "sup_sinsitree": 3061.71,
+      "sup_recoltee": 773.04,
+      "sup_deserbee": 1483.6,
+      "prev_de_production": 2985.41,
+      "production": 9889.88,
+      "engrais_de_fond": 2065.84,
+      "engrais_de_couverture": 615.79
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 19,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 3,
+      "nom": "explo_19",
+      "lieu": "lieu_73",
+      "superficie": 16451.36,
+      "situation": "location",
+      "longtitude": 15.76,
+      "latitude": 32.12
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 34,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 19,
+      "espece": 3,
+      "annee": 2017,
+      "date_creation": "2017-12-18T00:00:00",
+      "superficie": 3229.22,
+      "sup_labouree": 2271.22,
+      "sup_emblavee": 3793.81,
+      "sup_sinsitree": 990.71,
+      "sup_recoltee": 144.9,
+      "sup_deserbee": 446.29,
+      "prev_de_production": 3884.12,
+      "production": 5107.24,
+      "engrais_de_fond": 1531.27,
+      "engrais_de_couverture": 917.72
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 35,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 19,
+      "espece": 1,
+      "annee": 2021,
+      "date_creation": "2021-03-27T00:00:00",
+      "superficie": 3389.41,
+      "sup_labouree": 625.66,
+      "sup_emblavee": 4925.19,
+      "sup_sinsitree": 909.96,
+      "sup_recoltee": 3860.6,
+      "sup_deserbee": 1769.43,
+      "prev_de_production": 7342.98,
+      "production": 7597.29,
+      "engrais_de_fond": 2341.58,
+      "engrais_de_couverture": 2158.17
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 36,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 19,
+      "espece": 2,
+      "annee": 2019,
+      "date_creation": "2019-11-07T00:00:00",
+      "superficie": 12506.02,
+      "sup_labouree": 181.5,
+      "sup_emblavee": 4427.48,
+      "sup_sinsitree": 3058.99,
+      "sup_recoltee": 362.39,
+      "sup_deserbee": 1302.13,
+      "prev_de_production": 6381.8,
+      "production": 7349.27,
+      "engrais_de_fond": 1732.33,
+      "engrais_de_couverture": 558.48
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 20,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 319,
+      "agriculteur": 3,
+      "nom": "explo_20",
+      "lieu": "lieu_20",
+      "superficie": 38764.49,
+      "situation": "prive_individu",
+      "longtitude": 6.6,
+      "latitude": 35.0
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 37,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 20,
+      "espece": 2,
+      "annee": 2023,
+      "date_creation": "2023-04-21T00:00:00",
+      "superficie": 10297.44,
+      "sup_labouree": 4257.19,
+      "sup_emblavee": 2179.75,
+      "sup_sinsitree": 393.75,
+      "sup_recoltee": 2670.64,
+      "sup_deserbee": 2655.99,
+      "prev_de_production": 4148.66,
+      "production": 2806.04,
+      "engrais_de_fond": 2778.46,
+      "engrais_de_couverture": 1208.64
+    }
+  }
+]

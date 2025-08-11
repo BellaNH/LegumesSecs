@@ -7,7 +7,7 @@ DEFAULT_PERMISSIONS = [
     {"model": "Utilisateur", "create": False, "retrieve": False, "update": False, "destroy": False},
 
 ]
-
+  
 
 def build_permissions(input_permissions):
     input_perm_dict = {p['model']: p for p in input_permissions}

@@ -5,7 +5,7 @@ from django.utils import timezone
 from safedelete.models import SafeDeleteModel
 from safedelete.config import SOFT_DELETE
 from safedelete.managers import SafeDeleteManager
-
+from decimal import Decimal
 class CustomManager(SafeDeleteManager,BaseUserManager):
     def _create_user(self, nom, prenom, email, password , nom_role, phoneNum,**extra_fields):      
         email = self.normalize_email(email)
@@ -185,7 +185,7 @@ class Objectif(SoftDeleteBaseModel):
     )
     annee = models.IntegerField()
     id=models.AutoField(primary_key=True)
-    objectif_production = models.FloatField()
+    objectif_production = models.DecimalField(max_digits=10, decimal_places=2)
     class Meta:
         ordering=['id']
 
@@ -201,7 +201,7 @@ class Exploitation(SoftDeleteBaseModel):
     id = models.AutoField(primary_key=True)
     nom = models.CharField(max_length=100)
     lieu= models.CharField(max_length=100)
-    superficie = models.FloatField(blank=False,null=False)
+    superficie = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
     situation=models.CharField(max_length=500)
     longtitude = models.FloatField(blank=False,null=False)
     latitude = models.FloatField(blank=False,null=False)
@@ -222,16 +222,16 @@ class Parcelle(SoftDeleteBaseModel):
     annee = models.IntegerField()
     id = models.AutoField(primary_key=True)
     date_creation = models.DateTimeField(default=timezone.now)
-    superficie = models.FloatField()
-    sup_labouree = models.FloatField(null=True,blank=True)
-    sup_emblavee = models.FloatField(null=True,blank=True)
-    sup_sinsitree = models.FloatField(null=True,blank=True)
-    sup_recoltee = models.FloatField(null=True,blank=True)
-    sup_deserbee = models.FloatField(null=True,blank=True)
-    prev_de_production = models.FloatField(null=True,blank=True)
-    production = models.FloatField(null=True,blank=True)
-    engrais_de_fond = models.FloatField(null=True,blank=True)
-    engrais_de_couverture = models.FloatField(null=True,blank=True)
+    superficie = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    sup_labouree = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    sup_emblavee = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    sup_sinsitree = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    sup_recoltee = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    sup_deserbee = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    prev_de_production = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    production = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    engrais_de_fond = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
+    engrais_de_couverture = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
     class Meta:
         ordering=["id"]
     def __str__(self):

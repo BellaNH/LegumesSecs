@@ -502,21 +502,28 @@ class TopWilayasByEspeceView(APIView):
             total_production=Sum("production")
         ).order_by("espece__nom", "-total_production")
 
-        result = []
-        espece_tracker = defaultdict(int)
+        result_dict = defaultdict(list)
 
         for row in queryset:
             espece = row["espece__nom"]
-            label = row[group_by]
-            if espece_tracker[espece] < 3:
-                result.append({
-                    "espece": espece,
-                    "label": label,
-                    "total_production": row["total_production"],
+            location = row[group_by]
+            production = row["total_production"]
+
+            if len(result_dict[espece]) < 3:
+                result_dict[espece].append({
+                    "label": location,
+                    "total_production": production
                 })
-                espece_tracker[espece] += 1
+
+        result = []
+        for espece, top_locations in result_dict.items():
+            result.append({
+                "espece": espece,
+                "top_locations": top_locations
+            })
 
         return Response(result)
+
 
 class SupLaboureeSinistreeProductionByEspeceView(APIView):
     permission_classes = [IsAuthenticated]
@@ -550,16 +557,23 @@ class SupLaboureeSinistreeProductionByEspeceView(APIView):
             if espece_name not in stats:
                 stats[espece_name] = {
                     "espece": espece_name,
-                    "total_sup_labouree": 0,
-                    "total_sup_sinistree": 0,
-                    "total_production": 0
+                    "total_sup_labouree": 0.0,
+                    "total_sup_sinistree": 0.0,
+                    "total_production": 0.0
                 }
 
             stats[espece_name]["total_sup_labouree"] += parcelle.sup_labouree or 0
             stats[espece_name]["total_sup_sinistree"] += parcelle.sup_sinsitree or 0
             stats[espece_name]["total_production"] += parcelle.production or 0
 
+        # Round values to two decimal places
+        for values in stats.values():
+            values["total_sup_labouree"] = round(values["total_sup_labouree"], 2)
+            values["total_sup_sinistree"] = round(values["total_sup_sinistree"], 2)
+            values["total_production"] = round(values["total_production"], 2)
+
         return Response(list(stats.values()))
+
 
 
 
@@ -678,7 +692,6 @@ class PrevProductionVsProductionView(APIView):
             except UserSubdivision.DoesNotExist:
                 return Response({"error": "Subdivision not assigned to this user"}, status=403)
 
-
         grouped_stats = parcelles.values("espece__nom").annotate(
             prev_de_production=Sum("prev_de_production"),
             production=Sum("production")
@@ -687,13 +700,14 @@ class PrevProductionVsProductionView(APIView):
         data = [
             {
                 "espece": item["espece__nom"],
-                "prev_de_production": item["prev_de_production"],
-                "production": item["production"],
+                "prev_de_production": round(item["prev_de_production"] or 0, 2),
+                "production": round(item["production"] or 0, 2),
             }
             for item in grouped_stats
         ]
 
         return Response(data)
+
             
 
         

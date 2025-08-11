@@ -1,0 +1,212 @@
+[
+  {
+    "model": "api.objectif",
+    "pk": 200,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 4,
+      "espece": 4,
+      "annee": 2017,
+      "objectif_production": 105997.1
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 201,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 17,
+      "espece": 2,
+      "annee": 2018,
+      "objectif_production": 79634.29
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 202,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 17,
+      "espece": 2,
+      "annee": 2017,
+      "objectif_production": 86832.57
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 203,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 2,
+      "espece": 1,
+      "annee": 2024,
+      "objectif_production": 85748.52
+    }
+  },
+  {
+    "model": "api.objectif",
+    "pk": 204,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "wilaya": 8,
+      "espece": 5,
+      "annee": 2022,
+      "objectif_production": 83798.74
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 10,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "extra_nom_10",
+      "prenom": "extra_prenom_10",
+      "phoneNum": 213100010,
+      "numero_carte_fellah": 400010
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 11,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "extra_nom_11",
+      "prenom": "extra_prenom_11",
+      "phoneNum": 213100011,
+      "numero_carte_fellah": 400011
+    }
+  },
+  {
+    "model": "api.agriculteur",
+    "pk": 12,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "nom": "extra_nom_12",
+      "prenom": "extra_prenom_12",
+      "phoneNum": 213100012,
+      "numero_carte_fellah": 400012
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 100,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 504,
+      "agriculteur": 11,
+      "nom": "extra_explo_100",
+      "lieu": "lieu_925",
+      "superficie": 2138.09,
+      "situation": "prive_individu",
+      "longtitude": 23.51,
+      "latitude": 20.69
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 150,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 100,
+      "espece": 4,
+      "annee": 2018,
+      "date_creation": "2018-07-16T00:00:00",
+      "superficie": 8026.54,
+      "sup_labouree": 2258.5,
+      "sup_emblavee": 1356.88,
+      "sup_sinsitree": 1015.99,
+      "sup_recoltee": 2910.9,
+      "sup_deserbee": 1917.96,
+      "prev_de_production": 3120.54,
+      "production": 1844.71,
+      "engrais_de_fond": 367.95,
+      "engrais_de_couverture": 1014.9
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 101,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 505,
+      "agriculteur": 11,
+      "nom": "extra_explo_101",
+      "lieu": "lieu_361",
+      "superficie": 9434.8,
+      "situation": "prive_individu",
+      "longtitude": 32.85,
+      "latitude": 34.19
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 151,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 101,
+      "espece": 1,
+      "annee": 2017,
+      "date_creation": "2017-12-23T00:00:00",
+      "superficie": 3953.87,
+      "sup_labouree": 1772.38,
+      "sup_emblavee": 2241.2,
+      "sup_sinsitree": 1950.06,
+      "sup_recoltee": 1029.11,
+      "sup_deserbee": 708.62,
+      "prev_de_production": 1409.47,
+      "production": 1642.55,
+      "engrais_de_fond": 449.61,
+      "engrais_de_couverture": 854.07
+    }
+  },
+  {
+    "model": "api.exploitation",
+    "pk": 102,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "commune": 504,
+      "agriculteur": 10,
+      "nom": "extra_explo_102",
+      "lieu": "lieu_703",
+      "superficie": 2306.82,
+      "situation": "location",
+      "longtitude": 25.53,
+      "latitude": 24.56
+    }
+  },
+  {
+    "model": "api.parcelle",
+    "pk": 152,
+    "fields": {
+      "deleted": null,
+      "deleted_by_cascade": false,
+      "exploitation": 102,
+      "espece": 4,
+      "annee": 2022,
+      "date_creation": "2022-07-16T00:00:00",
+      "superficie": 2160.52,
+      "sup_labouree": 2622.82,
+      "sup_emblavee": 1540.31,
+      "sup_sinsitree": 2412.47,
+      "sup_recoltee": 639.93,
+      "sup_deserbee": 163.63,
+      "prev_de_production": 1954.49,
+      "production": 2823.51,
+      "engrais_de_fond": 355.48,
+      "engrais_de_couverture": 825.68
+    }
+  }
+]
