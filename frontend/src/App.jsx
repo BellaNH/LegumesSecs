@@ -40,8 +40,7 @@ function App() {
       {isAuthenticated && <SidebarCopy drawerWidth={147} />}
       <Routes>
         <Route path="/slider" element={<Slider/>} />
-        <Route path="" element={<DashboardDisplayed/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="" element={isAuthenticated?<DashboardDisplayed/>:<Login/>} />
         <Route path="/role" element={<Role />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/dashboard" element={<DashboardDisplayed />} />

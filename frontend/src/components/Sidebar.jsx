@@ -78,7 +78,7 @@ const Sidebar = ()=>{
         <p>Voir le profil</p>
       </NavLink>
       <NavLink
-        to="/login"
+        to=""
         onClick={logout}
         className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
       >

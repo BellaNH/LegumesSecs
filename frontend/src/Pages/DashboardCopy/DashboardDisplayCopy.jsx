@@ -213,7 +213,7 @@ useEffect(() => {
   return (
     <div 
       key={statCardIndex}
-      className={` w-full h-fit pb-4 flex flex-col gap-4 transition-all duration-500 ease-in-out transform absolute
+      className={`w-full h-fit pb-4 flex flex-col gap-4 transition-all duration-500 ease-in-out transform absolute
         ${position === "active-slide" ? "translate-y-0 opacity-100 z-30" : ""}
         ${position === "last-slide" ? "translate-y-[-100%] opacity-0 " : ""}
         ${position === "next-slide" ? "translate-y-[100%] opacity-0 " : "opacity-0"}
