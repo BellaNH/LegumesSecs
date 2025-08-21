@@ -27,8 +27,7 @@ import { Navigate } from 'react-router-dom'
 import Slider from "./Pages/Utilisateur/PermissionSlider/Slider.jsx"
 import EspeceSurfaceChart from './Pages/Dashboard/EspeceSurfaceChart .jsx'
 import Role from "./Pages/Role/Role.jsx"
-import DashboardDisplayCopy from './Pages/DashboardCopy/DashboardDisplayCopy.jsx'
-import SidebarCopy from "./components/SidebarCopy.jsx"
+
 function App() {
   const [add,setAdd]= useState(0)
   const {isAuthenticated} = useGlobalContext()
@@ -37,14 +36,13 @@ function App() {
   
   return (
     <div className='flex h-[100vh] overflow-y-auto'>
-      {isAuthenticated && <SidebarCopy drawerWidth={147} />}
+      {isAuthenticated && <Sidebar drawerWidth={147} />}
       <Routes>
         <Route path="/slider" element={<Slider/>} />
         <Route path="" element={isAuthenticated?<DashboardDisplayed/>:<Login/>} />
         <Route path="/role" element={<Role />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/dashboard" element={<DashboardDisplayed />} />
-        <Route path="/dashboardCopy" element={<DashboardDisplayCopy />} />
         <Route path="/admin-create-user" element={<AjouterUtilisateur />} />
         <Route path="/utilisateurs" element={<Utilisateurs />} />
         <Route path="/ajouter-utilisateur" element={<AjouterUtilisateur />} />
