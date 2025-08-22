@@ -102,7 +102,8 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS=[
      'http://localhost:5173',
-     "https://legumessecs.netlify.app"
+     "https://legumessecs.netlify.app",
+     "https://aminephone.netlify.app"
 ]
 ROOT_URLCONF = 'crud.urls'
 
