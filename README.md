@@ -27,3 +27,7 @@ Key improvements:
 - **Backend:** Django REST Framework (DRF) with JWT Authentication  
 - **Database:** PostgreSQL  
 
+
+https://github.com/user-attachments/assets/af0ccea8-db9c-4f5d-a473-4a0a16160fe5
+
+
