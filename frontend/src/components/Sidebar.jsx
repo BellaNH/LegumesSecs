@@ -37,7 +37,6 @@ const Sidebar = ()=>{
         setAnchorEl(null);
     };
 
-    console.log(user)
     const [search, setSearch] = useState("");
 
     return (
@@ -45,7 +44,9 @@ const Sidebar = ()=>{
   style={{
     scrollbarWidth: "none",
   }}
-  className="z-50 w-[20%] h-screen sticky top-0 overflow-y-auto bg-gradient-to-b from-green-800 to-green-600 pt-8 pl-6 text-white flex flex-col gap-4 shadow-xl"
+  className="z-50 w-full md:w-[20%] h-screen sticky top-0 overflow-y-auto bg-gradient-to-b from-green-800 to-green-600 pt-8 pl-6 text-white flex flex-col gap-4 shadow-xl"
+  role="navigation"
+  aria-label="Navigation principale"
 >
 
   <div>

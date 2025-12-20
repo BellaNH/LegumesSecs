@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
-import axios from "axios";
-import { useGlobalContext } from "../context"
+import { useGlobalContext } from "../context";
+import authService from "../services/api/authService";
 import {
   Box,
   TextField,
@@ -28,42 +28,49 @@ export default function Login() {
   const [showNewPassword, setShowNewPassword] = useState(false);
 
   const navigate = useNavigate();
-  const {login,user, setUser,setIsAuthenticated,url} = useGlobalContext()
+  const { login } = useGlobalContext();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Appel à l'API pour obtenir les tokens
-      const response = await axios.post(`${url}/api/token/`, {
-        email,
-        password,
-      });
-      const { access, refresh } = response.data;  // Récupérer le token d'accès
-      console.log(access)
-      await login(access)
+      const data = await authService.login(email, password);
+      const { access, refresh } = data;
+      await login(access, refresh);
       setTimeout(() => {
         navigate("/dashboard")
       }, 1500);
-}
+    }
     catch (error) {
-      console.error("Erreur lors de la connexion :", error);
-      alert("Identifiants invalides");
+      const errorMessage = error.response?.data?.error?.message || 
+                          error.response?.data?.detail || 
+                          error.response?.data?.error || 
+                          "Identifiants invalides";
+      alert(errorMessage);
     }
   }
-   const handlePasswordReset = async () => {
+  
+  const handlePasswordReset = async () => {
+    if (!resetEmail || !newPassword) {
+      alert("Veuillez remplir tous les champs");
+      return;
+    }
+    
+    if (newPassword.length < 8) {
+      alert("Le mot de passe doit contenir au moins 8 caractères");
+      return;
+    }
+    
     try {
-      await axios.post("http://localhost:8000/api/reset-password/", {
-        email: resetEmail,
-        new_password: newPassword,
-      });
-
+      await authService.resetPassword(resetEmail, newPassword);
       alert("Mot de passe réinitialisé avec succès ✅");
       setForgotOpen(false);
       setNewPassword("");
       setResetEmail("");
     } catch (error) {
-      console.error("Erreur lors de la réinitialisation :", error);
-      alert("Erreur ❌ Vérifie l'email ou réessaie.");
+      const errorMessage = error.response?.data?.error?.message || 
+                          error.response?.data?.error || 
+                          "Erreur lors de la réinitialisation";
+      alert(errorMessage);
     }
   };
 return (

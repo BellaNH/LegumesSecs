@@ -6,17 +6,40 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .permissions import *
+from .validators import (
+    validate_phone_number, validate_email_format, validate_positive_decimal,
+    validate_decimal_range, validate_year, validate_latitude, validate_longitude,
+    sanitize_string, validate_text_length, validate_password_strength
+)
+from decimal import Decimal
 
 
 
 
 class EspeceSerializer(serializers.ModelSerializer):
+    nom = serializers.CharField(max_length=100, required=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le nom de l'espèce")
+        if not value:
+            raise serializers.ValidationError("Le nom de l'espèce est requis.")
+        return value
+    
     class Meta :
         model = Espece
         fields = "__all__"
 
 
 class WilayaSerializer(serializers.ModelSerializer):
+    nom = serializers.CharField(max_length=100, required=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le nom de la wilaya")
+        if not value:
+            raise serializers.ValidationError("Le nom de la wilaya est requis.")
+        return value
     
     class Meta :
         model = Wilaya
@@ -36,6 +59,17 @@ class ObjectifSerializer(serializers.ModelSerializer):
         source='wilaya',
         write_only=True
     )
+    annee = serializers.IntegerField(required=True)
+    objectif_production = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+
+    def validate_annee(self, value):
+        validate_year(value)
+        return value
+    
+    def validate_objectif_production(self, value):
+        validate_positive_decimal(value, "L'objectif de production")
+        validate_decimal_range(value, min_value=Decimal('0'), max_value=Decimal('99999999.99'), field_name="L'objectif de production")
+        return value
 
     class Meta:
         model = Objectif
@@ -47,17 +81,44 @@ class SubDivisionSerializer(serializers.ModelSerializer):
         queryset=Wilaya.objects.all(), source='wilaya', write_only=True
     )
     wilaya = WilayaSerializer(read_only=True)
+    nom = serializers.CharField(max_length=100, required=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le nom de la subdivision")
+        if not value:
+            raise serializers.ValidationError("Le nom de la subdivision est requis.")
+        return value
+    
     class Meta :
         model = SubDivision
         fields = "__all__"
 
 
 class RoleSerializer(serializers.ModelSerializer):
+    nom = serializers.CharField(max_length=100, required=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le nom du rôle")
+        if not value:
+            raise serializers.ValidationError("Le nom du rôle est requis.")
+        return value
+    
     class Meta :
         model = Role
         fields = "__all__"
 
 class PermissionsSerializer(serializers.ModelSerializer):
+    model = serializers.CharField(max_length=15, required=True)
+    
+    def validate_model(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 15, "Le nom du modèle")
+        if not value:
+            raise serializers.ValidationError("Le nom du modèle est requis.")
+        return value
+    
     class Meta:
         model = Permissions
         fields = ['model', 'create', 'retrieve', 'update', 'destroy']
@@ -69,29 +130,59 @@ class CustomUserSerializer(serializers.ModelSerializer):
         queryset=Role.objects.all(), source='role', write_only=True
     )
     role= RoleSerializer(read_only=True)
-    password = serializers.CharField(write_only=True) 
-    wilaya = serializers.IntegerField(write_only=True, required=False,allow_null=True)
-    subdivision = serializers.IntegerField(write_only=True, required=False,allow_null=True)
-    class Meta:
-        model = CustomUser
-        fields = ["id",'nom','prenom','email','password','phoneNum','role','role_id','permissions', 'wilaya', 'subdivision']
+    password = serializers.CharField(write_only=True, required=False, allow_blank=True)
+    nom = serializers.CharField(max_length=15, required=True)
+    prenom = serializers.CharField(max_length=15, required=True)
+    email = serializers.EmailField(required=True)
+    phoneNum = serializers.IntegerField(required=False, allow_null=True)
+    wilaya = serializers.IntegerField(write_only=True, required=False, allow_null=True)
+    subdivision = serializers.IntegerField(write_only=True, required=False, allow_null=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 15, "Le nom")
+        if not value:
+            raise serializers.ValidationError("Le nom est requis.")
+        return value
+    
+    def validate_prenom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 15, "Le prénom")
+        if not value:
+            raise serializers.ValidationError("Le prénom est requis.")
+        return value
+    
+    def validate_email(self, value):
+        validate_email_format(value)
+        return value.lower().strip()
+    
+    def validate_phoneNum(self, value):
+        if value is not None:
+            validate_phone_number(value)
+        return value
+    
+    def validate_password(self, value):
+        if value and value.strip():
+            validate_password_strength(value)
+        return value
+    
     def validate(self, attrs):
-
         attrs['wilaya'] = self.initial_data.get('wilaya', None)
         attrs['subdivision'] = self.initial_data.get('subdivision', None)
-        print(self.initial_data)
         return attrs   
 
     def create(self, validated_data):
         permissions_data = validated_data.pop('permissions')
         final_permissions = build_permissions(permissions_data)
-        wilaya_id = validated_data.pop('wilaya',None)
-        subdiv_id = validated_data.pop('subdivision',None)
-        role =  RoleSerializer(read_only=True)
+        wilaya_id = validated_data.pop('wilaya', None)
+        subdiv_id = validated_data.pop('subdivision', None)
         password = validated_data.pop("password", None)
+        
+        if not password:
+            raise serializers.ValidationError({"password": "Le mot de passe est requis lors de la création."})
+        
         user = CustomUser(**validated_data)
-        if password:
-            user.set_password(password)  
+        user.set_password(password)
         user.save()
         for perm_data in final_permissions:
             Permissions.objects.create(user=user, **perm_data)
@@ -185,16 +276,35 @@ class UserSerializer(serializers.ModelSerializer):
         ]
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    email = serializers.EmailField()
-    password = serializers.CharField()
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(required=True, write_only=True)
+
+    def validate_email(self, value):
+        if not value:
+            raise serializers.ValidationError("L'email est requis.")
+        validate_email_format(value)
+        return value.lower().strip()
+    
+    def validate_password(self, value):
+        if not value:
+            raise serializers.ValidationError("Le mot de passe est requis.")
+        if len(value) < 1:
+            raise serializers.ValidationError("Le mot de passe ne peut pas être vide.")
+        return value
 
     def validate(self, attrs):
         email = attrs.get('email')
         password = attrs.get('password')
 
+        if not email or not password:
+            raise serializers.ValidationError("Email et mot de passe sont requis.")
+
         user = authenticate(email=email, password=password)
         if user is None:
             raise serializers.ValidationError("Email ou mot de passe invalide")
+        
+        if not user.is_active:
+            raise serializers.ValidationError("Ce compte utilisateur est désactivé.")
 
         refresh = RefreshToken.for_user(user)
         return {
@@ -207,13 +317,13 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
                 'role': user.role.nom if user.role else None,
             }
         }
-        @classmethod
-        def get_token(cls, user):
-            token = super().get_token(user)
-            token['email'] = user.email
-            token['role'] = user.role  # ou nom_role si tu préfères
-            return token 
-    User = get_user_model()
+    
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['email'] = user.email
+        token['role'] = user.role.nom if user.role else None
+        return token
 
 
 class UserWilayaSerializer(serializers.ModelSerializer):
@@ -244,9 +354,17 @@ class UserSubdivSerializer(serializers.ModelSerializer):
 class CommuneSerializer(serializers.ModelSerializer):
     subdiv_id = serializers.PrimaryKeyRelatedField(
         queryset=SubDivision.objects.all(), 
-        source='subdivision', write_only=True,required=False
+        source='subdivision', write_only=True, required=False
     )
     subdivision = SubDivisionSerializer(read_only=True)
+    nom = serializers.CharField(max_length=100, required=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le nom de la commune")
+        if not value:
+            raise serializers.ValidationError("Le nom de la commune est requis.")
+        return value
 
     class Meta:
         model = Commune
@@ -258,6 +376,44 @@ class ExploitationSerializer(serializers.ModelSerializer):
     commune_id = serializers.PrimaryKeyRelatedField(
         queryset=Commune.objects.all(), source='commune', write_only=True
     )
+    nom = serializers.CharField(max_length=100, required=True)
+    lieu = serializers.CharField(max_length=100, required=True)
+    superficie = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    situation = serializers.CharField(max_length=500, required=True)
+    longtitude = serializers.FloatField(required=True)
+    latitude = serializers.FloatField(required=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le nom de l'exploitation")
+        if not value:
+            raise serializers.ValidationError("Le nom de l'exploitation est requis.")
+        return value
+    
+    def validate_lieu(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le lieu")
+        if not value:
+            raise serializers.ValidationError("Le lieu est requis.")
+        return value
+    
+    def validate_situation(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 500, "La situation")
+        return value
+    
+    def validate_superficie(self, value):
+        validate_positive_decimal(value, "La superficie")
+        validate_decimal_range(value, min_value=Decimal('0'), max_value=Decimal('99999999.99'), field_name="La superficie")
+        return value
+    
+    def validate_latitude(self, value):
+        validate_latitude(value)
+        return value
+    
+    def validate_longtitude(self, value):
+        validate_longitude(value)
+        return value
 
     class Meta :
         model = Exploitation
@@ -265,37 +421,103 @@ class ExploitationSerializer(serializers.ModelSerializer):
 
 
 class ParcelleSerializer(serializers.ModelSerializer):
-    espece = EspeceSerializer(read_only=True)  # For nested read
-    espece_id = serializers.PrimaryKeyRelatedField(  # For write operations
+    espece = EspeceSerializer(read_only=True)
+    espece_id = serializers.PrimaryKeyRelatedField(
         source='espece',
         queryset=Espece.objects.all(),
         write_only=True
     )
+    exploitation = serializers.PrimaryKeyRelatedField(
+        queryset=Exploitation.objects.all(), write_only=True
+    )
+    annee = serializers.IntegerField(required=True)
+    superficie = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    sup_labouree = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    sup_emblavee = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    sup_sinsitree = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    sup_recoltee = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    sup_deserbee = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    prev_de_production = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    production = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    engrais_de_fond = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    engrais_de_couverture = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
+    
+    def validate_annee(self, value):
+        validate_year(value)
+        return value
+    
+    def validate_superficie(self, value):
+        validate_positive_decimal(value, "La superficie")
+        validate_decimal_range(value, min_value=Decimal('0'), max_value=Decimal('99999999.99'), field_name="La superficie")
+        return value
+    
+    def validate_sup_labouree(self, value):
+        validate_positive_decimal(value, "La superficie labourée")
+        return value
+    
+    def validate_sup_emblavee(self, value):
+        validate_positive_decimal(value, "La superficie emblavée")
+        return value
+    
+    def validate_sup_sinsitree(self, value):
+        validate_positive_decimal(value, "La superficie sinistrée")
+        return value
+    
+    def validate_sup_recoltee(self, value):
+        validate_positive_decimal(value, "La superficie récoltée")
+        return value
+    
+    def validate_sup_deserbee(self, value):
+        validate_positive_decimal(value, "La superficie désherbée")
+        return value
+    
+    def validate_prev_de_production(self, value):
+        validate_positive_decimal(value, "La prévision de production")
+        return value
+    
+    def validate_production(self, value):
+        validate_positive_decimal(value, "La production")
+        return value
+    
+    def validate_engrais_de_fond(self, value):
+        validate_positive_decimal(value, "L'engrais de fond")
+        return value
+    
+    def validate_engrais_de_couverture(self, value):
+        validate_positive_decimal(value, "L'engrais de couverture")
+        return value
+    
+    def validate(self, attrs):
+        superficie = attrs.get('superficie')
+        exploitation = attrs.get('exploitation')
+        
+        if exploitation and superficie:
+            if superficie > exploitation.superficie:
+                raise serializers.ValidationError({
+                    'superficie': "La superficie de la parcelle doit être inférieure ou égale à la superficie totale de l'exploitation."
+                })
+        
+        surface_fields = {
+            'sup_labouree': attrs.get('sup_labouree'),
+            'sup_emblavee': attrs.get('sup_emblavee'),
+            'sup_sinsitree': attrs.get('sup_sinsitree'),
+            'sup_recoltee': attrs.get('sup_recoltee'),
+            'sup_deserbee': attrs.get('sup_deserbee'),
+        }
+        
+        for field_name, field_value in surface_fields.items():
+            if field_value and superficie and field_value > superficie:
+                raise serializers.ValidationError({
+                    field_name: f"La {field_name.replace('_', ' ')} doit être inférieure ou égale à la superficie totale."
+                })
+        
+        return attrs
+    
     class Meta :
         model = Parcelle
         fields = "__all__"
-    exploitation  = serializers.PrimaryKeyRelatedField(
-        queryset= Exploitation.objects.all(), write_only=True)
+    
     def create(self, validated_data):
-        fields = [
-            'superficie',
-            'sup_labouree',
-            'sup_emblavee',
-            'sup_sinsitree',
-            'sup_recoltee',
-        ]
-
-        
-        for field in ['sup_labouree','sup_emblavee','sup_sinsitree','sup_recoltee']:
-            value = validated_data.get(field)
-            if value > validated_data.get('superficie'):
-                raise serializers.ValidationError({field: f"{field} doit etre inferieur ou egale a la superficie totale"})
-        
-        exploitation = validated_data.get('exploitation')
-        if (validated_data.get('superficie') > exploitation.superficie):
-            raise serializers.ValidationError("la superficie de la parcelle doit etre inferieur ou egale a la superficie totale de l'exploitation")
-
-
         return super().create(validated_data)
 class ExploitationNestedSerializer(serializers.ModelSerializer):
     class Meta:
@@ -307,6 +529,34 @@ class AgriculteurSerializer(serializers.ModelSerializer):
     subdivision = serializers.SerializerMethodField()
     wilaya = serializers.SerializerMethodField()
     exploitation = serializers.SerializerMethodField()
+    nom = serializers.CharField(max_length=100, required=True)
+    prenom = serializers.CharField(max_length=100, required=True)
+    phoneNum = serializers.IntegerField(required=True)
+    numero_carte_fellah = serializers.IntegerField(required=False, allow_null=True)
+    
+    def validate_nom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le nom")
+        if not value:
+            raise serializers.ValidationError("Le nom est requis.")
+        return value
+    
+    def validate_prenom(self, value):
+        value = sanitize_string(value)
+        validate_text_length(value, 100, "Le prénom")
+        if not value:
+            raise serializers.ValidationError("Le prénom est requis.")
+        return value
+    
+    def validate_phoneNum(self, value):
+        validate_phone_number(value)
+        return value
+    
+    def validate_numero_carte_fellah(self, value):
+        if value is not None:
+            if value < 0:
+                raise serializers.ValidationError("Le numéro de carte fellah doit être positif.")
+        return value
 
     class Meta:
         model = Agriculteur

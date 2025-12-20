@@ -1,25 +1,24 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets, status
+from rest_framework.decorators import api_view, permission_classes, action
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny, BasePermission
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenBlacklistView
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import make_password
+from django.db.models import Sum, F
+from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
+# from django_ratelimit.decorators import ratelimit  # Temporarily disabled for MVP
+from collections import defaultdict
+import logging
 from .models import *
 from .serializers import *
 from .scoping import *
 from .permissions import DEFAULT_PERMISSIONS
-from rest_framework import viewsets
-from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAuthenticated ,IsAdminUser,AllowAny,BasePermission
-from rest_framework.response import Response
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view,permission_classes
-from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
-from rest_framework.views import APIView
-from django.db.models import Sum, F
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework import status
-from collections import defaultdict
-from django.contrib.auth.hashers import make_password
-from django.shortcuts import get_object_or_404
+
+logger = logging.getLogger(__name__)
 
 class HasModelPermissions(BasePermission):
     message = "Action non autorisée."
@@ -90,22 +89,50 @@ class UserList(viewsets.ModelViewSet):
 
 class ResetPasswordView(APIView):
     permission_classes=[AllowAny]
+    
+    # @method_decorator(ratelimit(key='ip', rate='5/h', method='POST'))  # Temporarily disabled for MVP
     def post(self, request):
         email = request.data.get("email")
         new_password = request.data.get("new_password")
 
         if not email or not new_password:
-            return Response({"error": "Email et nouveau mot de passe requis."}, status=status.HTTP_400_BAD_REQUEST)
+            logger.warning(f"Password reset attempt with missing fields: email={bool(email)}")
+            return Response({
+                "error": {
+                    "code": "validation_error",
+                    "message": "Email et nouveau mot de passe requis.",
+                    "status_code": 400
+                }
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        if len(new_password) < 8:
+            logger.warning(f"Password reset attempt with weak password for email: {email}")
+            return Response({
+                "error": {
+                    "code": "validation_error",
+                    "message": "Le mot de passe doit contenir au moins 8 caractères.",
+                    "status_code": 400
+                }
+            }, status=status.HTTP_400_BAD_REQUEST)
 
         try:
-            user = User.objects.get(email=email)
-        except user.DoesNotExist:
-            return Response({"error": "Utilisateur non trouvé avec cet email."}, status=status.HTTP_404_NOT_FOUND)
-
-        user.password = make_password(new_password)
-        user.save()
-
-        return Response({"success": "Mot de passe mis à jour avec succès."}, status=status.HTTP_200_OK)
+            user = CustomUser.objects.get(email=email)
+            user.set_password(new_password)
+            user.save()
+            logger.info(f"Password reset successful for user: {email}")
+            return Response({"success": "Mot de passe mis à jour avec succès."}, status=status.HTTP_200_OK)
+        except CustomUser.DoesNotExist:
+            logger.warning(f"Password reset attempt for non-existent user: {email}")
+            return Response({
+                "error": {
+                    "code": "not_found",
+                    "message": "Utilisateur non trouvé avec cet email.",
+                    "status_code": 404
+                }
+            }, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            logger.error(f"Error resetting password for {email}: {str(e)}", exc_info=True)
+            raise
 
 
 
@@ -113,27 +140,31 @@ class CurrentUserView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        user = request.user
-        user_data = UserSerializer(user).data
-        print(user.role.nom)
-        if user.role.nom.lower() == "agent_dsa":
-            try:
-                user_wilaya = UserWilaya.objects.get(user=user)
-                user_data['wilaya'] = WilayaSerializer(user_wilaya.wilaya).data
-            except UserWilaya.DoesNotExist:
-                user_data['wilaya'] = None
+        try:
+            user = request.user
+            user_data = UserSerializer(user).data
+            
+            if user.role.nom.lower() == "agent_dsa":
+                try:
+                    user_wilaya = UserWilaya.objects.get(user=user)
+                    user_data['wilaya'] = WilayaSerializer(user_wilaya.wilaya).data
+                except UserWilaya.DoesNotExist:
+                    user_data['wilaya'] = None
 
-        elif user.role.nom.lower() == "agent_subdivision":
-            try:
-                user_subdiv = UserSubdivision.objects.get(user=user)
-                subdivision_obj = user_subdiv.subdivision
-                user_data['subdivision'] = SubDivisionSerializer(subdivision_obj).data
-                user_data['wilaya'] = WilayaSerializer(subdivision_obj.wilaya).data
-            except UserSubdivision.DoesNotExist:
-                user_data['subdivision'] = None
-                user_data['wilaya'] = None
-        print(user_data )
-        return Response(user_data)
+            elif user.role.nom.lower() == "agent_subdivision":
+                try:
+                    user_subdiv = UserSubdivision.objects.get(user=user)
+                    subdivision_obj = user_subdiv.subdivision
+                    user_data['subdivision'] = SubDivisionSerializer(subdivision_obj).data
+                    user_data['wilaya'] = WilayaSerializer(subdivision_obj.wilaya).data
+                except UserSubdivision.DoesNotExist:
+                    user_data['subdivision'] = None
+                    user_data['wilaya'] = None
+            
+            return Response(user_data)
+        except Exception as e:
+            logger.error(f"Error fetching current user: {str(e)}", exc_info=True)
+            raise
 
 
 
@@ -160,7 +191,14 @@ def login_user(request):
             }
         })
         else:
-            return Response({"error": "Identifiants incorrects"}, status=401)
+            logger.warning(f"Failed login attempt for email: {email}")
+            return Response({
+                "error": {
+                    "code": "authentication_failed",
+                    "message": "Identifiants incorrects",
+                    "status_code": 401
+                }
+            }, status=status.HTTP_401_UNAUTHORIZED)
 
 
 
@@ -198,7 +236,33 @@ class PermissionList(viewsets.ModelViewSet):
 
 class TokenObtainPairView(TokenObtainPairView):
     permission_classes = [AllowAny]
-    serializer_class = CustomTokenObtainPairSerializer    
+    serializer_class = CustomTokenObtainPairSerializer
+    
+    # @method_decorator(ratelimit(key='ip', rate='5/m', method='POST'))  # Temporarily disabled for MVP
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        try:
+            refresh_token = request.data.get("refresh_token")
+            if refresh_token:
+                token = RefreshToken(refresh_token)
+                token.blacklist()
+            logger.info(f"User {request.user.email} logged out successfully")
+            return Response({"success": "Déconnexion réussie."}, status=status.HTTP_200_OK)
+        except Exception as e:
+            logger.error(f"Error during logout for user {request.user.email}: {str(e)}", exc_info=True)
+            return Response({
+                "error": {
+                    "code": "logout_error",
+                    "message": "Erreur lors de la déconnexion.",
+                    "status_code": 400
+                }
+            }, status=status.HTTP_400_BAD_REQUEST)    
 
 
 class EspeceList(viewsets.ModelViewSet):
@@ -331,19 +395,33 @@ class ObjectifList(viewsets.ModelViewSet):
 class SubDivisionsByWilayaView(generics.ListAPIView):
     serializer_class = SubDivisionSerializer
     permission_classes=[IsAuthenticated]
+    
     def get_queryset(self):
         wilaya_id = self.request.query_params.get('wilaya')
         if wilaya_id:
-            return SubDivision.objects.filter(wilaya__id=wilaya_id)
+            try:
+                wilaya_id = int(wilaya_id)
+                if wilaya_id <= 0:
+                    return SubDivision.objects.none()
+                return SubDivision.objects.filter(wilaya__id=wilaya_id)
+            except (ValueError, TypeError):
+                return SubDivision.objects.none()
         return SubDivision.objects.none()
 
 class communeByWilayaView(generics.ListAPIView):
     serializer_class = CommuneSerializer
     permission_classes=[IsAuthenticated]
+    
     def get_queryset(self):
         wilaya_id = self.request.query_params.get('wilaya')
         if wilaya_id:
-            return Commune.objects.filter(subdivision__wilaya__id=wilaya_id)
+            try:
+                wilaya_id = int(wilaya_id)
+                if wilaya_id <= 0:
+                    return Commune.objects.none()
+                return Commune.objects.filter(subdivision__wilaya__id=wilaya_id)
+            except (ValueError, TypeError):
+                return Commune.objects.none()
         return Commune.objects.none()
 
 class RoleList(viewsets.ModelViewSet):
@@ -359,11 +437,18 @@ class RoleList(viewsets.ModelViewSet):
 
 class CommunesBySubdivisionView(generics.ListAPIView):
     serializer_class = CommuneSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         subdiv_id = self.request.query_params.get('subdivision')
         if subdiv_id:
-            return Commune.objects.filter(subdivision__id=subdiv_id)
+            try:
+                subdiv_id = int(subdiv_id)
+                if subdiv_id <= 0:
+                    return Commune.objects.none()
+                return Commune.objects.filter(subdivision__id=subdiv_id)
+            except (ValueError, TypeError):
+                return Commune.objects.none()
         return Commune.objects.none()
 
 
@@ -586,7 +671,7 @@ class ExploitationWithParcelledList(viewsets.ModelViewSet):
         user = self.request.user
         queryset = Exploitation.objects.all()
         role_nom = user.role.nom.lower()
-        print(role_nom)
+        
         if role_nom == "agent_dsa":
             try:
                 user_wilaya = UserWilaya.objects.get(user=user).wilaya
@@ -624,11 +709,28 @@ class ExploitationFilteredList(generics.ListAPIView):
         commune_id = self.request.query_params.get('commune')
 
         if wilaya_id:
-            queryset = queryset.filter(commune__subdivision__wilaya__id=wilaya_id)
+            try:
+                wilaya_id = int(wilaya_id)
+                if wilaya_id > 0:
+                    queryset = queryset.filter(commune__subdivision__wilaya__id=wilaya_id)
+            except (ValueError, TypeError):
+                pass
+        
         if subdivision_id:
-            queryset = queryset.filter(commune__subdivision__id=subdivision_id)
+            try:
+                subdivision_id = int(subdivision_id)
+                if subdivision_id > 0:
+                    queryset = queryset.filter(commune__subdivision__id=subdivision_id)
+            except (ValueError, TypeError):
+                pass
+        
         if commune_id:
-            queryset = queryset.filter(commune__id=commune_id)
+            try:
+                commune_id = int(commune_id)
+                if commune_id > 0:
+                    queryset = queryset.filter(commune__id=commune_id)
+            except (ValueError, TypeError):
+                pass
 
         return queryset
 
@@ -645,20 +747,37 @@ class AgriculteurFilteredList(generics.ListAPIView):
         commune_id = self.request.query_params.get('commune')
 
         if wilaya_id:
-            queryset = queryset.filter(
-                exploitations__commune__subdivision__wilaya__id=wilaya_id,
-                exploitations__deleted__isnull=True
-            )
+            try:
+                wilaya_id = int(wilaya_id)
+                if wilaya_id > 0:
+                    queryset = queryset.filter(
+                        exploitations__commune__subdivision__wilaya__id=wilaya_id,
+                        exploitations__deleted__isnull=True
+                    )
+            except (ValueError, TypeError):
+                pass
+        
         if subdivision_id:
-            queryset = queryset.filter(
-                exploitations__commune__subdivision__id=subdivision_id,
-                exploitations__deleted__isnull=True
-            )
+            try:
+                subdivision_id = int(subdivision_id)
+                if subdivision_id > 0:
+                    queryset = queryset.filter(
+                        exploitations__commune__subdivision__id=subdivision_id,
+                        exploitations__deleted__isnull=True
+                    )
+            except (ValueError, TypeError):
+                pass
+        
         if commune_id:
-            queryset = queryset.filter(
-                exploitations__commune__id=commune_id,
-                exploitations__deleted__isnull=True
-            )
+            try:
+                commune_id = int(commune_id)
+                if commune_id > 0:
+                    queryset = queryset.filter(
+                        exploitations__commune__id=commune_id,
+                        exploitations__deleted__isnull=True
+                    )
+            except (ValueError, TypeError):
+                pass
 
         return queryset.distinct()
 
@@ -681,7 +800,14 @@ class PrevProductionVsProductionView(APIView):
                     exploitation__commune__subdivision__wilaya=user_wilaya
                 )
             except UserWilaya.DoesNotExist:
-                return Response({"error": "Wilaya not assigned to this user"}, status=403)
+                logger.warning(f"User {user.email} (agent_dsa) has no assigned wilaya")
+                return Response({
+                    "error": {
+                        "code": "permission_denied",
+                        "message": "Wilaya non assignée à cet utilisateur",
+                        "status_code": 403
+                    }
+                }, status=status.HTTP_403_FORBIDDEN)
 
         elif role_name == "agent_subdivision":
             try:
@@ -690,7 +816,14 @@ class PrevProductionVsProductionView(APIView):
                     exploitation__commune__subdivision=user_subdivision
                 )
             except UserSubdivision.DoesNotExist:
-                return Response({"error": "Subdivision not assigned to this user"}, status=403)
+                logger.warning(f"User {user.email} (agent_subdivision) has no assigned subdivision")
+                return Response({
+                    "error": {
+                        "code": "permission_denied",
+                        "message": "Subdivision non assignée à cet utilisateur",
+                        "status_code": 403
+                    }
+                }, status=status.HTTP_403_FORBIDDEN)
 
         grouped_stats = parcelles.values("espece__nom").annotate(
             prev_de_production=Sum("prev_de_production"),

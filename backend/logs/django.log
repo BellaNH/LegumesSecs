@@ -1,0 +1,30 @@
+INFO 2025-12-10 21:31:07,465 autoreload Watching for file changes with StatReloader
+INFO 2025-12-12 22:12:12,968 autoreload Watching for file changes with StatReloader
+INFO 2025-12-19 18:56:34,467 autoreload Watching for file changes with StatReloader
+INFO 2025-12-19 19:25:28,885 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\__init__.py changed, reloading.
+INFO 2025-12-19 19:25:52,258 autoreload Watching for file changes with StatReloader
+INFO 2025-12-19 19:29:19,091 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\base.py changed, reloading.
+INFO 2025-12-19 19:29:22,798 autoreload Watching for file changes with StatReloader
+INFO 2025-12-19 21:35:35,278 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\base.py changed, reloading.
+INFO 2025-12-19 21:36:05,246 autoreload Watching for file changes with StatReloader
+INFO 2025-12-19 21:36:31,477 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\__init__.py changed, reloading.
+INFO 2025-12-19 21:36:35,892 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 18:04:55,801 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:00:42,982 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:05:47,343 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:08:26,071 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\development.py changed, reloading.
+INFO 2025-12-20 19:08:28,082 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:08:33,261 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\development.py changed, reloading.
+INFO 2025-12-20 19:08:34,560 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:09:15,039 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\development.py changed, reloading.
+INFO 2025-12-20 19:09:19,288 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:09:24,554 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\development.py changed, reloading.
+INFO 2025-12-20 19:09:27,704 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:13:43,900 autoreload C:\LegumeSec\LegumeSec\backend\crud\settings\base.py changed, reloading.
+INFO 2025-12-20 19:13:49,681 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:13:52,920 autoreload C:\LegumeSec\LegumeSec\backend\api\views.py changed, reloading.
+INFO 2025-12-20 19:13:56,306 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:13:59,284 autoreload C:\LegumeSec\LegumeSec\backend\api\views.py changed, reloading.
+INFO 2025-12-20 19:14:03,604 autoreload Watching for file changes with StatReloader
+INFO 2025-12-20 19:14:10,590 autoreload C:\LegumeSec\LegumeSec\backend\api\views.py changed, reloading.
+INFO 2025-12-20 19:14:16,371 autoreload Watching for file changes with StatReloader

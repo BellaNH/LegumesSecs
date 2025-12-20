@@ -12,7 +12,6 @@ const [prevProdVsProductionData,setPrevProdVsProductionData] = useState("")
 
   useEffect(()=>{
        const fetchPrevVsProduction = async ()=>{
-        console.log(user)
         if(user){
         try {
               const response =   await axios.get(
@@ -23,11 +22,10 @@ const [prevProdVsProductionData,setPrevProdVsProductionData] = useState("")
                     },
                   }
                 )
-                console.log(response.data)
              setPrevProdVsProductionData(response.data)
              
               } catch (error) {
-                console.error( error);
+                // Error handled by interceptor
               }
             }  
       }

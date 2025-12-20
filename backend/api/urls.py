@@ -23,6 +23,7 @@ urlpatterns = [
     path('',include(router.urls)),
     path('login/',login_user,name='login'),
     path("reset-password/", ResetPasswordView.as_view(), name="reset-password"),
+    path("logout/", LogoutView.as_view(), name="logout"),
     path('filterCommuneBySubdiv/',CommunesBySubdivisionView.as_view(),name='CBS'),
     path('filterSubdivBywilaya/',SubDivisionsByWilayaView.as_view(),name='SBW'),
     path('filterCommuneBywilaya/',communeByWilayaView.as_view(),name='CBW'),

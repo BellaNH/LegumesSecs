@@ -21,9 +21,7 @@ class CustomManager(SafeDeleteManager,BaseUserManager):
             phoneNum=phoneNum,
             **extra_fields
         )
-        print(f"{user.password}")
         user.set_password(password)
-        print(f"{user.password}")
         user.save(using=self._db)
 
                   
@@ -87,6 +85,9 @@ class SubDivision(SoftDeleteBaseModel):
     nom = models.CharField(max_length=100)
     class Meta:
         ordering=['id',"wilaya_id"]
+        indexes = [
+            models.Index(fields=['wilaya']),
+        ]
     def __str__(self):
          return  f"{self.nom}"
 
@@ -98,6 +99,9 @@ class Commune (SoftDeleteBaseModel):
     nom = models.CharField(max_length=100)
     class Meta:
         ordering=['id',"subdivision_id"]
+        indexes = [
+            models.Index(fields=['subdivision']),
+        ]
     def __str__(self):
          return  f"{self.nom}"
 
@@ -188,6 +192,11 @@ class Objectif(SoftDeleteBaseModel):
     objectif_production = models.DecimalField(max_digits=10, decimal_places=2)
     class Meta:
         ordering=['id']
+        indexes = [
+            models.Index(fields=['wilaya', 'annee']),
+            models.Index(fields=['espece', 'annee']),
+            models.Index(fields=['wilaya', 'espece']),
+        ]
 
      
 class Exploitation(SoftDeleteBaseModel):
@@ -207,6 +216,10 @@ class Exploitation(SoftDeleteBaseModel):
     latitude = models.FloatField(blank=False,null=False)
     class Meta:
         ordering=["id"]
+        indexes = [
+            models.Index(fields=['commune']),
+            models.Index(fields=['agriculteur']),
+        ]
     def __str__(self):
         return self.nom
 
@@ -234,6 +247,12 @@ class Parcelle(SoftDeleteBaseModel):
     engrais_de_couverture = models.DecimalField(max_digits=10, decimal_places=2,blank=False,null=False)
     class Meta:
         ordering=["id"]
+        indexes = [
+            models.Index(fields=['espece', 'annee']),
+            models.Index(fields=['exploitation', 'annee']),
+            models.Index(fields=['annee']),
+            models.Index(fields=['espece']),
+        ]
     def __str__(self):
         return f"{self.exploitation} {self.espece} {self.annee}"
 

@@ -35,7 +35,6 @@ export default function DashboardDisplay() {
 
  useEffect(()=>{
     const fetchTotalNumActiveAgri = async ()=>{
-      console.log(user)
     if(user){
     try {
           const response =   await axios.get(
@@ -46,16 +45,14 @@ export default function DashboardDisplay() {
                 },
               }
             )
-            console.log(response.data)
           setTotalAgri(response.data.count)
           } catch (error) {
-            console.error( error);
+            // Error handled by interceptor
           }
         }
   }
 
   const fetchSuperficieData = async ()=>{
-      console.log(user)
     if(user){
     try {
           const response =   await axios.get(
@@ -66,17 +63,15 @@ export default function DashboardDisplay() {
                 },
               }
             )
-            console.log(response.data)
           setSuperficieData(response.data)
           } catch (error) {
-            console.error( error);
+            // Error handled by interceptor
           }
         }
   }
- 
+
 
   const fetchYearlyProductionPerEspece = async ()=>{
-      console.log(user)
     if(user){
     try {
           const response =   await axios.get(
@@ -87,17 +82,14 @@ export default function DashboardDisplay() {
                 },
               }
             )
-            console.log(response.data)
          setYearlyProduct(response.data)
-         
           } catch (error) {
-            console.error( error);
+            // Error handled by interceptor
           }
         }  
   }
 
    const fetchSupLabSiniProduction = async ()=>{
-    console.log(user)
     if(user){
     try {
           const response =   await axios.get(
@@ -108,11 +100,9 @@ export default function DashboardDisplay() {
                 },
               }
             )
-            console.log(response.data)
          setAggregatedSupStats(response.data)
-         
           } catch (error) {
-            console.error( error);
+            // Error handled by interceptor
           }
         }  
   }
@@ -146,9 +136,6 @@ useEffect(() => {
     }
   }, [yearlyProduct]);
 
-  useEffect(() => {
-    console.log(transformedData);
-  }, [transformedData]);
 
 
  const [index, setIndex] = useState(0);

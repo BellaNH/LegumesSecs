@@ -12,7 +12,6 @@ export default function TopWilaya() {
 
   useEffect(()=>{
        const fetchTopThreeWilayas = async ()=>{
-      console.log(user)
     if(user){
     try {
           const response =   await axios.get(
@@ -23,11 +22,10 @@ export default function TopWilaya() {
                 },
               }
             )
-        console.log(response.data)
         setTopThreeWilaya(response.data)
          
           } catch (error) {
-            console.error( error);
+            // Error handled by interceptor
           }
         } 
   }

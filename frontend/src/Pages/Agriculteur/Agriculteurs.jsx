@@ -58,17 +58,11 @@ const Agriculteurs = ()=>{
 
     const navigate = useNavigate()
     const handleSelectExploi = (id)=>{
-        console.log(id)
         if(id){
             setSelectedExploi(id)
             navigate("/exploitations")
         }
-        
     }
-
-
-
-    useEffect(()=>{console.log(selectedAgriculteur)},[selectedAgriculteur])
 
     const showMenu = (e,id)=>{
         const clickedId = e.currentTarget.id
@@ -97,7 +91,6 @@ const Agriculteurs = ()=>{
          )
          setSuccessMessage(`Agriculteur supprimé avec succès ✅`);
          setOpenSuccess(true);
-         console.log(response.data)
          fetchAgriculteurs()
        } catch (error) {
         setErrorMessage("Erreur lors de la suppression d'agiculteur");
@@ -116,55 +109,38 @@ const Agriculteurs = ()=>{
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }
         });
-        console.log(response.data);
         setAgriculteurs(response.data)
     } catch (error) {
-        console.log(error);
+        // Error handled by interceptor
     }
 };
     
     const filterSubdivByWilaya = async (selectedWilaya)=>{
-        console.log(selectedWilaya)
         if(selectedWilaya){
         try{  
-            console.log(`${url}/api/filterSubdivBywilaya/?wilaya=${selectedWilaya}`)        
             const response = await axios.get(`${url}/api/filterSubdivBywilaya/?wilaya=${selectedWilaya}`,
             {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
-        }
-            
-        )
-        
-        console.log(response)
+        })
         setFilteredSubdiv(response.data)
-     
-        
     }catch(error){
-            console.log(error)
+        // Error handled by interceptor
         }
     }}
     const filterCommuneByWilaya = async (selectedWilaya)=>{
-        console.log(selectedWilaya)
         if(selectedWilaya){
         try{  
-            console.log(`${url}/api/filterCommuneBywilaya/?wilaya=${selectedWilaya}`)        
             const response = await axios.get(`${url}/api/filterCommuneBywilaya/?wilaya=${selectedWilaya}`,
             {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
-        }
-            
-        )
-        
-        console.log(response)
+        })
         setFilteredCommune(response.data)
-        
-        
     }catch(error){
-            console.log(error)
+        // Error handled by interceptor
         }
     }}
     const filterCommuneBySubdiv = async (selectedSubdiv)=>{
@@ -175,14 +151,10 @@ const Agriculteurs = ()=>{
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
-        }
-        )
-        
-     
-    console.log(response)
+        })
     setFilteredCommune(response.data)  
     }catch(error){
-            console.log(error)
+        // Error handled by interceptor
         }
     }} 
 
@@ -219,11 +191,6 @@ const Agriculteurs = ()=>{
         }
 
      }
-    useEffect(()=>{console.log(openedAgriculteurId)},[openedAgriculteurId])
-    useEffect(()=>{console.log(targetWilaya)},[targetWilaya])
-    useEffect(()=>{console.log(targetSubdiv)},[targetSubdiv])
-    useEffect(()=>{console.log(targetCommune)},[targetCommune])
-    useEffect(()=>{console.log(agriculteurs)},[agriculteurs])
     
     return (
       <div style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} 
@@ -342,7 +309,6 @@ const Agriculteurs = ()=>{
 
  
     <p className="text-sm">{agri.numero_carte_fellah}</p>
-   {console.log(agri?.exploitation?.nom)}
     {agri.exploitation   ? 
        <Link
       to="/exploitations"

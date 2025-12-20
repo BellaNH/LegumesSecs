@@ -2,24 +2,29 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
-import sys
-import dj_database_url
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv()
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+# Load environment variables from .env file
+load_dotenv(BASE_DIR / '.env')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-0&%5bbdbv67g*@cer2)^bl#!wd@&)n&@p%302ej615xro5+tz*'
+# SECRET_KEY must be set in environment
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    raise ValueError(
+        "SECRET_KEY environment variable is not set. "
+        "Please create a .env file in the backend directory and set SECRET_KEY. "
+        "See .env.example for reference."
+    )
 
-DEBUG = True
+# DEBUG defaults to False for security
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-SECRET_KEY = 'your-very-secret-key'
+# Parse ALLOWED_HOSTS from comma-separated string
+ALLOWED_HOSTS_STR = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost')
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',') if host.strip()]
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','legumessecs.onrender.com']
-
+# Database configuration from environment variables
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -27,12 +32,20 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'PORT': os.getenv('DB_PORT', '5432'),
         'OPTIONS': {
             'sslmode': 'require',
         },
     }
 }
+
+# Validate database configuration
+if not all([DATABASES['default']['NAME'], DATABASES['default']['USER'], 
+            DATABASES['default']['HOST'], DATABASES['default']['PASSWORD']]):
+    raise ValueError(
+        "Database configuration incomplete. "
+        "Please set DB_NAME, DB_USER, DB_HOST, and DB_PASSWORD in your .env file."
+    )
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,21 +54,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'django_ratelimit',
     'safedelete',
     'coverage',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'api',
 ]
 
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=3000),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-    "ROTATE_REFRESH_TOKENS": False,
-    "BLACKLIST_AFTER_ROTATION": False,
-    "UPDATE_LAST_LOGIN": False,
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": True,
 
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
@@ -82,7 +97,7 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 
-    "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
+    "TOKEN_OBTAIN_SERIALIZER": "api.serializers.CustomTokenObtainPairSerializer",
     "TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSerializer",
     "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
     "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
@@ -93,18 +108,21 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'api.middleware.RequestLoggingMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'api.middleware.ErrorHandlingMiddleware',
 ]
-CORS_ALLOWED_ORIGINS=[
-     'http://localhost:5173',
-     "https://legumessecs.netlify.app",
-     "https://aminephone.netlify.app"
-]
+# CORS configuration from environment
+CORS_ALLOWED_ORIGINS_STR = os.getenv(
+    'CORS_ALLOWED_ORIGINS', 
+    'http://localhost:5173,https://legumessecs.netlify.app,https://aminephone.netlify.app'
+)
+CORS_ALLOWED_ORIGINS = [origin.strip() for origin in CORS_ALLOWED_ORIGINS_STR.split(',') if origin.strip()]
 ROOT_URLCONF = 'crud.urls'
 
 TEMPLATES = [
@@ -130,8 +148,9 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-if os.getenv("USE_TEST_DB") =="1":
-    DATABASES["default"] = DATABASES["test_db"]
+# Optional test database configuration
+if os.getenv("USE_TEST_DB", "0") == "1":
+    DATABASES["default"] = DATABASES.get("test_db", DATABASES["default"])
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -176,6 +195,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'EXCEPTION_HANDLER': 'api.exceptions.custom_exception_handler',
 }
 
 # Default primary key field type
@@ -188,3 +208,64 @@ AUTHENTICATION_BACKENDS = [
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL='api.CustomUser'
+
+# Logging configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'django.log',
+            'formatter': 'verbose',
+        },
+        'api_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'api.log',
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'api': {
+            'handlers': ['console', 'api_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
