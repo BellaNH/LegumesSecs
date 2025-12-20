@@ -240,7 +240,11 @@ class TokenObtainPairView(TokenObtainPairView):
     
     # @method_decorator(ratelimit(key='ip', rate='5/m', method='POST'))  # Temporarily disabled for MVP
     def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
+        try:
+            return super().post(request, *args, **kwargs)
+        except Exception as e:
+            logger.error(f"TokenObtainPairView error: {str(e)}", exc_info=True)
+            raise
 
 
 class LogoutView(APIView):
