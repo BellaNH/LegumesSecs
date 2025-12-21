@@ -1,7 +1,7 @@
 from rest_framework_simplejwt.views import (TokenRefreshView, TokenBlacklistView)
 from django.contrib import admin
 from django.urls import path, include 
-from api.views import TokenObtainPairView  # Use custom TokenObtainPairView
+from api.views import TokenObtainPairView, CurrentUserView  # Use custom views
 urlpatterns = [
     path('api/', include('api.urls',namespace='api')),
     path('', include('rest_framework.urls',namespace='rest_framework')),
