@@ -63,3 +63,8 @@ def get_communes(wilaya_id=None, subdivision_id=None, user=None):
 
 
 
+
+
+
+
+
