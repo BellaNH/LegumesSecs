@@ -218,12 +218,18 @@ For production deployment, see [Deployment Guide](./operations/deployment.md).
 ## Next Steps
 
 - ✅ [Configuration Guide](./configuration.md)
-- ✅ [Development Guide](./operations/development.md)
+- ✅ [Deployment Guide](./operations/deployment.md)
 - ✅ [API Documentation](./backend/api-reference.md)
 
 ---
 
 **Installation complete?** Continue to [Configuration Guide](./configuration.md).
+
+
+
+
+
+
 
 
 

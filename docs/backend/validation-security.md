@@ -259,12 +259,17 @@ if error:
 ## Related Documentation
 
 - [API Reference](./api-reference.md) - Endpoint details
-- [Settings Guide](./settings.md) - Security configuration
-- [Error Handling Guide](../guides/error-handling.md) - Error patterns
+- [Authentication & Authorization](./authentication.md) - Security implementation
 
 ---
 
-**Security concerns?** Review [Settings Guide](./settings.md) for security configuration.
+**Security concerns?** Review [Configuration Guide](../configuration.md) for environment setup.
+
+
+
+
+
+
 
 
 

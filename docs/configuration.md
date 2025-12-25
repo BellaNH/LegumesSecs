@@ -213,13 +213,18 @@ python manage.py shell
 
 ## Next Steps
 
-- ✅ [Environment Variables Reference](./operations/environment-variables.md)
-- ✅ [Development Guide](./operations/development.md)
 - ✅ [Deployment Guide](./operations/deployment.md)
+- ✅ [Installation Guide](./installation.md)
 
 ---
 
-**Configuration complete?** Continue to [Development Guide](./operations/development.md).
+**Configuration complete?** Continue to [Deployment Guide](./operations/deployment.md) for production setup.
+
+
+
+
+
+
 
 
 

@@ -260,14 +260,20 @@ Wilaya → SubDivision → Commune → Exploitation → Parcelle
 
 ## Related Documentation
 
-- [Backend Architecture](./backend/architecture.md)
-- [Frontend Architecture](./frontend/architecture.md)
 - [API Reference](./backend/api-reference.md)
-- [Database Models](./backend/models.md)
+- [Backend Authentication](./backend/authentication.md)
+- [Frontend Service Layer](./frontend/service-layer.md)
+- [Frontend Components](./frontend/components.md)
 
 ---
 
-**Want to dive deeper?** Check out [Backend Architecture](./backend/architecture.md) and [Frontend Architecture](./frontend/architecture.md).
+**Want to dive deeper?** Check out [API Reference](./backend/api-reference.md) and [Frontend Components](./frontend/components.md).
+
+
+
+
+
+
 
 
 

@@ -13,14 +13,7 @@ Before you begin, ensure you have the following installed:
 
 ## Quick Start (5 minutes)
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/LegumeSec.git
-cd LegumeSec
-```
-
-### 2. Backend Setup
+### 1. Backend Setup
 
 ```bash
 # Navigate to backend directory
@@ -90,7 +83,7 @@ Frontend will be running at `http://localhost:5173`
 ## Next Steps
 
 - 📖 Read the [Installation Guide](./installation.md) for detailed setup
-- 🔧 Configure [Environment Variables](./operations/environment-variables.md)
+- 🔧 Configure [Environment Variables](./configuration.md)
 - 📚 Explore [API Documentation](./backend/api-reference.md)
 - 🎨 Learn about [Components](./frontend/components.md)
 
@@ -112,13 +105,19 @@ Frontend will be running at `http://localhost:5173`
 
 ## Need Help?
 
-- Check [Troubleshooting Guide](./troubleshooting.md)
-- See [FAQ](./faq.md)
-- Review [Configuration Guide](./configuration.md)
+- Review [Configuration Guide](./configuration.md) for environment setup
+- Check [Deployment Guide](./operations/deployment.md) for production setup
+- See [API Reference](./backend/api-reference.md) for endpoint documentation
 
 ---
 
 **Ready for more?** Continue to [Installation Guide](./installation.md) for detailed setup instructions.
+
+
+
+
+
+
 
 
 

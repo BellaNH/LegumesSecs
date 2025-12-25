@@ -378,12 +378,17 @@ services/api/
 ## Related Documentation
 
 - [Components Guide](./components.md) - Using services in components
-- [State Management](./state-management.md) - Context API usage
-- [Error Handling Guide](../guides/error-handling.md) - Error patterns
+- [API Reference](../backend/api-reference.md) - Backend endpoints
 
 ---
 
-**Need examples?** Check [UX Patterns](./ux-patterns.md) for component examples.
+**Need examples?** Check [Components Guide](./components.md) for component examples.
+
+
+
+
+
+
 
 
 

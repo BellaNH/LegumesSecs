@@ -610,14 +610,18 @@ All list endpoints support pagination:
 
 ## Related Documentation
 
-- [Authentication Guide](./guides/authentication.md)
-- [API Usage Guide](./guides/api-usage.md)
-- [Pagination & Filtering](./guides/pagination-filtering.md)
-- [Error Handling](./guides/error-handling.md)
+- [Authentication & Authorization](./authentication.md)
+- [Validation & Security](./validation-security.md)
 
 ---
 
-**Need examples?** Check [API Usage Guide](./guides/api-usage.md) for practical examples.
+**Need more details?** Check [Authentication & Authorization](./authentication.md) for authentication examples.
+
+
+
+
+
+
 
 
 

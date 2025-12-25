@@ -420,13 +420,19 @@ ls -la /home/legumsec/LegumeSec/backend/legumsec.sock
 
 ## Related Documentation
 
-- [Environment Variables](./environment-variables.md)
 - [Configuration Guide](../configuration.md)
-- [Troubleshooting](../troubleshooting.md)
+- [Installation Guide](../installation.md)
+- [API Reference](../backend/api-reference.md)
 
 ---
 
 **Deployment complete?** Verify everything works and set up monitoring.
+
+
+
+
+
+
 
 
 

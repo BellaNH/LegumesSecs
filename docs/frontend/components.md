@@ -516,12 +516,17 @@ function AgriculteursList() {
 ## Related Documentation
 
 - [Service Layer](./service-layer.md) - API services
-- [UX Patterns](./ux-patterns.md) - Common patterns
-- [Styling Guide](./styling.md) - Component styling
+- [API Reference](../backend/api-reference.md) - Backend endpoints
 
 ---
 
-**Need more examples?** Check [UX Patterns](./ux-patterns.md) for complete examples.
+**Need more examples?** Check [Service Layer](./service-layer.md) for API integration examples.
+
+
+
+
+
+
 
 
 
