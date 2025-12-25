@@ -125,12 +125,12 @@ The settings module path remains `crud.settings`, so:
 
 2. **Configure ALLOWED_HOSTS**
    ```ini
-   ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com
+   ALLOWED_HOSTS=legumessecs.onrender.com
    ```
 
 3. **Configure CORS**
    ```ini
-   CORS_ALLOWED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
+   CORS_ALLOWED_ORIGINS=https://legumessecs.netlify.app
    ```
 
 4. **Ensure DEBUG is False**

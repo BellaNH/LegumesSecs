@@ -2,7 +2,7 @@
 
 Overview of LegumeSec system architecture and design decisions.
 
-## High-Level Architecture
+## Monolithic architecture
 
 ```
 ┌─────────────────┐         ┌─────────────────┐
@@ -35,7 +35,6 @@ Overview of LegumeSec system architecture and design decisions.
 - **API Framework:** Django REST Framework
 - **Database:** PostgreSQL 12+
 - **Authentication:** JWT (djangorestframework-simplejwt)
-- **Rate Limiting:** django-ratelimit
 - **Soft Delete:** django-safedelete
 - **CORS:** django-cors-headers
 
@@ -54,8 +53,7 @@ Overview of LegumeSec system architecture and design decisions.
 ### Security First
 - Environment-based configuration
 - Input validation and sanitization
-- Role-based access control
-- Rate limiting
+- Role-based and Permission-based access control
 - Security headers
 
 ## Frontend Architecture
@@ -80,7 +78,7 @@ frontend/src/
 ### State Management
 - **Global State:** Context API (Auth, Data, UI)
 - **Local State:** useState for component-specific state
-- **Server State:** API services with caching
+- **Server State:** API services
 
 ### Data Flow
 ```
@@ -134,7 +132,7 @@ HTTP Request → Middleware → URL Router → View → Service → Model → Da
 ### Authorization
 - **Role-Based Access Control (RBAC)**
 - **Model-Level Permissions**
-- **User Scope Filtering** (Wilaya/Subdivision)
+- **Location-Based Access Control** (Wilaya/Subdivision/Commune)
 
 ## Data Model
 
@@ -152,8 +150,8 @@ HTTP Request → Middleware → URL Router → View → Service → Model → Da
 ### Relationships
 ```
 Wilaya → SubDivision → Commune → Exploitation → Parcelle
-                              ↑
-                         Agriculteur
+                                         ↑
+                                  Agriculteur
 ```
 
 ## Security Architecture
@@ -167,7 +165,6 @@ Wilaya → SubDivision → Commune → Exploitation → Parcelle
 ### Security Features
 - JWT token authentication
 - Token refresh and blacklisting
-- Rate limiting
 - Input validation and sanitization
 - SQL injection prevention (ORM)
 - XSS protection
@@ -180,7 +177,6 @@ Wilaya → SubDivision → Commune → Exploitation → Parcelle
 - Database indexes on frequently queried fields
 - Query optimization (select_related, prefetch_related)
 - Pagination for list endpoints
-- Caching (can be added)
 
 ### Frontend
 - Code splitting with React.lazy()
@@ -208,9 +204,9 @@ Wilaya → SubDivision → Commune → Exploitation → Parcelle
 - File-based logging
 
 ### Production
-- **Backend:** Gunicorn + Nginx
-- **Frontend:** Nginx static files
-- **Database:** PostgreSQL (managed or self-hosted)
+- **Backend:** Render (Gunicorn + Nginx)
+- **Frontend:** Netlify (static files)
+- **Database:** Supabase (PostgreSQL managed)
 - **Static/Media:** Cloud storage (optional)
 
 ## Design Patterns Used
@@ -267,7 +263,6 @@ Wilaya → SubDivision → Commune → Exploitation → Parcelle
 
 ---
 
-**Want to dive deeper?** Check out [API Reference](./backend/api-reference.md) and [Frontend Components](./frontend/components.md).
 
 
 

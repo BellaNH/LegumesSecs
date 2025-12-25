@@ -111,8 +111,8 @@ DB_USER=legumsec_user
 DB_PASSWORD=<secure-password>
 DB_HOST=localhost
 DB_PORT=5432
-ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com
-CORS_ALLOWED_ORIGINS=https://yourdomain.com
+ALLOWED_HOSTS=legumessecs.onrender.com
+CORS_ALLOWED_ORIGINS=https://legumessecs.netlify.app
 ```
 
 ### 4. Run Migrations
@@ -149,7 +149,7 @@ npm run build
 
 Create `.env.production`:
 ```bash
-VITE_API_URL=https://api.yourdomain.com
+VITE_API_URL=https://legumessecs.onrender.com
 ```
 
 Rebuild:
@@ -210,7 +210,7 @@ Create `/etc/nginx/sites-available/legumsec`:
 # Backend API
 server {
     listen 80;
-    server_name api.yourdomain.com;
+    server_name legumessecs.onrender.com;
 
     location / {
         include proxy_params;
@@ -230,10 +230,11 @@ server {
     }
 }
 
-# Frontend
+# Frontend (Note: In production, frontend is hosted on Netlify at https://legumessecs.netlify.app)
+# This configuration is for self-hosting only
 server {
     listen 80;
-    server_name yourdomain.com www.yourdomain.com;
+    server_name legumessecs.netlify.app;
 
     root /home/legumsec/LegumeSec/frontend/dist;
     index index.html;
@@ -269,8 +270,8 @@ sudo apt install certbot python3-certbot-nginx
 ### 2. Obtain SSL Certificate
 
 ```bash
-sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
-sudo certbot --nginx -d api.yourdomain.com
+sudo certbot --nginx -d legumessecs.netlify.app
+sudo certbot --nginx -d legumessecs.onrender.com
 ```
 
 ### 3. Auto-Renewal

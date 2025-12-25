@@ -50,20 +50,20 @@ When access token expires (401 error), the system automatically refreshes:
 ### Role Types
 
 1. **admin** - Full system access
-2. **agent_dsa** - Access limited to assigned Wilaya
-3. **agent_subdivision** - Access limited to assigned Subdivision
-4. **user** - Basic user (customizable permissions)
+2. **agent_central** - Full access (central level)
+3. **agent_dsa** - Access limited to assigned Wilaya
+4. **agent_subdivision** - Access limited to assigned Subdivision
 
 ### Role Hierarchy
 
 ```
 admin (full access)
   ↓
+agent_central (full access)
+  ↓
 agent_dsa (wilaya scope)
   ↓
 agent_subdivision (subdivision scope)
-  ↓
-user (permission-based)
 ```
 
 ## Permissions System
@@ -236,7 +236,9 @@ def get_queryset(self):
     queryset = MyModel.objects.all()
     
     # Automatic filtering based on role
-    if user.role.nom.lower() == "agent_dsa":
+    if user.role.nom.lower() in ["admin", "agent_central"]:
+        # Full access, no filtering
+    elif user.role.nom.lower() == "agent_dsa":
         # Filtered to user's wilaya
     elif user.role.nom.lower() == "agent_subdivision":
         # Filtered to user's subdivision
@@ -250,11 +252,6 @@ def get_queryset(self):
 - **Token rotation** - New refresh token on refresh
 - **Token blacklisting** - Logged out tokens are blacklisted
 - **Secure storage** - Tokens in localStorage (consider httpOnly cookies for production)
-
-### Rate Limiting
-
-- **Login:** 5 attempts per minute per IP
-- **Password Reset:** 5 attempts per hour per IP
 
 ### Password Security
 

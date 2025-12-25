@@ -104,7 +104,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
 
 ### Production
 ```bash
-CORS_ALLOWED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
+CORS_ALLOWED_ORIGINS=https://legumessecs.netlify.app
 ```
 
 ## Logging Configuration
@@ -138,10 +138,6 @@ CORS_ALLOWED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
 - Configurable via `PAGE_SIZE` environment variable
 - Maximum page size: 100 items
 
-### Rate Limiting
-- Login: 5 requests per minute per IP
-- Password reset: 5 requests per hour per IP
-
 ### JWT Tokens
 - Access token lifetime: 60 minutes
 - Refresh token lifetime: 7 days
@@ -156,7 +152,7 @@ CORS_ALLOWED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
 VITE_API_URL=http://localhost:8000
 
 # Production
-VITE_API_URL=https://api.yourdomain.com
+VITE_API_URL=https://legumessecs.onrender.com
 ```
 
 ### Build Configuration

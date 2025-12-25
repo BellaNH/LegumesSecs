@@ -122,21 +122,6 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 ```
 
-## Rate Limiting
-
-### Endpoints Protected
-
-- **Login:** 5 requests/minute per IP
-- **Password Reset:** 5 requests/hour per IP
-
-### Implementation
-
-```python
-@method_decorator(ratelimit(key='ip', rate='5/m', method='POST'))
-def post(self, request):
-    # Login logic
-```
-
 ## Password Security
 
 ### Requirements
@@ -147,7 +132,6 @@ def post(self, request):
 
 ### Password Reset
 
-- Rate limited (5/hour)
 - Requires email and new password
 - Validates password strength
 
@@ -217,7 +201,6 @@ All errors follow standard format:
 2. **Use parameterized queries** - Django ORM
 3. **Store secrets securely** - Environment variables
 4. **Enable security headers** - Production settings
-5. **Rate limit sensitive endpoints** - Prevent abuse
 
 ### Error Messages
 

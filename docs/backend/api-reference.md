@@ -5,7 +5,7 @@ Complete API endpoint documentation for LegumeSec backend.
 ## Base URL
 
 - **Development:** `http://localhost:8000/api/`
-- **Production:** `https://api.yourdomain.com/api/`
+- **Production:** `https://legumessecs.onrender.com/api/`
 
 ## Authentication
 
@@ -58,8 +58,6 @@ Obtain JWT tokens.
   "refresh": "eyJ0eXAiOiJKV1QiLCJhbGc..."
 }
 ```
-
-**Rate Limit:** 5 requests per minute per IP
 
 ### Refresh Token
 
@@ -122,7 +120,7 @@ Authorization: Bearer <access_token>
   "prenom": "John",
   "role": {
     "id": 1,
-    "nom": "admin"
+    "nom": "admin"  // or "agent_central", "agent_dsa", "agent_subdivision"
   },
   "wilaya": {...},  // If agent_dsa
   "subdivision": {...}  // If agent_subdivision
@@ -149,8 +147,6 @@ Reset user password.
   "success": "Mot de passe mis à jour avec succès."
 }
 ```
-
-**Rate Limit:** 5 requests per hour per IP
 
 ## Location Endpoints
 
@@ -601,12 +597,6 @@ All list endpoints support pagination:
 | `authentication_required` | Authentication required |
 | `authentication_failed` | Invalid credentials |
 | `internal_server_error` | Server error |
-
-## Rate Limiting
-
-- **Login:** 5 requests/minute per IP
-- **Password Reset:** 5 requests/hour per IP
-- **Other endpoints:** No limit (can be configured)
 
 ## Related Documentation
 
