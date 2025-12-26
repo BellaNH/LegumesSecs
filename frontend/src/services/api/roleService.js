@@ -2,7 +2,7 @@ import apiClient from './client';
 
 const roleService = {
   getAll: async () => {
-    const response = await apiClient.get('/api/role');
+    const response = await apiClient.get('/api/role/');
     return response.data;
   },
 
@@ -13,6 +13,7 @@ const roleService = {
 };
 
 export default roleService;
+
 
 
 

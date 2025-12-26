@@ -36,6 +36,10 @@ MIDDLEWARE = [
     'api.middleware.ErrorHandlingMiddleware',
 ]
 
+# CORS Configuration
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False  # Explicitly set to False for security
+
 ROOT_URLCONF = 'crud.urls'
 
 TEMPLATES = [

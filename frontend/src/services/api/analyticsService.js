@@ -22,7 +22,7 @@ const analyticsService = {
   },
 
   getPrevProductionVsProduction: async () => {
-    const response = await apiClient.get('/api/prev_production_vs_production/');
+    const response = await apiClient.get('/api/prev_vs_prod/');
     return response.data;
   },
 
@@ -33,6 +33,7 @@ const analyticsService = {
 };
 
 export default analyticsService;
+
 
 
 

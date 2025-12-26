@@ -62,3 +62,4 @@ psql "postgresql://postgres:[PASSWORD]@db.xxxxx.supabase.co:5432/postgres?sslmod
 
 
 
+
