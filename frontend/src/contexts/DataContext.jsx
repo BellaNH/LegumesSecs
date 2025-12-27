@@ -19,11 +19,15 @@ export const DataProvider = ({ children }) => {
 
   const fetchWilaya = useCallback(async () => {
     try {
+      console.log("📡 [DATA] Fetching wilayas...");
       const data = await locationService.getWilayas();
       // Handle paginated responses
-      setWilayas(Array.isArray(data) ? data : (data?.results || []));
+      const wilayasData = Array.isArray(data) ? data : (data?.results || []);
+      console.log("✅ [DATA] Wilayas fetched:", wilayasData.length, "items");
+      setWilayas(wilayasData);
     } catch (error) {
-      // Error handled by interceptor
+      console.error("❌ [DATA] Error fetching wilayas:", error);
+      console.error("❌ [DATA] Error response:", error.response?.data);
       setWilayas([]);
     }
   }, []);
@@ -52,11 +56,15 @@ export const DataProvider = ({ children }) => {
 
   const fetchEspeces = useCallback(async () => {
     try {
+      console.log("📡 [DATA] Fetching especes...");
       const data = await especeService.getAll();
       // Handle paginated responses
-      setEspeces(Array.isArray(data) ? data : (data?.results || []));
+      const especesData = Array.isArray(data) ? data : (data?.results || []);
+      console.log("✅ [DATA] Especes fetched:", especesData.length, "items");
+      setEspeces(especesData);
     } catch (error) {
-      // Error handled by interceptor
+      console.error("❌ [DATA] Error fetching especes:", error);
+      console.error("❌ [DATA] Error response:", error.response?.data);
       setEspeces([]);
     }
   }, []);
@@ -74,22 +82,30 @@ export const DataProvider = ({ children }) => {
 
   const fetchAgriculteurs = useCallback(async () => {
     try {
+      console.log("📡 [DATA] Fetching agriculteurs...");
       const data = await agriculteurService.getAll();
       // Handle paginated responses
-      setAgriculteurs(Array.isArray(data) ? data : (data?.results || []));
+      const agriculteursData = Array.isArray(data) ? data : (data?.results || []);
+      console.log("✅ [DATA] Agriculteurs fetched:", agriculteursData.length, "items");
+      setAgriculteurs(agriculteursData);
     } catch (error) {
-      // Error handled by interceptor
+      console.error("❌ [DATA] Error fetching agriculteurs:", error);
+      console.error("❌ [DATA] Error response:", error.response?.data);
       setAgriculteurs([]);
     }
   }, []);
 
   const fetchRoles = useCallback(async () => {
     try {
+      console.log("📡 [DATA] Fetching roles...");
       const data = await roleService.getAll();
       // Handle paginated responses
-      setRoles(Array.isArray(data) ? data : (data?.results || []));
+      const rolesData = Array.isArray(data) ? data : (data?.results || []);
+      console.log("✅ [DATA] Roles fetched:", rolesData.length, "items");
+      setRoles(rolesData);
     } catch (error) {
-      // Error handled by interceptor
+      console.error("❌ [DATA] Error fetching roles:", error);
+      console.error("❌ [DATA] Error response:", error.response?.data);
       setRoles([]);
     }
   }, []);
@@ -128,6 +144,8 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
+      console.log("📊 [DATA] User authenticated, fetching all data...");
+      console.log("👤 [DATA] User:", user);
       fetchWilaya();
       fetchSubdivisions();
       fetchCommunes();
@@ -137,6 +155,8 @@ export const DataProvider = ({ children }) => {
       fetchAgriculteurs();
       fetchExploitations();
       fetchExploitationWithParcelles();
+    } else {
+      console.log("ℹ️ [DATA] No user, skipping data fetch");
     }
   }, [user, fetchWilaya, fetchSubdivisions, fetchCommunes, fetchEspeces, fetchRoles, fetchObjectifs, fetchAgriculteurs, fetchExploitations, fetchExploitationWithParcelles]);
 
