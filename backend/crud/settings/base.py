@@ -62,20 +62,87 @@ TEMPLATES = [
 WSGI_APPLICATION = 'crud.wsgi.application'
 
 # Database configuration with DATABASE_URL support (Render provides this automatically)
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = os.getenv('DATABASE_URL', '').strip()
+
+# Try to use DATABASE_URL first (Render provides this automatically)
 if DATABASE_URL:
-    # Use DATABASE_URL if provided (Render, Heroku, etc.)
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
-    }
+    try:
+        # Parse DATABASE_URL to get connection parameters
+        # This handles URL encoding and special characters in passwords
+        db_config = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+        
+        # Build DATABASES dict from parsed config
+        DATABASES = {
+            'default': {
+                'ENGINE': db_config.get('ENGINE', 'django.db.backends.postgresql'),
+                'NAME': db_config.get('NAME'),
+                'USER': db_config.get('USER'),
+                'PASSWORD': db_config.get('PASSWORD'),
+                'HOST': db_config.get('HOST'),
+                'PORT': db_config.get('PORT'),
+            }
+        }
+        
+        # Add SSL mode (prefer works better with Render than require)
+        ssl_mode = os.getenv('DB_SSLMODE', 'prefer')
+        if 'OPTIONS' not in DATABASES['default']:
+            DATABASES['default']['OPTIONS'] = {}
+        DATABASES['default']['OPTIONS']['sslmode'] = ssl_mode
+        
+        # Add connection pooling options if available
+        if 'CONN_MAX_AGE' in db_config:
+            DATABASES['default']['CONN_MAX_AGE'] = db_config['CONN_MAX_AGE']
+            
+    except Exception:
+        # If DATABASE_URL parsing fails, try to extract components manually
+        from urllib.parse import urlparse, unquote
+        
+        try:
+            # Parse the URL manually
+            parsed = urlparse(DATABASE_URL)
+            
+            # Extract and decode components
+            db_name = parsed.path.lstrip('/') if parsed.path else os.getenv('DB_NAME', 'postgres')
+            db_user = unquote(parsed.username) if parsed.username else os.getenv('DB_USER', 'postgres')
+            db_password = unquote(parsed.password) if parsed.password else os.getenv('DB_PASSWORD', '')
+            db_host = parsed.hostname if parsed.hostname else os.getenv('DB_HOST', 'localhost')
+            db_port = parsed.port if parsed.port else (os.getenv('DB_PORT', '5432') if not parsed.port else parsed.port)
+            
+            # SSL mode: 'prefer' works better with Render than 'require'
+            ssl_mode = os.getenv('DB_SSLMODE', 'prefer')
+            
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.postgresql',
+                    'NAME': db_name,
+                    'USER': db_user,
+                    'PASSWORD': db_password,
+                    'HOST': db_host,
+                    'PORT': db_port,
+                    'OPTIONS': {
+                        'sslmode': ssl_mode,
+                    },
+                }
+            }
+        except Exception:
+            # Final fallback to individual DB_* environment variables
+            ssl_mode = os.getenv('DB_SSLMODE', 'prefer')
+            
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.postgresql',
+                    'NAME': os.getenv('DB_NAME', 'postgres'),
+                    'USER': os.getenv('DB_USER', 'postgres'),
+                    'PASSWORD': os.getenv('DB_PASSWORD', ''),
+                    'HOST': os.getenv('DB_HOST', 'localhost'),
+                    'PORT': os.getenv('DB_PORT', '5432'),
+                    'OPTIONS': {
+                        'sslmode': ssl_mode,
+                    },
+                }
+            }
 else:
-    # Fallback to individual DB_* environment variables
-    # SSL mode: 'prefer' works better with Render than 'require'
-    # Can be overridden with DB_SSLMODE env var
+    # Fallback to individual DB_* environment variables if DATABASE_URL not set
     ssl_mode = os.getenv('DB_SSLMODE', 'prefer')
     
     DATABASES = {
