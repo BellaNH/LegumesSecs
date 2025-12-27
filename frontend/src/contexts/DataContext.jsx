@@ -20,81 +20,99 @@ export const DataProvider = ({ children }) => {
   const fetchWilaya = useCallback(async () => {
     try {
       const data = await locationService.getWilayas();
-      setWilayas(data);
+      // Handle paginated responses
+      setWilayas(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setWilayas([]);
     }
   }, []);
 
   const fetchSubdivisions = useCallback(async () => {
     try {
       const data = await locationService.getSubdivisions();
-      setSubdivisions(data);
+      // Handle paginated responses
+      setSubdivisions(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setSubdivisions([]);
     }
   }, []);
 
   const fetchCommunes = useCallback(async () => {
     try {
       const data = await locationService.getCommunes();
-      setCommunes(data);
+      // Handle paginated responses
+      setCommunes(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setCommunes([]);
     }
   }, []);
 
   const fetchEspeces = useCallback(async () => {
     try {
       const data = await especeService.getAll();
-      setEspeces(data);
+      // Handle paginated responses
+      setEspeces(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setEspeces([]);
     }
   }, []);
 
   const fetchObjectifs = useCallback(async () => {
     try {
       const data = await objectifService.getAll();
-      setObjectifs(data);
+      // Handle paginated responses
+      setObjectifs(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setObjectifs([]);
     }
   }, []);
 
   const fetchAgriculteurs = useCallback(async () => {
     try {
       const data = await agriculteurService.getAll();
-      setAgriculteurs(data);
+      // Handle paginated responses
+      setAgriculteurs(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setAgriculteurs([]);
     }
   }, []);
 
   const fetchRoles = useCallback(async () => {
     try {
       const data = await roleService.getAll();
-      setRoles(data);
+      // Handle paginated responses
+      setRoles(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setRoles([]);
     }
   }, []);
 
   const fetchExploitations = useCallback(async () => {
     try {
       const data = await exploitationService.getAll();
-      setExploitations(data);
+      // Handle paginated responses
+      setExploitations(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setExploitations([]);
     }
   }, []);
 
   const fetchExploitationWithParcelles = useCallback(async () => {
     try {
       const data = await exploitationService.getWithParcelles();
-      setExploitations(data);
+      // Handle paginated responses
+      setExploitations(Array.isArray(data) ? data : (data?.results || []));
     } catch (error) {
       // Error handled by interceptor
+      setExploitations([]);
     }
   }, []);
 

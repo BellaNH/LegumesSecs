@@ -205,7 +205,7 @@ useEffect(()=>{console.log(selectedSubdivision)},[selectedSubdivision])
             borderRadius: "6px",
           }}
         >
-          {roles &&
+          {Array.isArray(roles) &&
             roles.filter((role) => role.nom !== "admin").map((role, index) => (
               <MenuItem value={role.id} key={index}>
                 {role.nom}
@@ -238,7 +238,7 @@ useEffect(()=>{console.log(selectedSubdivision)},[selectedSubdivision])
               borderRadius: "6px",
             }}
           >
-            {wilayas.map((w) => (
+            {Array.isArray(wilayas) && wilayas.map((w) => (
               <MenuItem key={w.id} value={w.id}>
                 {w.nom}
               </MenuItem>
@@ -261,7 +261,7 @@ useEffect(()=>{console.log(selectedSubdivision)},[selectedSubdivision])
               borderRadius: "6px",
             }}
           >
-            {subdivisions.map((s) => (
+            {Array.isArray(subdivisions) && subdivisions.map((s) => (
               <MenuItem key={s.id} value={s.id}>
                 {s.nom}
               </MenuItem>
