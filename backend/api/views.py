@@ -149,19 +149,42 @@ class CurrentUserView(APIView):
 
     def get(self, request):
         try:
+            # DEBUG: Log authentication details
+            logger.info(f"CurrentUserView - Request headers: {dict(request.headers)}")
+            logger.info(f"CurrentUserView - User type: {type(request.user)}")
+            logger.info(f"CurrentUserView - User: {request.user}")
+            logger.info(f"CurrentUserView - Is authenticated: {request.user.is_authenticated if hasattr(request.user, 'is_authenticated') else 'N/A'}")
+            logger.info(f"CurrentUserView - Is anonymous: {request.user.is_anonymous if hasattr(request.user, 'is_anonymous') else 'N/A'}")
+            
+            # Check if user is authenticated
+            if not request.user or not request.user.is_authenticated:
+                logger.error(f"CurrentUserView - User not authenticated. User: {request.user}, Type: {type(request.user)}")
+                from rest_framework.exceptions import AuthenticationFailed
+                raise AuthenticationFailed("User not authenticated")
+            
             user = request.user
+            logger.info(f"CurrentUserView - Authenticated user ID: {user.id}, Email: {getattr(user, 'email', 'N/A')}")
+            
+            # Check if user has role
+            if not hasattr(user, 'role') or user.role is None:
+                logger.warning(f"CurrentUserView - User {user.id} has no role assigned")
+            
             user_data = UserSerializer(user).data
+            logger.info(f"CurrentUserView - User data serialized successfully: {user_data.get('id')}")
             
             # Check if user has a role before accessing it
             if user.role and hasattr(user.role, 'nom'):
                 role_name = user.role.nom.lower()
+                logger.info(f"CurrentUserView - User role: {role_name}")
                 
                 if role_name == "agent_dsa":
                     try:
                         user_wilaya = UserWilaya.objects.get(user=user)
                         user_data['wilaya'] = WilayaSerializer(user_wilaya.wilaya).data
+                        logger.info(f"CurrentUserView - Added wilaya for agent_dsa")
                     except UserWilaya.DoesNotExist:
                         user_data['wilaya'] = None
+                        logger.warning(f"CurrentUserView - User {user.id} (agent_dsa) has no assigned wilaya")
 
                 elif role_name == "agent_subdivision":
                     try:
@@ -169,13 +192,20 @@ class CurrentUserView(APIView):
                         subdivision_obj = user_subdiv.subdivision
                         user_data['subdivision'] = SubDivisionSerializer(subdivision_obj).data
                         user_data['wilaya'] = WilayaSerializer(subdivision_obj.wilaya).data
+                        logger.info(f"CurrentUserView - Added subdivision and wilaya for agent_subdivision")
                     except UserSubdivision.DoesNotExist:
                         user_data['subdivision'] = None
                         user_data['wilaya'] = None
+                        logger.warning(f"CurrentUserView - User {user.id} (agent_subdivision) has no assigned subdivision")
             
+            logger.info(f"CurrentUserView - Returning user data successfully")
             return Response(user_data)
         except Exception as e:
-            logger.error(f"Error fetching current user: {str(e)}", exc_info=True)
+            logger.error(f"CurrentUserView - ERROR: {str(e)}", exc_info=True)
+            logger.error(f"CurrentUserView - Exception type: {type(e).__name__}")
+            logger.error(f"CurrentUserView - Request user: {request.user}")
+            logger.error(f"CurrentUserView - Request META: {dict(request.META)}")
+            # Re-raise to see the actual error
             raise
 
 
