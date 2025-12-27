@@ -125,7 +125,7 @@ class PermissionsSerializer(serializers.ModelSerializer):
      
 
 class CustomUserSerializer(serializers.ModelSerializer):   
-    permissions = PermissionsSerializer(many=True)
+    permissions = PermissionsSerializer(many=True, required=False, allow_empty=True)
     role_id = serializers.PrimaryKeyRelatedField(
         queryset=Role.objects.all(), source='role', write_only=True
     )
@@ -169,10 +169,19 @@ class CustomUserSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         attrs['wilaya'] = self.initial_data.get('wilaya', None)
         attrs['subdivision'] = self.initial_data.get('subdivision', None)
+        # Handle permissions if it's an empty string or missing
+        if 'permissions' not in attrs or not attrs.get('permissions') or attrs.get('permissions') == "":
+            attrs['permissions'] = []
         return attrs   
 
     def create(self, validated_data):
-        permissions_data = validated_data.pop('permissions')
+        permissions_data = validated_data.pop('permissions', [])
+        # Handle empty string or None
+        if not permissions_data or permissions_data == "":
+            permissions_data = []
+        # Ensure it's a list
+        if not isinstance(permissions_data, list):
+            permissions_data = []
         final_permissions = build_permissions(permissions_data)
         wilaya_id = validated_data.pop('wilaya', None)
         subdiv_id = validated_data.pop('subdivision', None)

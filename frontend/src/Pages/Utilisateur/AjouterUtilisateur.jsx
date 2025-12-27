@@ -81,7 +81,17 @@ useEffect(()=>{console.log(selectedRole),[selectedRole]})
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response =  await axios.post(`${url}/api/user/`, formData, {
+      // Prepare form data - ensure permissions is an array, not empty string
+      const submitData = {
+        ...formData,
+        permissions: Array.isArray(formData.permissions) ? formData.permissions : (formData.permissions || [])
+      };
+      // Remove empty string permissions
+      if (submitData.permissions === "" || submitData.permissions === null) {
+        submitData.permissions = [];
+      }
+      
+      const response =  await axios.post(`${url}/api/user/`, submitData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
@@ -107,7 +117,10 @@ useEffect(()=>{console.log(selectedRole),[selectedRole]})
       setCurrentUserPermissions(defaultPermissions)
 
     } catch (error) {
-      setErrorMessage("Erreur d'enregistrement.");
+      console.error("Error creating user:", error);
+      console.error("Error response:", error.response?.data);
+      const errorMsg = error.response?.data?.error?.message || error.response?.data?.message || "Erreur d'enregistrement.";
+      setErrorMessage(errorMsg);
       setOpenError(true);
     }
   }

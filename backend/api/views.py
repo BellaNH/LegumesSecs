@@ -84,6 +84,14 @@ class UserList(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return CustomUser.objects.prefetch_related('permissions').all()
+    
+    def create(self, request, *args, **kwargs):
+        try:
+            return super().create(request, *args, **kwargs)
+        except Exception as e:
+            logger.error(f"Error creating user: {str(e)}", exc_info=True)
+            logger.error(f"Request data: {request.data}")
+            raise
 
 
 
