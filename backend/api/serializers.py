@@ -213,8 +213,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
         wilaya_id = validated_data.pop('wilaya', None)
         subdivision_id = validated_data.pop('subdivision', None)
 
-        new_role = validated_data.get('role')
+        # Get new_role if role_id was provided, otherwise use existing role
+        new_role = validated_data.pop('role', None)
         old_role_id = instance.role.id
+        new_role_id = new_role.id if new_role else old_role_id
       
         for attr, value in validated_data.items():
             if attr == 'password' and value:
@@ -227,44 +229,67 @@ class CustomUserSerializer(serializers.ModelSerializer):
         instance.permissions.all().delete()
         for perm_data in final_permissions:
             Permissions.objects.create(user=instance, **perm_data)
-        if old_role_id == 3 and new_role.id == 4:
-            UserWilaya.objects.filter(user=instance).delete()
+        
+        # Only update role-related associations if role actually changed
+        if new_role and old_role_id != new_role_id:
+            if old_role_id == 3 and new_role_id == 4:
+                UserWilaya.objects.filter(user=instance).delete()
 
-            if subdivision_id is not None:
+                if subdivision_id is not None:
+                    UserSubdivision.objects.update_or_create(
+                        user=instance,
+                        defaults={'subdivision_id': subdivision_id}
+                    )
 
-                UserSubdivision.objects.update_or_create(
-                    user=instance,
-                    defaults={'subdivision_id': subdivision_id}
-                )
+            elif old_role_id == 4 and new_role_id == 3:
+                UserSubdivision.objects.filter(user=instance).delete()
 
-        elif old_role_id == 4 and new_role.id == 3:
-            UserSubdivision.objects.filter(user=instance).delete()
+                if wilaya_id is not None:
+                    UserWilaya.objects.update_or_create(
+                        user=instance,
+                        defaults={'wilaya_id': wilaya_id}
+                    )
 
-            if wilaya_id is not None:
-                UserWilaya.objects.update_or_create(
-                    user=instance,
-                    defaults={'wilaya_id': wilaya_id}
-                )
+            elif new_role_id == 3:
+                if wilaya_id is not None:
+                    UserWilaya.objects.update_or_create(
+                        user=instance,
+                        defaults={'wilaya_id': wilaya_id}
+                    )
+                UserSubdivision.objects.filter(user=instance).delete()
 
-        elif new_role.id == 3:
-            if wilaya_id is not None:
-                UserWilaya.objects.update_or_create(
-                    user=instance,
-                    defaults={'wilaya_id': wilaya_id}
-            )
-            UserSubdivision.objects.filter(user=instance).delete()
+            elif new_role_id == 4:
+                if subdivision_id is not None:
+                    UserSubdivision.objects.update_or_create(
+                        user=instance,
+                        defaults={'subdivision_id': subdivision_id}
+                    )
+                UserWilaya.objects.filter(user=instance).delete()
 
-        elif new_role.id == 4:
-            if subdivision_id is not None:
-                UserSubdivision.objects.update_or_create(
-                    user=instance,
-                    defaults={'subdivision_id': subdivision_id}
-            )
-            UserWilaya.objects.filter(user=instance).delete()
-
+            else:
+                UserWilaya.objects.filter(user=instance).delete()
+                UserSubdivision.objects.filter(user=instance).delete()
         else:
-            UserWilaya.objects.filter(user=instance).delete()
-            UserSubdivision.objects.filter(user=instance).delete()
+            # Role didn't change, but wilaya/subdivision might have been updated
+            # Update associations based on current role
+            if old_role_id == 3:
+                if wilaya_id is not None:
+                    UserWilaya.objects.update_or_create(
+                        user=instance,
+                        defaults={'wilaya_id': wilaya_id}
+                    )
+                UserSubdivision.objects.filter(user=instance).delete()
+            elif old_role_id == 4:
+                if subdivision_id is not None:
+                    UserSubdivision.objects.update_or_create(
+                        user=instance,
+                        defaults={'subdivision_id': subdivision_id}
+                    )
+                UserWilaya.objects.filter(user=instance).delete()
+            else:
+                # Admin or other roles - clean up any existing associations
+                UserWilaya.objects.filter(user=instance).delete()
+                UserSubdivision.objects.filter(user=instance).delete()
 
         return instance
 

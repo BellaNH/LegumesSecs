@@ -58,21 +58,32 @@ const handleChange = (e, modelName = null) => {
       setSelectedWilaya(value)
       setFormData((prev)=>({
         ...prev,
-        ["subdivision"]:null
+        ["subdivision"]:null,
+        ["wilaya"]: value ? parseInt(value, 10) : null
       }))
+      return; // Early return to avoid double setting
     }
     if(name ==="subdivision"){
       setSelectedSubdivision(value)
       setFormData((prev)=>({
         ...prev,
-        ["wilaya"]:null
+        ["wilaya"]:null,
+        ["subdivision"]: value ? parseInt(value, 10) : null
       }))
+      return; // Early return to avoid double setting
     }
    
+    // Convert numeric fields to integers
+    let processedValue = value;
+    if (name === "role_id" && value) {
+      processedValue = parseInt(value, 10);
+    } else if (name === "phoneNum" && value) {
+      processedValue = parseInt(value, 10);
+    }
    
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: processedValue,
     }));
   
 };
@@ -82,8 +93,16 @@ useEffect(()=>{console.log(selectedRole),[selectedRole]})
     event.preventDefault();
     try {
       // Prepare form data - ensure permissions is an array, not empty string
+      // Convert all numeric fields to proper types
       const submitData = {
-        ...formData,
+        nom: formData.nom,
+        prenom: formData.prenom,
+        email: formData.email,
+        password: formData.password,
+        role_id: formData.role_id ? parseInt(formData.role_id, 10) : formData.role_id,
+        phoneNum: formData.phoneNum ? (typeof formData.phoneNum === 'string' ? parseInt(formData.phoneNum, 10) : formData.phoneNum) : null,
+        wilaya: formData.wilaya ? (typeof formData.wilaya === 'string' ? parseInt(formData.wilaya, 10) : formData.wilaya) : null,
+        subdivision: formData.subdivision ? (typeof formData.subdivision === 'string' ? parseInt(formData.subdivision, 10) : formData.subdivision) : null,
         permissions: Array.isArray(formData.permissions) ? formData.permissions : (formData.permissions || [])
       };
       // Remove empty string permissions

@@ -96,11 +96,18 @@ useEffect(() => {
 
   if (currentUser) {
     try {
-      const userToSend = { ...currentUser };
+      // Prepare payload - exclude id, convert types
+      const userToSend = {
+        nom: currentUser.nom,
+        prenom: currentUser.prenom,
+        email: currentUser.email,
+        role_id: currentUser.role_id ? parseInt(currentUser.role_id, 10) : currentUser.role_id,
+        phoneNum: currentUser.phoneNum ? (typeof currentUser.phoneNum === 'string' ? parseInt(currentUser.phoneNum, 10) : currentUser.phoneNum) : null,
+      };
 
       // If no new password is provided, remove it from the payload
-      if (!currentUser.password) {
-        delete userToSend.password;
+      if (currentUser.password && currentUser.password.trim()) {
+        userToSend.password = currentUser.password;
       }
 
       const response = await axios.patch(`${url}/api/user/${currentUser.id}/`, userToSend, {
