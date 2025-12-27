@@ -113,7 +113,19 @@ useEffect(() => {
       console.log(response.data);
 
     } catch (error) {
-      setErrorMessage("Erreur d'enregistrement.");
+      console.error("❌ [PROFILE] Error updating user:", error);
+      console.error("❌ [PROFILE] Error response:", error.response?.data);
+      console.error("❌ [PROFILE] Error status:", error.response?.status);
+      console.error("❌ [PROFILE] Full error:", error);
+      
+      // Extract detailed error message from response
+      const errorMsg = error.response?.data?.error?.message 
+        || error.response?.data?.message 
+        || error.response?.data?.detail
+        || error.message 
+        || "Erreur d'enregistrement.";
+      
+      setErrorMessage(errorMsg);
       setOpenError(true);
     }
   }

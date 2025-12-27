@@ -117,9 +117,19 @@ useEffect(()=>{console.log(selectedRole),[selectedRole]})
       setCurrentUserPermissions(defaultPermissions)
 
     } catch (error) {
-      console.error("Error creating user:", error);
-      console.error("Error response:", error.response?.data);
-      const errorMsg = error.response?.data?.error?.message || error.response?.data?.message || "Erreur d'enregistrement.";
+      console.error("❌ [AJOUTER_USER] Error creating user:", error);
+      console.error("❌ [AJOUTER_USER] Error response:", error.response?.data);
+      console.error("❌ [AJOUTER_USER] Error status:", error.response?.status);
+      console.error("❌ [AJOUTER_USER] Full error:", error);
+      
+      // Extract detailed error message from response
+      const errorMsg = error.response?.data?.error?.message 
+        || error.response?.data?.message 
+        || error.response?.data?.detail
+        || error.response?.data?.error?.details
+        || error.message 
+        || "Erreur d'enregistrement.";
+      
       setErrorMessage(errorMsg);
       setOpenError(true);
     }

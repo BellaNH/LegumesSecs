@@ -75,21 +75,35 @@ def custom_exception_handler(exc, context):
             }
         )
     else:
+        # Log the full exception with traceback
+        import traceback
         logger.exception(
-            f"Unhandled exception: {exc.__class__.__name__}",
+            f"Unhandled exception: {exc.__class__.__name__} - {str(exc)}",
             extra={
                 'view': context.get('view').__class__.__name__ if context.get('view') else None,
                 'request_path': context.get('request').path if context.get('request') else None,
+                'traceback': traceback.format_exc(),
             }
         )
+        
+        # In development, show detailed error. In production, show generic message
+        from django.conf import settings
+        is_debug = getattr(settings, 'DEBUG', False)
+        
+        error_message = str(exc) if is_debug else 'Une erreur interne est survenue. Veuillez réessayer plus tard.'
         
         custom_response_data = {
             'error': {
                 'code': 'internal_server_error',
-                'message': 'Une erreur interne est survenue. Veuillez réessayer plus tard.',
+                'message': error_message,
                 'status_code': 500
             }
         }
+        
+        # Include traceback in development
+        if is_debug:
+            custom_response_data['error']['traceback'] = traceback.format_exc()
+            custom_response_data['error']['exception_type'] = exc.__class__.__name__
         
         from rest_framework.response import Response
         response = Response(custom_response_data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

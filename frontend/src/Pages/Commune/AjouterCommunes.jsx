@@ -48,7 +48,19 @@ const AjouterCommunes = () => {
       fetchCommunes()
       navigate("/communes");
     } catch (error) {
-      setErrorMessage("Erreur lors de l'ajout de la commune");
+      console.error("❌ [AJOUTER_COMMUNE] Error creating commune:", error);
+      console.error("❌ [AJOUTER_COMMUNE] Error response:", error.response?.data);
+      console.error("❌ [AJOUTER_COMMUNE] Error status:", error.response?.status);
+      console.error("❌ [AJOUTER_COMMUNE] Full error:", error);
+      
+      // Extract detailed error message from response
+      const errorMsg = error.response?.data?.error?.message 
+        || error.response?.data?.message 
+        || error.response?.data?.detail
+        || error.message 
+        || "Erreur lors de l'ajout de la commune";
+      
+      setErrorMessage(errorMsg);
       setOpenError(true);
     }
   }

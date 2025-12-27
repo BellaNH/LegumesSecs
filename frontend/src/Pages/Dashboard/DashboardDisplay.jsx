@@ -24,7 +24,7 @@ import Jardinage from "../pics/Jardinage.png"
 
 export default function DashboardDisplay() {
   const {url,user}= useGlobalContext()
-  const [totalAgri,setTotalAgri] = useState("")
+  const [totalAgri,setTotalAgri] = useState(0)
   const [superficieData,setSuperficieData] = useState("")
   const [yearlyProduct,setYearlyProduct] = useState("")
   const [numEspeces,setNumEspeces] = useState("")
@@ -52,13 +52,13 @@ export default function DashboardDisplay() {
           console.log("✅ [DASHBOARD] Active agriculteurs fetched successfully");
           console.log("📊 [DASHBOARD] Response data:", response.data);
           console.log("👥 [DASHBOARD] Count:", response.data.count);
-          setTotalAgri(response.data.count)
+          setTotalAgri(response.data.count ?? 0)
           } catch (error) {
             console.error("❌ [DASHBOARD] Error fetching active agriculteurs:", error);
             console.error("❌ [DASHBOARD] Error response:", error.response?.data);
             console.error("❌ [DASHBOARD] Error status:", error.response?.status);
             console.error("❌ [DASHBOARD] Full error:", error);
-            setTotalAgri("")
+            setTotalAgri(0)
           }
         } else {
           console.log("ℹ️ [DASHBOARD] No user, skipping active agriculteurs fetch");
