@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 import { useGlobalContext } from "../context";
 import authService from "../services/api/authService";
+import axios from "axios";
 import {
   Box,
   TextField,
@@ -28,24 +29,49 @@ export default function Login() {
   const [showNewPassword, setShowNewPassword] = useState(false);
 
   const navigate = useNavigate();
-  const { login } = useGlobalContext();
+  const { login, url } = useGlobalContext();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const data = await authService.login(email, password);
-      const { access, refresh } = data;
-      await login(access, refresh);
+      // DETECTIVE LOG: Starting login process
+      console.log("🔐 [LOGIN] Starting login process for:", email);
+      
+      // Use direct axios call like old version for better visibility
+      console.log("📡 [LOGIN] Calling:", `${url}/api/token/`);
+      const response = await axios.post(`${url}/api/token/`, {
+        email,
+        password,
+      });
+      
+      // DETECTIVE LOG: Token received
+      const { access, refresh, user: userFromToken } = response.data;
+      console.log("✅ [LOGIN] Token received successfully");
+      console.log("🔑 [LOGIN] Access token:", access);
+      console.log("👤 [LOGIN] User data from token:", userFromToken);
+      console.log("🎭 [LOGIN] Role from token:", userFromToken?.role);
+      
+      // Call login with just access token (like old version)
+      console.log("🔄 [LOGIN] Calling login function with access token");
+      await login(access);
+      
+      console.log("✅ [LOGIN] Login process completed successfully");
       setTimeout(() => {
+        console.log("🚀 [LOGIN] Navigating to dashboard");
         navigate("/dashboard")
       }, 1500);
     }
     catch (error) {
+      console.error("❌ [LOGIN] Error during login:", error);
+      console.error("❌ [LOGIN] Error response:", error.response?.data);
+      console.error("❌ [LOGIN] Error status:", error.response?.status);
+      console.error("❌ [LOGIN] Full error:", error);
       const errorMessage = error.response?.data?.error?.message || 
                           error.response?.data?.detail || 
                           error.response?.data?.error || 
+                          error.message ||
                           "Identifiants invalides";
-      alert(errorMessage);
+      alert(`Erreur: ${errorMessage}`);
     }
   }
   

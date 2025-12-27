@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
 import { setupApiClient } from "../services/api";
 import authService from "../services/api/authService";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -41,34 +42,71 @@ export const AuthProvider = ({ children }) => {
     }
   }, [logout]);
 
-  const login = useCallback(async (accessToken, refreshToken) => {
+  const login = useCallback(async (accessToken) => {
+    // DETECTIVE LOG: Storing token
+    console.log("💾 [AUTH] Storing access token in localStorage");
     localStorage.setItem("token", accessToken);
-    if (refreshToken) {
-      localStorage.setItem("refreshToken", refreshToken);
-    }
+    
+    // Use direct axios call like old version for better visibility
+    const url = "https://legumessecs.onrender.com";
     
     try {
-      const userData = await authService.getCurrentUser();
-      setUser(userData);
+      // DETECTIVE LOG: Fetching user data
+      console.log("📡 [AUTH] Fetching user data from /api/me/");
+      console.log("🔑 [AUTH] Using token:", accessToken.substring(0, 20) + "...");
+      
+      const userResponse = await axios.get(`${url}/api/me/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+      
+      // DETECTIVE LOG: User data received
+      console.log("✅ [AUTH] User data received successfully");
+      console.log("👤 [AUTH] Full user response:", userResponse.data);
+      console.log("🎭 [AUTH] User role:", userResponse.data?.role);
+      console.log("📋 [AUTH] User permissions:", userResponse.data?.permissions);
+      
+      setUser(userResponse.data);
       setIsAuthenticated(true);
+      
+      console.log("✅ [AUTH] User state updated, authentication complete");
     } catch (error) {
-      logout();
+      console.error("❌ [AUTH] Error fetching user data:", error);
+      console.error("❌ [AUTH] Error response:", error.response?.data);
+      console.error("❌ [AUTH] Error status:", error.response?.status);
+      console.error("❌ [AUTH] Error headers:", error.response?.headers);
+      console.error("❌ [AUTH] Full error object:", error);
+      // Don't silently logout - show the error
+      throw error; // Re-throw so Login component can see it
     }
-  }, [logout]);
+  }, []);
 
   useEffect(() => {
     setupApiClient(refreshAccessToken, logout);
     
     const token = localStorage.getItem("token");
+    console.log("🔄 [AUTH] Checking for existing token on page load");
     if (token) {
-      authService.getCurrentUser()
-        .then(data => {
-          setUser(data);
+      console.log("🔑 [AUTH] Token found, fetching user data");
+      const url = "https://legumessecs.onrender.com";
+      axios.get(`${url}/api/me/`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(response => {
+          console.log("✅ [AUTH] User data fetched on page load:", response.data);
+          setUser(response.data);
           setIsAuthenticated(true);
         })
-        .catch(() => {
+        .catch(error => {
+          console.error("❌ [AUTH] Error fetching user on page load:", error);
+          console.error("❌ [AUTH] Error response:", error.response?.data);
           logout();
         });
+    } else {
+      console.log("ℹ️ [AUTH] No token found, user not authenticated");
     }
   }, [logout, refreshAccessToken]);
 

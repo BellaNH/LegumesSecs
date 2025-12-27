@@ -172,10 +172,16 @@ class CurrentUserView(APIView):
             user_data = UserSerializer(user).data
             logger.info(f"CurrentUserView - User data serialized successfully: {user_data.get('id')}")
             
+            # DETECTIVE PRINT: Like old version
+            print(f"[CURRENT_USER] User ID: {user.id}, Email: {user.email}")
+            print(f"[CURRENT_USER] User role: {user.role.nom if user.role else 'None'}")
+            print(f"[CURRENT_USER] User data: {user_data}")
+            
             # Check if user has a role before accessing it
             if user.role and hasattr(user.role, 'nom'):
                 role_name = user.role.nom.lower()
                 logger.info(f"CurrentUserView - User role: {role_name}")
+                print(f"[CURRENT_USER] Role name: {role_name}")
                 
                 if role_name == "agent_dsa":
                     try:
@@ -283,11 +289,27 @@ class TokenObtainPairView(BaseTokenObtainPairView):
     # @method_decorator(ratelimit(key='ip', rate='5/m', method='POST'))  # Temporarily disabled for MVP
     def post(self, request, *args, **kwargs):
         try:
+            # DETECTIVE LOG: Token request received
+            email = request.data.get('email')
+            logger.info(f"🔐 [TOKEN] Token request received for email: {email}")
+            print(f"[TOKEN] Login request for: {email}")
+            
             response = super().post(request, *args, **kwargs)
+            
+            # DETECTIVE LOG: Token generated successfully
+            logger.info(f"✅ [TOKEN] Token generated successfully")
+            print(f"[TOKEN] Token generated successfully")
+            
+            if hasattr(response, 'data') and 'user' in response.data:
+                user_data = response.data.get('user')
+                logger.info(f"👤 [TOKEN] User in response: {user_data}")
+                logger.info(f"🎭 [TOKEN] Role in response: {user_data.get('role')}")
+                print(f"[TOKEN] User: {user_data}")
+                print(f"[TOKEN] Role: {user_data.get('role')}")
             # The serializer already includes user data in the response
             return response
         except Exception as e:
-            logger.error(f"TokenObtainPairView error: {str(e)}", exc_info=True)
+            logger.error(f"❌ [TOKEN] TokenObtainPairView error: {str(e)}", exc_info=True)
             raise
 
 
