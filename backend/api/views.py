@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny, BasePermission
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenBlacklistView
+from rest_framework_simplejwt.views import TokenObtainPairView as BaseTokenObtainPairView, TokenBlacklistView
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
@@ -84,7 +84,7 @@ class UserList(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return CustomUser.objects.prefetch_related('permissions').all()
-    
+
     def create(self, request, *args, **kwargs):
         try:
             return super().create(request, *args, **kwargs)
@@ -152,22 +152,26 @@ class CurrentUserView(APIView):
             user = request.user
             user_data = UserSerializer(user).data
             
-            if user.role.nom.lower() == "agent_dsa":
-                try:
-                    user_wilaya = UserWilaya.objects.get(user=user)
-                    user_data['wilaya'] = WilayaSerializer(user_wilaya.wilaya).data
-                except UserWilaya.DoesNotExist:
-                    user_data['wilaya'] = None
+            # Check if user has a role before accessing it
+            if user.role and hasattr(user.role, 'nom'):
+                role_name = user.role.nom.lower()
+                
+                if role_name == "agent_dsa":
+                    try:
+                        user_wilaya = UserWilaya.objects.get(user=user)
+                        user_data['wilaya'] = WilayaSerializer(user_wilaya.wilaya).data
+                    except UserWilaya.DoesNotExist:
+                        user_data['wilaya'] = None
 
-            elif user.role.nom.lower() == "agent_subdivision":
-                try:
-                    user_subdiv = UserSubdivision.objects.get(user=user)
-                    subdivision_obj = user_subdiv.subdivision
-                    user_data['subdivision'] = SubDivisionSerializer(subdivision_obj).data
-                    user_data['wilaya'] = WilayaSerializer(subdivision_obj.wilaya).data
-                except UserSubdivision.DoesNotExist:
-                    user_data['subdivision'] = None
-                    user_data['wilaya'] = None
+                elif role_name == "agent_subdivision":
+                    try:
+                        user_subdiv = UserSubdivision.objects.get(user=user)
+                        subdivision_obj = user_subdiv.subdivision
+                        user_data['subdivision'] = SubDivisionSerializer(subdivision_obj).data
+                        user_data['wilaya'] = WilayaSerializer(subdivision_obj.wilaya).data
+                    except UserSubdivision.DoesNotExist:
+                        user_data['subdivision'] = None
+                        user_data['wilaya'] = None
             
             return Response(user_data)
         except Exception as e:
@@ -242,14 +246,16 @@ class PermissionList(viewsets.ModelViewSet):
     serializer_class = PermissionsSerializer
 
 
-class TokenObtainPairView(TokenObtainPairView):
+class TokenObtainPairView(BaseTokenObtainPairView):
     permission_classes = [AllowAny]
     serializer_class = CustomTokenObtainPairSerializer
     
     # @method_decorator(ratelimit(key='ip', rate='5/m', method='POST'))  # Temporarily disabled for MVP
     def post(self, request, *args, **kwargs):
         try:
-            return super().post(request, *args, **kwargs)
+            response = super().post(request, *args, **kwargs)
+            # The serializer already includes user data in the response
+            return response
         except Exception as e:
             logger.error(f"TokenObtainPairView error: {str(e)}", exc_info=True)
             raise

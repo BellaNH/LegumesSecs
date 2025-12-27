@@ -277,11 +277,11 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     permissions = PermissionsSerializer(many=True)
-    role= RoleSerializer(read_only=True)
+    role = RoleSerializer(read_only=True)
     class Meta:
         model = CustomUser
         fields = [
-            'id', 'nom','prenom','role','phoneNum','email','role','permissions'
+            'id', 'nom', 'prenom', 'role', 'phoneNum', 'email', 'permissions'
         ]
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):

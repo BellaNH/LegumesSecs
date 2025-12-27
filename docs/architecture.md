@@ -150,8 +150,8 @@ HTTP Request → Middleware → URL Router → View → Service → Model → Da
 ### Relationships
 ```
 Wilaya → SubDivision → Commune → Exploitation → Parcelle
-                                         ↑
-                                  Agriculteur
+                              ↑
+                         Agriculteur
 ```
 
 ## Security Architecture
