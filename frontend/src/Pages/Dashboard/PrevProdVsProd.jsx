@@ -11,8 +11,12 @@ const [prevProdVsProductionData,setPrevProdVsProductionData] = useState("")
  const {url,user}= useGlobalContext()
 
   useEffect(()=>{
+    console.log("📊 [PREV_PROD] PrevProdVsProd component mounted, user:", user);
+    
        const fetchPrevVsProduction = async ()=>{
         if(user){
+          console.log("📡 [PREV_PROD] Fetching prev vs production data...");
+          console.log("🔗 [PREV_PROD] URL:", `${url}/api/prev_vs_prod/`);
         try {
               const response =   await axios.get(
                   `${url}/api/prev_vs_prod/`,
@@ -22,11 +26,20 @@ const [prevProdVsProductionData,setPrevProdVsProductionData] = useState("")
                     },
                   }
                 )
+             console.log("✅ [PREV_PROD] Prev vs production fetched successfully");
+             console.log("📊 [PREV_PROD] Response data:", response.data);
+             console.log("📊 [PREV_PROD] Data length:", Array.isArray(response.data) ? response.data.length : "Not an array");
              setPrevProdVsProductionData(response.data)
              
               } catch (error) {
-                // Error handled by interceptor
+                console.error("❌ [PREV_PROD] Error fetching prev vs production:", error);
+                console.error("❌ [PREV_PROD] Error response:", error.response?.data);
+                console.error("❌ [PREV_PROD] Error status:", error.response?.status);
+                console.error("❌ [PREV_PROD] Full error:", error);
+                setPrevProdVsProductionData("")
               }
+            } else {
+              console.log("ℹ️ [PREV_PROD] No user, skipping prev vs production fetch");
             }  
       }
     fetchPrevVsProduction()

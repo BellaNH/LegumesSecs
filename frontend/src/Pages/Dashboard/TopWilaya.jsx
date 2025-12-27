@@ -11,8 +11,12 @@ export default function TopWilaya() {
  const {url,user}= useGlobalContext()
 
   useEffect(()=>{
+    console.log("📊 [TOP_WILAYA] TopWilaya component mounted, user:", user);
+    
        const fetchTopThreeWilayas = async ()=>{
     if(user){
+      console.log("📡 [TOP_WILAYA] Fetching top wilayas...");
+      console.log("🔗 [TOP_WILAYA] URL:", `${url}/api/top_wilayas/`);
     try {
           const response =   await axios.get(
               `${url}/api/top_wilayas/`,
@@ -22,11 +26,20 @@ export default function TopWilaya() {
                 },
               }
             )
+          console.log("✅ [TOP_WILAYA] Top wilayas fetched successfully");
+          console.log("📊 [TOP_WILAYA] Response data:", response.data);
+          console.log("📊 [TOP_WILAYA] Data length:", Array.isArray(response.data) ? response.data.length : "Not an array");
         setTopThreeWilaya(response.data)
          
           } catch (error) {
-            // Error handled by interceptor
+            console.error("❌ [TOP_WILAYA] Error fetching top wilayas:", error);
+            console.error("❌ [TOP_WILAYA] Error response:", error.response?.data);
+            console.error("❌ [TOP_WILAYA] Error status:", error.response?.status);
+            console.error("❌ [TOP_WILAYA] Full error:", error);
+            setTopThreeWilaya("")
           }
+        } else {
+          console.log("ℹ️ [TOP_WILAYA] No user, skipping top wilayas fetch");
         } 
   }
     fetchTopThreeWilayas()

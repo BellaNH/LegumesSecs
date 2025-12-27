@@ -34,8 +34,12 @@ export default function DashboardDisplay() {
 
 
  useEffect(()=>{
+    console.log("📊 [DASHBOARD] DashboardDisplay mounted, user:", user);
+    
     const fetchTotalNumActiveAgri = async ()=>{
     if(user){
+      console.log("📡 [DASHBOARD] Fetching active agriculteurs this year...");
+      console.log("🔗 [DASHBOARD] URL:", `${url}/api/active_this_year/`);
     try {
           const response =   await axios.get(
               `${url}/api/active_this_year/`,
@@ -45,15 +49,26 @@ export default function DashboardDisplay() {
                 },
               }
             )
+          console.log("✅ [DASHBOARD] Active agriculteurs fetched successfully");
+          console.log("📊 [DASHBOARD] Response data:", response.data);
+          console.log("👥 [DASHBOARD] Count:", response.data.count);
           setTotalAgri(response.data.count)
           } catch (error) {
-            // Error handled by interceptor
+            console.error("❌ [DASHBOARD] Error fetching active agriculteurs:", error);
+            console.error("❌ [DASHBOARD] Error response:", error.response?.data);
+            console.error("❌ [DASHBOARD] Error status:", error.response?.status);
+            console.error("❌ [DASHBOARD] Full error:", error);
+            setTotalAgri("")
           }
+        } else {
+          console.log("ℹ️ [DASHBOARD] No user, skipping active agriculteurs fetch");
         }
   }
 
   const fetchSuperficieData = async ()=>{
     if(user){
+      console.log("📡 [DASHBOARD] Fetching superficie espece comparison...");
+      console.log("🔗 [DASHBOARD] URL:", `${url}/api/superficie_espece_comparaision/`);
     try {
           const response =   await axios.get(
               `${url}/api/superficie_espece_comparaision/`,
@@ -63,16 +78,27 @@ export default function DashboardDisplay() {
                 },
               }
             )
+          console.log("✅ [DASHBOARD] Superficie data fetched successfully");
+          console.log("📊 [DASHBOARD] Response data:", response.data);
+          console.log("📊 [DASHBOARD] Data length:", Array.isArray(response.data) ? response.data.length : "Not an array");
           setSuperficieData(response.data)
           } catch (error) {
-            // Error handled by interceptor
+            console.error("❌ [DASHBOARD] Error fetching superficie data:", error);
+            console.error("❌ [DASHBOARD] Error response:", error.response?.data);
+            console.error("❌ [DASHBOARD] Error status:", error.response?.status);
+            console.error("❌ [DASHBOARD] Full error:", error);
+            setSuperficieData("")
           }
+        } else {
+          console.log("ℹ️ [DASHBOARD] No user, skipping superficie fetch");
         }
   }
 
 
   const fetchYearlyProductionPerEspece = async ()=>{
     if(user){
+      console.log("📡 [DASHBOARD] Fetching yearly production per espece...");
+      console.log("🔗 [DASHBOARD] URL:", `${url}/api/yearly_production/`);
     try {
           const response =   await axios.get(
               `${url}/api/yearly_production/`,
@@ -82,15 +108,26 @@ export default function DashboardDisplay() {
                 },
               }
             )
+          console.log("✅ [DASHBOARD] Yearly production fetched successfully");
+          console.log("📊 [DASHBOARD] Response data:", response.data);
+          console.log("📊 [DASHBOARD] Data length:", Array.isArray(response.data) ? response.data.length : "Not an array");
          setYearlyProduct(response.data)
           } catch (error) {
-            // Error handled by interceptor
+            console.error("❌ [DASHBOARD] Error fetching yearly production:", error);
+            console.error("❌ [DASHBOARD] Error response:", error.response?.data);
+            console.error("❌ [DASHBOARD] Error status:", error.response?.status);
+            console.error("❌ [DASHBOARD] Full error:", error);
+            setYearlyProduct("")
           }
+        } else {
+          console.log("ℹ️ [DASHBOARD] No user, skipping yearly production fetch");
         }  
   }
 
    const fetchSupLabSiniProduction = async ()=>{
     if(user){
+      console.log("📡 [DASHBOARD] Fetching superficie labouree/sinistree/production...");
+      console.log("🔗 [DASHBOARD] URL:", `${url}/api/sup_lab_sin_prod/`);
     try {
           const response =   await axios.get(
               `${url}/api/sup_lab_sin_prod/`,
@@ -100,29 +137,62 @@ export default function DashboardDisplay() {
                 },
               }
             )
+          console.log("✅ [DASHBOARD] Sup lab/sin/prod fetched successfully");
+          console.log("📊 [DASHBOARD] Response data:", response.data);
+          console.log("📊 [DASHBOARD] Data length:", Array.isArray(response.data) ? response.data.length : "Not an array");
          setAggregatedSupStats(response.data)
           } catch (error) {
-            // Error handled by interceptor
+            console.error("❌ [DASHBOARD] Error fetching sup lab/sin/prod:", error);
+            console.error("❌ [DASHBOARD] Error response:", error.response?.data);
+            console.error("❌ [DASHBOARD] Error status:", error.response?.status);
+            console.error("❌ [DASHBOARD] Full error:", error);
+            setAggregatedSupStats("")
           }
+        } else {
+          console.log("ℹ️ [DASHBOARD] No user, skipping sup lab/sin/prod fetch");
         }  
   }
 
-
-
-  fetchTotalNumActiveAgri()
-  fetchSuperficieData()
-  fetchYearlyProductionPerEspece()
-  fetchSupLabSiniProduction()
-
-
+  console.log("🚀 [DASHBOARD] Starting all data fetches...");
+  
+  // Execute all fetches and log summary
+  Promise.allSettled([
+    fetchTotalNumActiveAgri(),
+    fetchSuperficieData(),
+    fetchYearlyProductionPerEspece(),
+    fetchSupLabSiniProduction()
+  ]).then((results) => {
+    console.log("📊 [DASHBOARD] ===== FETCH SUMMARY =====");
+    results.forEach((result, index) => {
+      const endpoints = ['active_this_year', 'superficie_espece_comparaision', 'yearly_production', 'sup_lab_sin_prod'];
+      if (result.status === 'fulfilled') {
+        console.log(`✅ [DASHBOARD] ${endpoints[index]}: SUCCESS`);
+      } else {
+        console.error(`❌ [DASHBOARD] ${endpoints[index]}: FAILED -`, result.reason);
+      }
+    });
+    console.log("📊 [DASHBOARD] ==========================");
+  }).then(() => {
+    console.log("📊 [DASHBOARD] ===== FETCH SUMMARY =====");
+    console.log("📊 [DASHBOARD] Total agriculteurs:", totalAgri);
+    console.log("📊 [DASHBOARD] Superficie data:", superficieData ? (Array.isArray(superficieData) ? `${superficieData.length} items` : "Set") : "Empty");
+    console.log("📊 [DASHBOARD] Yearly product:", yearlyProduct ? (Array.isArray(yearlyProduct) ? `${yearlyProduct.length} items` : "Set") : "Empty");
+    console.log("📊 [DASHBOARD] Aggregated stats:", aggregatedSupStats ? (Array.isArray(aggregatedSupStats) ? `${aggregatedSupStats.length} items` : "Set") : "Empty");
+    console.log("📊 [DASHBOARD] ==========================");
+  });
 
  },[user])
 
 
 const [transformedData, setTransformedData] = useState([]);
 useEffect(() => {
+    console.log("🔄 [DASHBOARD] Transforming yearly production data...");
+    console.log("📊 [DASHBOARD] Yearly product data:", yearlyProduct);
+    
     if (yearlyProduct && yearlyProduct.length > 0) {
+      console.log("✅ [DASHBOARD] Yearly product data is valid, transforming...");
       const years = yearlyProduct[0]?.yearly_production.map((entry) => entry.year) || [];
+      console.log("📅 [DASHBOARD] Years extracted:", years);
 
       const result = years.map((year, i) => {
         const entry = { year };
@@ -132,7 +202,12 @@ useEffect(() => {
         return entry;
       });
 
+      console.log("✅ [DASHBOARD] Transformed data:", result);
       setTransformedData(result);
+    } else {
+      console.log("ℹ️ [DASHBOARD] Yearly product data is empty or invalid");
+      console.log("📊 [DASHBOARD] Yearly product type:", typeof yearlyProduct);
+      console.log("📊 [DASHBOARD] Yearly product value:", yearlyProduct);
     }
   }, [yearlyProduct]);
 
