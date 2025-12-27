@@ -25,16 +25,17 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # CORS first (like old version)
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'api.middleware.RequestLoggingMiddleware',
-    'api.middleware.ErrorHandlingMiddleware',
+    # Temporarily disabled to debug 500 errors - re-enable after fixing
+    # 'api.middleware.RequestLoggingMiddleware',
+    # 'api.middleware.ErrorHandlingMiddleware',
 ]
 
 # CORS Configuration
@@ -200,7 +201,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': int(os.getenv('PAGE_SIZE', '20')),
     'PAGE_SIZE_QUERY_PARAM': 'page_size',
     'MAX_PAGE_SIZE': 100,
-    'EXCEPTION_HANDLER': 'api.exceptions.custom_exception_handler',
+    # Temporarily disabled to debug 500 errors - re-enable after fixing
+    # 'EXCEPTION_HANDLER': 'api.exceptions.custom_exception_handler',
 }
 
 AUTHENTICATION_BACKENDS = [
