@@ -54,3 +54,4 @@ class AuthenticationDebugMiddleware(MiddlewareMixin):
             logger.error(f"Is authenticated: {request.user.is_authenticated if hasattr(request.user, 'is_authenticated') else 'N/A'}")
             logger.error(f"Is anonymous: {request.user.is_anonymous if hasattr(request.user, 'is_anonymous') else 'N/A'}")
         return None
+
