@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -60,19 +61,36 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'crud.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'postgres'),
-        'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
+# Database configuration with DATABASE_URL support (Render provides this automatically)
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    # Use DATABASE_URL if provided (Render, Heroku, etc.)
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
     }
-}
+else:
+    # Fallback to individual DB_* environment variables
+    # SSL mode: 'prefer' works better with Render than 'require'
+    # Can be overridden with DB_SSLMODE env var
+    ssl_mode = os.getenv('DB_SSLMODE', 'prefer')
+    
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME', 'postgres'),
+            'USER': os.getenv('DB_USER', 'postgres'),
+            'PASSWORD': os.getenv('DB_PASSWORD', ''),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+            'OPTIONS': {
+                'sslmode': ssl_mode,
+            },
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
