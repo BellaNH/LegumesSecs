@@ -46,7 +46,7 @@ useEffect(() => {
       email: user.email,
       role_id:user.role.id,
       phoneNum: user.phoneNum,
-      password: user.password
+      password: "" // Password should never come from API - always start empty
     }))
   }
 }, [user]);
@@ -84,18 +84,65 @@ useEffect(() => {
 
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    
+    console.log("🔄 [PROFILE] Form submitted");
+    console.log("📝 [PROFILE] Current user data:", currentUser);
+    console.log("🔑 [PROFILE] Password field:", currentUser.password);
+    console.log("🔑 [PROFILE] Confirm password:", confirmPassword);
 
-  // Only validate if user is trying to change password
-  if (currentUser.password || confirmPassword) {
-    if (currentUser.password !== confirmPassword) {
-      setError("Les mots de passe ne correspondent pas.");
+    // Clear previous errors
+    setError("");
+    setErrorMessage("");
+
+    // Validate password fields only if user is trying to change password
+    // Both fields must be filled if password change is attempted
+    const passwordFilled = currentUser.password && currentUser.password.trim();
+    const confirmPasswordFilled = confirmPassword && confirmPassword.trim();
+
+    if (passwordFilled || confirmPasswordFilled) {
+      // If only one field is filled, show error
+      if (!passwordFilled || !confirmPasswordFilled) {
+        const errorMsg = "Veuillez remplir les deux champs de mot de passe.";
+        setError(errorMsg);
+        setErrorMessage(errorMsg);
+        setOpenError(true);
+        console.error("❌ [PROFILE] Validation error: Both password fields required");
+        return;
+      }
+
+      // If both are filled, they must match
+      if (currentUser.password !== confirmPassword) {
+        const errorMsg = "Les mots de passe ne correspondent pas.";
+        setError(errorMsg);
+        setErrorMessage(errorMsg);
+        setOpenError(true);
+        console.error("❌ [PROFILE] Validation error: Passwords don't match");
+        return;
+      }
+
+      // Validate password length if password is being changed
+      if (currentUser.password.length < 8) {
+        const errorMsg = "Le mot de passe doit contenir au moins 8 caractères.";
+        setError(errorMsg);
+        setErrorMessage(errorMsg);
+        setOpenError(true);
+        console.error("❌ [PROFILE] Validation error: Password too short");
+        return;
+      }
+    }
+
+    if (!currentUser || !currentUser.id) {
+      const errorMsg = "Erreur: Données utilisateur invalides.";
+      setErrorMessage(errorMsg);
+      setOpenError(true);
+      console.error("❌ [PROFILE] Error: Invalid user data");
       return;
     }
-  }
 
-  if (currentUser) {
     try {
+      console.log("📡 [PROFILE] Preparing API request...");
+      
       // Prepare payload - exclude id, convert types
       const userToSend = {
         nom: currentUser.nom,
@@ -105,19 +152,37 @@ useEffect(() => {
         phoneNum: currentUser.phoneNum ? (typeof currentUser.phoneNum === 'string' ? parseInt(currentUser.phoneNum, 10) : currentUser.phoneNum) : null,
       };
 
-      // If no new password is provided, remove it from the payload
-      if (currentUser.password && currentUser.password.trim()) {
+      // Only include password if both fields are filled and match (already validated above)
+      if (passwordFilled && confirmPasswordFilled && currentUser.password === confirmPassword) {
         userToSend.password = currentUser.password;
+        console.log("🔑 [PROFILE] Password will be updated");
+      } else {
+        console.log("ℹ️ [PROFILE] No password change requested");
       }
+
+      console.log("📤 [PROFILE] Sending PATCH request to:", `${url}/api/user/${currentUser.id}/`);
+      console.log("📦 [PROFILE] Payload:", userToSend);
 
       const response = await axios.patch(`${url}/api/user/${currentUser.id}/`, userToSend, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      
+      console.log("✅ [PROFILE] Update successful:", response.data);
+      
       setSuccessMessage(`${currentUser.nom} modifié avec succès ✅`);
       setOpenSuccess(true);
-      console.log(response.data);
+      
+      // Clear password fields after successful update
+      setCurrentUser(prev => ({ ...prev, password: "" }));
+      setConfirmPassword("");
+      
+      // Update user context if needed (optional - depends on your needs)
+      if (setUser && response.data) {
+        // Only update if backend returns updated user data
+        console.log("🔄 [PROFILE] Updating user context");
+      }
 
     } catch (error) {
       console.error("❌ [PROFILE] Error updating user:", error);
@@ -133,12 +198,10 @@ useEffect(() => {
         || "Erreur d'enregistrement.";
       
       setErrorMessage(errorMsg);
+      setError(errorMsg);
       setOpenError(true);
     }
-  }
-
-  console.log("Submit form here.");
-};
+  };
   useEffect(()=>{console.log(selectedInputId)},[selectedInputId])
 
     return (
@@ -220,6 +283,7 @@ useEffect(() => {
       size="small"
       name="password"
       type={showPassword.input1 ? "text" : "password"}
+      autoComplete="new-password"
       className="rounded-md outline-none bg-white"
       endAdornment={
         <InputAdornment position="end">
@@ -244,9 +308,11 @@ useEffect(() => {
     <p className="text-gray-600 font-medium text-sm">Confirmer le nouveau mot de passe</p>
     <OutlinedInput
       id="2"
+      value={confirmPassword}
       onChange={(e) => setConfirmPassword(e.target.value)}
       size="small"
       type={showPassword.input2 ? "text" : "password"}
+      autoComplete="new-password"
       className="rounded-md outline-none bg-white"
       endAdornment={
         <InputAdornment position="end">
@@ -265,6 +331,9 @@ useEffect(() => {
         boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
       }}
     />
+    {error && (
+      <p className="text-red-500 text-sm mt-1">{error}</p>
+    )}
   </div>
 
   <div className="w-full flex justify-end">

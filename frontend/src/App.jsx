@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar"
 import {Routes,Route} from "react-router-dom"
 import { useGlobalContext } from './context.jsx'
 import { Box, CircularProgress } from '@mui/material'
+import ProtectedRoute from './components/common/ProtectedRoute'
 
 // Lazy load components for code splitting
 const FormExploi = lazy(() => import('./Pages/Exploitation/FormExploi.jsx'))
@@ -58,28 +59,28 @@ function App() {
       <main id="main-content" className="flex-1" role="main">
         <Suspense fallback={<LoadingFallback />}>
         <Routes>
-          <Route path="/slider" element={<Slider/>} />
-          <Route path="" element={isAuthenticated?<DashboardDisplayed/>:<Login/>} />
-          <Route path="/role" element={<Role />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/dashboard" element={<DashboardDisplayed />} />
-          <Route path="/admin-create-user" element={<AjouterUtilisateur />} />
-          <Route path="/utilisateurs" element={<Utilisateurs />} />
-          <Route path="/ajouter-utilisateur" element={<AjouterUtilisateur />} />
-          <Route path="/modifier-utilisateur/:id" element={<ModifierUtilisateur/>} />
-          <Route path="/wilayas" element={isAuthenticated ? <WilayasPage /> : <Login/>} />
-          <Route path="/subdivisions" element={<Subdivision />} />
-          <Route path="/ajouter-subdivision" element={<AjouterSubdivision />} />
-          <Route path="/communes" element={<Communes />} />
-          <Route path="/ajouter-commune" element={<AjouterCommunes />} />
-          <Route path='/ajouterexploitation' element={<FormExploi/>}/>
-          <Route path='/exploitations' element={<Exploitations/>}/>
-          <Route path='/espece' element={<Espece/>}/>
-          <Route path='/ajouteragriculteur' element={<FormAgriculteur/>}/>   
-          <Route path="/agriculteurs" element={<Agriculteurs />} />    
-          <Route path='/ajouterparcelle' element={<AjouterParcelle/>}/>
-          <Route path='/ajouterobjectif' element={<FormObjectif/>}/>
-          <Route path='/objectifs' element={<Objectifs/>}/>
+          <Route path="" element={isAuthenticated ? <DashboardDisplayed /> : <Login />} />
+          <Route path="/slider" element={<ProtectedRoute><Slider /></ProtectedRoute>} />
+          <Route path="/role" element={<ProtectedRoute><Role /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute><DashboardDisplayed /></ProtectedRoute>} />
+          <Route path="/admin-create-user" element={<ProtectedRoute><AjouterUtilisateur /></ProtectedRoute>} />
+          <Route path="/utilisateurs" element={<ProtectedRoute><Utilisateurs /></ProtectedRoute>} />
+          <Route path="/ajouter-utilisateur" element={<ProtectedRoute><AjouterUtilisateur /></ProtectedRoute>} />
+          <Route path="/modifier-utilisateur/:id" element={<ProtectedRoute><ModifierUtilisateur /></ProtectedRoute>} />
+          <Route path="/wilayas" element={<ProtectedRoute><WilayasPage /></ProtectedRoute>} />
+          <Route path="/subdivisions" element={<ProtectedRoute><Subdivision /></ProtectedRoute>} />
+          <Route path="/ajouter-subdivision" element={<ProtectedRoute><AjouterSubdivision /></ProtectedRoute>} />
+          <Route path="/communes" element={<ProtectedRoute><Communes /></ProtectedRoute>} />
+          <Route path="/ajouter-commune" element={<ProtectedRoute><AjouterCommunes /></ProtectedRoute>} />
+          <Route path='/ajouterexploitation' element={<ProtectedRoute><FormExploi /></ProtectedRoute>} />
+          <Route path='/exploitations' element={<ProtectedRoute><Exploitations /></ProtectedRoute>} />
+          <Route path='/espece' element={<ProtectedRoute><Espece /></ProtectedRoute>} />
+          <Route path='/ajouteragriculteur' element={<ProtectedRoute><FormAgriculteur /></ProtectedRoute>} />
+          <Route path="/agriculteurs" element={<ProtectedRoute><Agriculteurs /></ProtectedRoute>} />
+          <Route path='/ajouterparcelle' element={<ProtectedRoute><AjouterParcelle /></ProtectedRoute>} />
+          <Route path='/ajouterobjectif' element={<ProtectedRoute><FormObjectif /></ProtectedRoute>} />
+          <Route path='/objectifs' element={<ProtectedRoute><Objectifs /></ProtectedRoute>} />
         </Routes>
       </Suspense>
       </main>

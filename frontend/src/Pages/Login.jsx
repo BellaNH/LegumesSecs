@@ -48,12 +48,13 @@ export default function Login() {
       const { access, refresh, user: userFromToken } = response.data;
       console.log("✅ [LOGIN] Token received successfully");
       console.log("🔑 [LOGIN] Access token:", access);
+      console.log("🔄 [LOGIN] Refresh token:", refresh ? "received" : "not received");
       console.log("👤 [LOGIN] User data from token:", userFromToken);
       console.log("🎭 [LOGIN] Role from token:", userFromToken?.role);
       
-      // Call login with just access token (like old version)
-      console.log("🔄 [LOGIN] Calling login function with access token");
-      await login(access);
+      // Call login with both access and refresh tokens
+      console.log("🔄 [LOGIN] Calling login function with access and refresh tokens");
+      await login(access, refresh);
       
       console.log("✅ [LOGIN] Login process completed successfully");
       setTimeout(() => {

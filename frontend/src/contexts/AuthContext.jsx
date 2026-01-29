@@ -42,10 +42,16 @@ export const AuthProvider = ({ children }) => {
     }
   }, [logout]);
 
-  const login = useCallback(async (accessToken) => {
-    // DETECTIVE LOG: Storing token
+  const login = useCallback(async (accessToken, refreshToken) => {
+    // DETECTIVE LOG: Storing tokens
     console.log("💾 [AUTH] Storing access token in localStorage");
     localStorage.setItem("token", accessToken);
+    
+    // Store refresh token if provided
+    if (refreshToken) {
+      console.log("💾 [AUTH] Storing refresh token in localStorage");
+      localStorage.setItem("refreshToken", refreshToken);
+    }
     
     // Use direct axios call like old version for better visibility
     const url = "https://legumessecs.onrender.com";
@@ -100,9 +106,33 @@ export const AuthProvider = ({ children }) => {
           setUser(response.data);
           setIsAuthenticated(true);
         })
-        .catch(error => {
+        .catch(async (error) => {
           console.error("❌ [AUTH] Error fetching user on page load:", error);
           console.error("❌ [AUTH] Error response:", error.response?.data);
+          
+          // If 401 (token expired), try to refresh first
+          if (error.response?.status === 401) {
+            console.log("🔄 [AUTH] Token expired, attempting refresh...");
+            try {
+              const newToken = await refreshAccessToken();
+              if (newToken) {
+                // Retry fetching user data with new token
+                const userResponse = await axios.get(`${url}/api/me/`, {
+                  headers: {
+                    Authorization: `Bearer ${newToken}`
+                  }
+                });
+                console.log("✅ [AUTH] User data fetched after refresh:", userResponse.data);
+                setUser(userResponse.data);
+                setIsAuthenticated(true);
+                return;
+              }
+            } catch (refreshError) {
+              console.error("❌ [AUTH] Refresh failed:", refreshError);
+            }
+          }
+          
+          // If refresh failed or error is not 401, logout
           logout();
         });
     } else {

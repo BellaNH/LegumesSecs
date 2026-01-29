@@ -208,27 +208,42 @@ class CustomUserSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        permissions_data = validated_data.pop('permissions', [])
-        final_permissions = build_permissions(permissions_data)
-        wilaya_id = validated_data.pop('wilaya', None)
-        subdivision_id = validated_data.pop('subdivision', None)
+        try:
+            # Check if permissions were explicitly provided in the request
+            # (not just set to [] by validate method)
+            permissions_provided = 'permissions' in self.initial_data
+            permissions_data = validated_data.pop('permissions', [])
+            
+            wilaya_id = validated_data.pop('wilaya', None)
+            subdivision_id = validated_data.pop('subdivision', None)
 
-        # Get new_role if role_id was provided, otherwise use existing role
-        new_role = validated_data.pop('role', None)
-        old_role_id = instance.role.id
-        new_role_id = new_role.id if new_role else old_role_id
-      
-        for attr, value in validated_data.items():
-            if attr == 'password' and value:
-                instance.set_password(value)
-            else:
-                setattr(instance, attr, value)
+            # Get new_role if role_id was provided, otherwise use existing role
+            new_role = validated_data.pop('role', None)
+            old_role_id = instance.role.id
+            new_role_id = new_role.id if new_role else old_role_id
+          
+            # Update basic fields (excluding password which is handled separately)
+            for attr, value in validated_data.items():
+                if attr == 'password' and value:
+                    instance.set_password(value)
+                else:
+                    setattr(instance, attr, value)
 
-        instance.save()
+            instance.save()
 
-        instance.permissions.all().delete()
-        for perm_data in final_permissions:
-            Permissions.objects.create(user=instance, **perm_data)
+            # Only update permissions if they were explicitly provided in the request
+            if permissions_provided:
+                final_permissions = build_permissions(permissions_data)
+                instance.permissions.all().delete()
+                for perm_data in final_permissions:
+                    Permissions.objects.create(user=instance, **perm_data)
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error updating user {instance.id}: {str(e)}", exc_info=True)
+            logger.error(f"Validated data: {validated_data}")
+            logger.error(f"Initial data: {self.initial_data}")
+            raise
         
         # Only update role-related associations if role actually changed
         if new_role and old_role_id != new_role_id:
