@@ -337,18 +337,21 @@ class TokenObtainPairView(BaseTokenObtainPairView):
 
 
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
-    
+    # AllowAny so logout works even when access token is expired (frontend sends refresh_token only)
+    permission_classes = [AllowAny]
+
     def post(self, request):
         try:
             refresh_token = request.data.get("refresh_token")
             if refresh_token:
                 token = RefreshToken(refresh_token)
                 token.blacklist()
-            logger.info(f"User {request.user.email} logged out successfully")
+                logger.info("Refresh token blacklisted successfully")
+            else:
+                logger.info("Logout called without refresh_token (local logout only)")
             return Response({"success": "Déconnexion réussie."}, status=status.HTTP_200_OK)
         except Exception as e:
-            logger.error(f"Error during logout for user {request.user.email}: {str(e)}", exc_info=True)
+            logger.error(f"Error during logout: {str(e)}", exc_info=True)
             return Response({
                 "error": {
                     "code": "logout_error",
