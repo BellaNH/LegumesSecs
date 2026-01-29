@@ -14,4 +14,3 @@ elif ENVIRONMENT == 'development':
     from .development import *
 else:
     from .development import *
-

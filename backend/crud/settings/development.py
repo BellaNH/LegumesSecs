@@ -47,4 +47,3 @@ if DEBUG:
         'level': 'DEBUG',
         'propagate': False,
     }
-

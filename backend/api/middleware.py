@@ -1,44 +1,7 @@
 import logging
-import re
 from django.utils.deprecation import MiddlewareMixin
 
 logger = logging.getLogger(__name__)
-
-# Netlify origin - ensure CORS headers are always set for this origin (safety net)
-NETLIFY_ORIGIN = "https://legumessecs.netlify.app"
-ACCESS_CONTROL_ALLOW_ORIGIN = "access-control-allow-origin"
-ACCESS_CONTROL_ALLOW_CREDENTIALS = "access-control-allow-credentials"
-ACCESS_CONTROL_ALLOW_HEADERS = "access-control-allow-headers"
-ACCESS_CONTROL_ALLOW_METHODS = "access-control-allow-methods"
-ACCESS_CONTROL_MAX_AGE = "access-control-max-age"
-
-
-class CORSFallbackMiddleware(MiddlewareMixin):
-    """
-    Safety net: ensure CORS headers are on every API response for Netlify origin.
-    Runs after CorsMiddleware. If response lacks CORS headers for our origin, add them.
-    Fixes 'Network Error' when browser blocks response due to missing CORS.
-    """
-    def process_response(self, request, response):
-        if not request.path.startswith("/api/"):
-            return response
-        origin = request.META.get("HTTP_ORIGIN") or request.headers.get("Origin")
-        if not origin:
-            return response
-        # Allow exactly our Netlify origin (with or without trailing slash)
-        if origin.rstrip("/") != NETLIFY_ORIGIN.rstrip("/"):
-            return response
-        if ACCESS_CONTROL_ALLOW_ORIGIN in response:
-            return response
-        response[ACCESS_CONTROL_ALLOW_ORIGIN] = origin
-        response[ACCESS_CONTROL_ALLOW_CREDENTIALS] = "true"
-        if request.method == "OPTIONS":
-            response[ACCESS_CONTROL_ALLOW_HEADERS] = (
-                "accept, accept-encoding, authorization, content-type, origin, x-requested-with"
-            )
-            response[ACCESS_CONTROL_ALLOW_METHODS] = "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-            response[ACCESS_CONTROL_MAX_AGE] = "86400"
-        return response
 
 
 class ErrorHandlingMiddleware(MiddlewareMixin):
