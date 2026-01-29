@@ -11,15 +11,24 @@ if not ALLOWED_HOSTS_STR:
     )
 ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',') if host.strip()]
 
-CORS_ALLOWED_ORIGINS_STR = os.getenv('CORS_ALLOWED_ORIGINS', '')
-if not CORS_ALLOWED_ORIGINS_STR:
-    raise ValueError(
-        "CORS_ALLOWED_ORIGINS must be set in production. "
-        "Please set CORS_ALLOWED_ORIGINS in your .env file with comma-separated origins."
-    )
-CORS_ALLOWED_ORIGINS = [origin.strip() for origin in CORS_ALLOWED_ORIGINS_STR.split(',') if origin.strip()]
+# CORS: accept both CORS_ALLOWED_ORIGINS and CORS_ALLOWED_ORIGIN (common typo)
+CORS_ALLOWED_ORIGINS_STR = os.getenv('CORS_ALLOWED_ORIGINS') or os.getenv('CORS_ALLOWED_ORIGIN') or ''
+CORS_ALLOWED_ORIGINS = [o.strip() for o in CORS_ALLOWED_ORIGINS_STR.split(',') if o and o.strip()]
+
+# Always allow Netlify frontend (exact origin, no trailing slash)
+NETLIFY_ORIGIN = 'https://legumessecs.netlify.app'
+if NETLIFY_ORIGIN not in CORS_ALLOWED_ORIGINS:
+    CORS_ALLOWED_ORIGINS.append(NETLIFY_ORIGIN)
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'origin',
+    'x-requested-with',
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
