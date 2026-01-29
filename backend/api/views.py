@@ -15,6 +15,7 @@ from collections import defaultdict
 import logging
 from .models import *
 from .serializers import *
+from rest_framework import serializers
 from .scoping import *
 from .permissions import DEFAULT_PERMISSIONS
 
@@ -92,6 +93,28 @@ class UserList(viewsets.ModelViewSet):
             logger.error(f"Error creating user: {str(e)}", exc_info=True)
             logger.error(f"Request data: {request.data}")
             raise
+    
+    def update(self, request, *args, **kwargs):
+        try:
+            return super().update(request, *args, **kwargs)
+        except serializers.ValidationError as e:
+            # Re-raise ValidationError as-is (already properly formatted)
+            raise
+        except Exception as e:
+            logger.error(f"Error updating user: {str(e)}", exc_info=True)
+            logger.error(f"Request data: {request.data}")
+            logger.error(f"User ID: {kwargs.get('pk')}")
+            # Return proper error response
+            return Response({
+                'error': {
+                    'code': 'update_error',
+                    'message': f'Erreur lors de la mise à jour: {str(e)}',
+                    'details': str(e) if hasattr(e, '__cause__') else None
+                }
+            }, status=status.HTTP_400_BAD_REQUEST)
+    
+    def partial_update(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
 
 

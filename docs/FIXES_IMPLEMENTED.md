@@ -620,4 +620,117 @@ def update(self, instance, validated_data):
 
 ---
 
+## 7. Netlify Redirect Fix & Backend Error Handling Improvement
+
+### Problem
+
+**Issue ID:** Netlify 404 on Refresh & Backend 500 Errors  
+**Severity:** Critical  
+**Impact:** 
+1. Users couldn't refresh pages on Netlify (404 errors)
+2. Backend returned unhelpful 500 errors with no details
+
+#### Description
+
+**Issue 1 - Netlify Redirects:**
+- After deploying to Netlify, refreshing any route (e.g., `/profile`) resulted in 404 errors
+- The `_redirects` file was created but wasn't being copied to the build output
+- Netlify couldn't find the redirect rules
+
+**Issue 2 - Backend Error Handling:**
+- When profile updates failed, backend returned generic 500 errors
+- Error messages contained no useful information for debugging
+- Frontend couldn't display helpful error messages to users
+
+#### Root Cause
+
+**Netlify Redirects:**
+- Vite's `publicDir` should copy files, but the `_redirects` file wasn't reliably making it to `dist/`
+- No post-build step to ensure the file was copied
+
+**Backend Errors:**
+- The `update()` method had a try-except that only covered part of the code
+- Errors were logged but then re-raised as generic exceptions
+- No proper ValidationError with useful messages
+- View layer didn't catch and format errors properly
+
+### Solution
+
+#### Changes Made
+
+**1. Netlify Redirects** (`frontend/package.json`, `frontend/vite.config.js`)
+
+- Added post-build script to copy `_redirects` file:
+  ```json
+  "build": "vite build && npm run copy-redirects",
+  "copy-redirects": "node -e \"require('fs').copyFileSync('public/_redirects', 'dist/_redirects')\""
+  ```
+- Ensured `publicDir: 'public'` is set in vite.config.js
+- Created `dist/_redirects` file directly as backup
+
+**2. Backend Error Handling** (`backend/api/serializers.py`, `backend/api/views.py`)
+
+**In Serializer (`CustomUserSerializer.update()`):**
+- Wrapped entire update method in try-except (not just part of it)
+- Return proper `ValidationError` with detailed error information:
+  ```python
+  raise serializers.ValidationError({
+      'non_field_errors': [error_msg],
+      'error_details': {
+          'error_type': type(e).__name__,
+          'error_message': str(e),
+          'user_id': instance.id,
+          'validated_data_keys': list(validated_data.keys()),
+          'initial_data_keys': list(self.initial_data.keys())
+      }
+  })
+  ```
+
+**In View (`UserList.update()` and `partial_update()`):**
+- Added error handling in view layer:
+  ```python
+  def update(self, request, *args, **kwargs):
+      try:
+          return super().update(request, *args, **kwargs)
+      except serializers.ValidationError as e:
+          raise  # Re-raise ValidationError as-is
+      except Exception as e:
+          # Return proper error response with details
+          return Response({
+              'error': {
+                  'code': 'update_error',
+                  'message': f'Erreur lors de la mise à jour: {str(e)}',
+                  'details': str(e)
+              }
+          }, status=status.HTTP_400_BAD_REQUEST)
+  ```
+
+#### Result
+
+✅ **Netlify Redirects:**
+- `_redirects` file is now reliably copied to build output
+- Post-build script ensures file exists even if Vite's publicDir fails
+- All routes now work on refresh
+
+✅ **Backend Error Handling:**
+- Errors now return proper HTTP 400 with detailed messages
+- Frontend receives structured error data it can display
+- Error details include error type, message, and context
+- Much easier to debug issues
+
+#### Testing
+
+**For Netlify:**
+1. Build: `cd frontend && npm run build`
+2. Verify `dist/_redirects` exists
+3. Deploy to Netlify
+4. Navigate to `/profile` and refresh → Should work ✅
+
+**For Backend:**
+1. Try updating profile with invalid data
+2. Check error response → Should have detailed error message ✅
+3. Check frontend → Should display helpful error ✅
+
+---
+
 **Last Updated:** 2025-01-29

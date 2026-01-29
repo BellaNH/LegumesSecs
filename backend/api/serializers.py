@@ -208,6 +208,9 @@ class CustomUserSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
+        import logging
+        logger = logging.getLogger(__name__)
+        
         try:
             # Check if permissions were explicitly provided in the request
             # (not just set to [] by validate method)
@@ -237,16 +240,9 @@ class CustomUserSerializer(serializers.ModelSerializer):
                 instance.permissions.all().delete()
                 for perm_data in final_permissions:
                     Permissions.objects.create(user=instance, **perm_data)
-        except Exception as e:
-            import logging
-            logger = logging.getLogger(__name__)
-            logger.error(f"Error updating user {instance.id}: {str(e)}", exc_info=True)
-            logger.error(f"Validated data: {validated_data}")
-            logger.error(f"Initial data: {self.initial_data}")
-            raise
-        
-        # Only update role-related associations if role actually changed
-        if new_role and old_role_id != new_role_id:
+            
+            # Only update role-related associations if role actually changed
+            if new_role and old_role_id != new_role_id:
             if old_role_id == 3 and new_role_id == 4:
                 UserWilaya.objects.filter(user=instance).delete()
 
@@ -306,7 +302,28 @@ class CustomUserSerializer(serializers.ModelSerializer):
                 UserWilaya.objects.filter(user=instance).delete()
                 UserSubdivision.objects.filter(user=instance).delete()
 
-        return instance
+            return instance
+            
+        except Exception as e:
+            # Log the error with full details
+            error_details = {
+                'error_type': type(e).__name__,
+                'error_message': str(e),
+                'user_id': instance.id if instance else None,
+                'validated_data_keys': list(validated_data.keys()),
+                'initial_data_keys': list(self.initial_data.keys()) if hasattr(self, 'initial_data') else [],
+            }
+            logger.error(f"Error updating user {instance.id if instance else 'unknown'}: {error_details}", exc_info=True)
+            
+            # Return a proper ValidationError with useful message
+            error_msg = f"Erreur lors de la mise à jour: {str(e)}"
+            if hasattr(e, '__cause__') and e.__cause__:
+                error_msg += f" (Cause: {str(e.__cause__)})"
+            
+            raise serializers.ValidationError({
+                'non_field_errors': [error_msg],
+                'error_details': error_details
+            })
 
 
 
