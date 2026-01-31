@@ -130,6 +130,21 @@ useEffect(() => {
         console.error("❌ [PROFILE] Validation error: Password too short");
         return;
       }
+      // Match backend: at least one letter and one digit
+      if (!/[A-Za-z]/.test(currentUser.password)) {
+        const errorMsg = "Le mot de passe doit contenir au moins une lettre.";
+        setError(errorMsg);
+        setErrorMessage(errorMsg);
+        setOpenError(true);
+        return;
+      }
+      if (!/[0-9]/.test(currentUser.password)) {
+        const errorMsg = "Le mot de passe doit contenir au moins un chiffre.";
+        setError(errorMsg);
+        setErrorMessage(errorMsg);
+        setOpenError(true);
+        return;
+      }
     }
 
     if (!currentUser || !currentUser.id) {
@@ -188,14 +203,34 @@ useEffect(() => {
       console.error("❌ [PROFILE] Error updating user:", error);
       console.error("❌ [PROFILE] Error response:", error.response?.data);
       console.error("❌ [PROFILE] Error status:", error.response?.status);
-      console.error("❌ [PROFILE] Full error:", error);
       
-      // Extract detailed error message from response
-      const errorMsg = error.response?.data?.error?.message 
-        || error.response?.data?.message 
-        || error.response?.data?.detail
-        || error.message 
-        || "Erreur d'enregistrement.";
+      // Parse DRF-style validation errors (field names -> array of messages)
+      const data = error.response?.data;
+      let errorMsg = "Erreur d'enregistrement.";
+      if (data) {
+        if (data.error?.message) {
+          errorMsg = data.error.message;
+        } else if (data.message) {
+          errorMsg = typeof data.message === "string" ? data.message : JSON.stringify(data.message);
+        } else if (data.detail) {
+          errorMsg = typeof data.detail === "string" ? data.detail : JSON.stringify(data.detail);
+        } else if (data.non_field_errors && Array.isArray(data.non_field_errors)) {
+          errorMsg = data.non_field_errors.join(" ");
+        } else if (typeof data === "object") {
+          // DRF returns { "password": ["..."], "email": ["..."] }
+          const parts = [];
+          for (const [field, messages] of Object.entries(data)) {
+            if (Array.isArray(messages)) {
+              parts.push(messages.join(" "));
+            } else if (typeof messages === "string") {
+              parts.push(messages);
+            }
+          }
+          if (parts.length) errorMsg = parts.join(" ");
+        }
+      } else if (error.message) {
+        errorMsg = error.message;
+      }
       
       setErrorMessage(errorMsg);
       setError(errorMsg);

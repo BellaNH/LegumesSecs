@@ -8,6 +8,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
 
   const logout = useCallback(async () => {
     const refreshToken = localStorage.getItem("refreshToken");
@@ -134,9 +135,13 @@ export const AuthProvider = ({ children }) => {
           
           // If refresh failed or error is not 401, logout
           logout();
+        })
+        .finally(() => {
+          setAuthLoading(false);
         });
     } else {
       console.log("ℹ️ [AUTH] No token found, user not authenticated");
+      setAuthLoading(false);
     }
   }, [logout, refreshAccessToken]);
 
@@ -145,10 +150,11 @@ export const AuthProvider = ({ children }) => {
     setUser,
     isAuthenticated,
     setIsAuthenticated,
+    authLoading,
     login,
     logout,
     refreshAccessToken,
-  }), [user, isAuthenticated, login, logout, refreshAccessToken]);
+  }), [user, isAuthenticated, authLoading, login, logout, refreshAccessToken]);
 
   return (
     <AuthContext.Provider value={value}>

@@ -82,8 +82,8 @@ const Role = () => {
   };
 
   return (
-  <div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
-  <div className="w-[80%] flex flex-col ">
+  <div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[85%] flex flex-col ">
        <div className='flex align-center gap-4'> 
                 <img src={User} className="w-8 h-8 mt-1" />
                 <h2 className="text-3xl font-bold text-left text-green-600 mb-6">

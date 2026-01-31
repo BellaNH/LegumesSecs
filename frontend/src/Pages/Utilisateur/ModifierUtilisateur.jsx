@@ -16,15 +16,18 @@ const ModifierUtilisateur = () => {
   const [initialPerm,setInitialPerm] = useState([])
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+  nom: "",
+  prenom: "",
   email: "",
   role_id: "",
   permissions: [],
 });
- const {url,wilayas,subdivisions,roles
+ const {url,wilayas,subdivisions,roles,fetchSubdivisions
   ,setCurrentUserPermissions,currentUserPermissions,setSliderStatus} = useGlobalContext()
    const [selectedRole, setSelectedRole] = useState('')
    const [selectedWilaya,setSelectedWilaya]= useState('')
    const [selectedSubdivision,setSelectedSubdivision]= useState('')
+   const [userSubdivisionOption, setUserSubdivisionOption] = useState(null)
    const [successMessage, setSuccessMessage] = useState("");
    const [errorMessage, setErrorMessage] = useState(""); 
    const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -41,6 +44,8 @@ const ModifierUtilisateur = () => {
       setInitialPerm(res.data.permissions);
       setFormData((prev)=>(
         {...prev,
+          nom: res.data.nom ?? "",
+          prenom: res.data.prenom ?? "",
           email:res.data.email, 
           role_id:res.data.role.id,
           permissions:res.data.permissions,
@@ -51,19 +56,39 @@ const ModifierUtilisateur = () => {
       setSliderStatus("edit")
       setCurrentUserPermissions(res.data.permissions)
       console.log(res.data.role.permissions)
-      if (res.data.role.nom === "agent_dsa") {
+      const roleId = Number(res.data.role?.id);
+      if (roleId === 3) {
         const locationRes = await axios.get(`${url}/api/userWilaya/?user=${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(locationRes.data)
-       setSelectedWilaya(locationRes.data[0].wilaya); 
-      } else if (res.data.role.nom === "agent_subdivision") {
+        const list = Array.isArray(locationRes.data) ? locationRes.data : (locationRes.data?.results ?? []);
+        const first = list[0];
+        if (first) setSelectedWilaya(first.wilaya);
+      } else if (roleId === 4) {
         const locationRes = await axios.get(`${url}/api/userSubdiv/?user=${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(locationRes.data)
-        console.log(locationRes.data.subdivision)
-        setSelectedSubdivision(locationRes.data[0].subdivision); 
+        const list = Array.isArray(locationRes.data) ? locationRes.data : (locationRes.data?.results ?? []);
+        const first = list[0];
+        const subdivId = first != null
+          ? (typeof first.subdivision === "object" && first.subdivision != null
+              ? first.subdivision.id
+              : first.subdivision)
+          : null;
+        if (subdivId != null && subdivId !== undefined && subdivId !== "") {
+          setSelectedSubdivision(subdivId);
+          try {
+            const subRes = await axios.get(`${url}/api/subdivision/${subdivId}/`, {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+            setUserSubdivisionOption(subRes.data);
+          } catch (_) {
+            setUserSubdivisionOption(null);
+          }
+        } else {
+          setSelectedSubdivision("");
+          setUserSubdivisionOption(null);
+        }
       }
     } catch (err) {
       console.error("Erreur lors du chargement de l'utilisateur :", err);
@@ -72,6 +97,13 @@ const ModifierUtilisateur = () => {
 
   fetchUser();
 }, []);
+
+  // When role is agent_subdivision (4), ensure subdivisions are loaded so the dropdown has options
+  useEffect(() => {
+    if (Number(selectedRole) === 4 && fetchSubdivisions) {
+      fetchSubdivisions();
+    }
+  }, [selectedRole, fetchSubdivisions]);
 
   
   const handleChange = (e, modelName = null) => {
@@ -123,6 +155,8 @@ const handleSubmit = async (e) => {
 
   try {
     const payload = {
+      nom: formData.nom,
+      prenom: formData.prenom,
       email: formData.email,
       role_id: selectedRole,  
       permissions: formData?.permissions,  
@@ -209,7 +243,7 @@ const handleSubmit = async (e) => {
       </TextField>
 
       <div className="grid grid-cols-2 gap-6">
-        {selectedRole && selectedRole === 3 && (
+        {selectedRole && Number(selectedRole) === 3 && (
           <TextField
             select
             label="Wilaya"
@@ -232,12 +266,18 @@ const handleSubmit = async (e) => {
           </TextField>
         )}
 
-        {selectedRole && selectedRole === 4 && (
+        {selectedRole && Number(selectedRole) === 4 && (() => {
+          const list = Array.isArray(subdivisions) ? subdivisions : [];
+          const options = [...list];
+          if (userSubdivisionOption && !options.some((s) => s.id === userSubdivisionOption.id || s.id === Number(userSubdivisionOption.id))) {
+            options.unshift(userSubdivisionOption);
+          }
+          return (
           <TextField
             select
             label="Subdivision"
             name="subdivision"
-            value={selectedSubdivision || ""}
+            value={selectedSubdivision !== "" && selectedSubdivision != null ? selectedSubdivision : ""}
             onChange={(e) => handleChange(e)}
             fullWidth
             required
@@ -247,13 +287,14 @@ const handleSubmit = async (e) => {
               borderRadius: "0.375rem"
             }}
           >
-            {subdivisions.map((item, index) => (
-              <MenuItem key={index} value={item.id}>
+            {options.map((item, index) => (
+              <MenuItem key={item?.id ?? index} value={item.id}>
                 {item.nom}
               </MenuItem>
             ))}
           </TextField>
-        )}
+          );
+        })()}
 
         <button
           type="button"

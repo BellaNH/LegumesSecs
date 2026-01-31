@@ -240,18 +240,18 @@ useEffect(() => {
 
   return (
     <div className="w-[80%] flex overflow-hidden">
- <div className="ml-8 mt-4 flex flex-col w-[13%] h-[98%] gap-4 ">
+ <div className=" ml-8 mt-2 flex flex-col w-[16%] h-[98vh] gap-2 ">
   <StatCard 
-    icon={<img src={Agriculteur} className="w-8 mt-4" />} 
+  className="h-full"
+    icon={<img src={Agriculteur} className="w-8 " />} 
     title="Agriculteurs Active" 
     value={totalAgri} 
   />
 
   <div
-  className="overflow-hidden relative h-[77%] flex flex-col gap-4 rounded-xl  py-4 border border-green-600  bg-gradient-to-b  shadow-md"
+  className="overflow-hidden h-[80%] w-[100%] flex flex-col rounded-xl pt-2 border border-green-600 bg-gradient-to-b shadow-md"
 >
-
-
+    <div className="flex-1 min-h-0 relative overflow-hidden">
     {aggregatedSupStats && aggregatedSupStats.map((statCard, statCardIndex) => {
       let position = "next-slide";
       if (statCardIndex === agrSupStatsIndex) {
@@ -262,54 +262,64 @@ useEffect(() => {
         position = "last-slide";
       }
 
+      const translateY = position === "active-slide" ? "0" : position === "last-slide" ? "-100%" : "100%";
+      const opacity = position === "active-slide" ? 1 : 0;
       return (
         <div 
           key={statCardIndex}
-          className={` w-full h-fit pb-4 flex flex-col gap-4 transition-all duration-500 ease-in-out transform absolute
-            ${position === "active-slide" ? "translate-y-0 opacity-100 z-30" : ""}
-            ${position === "last-slide" ? "translate-y-[-100%] opacity-0 " : ""}
-            ${position === "next-slide" ? "translate-y-[100%] opacity-0 " : "opacity-0"}
+          className={`absolute top-0 left-0 right-0 h-full flex flex-col gap-2 pb-2 transition-all duration-500 ease-in-out z-30
+            ${position === "active-slide" ? "pointer-events-auto" : "pointer-events-none"}
           `}
+          style={{
+            transform: `translateY(${translateY})`,
+            opacity,
+            zIndex: position === "active-slide" ? 30 : 0,
+          }}
         >
           <StatCard
-            icon={<img src={Jardinage} className="w-10 mt-4 " />}  
+             compact
+            icon={<img src={Jardinage} className=" w-10 text-sm" />}  
             title="Superficie labouree" 
             value={statCard.total_production} 
 
           />
           <StatCard
-            icon={<img src={Feu} className="w-10 mt-4" />}  
+            compact
+            icon={<img src={Feu} className="w-10" />}  
             title="Superficie sinistree" 
             value={statCard.total_sup_labouree} 
           />
           <StatCard
-            icon={<img src={Amande} className="w-10 mt-4" />}  
+            compact
+            icon={<img src={Amande} className=" w-10" />}  
             title="Total production" 
             value={statCard.total_sup_sinistree} 
           />
-
-           <div className="bg-green-600 w-full h-12 py-0 absolute top-[100%] flex justify-center items-center gap-4  text-white font-semibold text-xl rounded-b-xl">
-              <span className="text-white font-semibold ">{statCard.espece}</span>
-              <FaArrowDown  
-                onClick={() =>
-                  setAgrSupStatsIndex((agrSupStatsIndex + 1) % aggregatedSupStats.length)
-                }
-                className="w-5 h-5  text-white ml-2 cursor-pointer"
-              />
-            </div>
         </div>
       );
     })}
+    </div>
+    <div
+      className="flex-shrink-0 bg-green-600 w-full h-8 flex justify-center items-center gap-2 text-white font-semibold text-sm rounded-b-xl cursor-pointer"
+      onClick={() => setAgrSupStatsIndex((agrSupStatsIndex + 1) % aggregatedSupStats.length)}
+    >
+      <span>{aggregatedSupStats?.[agrSupStatsIndex]?.espece ?? "—"}</span>
+      <FaArrowDown className="w-5 h-5 text-white" />
+    </div>
   </div>
 </div>
 
-
-      <div className="absolute top-4 right-4 w-[25vw] h-[50vh]">
-        <TopWilaya/>
+      <div className="pl-2 pt-2 w-[25%] h-[100%] flex flex-col gap-2 absolute right-2">
+        <div className="w-full h-[40%] flex-1 min-h-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
+          <TopWilaya/>
+        </div>
+        <div className="w-full h-[40%] flex-1 min-h-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+          <PrevProdVsProd/>
+        </div>
       </div>
 
-
-     <div className="w-[40%] overflow-hidden h-[50vh] mt-2 rounded-xl shadow-lg mx-48 ml-56 absolute z-10">
+<div className="pl-4 flex flex-col gap-4 w-[65%]">
+     <div className="w-full  overflow-hidden h-[50vh] mt-2 rounded-xl shadow-lg z-10 flex-shrink-0 relative">
       {superficieData && superficieData.map((chart,chartIndex)=>{
               let position = "next-slide";
                 if (index === chartIndex) {
@@ -344,40 +354,39 @@ useEffect(() => {
 
 <button
   onClick={() => setIndex(index + 1)}
-  className="absolute top-[55%] right-8 -translate-y-1/2 bg-green-600 text-white px-3 py-2 rounded-full shadow hover:bg-green-700 transition"
+  className="absolute top-[55%] right-4 -translate-y-1/2 bg-green-600 text-white px-3 py-2 rounded-full shadow hover:bg-green-700 transition"
 >
   <MdOutlineNavigateNext size={16} />
 </button>
 
 
     </div>
-
-  
-       <div
+    <div
        style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} 
-       className="rounded-xl absolute w-[40vw] h-[40%] top-[55%] ml-56">
+       className="rounded-xl w-full h-[45%] flex-shrink-0 ">
         <ProductionChart data={transformedData}/>
-        </div>
-       <div className="absolute z-10 right-20 top-[48%] w-[43vh] shadow-lg h-[47vh] ">
-        <PrevProdVsProd/>
-      </div>
+    </div>
+</div>
+       
+      
   
       
     </div>
   );
 }
 
-function StatCard({ icon, title, value }) {
+function StatCard({ icon, title, value, compact }) {
   return (
     <div 
     style={{
       boxShadow: "rgba(0,0,0,0.16) 0px 1px 4px "
     }}
-    className="w-[90%] mx-auto h-[20vh] p-3 rounded-xl bg-white flex flex-col items-center justify-center space-y-2">
-      <div>{icon}</div>
-      <div className="text-center">
-        <p className="text-gray-500 text-sm font-semibold">{title}</p>
-        <p className="text-lg font-semibold">{value}</p>
+    className={`w-[90%] mx-auto min-h-0 p-2 rounded-xl bg-white flex flex-col items-center justify-center gap-0.5 overflow-hidden ${compact ? "flex-1" : "h-[20vh]"}`}
+    >
+      <div className="flex-shrink-0">{icon}</div>
+      <div className="text-center min-h-0 flex flex-col justify-center overflow-hidden w-full flex-1">
+        <p className="text-gray-500 text-xs font-semibold leading-tight">{title}</p>
+        <p className="text-xs font-semibold leading-tight break-all">{value}</p>
       </div>
     </div>
   );

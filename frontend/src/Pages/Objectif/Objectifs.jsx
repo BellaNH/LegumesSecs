@@ -55,7 +55,7 @@ const Objectifs = ()=>{
        }
      }; 
     return (
-<div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
+<div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">
   <div className="w-[98%] flex flex-col ">
           <div className='flex ml-14 gap-2'> 
                           <img src={Cible} className="w-12 h-12 mt-2" />
@@ -128,7 +128,18 @@ const Objectifs = ()=>{
                                             </Snackbar>
         {showEditForm && (          
             <FormObjectif 
-            setSelectedObjId={setSelectedObjId} selectedObjId={selectedObjId}/>
+            setSelectedObjId={setSelectedObjId}
+            selectedObjId={selectedObjId}
+            setShowEditForm={setShowEditForm}
+            onSuccess={() => {
+              setSuccessMessage("Objectif modifié avec succès ✅");
+              setOpenSuccess(true);
+            }}
+            onError={(msg) => {
+              setErrorMessage(msg || "Erreur lors de la mise à jour");
+              setOpenError(true);
+            }}
+            />
             )
             }
         </div>

@@ -90,8 +90,8 @@ const WilayasPage = () => {
   };
 
   return (
-  <div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
-  <div className="w-[80%] mb-16 flex flex-col">
+  <div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[85%] mb-16 flex flex-col">
     <div className='flex align-center gap-2'> 
       <img src={Localisation} alt="localisation" className='w-10 h-10'/>
       <h2 className="text-3xl font-bold text-left text-green-600 mb-6">

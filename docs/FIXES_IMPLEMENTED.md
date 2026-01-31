@@ -336,6 +336,7 @@ The URL stays the same (`/profile`), but Netlify serves `index.html`, allowing R
 | Expired Token on Load | Critical | ✅ Fixed | `AuthContext.jsx` |
 | Route Protection | Medium | ✅ Fixed | `App.jsx`, `ProtectedRoute.jsx` (new) |
 | Netlify Refresh 404 | High | ✅ Fixed | `_redirects` (new), `netlify.toml` (new) |
+| Profile Update 400 (password + errors) | High | ✅ Fixed | `Profile.jsx` |
 
 ### Impact
 
@@ -733,4 +734,62 @@ def update(self, instance, validated_data):
 
 ---
 
-**Last Updated:** 2025-01-29
+---
+
+## 8. Profile Update 400 Error (Password Validation & Error Display)
+
+### Problem
+
+**Issue ID:** Profile Update 400  
+**Severity:** High  
+**Impact:** Profile save returned 400 with no clear message; passwords like "987654321" were rejected silently
+
+#### Description
+
+When updating the profile (including password) from Profile.jsx:
+- Request: PATCH `/api/user/6/` with body including `"password": "987654321"`
+- Response: **400 Bad Request**
+- User saw generic "Request failed with status code 400" or "Erreur d'enregistrement." with no explanation
+
+#### Root Cause
+
+1. **Backend password rules** (`backend/api/validators.py` – `validate_password_strength`):
+   - At least 8 characters
+   - At least one letter
+   - At least one digit  
+   The password "987654321" has no letter, so the backend correctly returned 400 with a validation message (e.g. `{"password": ["Le mot de passe doit contenir au moins une lettre."]}`).
+
+2. **Frontend had no matching validation**: Only length (≥ 8) was checked; letter and digit rules were not enforced, so invalid passwords were sent and resulted in 400.
+
+3. **Error message not shown**: The frontend only read `error.response?.data?.error?.message`, `message`, or `detail`. DRF validation errors come as a dict (e.g. `{ "password": ["..."] }`), so the actual backend message was never displayed.
+
+#### Consequences
+
+- Users thought the form was broken
+- No feedback on why the request failed (e.g. "password must contain at least one letter")
+- Poor UX and support burden
+
+### Solution
+
+#### Changes Made
+
+1. **Password strength validation in Profile.jsx** (aligned with backend):
+   - After length check, added:
+     - At least one letter: `!/[A-Za-z]/.test(currentUser.password)` → show "Le mot de passe doit contenir au moins une lettre."
+     - At least one digit: `!/[0-9]/.test(currentUser.password)` → show "Le mot de passe doit contenir au moins un chiffre."
+   - Prevents sending passwords that the backend would reject and gives immediate feedback.
+
+2. **DRF error parsing in Profile.jsx** (catch block):
+   - Prefer `data.error?.message`, then `data.message`, then `data.detail`.
+   - If none, handle DRF field errors: iterate `data` as object, collect array or string values per field, join into one message.
+   - Also handle `data.non_field_errors` array.
+   - Set the resulting string into `errorMessage` / `error` and show it in the UI so any 400 (password, email, etc.) shows the real backend message.
+
+#### Result
+
+- Passwords without a letter or without a digit are rejected on the client with a clear message before sending the request.
+- When the backend does return 400 (e.g. other validation), the user sees the actual validation message (e.g. "Le mot de passe doit contenir au moins une lettre.") instead of a generic error.
+
+---
+
+**Last Updated:** 2026-01-30

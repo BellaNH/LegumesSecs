@@ -40,10 +40,11 @@ CACHES = {
     }
 }
 
-# Database query logging for development
+# Database query logging: set to INFO to avoid cluttering console with every SQL query.
+# Use level 'DEBUG' only when you need to inspect raw SQL.
 if DEBUG:
     LOGGING['loggers']['django.db.backends'] = {
         'handlers': ['console'],
-        'level': 'DEBUG',
+        'level': 'INFO',
         'propagate': False,
     }

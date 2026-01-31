@@ -2,8 +2,18 @@ import apiClient from './client';
 
 const objectifService = {
   getAll: async () => {
-    const response = await apiClient.get('/api/objectif/');
-    return response.data;
+    const all = [];
+    let page = 1;
+    let hasMore = true;
+    while (hasMore) {
+      const response = await apiClient.get('/api/objectif/', { params: { page } });
+      const data = response.data;
+      const results = Array.isArray(data) ? data : (data?.results || []);
+      all.push(...results);
+      hasMore = !!data?.next;
+      page += 1;
+    }
+    return all;
   },
 
   getById: async (id) => {

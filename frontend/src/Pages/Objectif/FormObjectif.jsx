@@ -16,7 +16,7 @@ import axios from "axios";
 import Plus from "../pics/Plus.png"
 import Modifier from "../pics/Modifier.png"
 
-const FormObjectif = ({setSelectedObjId,selectedObjId})=>{
+const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSuccess, onError })=>{
 
    const {wilayas,especes,url,fetchObjectifs} = useGlobalContext()
    const [selectedWilaya,setSelectedWilaya] = useState("")
@@ -83,12 +83,15 @@ const handleModifyObj = async (e) => {
             fetchObjectifs();
             setSelectedObjId(null);
             setOpenForm(false);
-            setShowEditForm(false);
-            setSuccessMessage(`Objectif modifié avec succès ✅`);
-            setOpenSuccess(true);
+            if (typeof setShowEditForm === "function") setShowEditForm(false);
+            if (typeof onSuccess === "function") onSuccess();
         } catch (error) {
-          setErrorMessage("Erreur lors de la mise à jour ");
-          setOpenError(true);
+          const msg = error?.response?.data?.detail || error?.response?.data ? (typeof error.response.data === "string" ? error.response.data : "Erreur lors de la mise à jour") : "Erreur lors de la mise à jour";
+          if (typeof onError === "function") onError(msg);
+          else {
+            setErrorMessage(msg);
+            setOpenError(true);
+          }
         }
     }
 };
@@ -102,7 +105,7 @@ const handleModifyObj = async (e) => {
         });
         setSuccessMessage(`Objectif ajouté avec succès ✅`);
         setOpenSuccess(true);
-        fetchObjectifs();
+        await fetchObjectifs();
         navigate("/objectifs");
     } catch (error) {
       setErrorMessage("Erreur lors de la création");

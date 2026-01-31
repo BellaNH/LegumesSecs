@@ -137,6 +137,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
     phoneNum = serializers.IntegerField(required=False, allow_null=True)
     wilaya = serializers.IntegerField(write_only=True, required=False, allow_null=True)
     subdivision = serializers.IntegerField(write_only=True, required=False, allow_null=True)
+
+    class Meta:
+        model = CustomUser
+        fields = ['id', 'nom', 'prenom', 'email', 'phoneNum', 'role', 'role_id', 'permissions', 'password', 'wilaya', 'subdivision']
     
     def validate_nom(self, value):
         value = sanitize_string(value)
@@ -231,6 +235,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
                     instance.set_password(value)
                 else:
                     setattr(instance, attr, value)
+
+            # Apply role change: we popped 'role' earlier but must set it on the instance
+            if new_role is not None:
+                instance.role = new_role
 
             instance.save()
 

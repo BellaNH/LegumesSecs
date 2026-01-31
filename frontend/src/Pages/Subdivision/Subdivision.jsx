@@ -46,7 +46,8 @@ const fetchSubdivisions = async () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    setSubdivisions(res.data);
+    const list = Array.isArray(res.data) ? res.data : (res.data?.results ?? []);
+    setSubdivisions(list);
   } catch (error) {
     console.error("Erreur de chargement des subdivisions", error);
   }
@@ -56,7 +57,7 @@ useEffect(() => {
   fetchSubdivisions();
 }, []);
 
-const filteredSubdivisions = subdivisions?.filter(sub =>
+const filteredSubdivisions = (Array.isArray(subdivisions) ? subdivisions : []).filter(sub =>
   sub.nom?.toLowerCase().includes(searchQuery.toLowerCase())
 );
   const [subdiv,setSubdiv] = useState({})
@@ -116,8 +117,8 @@ const filteredSubdivisions = subdivisions?.filter(sub =>
   };
 
 return (
-<div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
-  <div className="w-[80%] flex flex-col mb-16">
+<div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[85%] flex flex-col mb-16">
     <div className='flex align-center gap-2'> 
           <img src={Localisation} alt="localisation" className='w-10 h-10'/>
           <h2 className="text-3xl font-bold text-left text-green-600 mb-6">

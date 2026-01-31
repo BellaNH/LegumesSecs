@@ -194,7 +194,7 @@ const Agriculteurs = ()=>{
     
     return (
       <div style={{boxShadow:"rgba(0,0,0,0.16) 0px 1px 4px"}} 
-      className="blurred-bg relative flex flex-col w-[80%]">
+      className="blurred-bg relative flex flex-col w-[100%]">
           <div className="flex flex-col gap-6 w-[90%] mt-14 py-4 mx-auto z-0">
             <div className="flex gap-4">
                 <img src={Agriculteur} className="w-12 h-12"/> 

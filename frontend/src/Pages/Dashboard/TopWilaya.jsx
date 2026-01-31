@@ -59,69 +59,72 @@ export default function TopWilaya() {
   }
 
   return (
-    <div className="w-full h-full relative overflow-hidden">
-      {topthreeWilaya.map((item, itemIndex) => {
-  let position = "next-slide";
-  if (index === itemIndex) position = "active-slide";
-  if (
-    itemIndex === index - 1 ||
-    (index === 0 && itemIndex === topthreeWilaya.length - 1)
-  )
-    position = "last-slide";
-  if (itemIndex === (index + 1) % topthreeWilaya.length)
-    position = "second-active-slide";
+    <div className="w-full h-full flex flex-col relative  overflow-hidden">
 
-  return (
-    <div
-      key={itemIndex}
-      className={`absolute w-[20vw] h-[85%] py-4 px-6 bg-white shadow-lg rounded-xl border border-gray-200 transition-all duration-500 ease-in-out transform
-        ${position === "active-slide" ? "left-4 opacity-100 translate-x-0" : ""}
-        ${position === "second-active-slide" ? "left-8 opacity-100 translate-x-[125%]" : ""}
-        ${position === "last-slide" ? "opacity-0 translate-x-[-100%]" : ""}
-        ${position === "next-slide" ? "opacity-0 translate-x-[200%]" : ""}
-      `}
-    >
-      <h2 className="text-xl font-semibold mb-4">{item.espece}</h2>
-      <ol className="flex gap-4 align-center mt-2">
-        <img src={Une} alt="" className="w-7"/>
-        <li className="flex justify-between">
-          <span className="font-medium"> {item.top_locations[0].label}</span>
-          <span className="absolute right-6">{item.top_locations[0].total_production} </span>
-        </li>
-      </ol>
-      {item.top_locations.length > 1 && 
-      <ol className="flex gap-4 align-center mt-2">
-        <img src={Deux} alt="" className="w-7"/>
-        <li className="flex justify-between">
-          <span className="font-medium"> {item?.top_locations[1]?.label}</span>
-          <span className="absolute right-6">{item?.top_locations[1]?.total_production} </span>
-        </li>
-      </ol>}
-      {item.top_locations.length > 2 && 
-      <ol className="flex gap-4 align-center mt-2">
-        <li className="flex justify-between">
-          <span className="font-medium"> {item?.top_locations[2]?.label}</span>
-          <span className="absolute right-6">{item?.top_locations[2]?.total_production} </span>
-        </li>
-      </ol>}
+        {topthreeWilaya.map((item, itemIndex) => {
+          let position = "next-slide";
+          if (index === itemIndex) position = "active-slide";
+          if (
+            itemIndex === index - 1 ||
+            (index === 0 && itemIndex === topthreeWilaya.length - 1)
+          )
+            position = "last-slide";
+          if (itemIndex === (index + 1) % topthreeWilaya.length)
+            position = "second-active-slide";
+
+          return (
+            <div
+              key={itemIndex}
+              className={`absolute w-[100%] h-[100%] py-4 px-6 bg-white shadow-lg rounded-xl border border-gray-200 transition-all duration-500 ease-in-out transform
+                ${position === "active-slide" ? "left-0 opacity-100 translate-x-0" : ""}
+                ${position === "second-active-slide" ? "left-8 opacity-100 translate-x-[125%]" : ""}
+                ${position === "last-slide" ? "opacity-0 translate-x-[-100%]" : ""}
+                ${position === "next-slide" ? "opacity-0 translate-x-[200%]" : ""}
+              `}
+            >
+              <h2 className="text-xl font-semibold mb-4">{item.espece}</h2>
+              <ol className="flex gap-4 align-center mt-2">
+                <img src={Une} alt="" className="w-7"/>
+                <li className="flex justify-between">
+                  <span className="font-medium"> {item.top_locations[0].label}</span>
+                  <span className="absolute right-6">{item.top_locations[0].total_production} </span>
+                </li>
+              </ol>
+              {item.top_locations.length > 1 && 
+              <ol className="flex gap-4 align-center mt-2">
+                <img src={Deux} alt="" className="w-7"/>
+                <li className="flex justify-between">
+                  <span className="font-medium"> {item?.top_locations[1]?.label}</span>
+                  <span className="absolute right-6">{item?.top_locations[1]?.total_production} </span>
+                </li>
+              </ol>}
+              {item.top_locations.length > 2 && 
+              <ol className="flex gap-4 align-center mt-2">
+                <li className="flex justify-between">
+                  <span className="font-medium"> {item?.top_locations[2]?.label}</span>
+                  <span className="absolute right-6">{item?.top_locations[2]?.total_production} </span>
+                </li>
+              </ol>}
+            </div>
+          );
+        })}
       
-    </div>
-  );
-})}
-
-
-      <button
-        className=" absolute top-3/4 left-8 transform -translate-y-1/2 bg-green-600 text-white px-3 py-2 rounded-full"
-        onClick={() => setIndex(index - 1)}
-      >
-        <MdOutlineNavigateBefore size={20} />
-      </button>
-      <button
-        className="absolute top-3/4 right-20 transform -translate-y-1/2 bg-green-600 text-white px-3 py-2 rounded-full"
-        onClick={() => setIndex(index + 1)}
-      >
-        <MdOutlineNavigateNext  size={20}/>
-      </button>
+      <div className=" flex-shrink-0 z-10 mt-[65%] flex justify-between items-center py-2 px-4">
+        <button
+          className="bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition-colors"
+          onClick={() => setIndex(index - 1)}
+          aria-label="Previous"
+        >
+          <MdOutlineNavigateBefore size={20} />
+        </button>
+        <button
+          className="bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition-colors"
+          onClick={() => setIndex(index + 1)}
+          aria-label="Next"
+        >
+          <MdOutlineNavigateNext size={20} />
+        </button>
+      </div>
     </div>
   );
 }

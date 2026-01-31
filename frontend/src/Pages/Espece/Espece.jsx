@@ -83,8 +83,8 @@ const Espece = () => {
   };
 
   return (
-  <div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
-  <div className="w-[80%] flex flex-col ">
+  <div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[85%] flex flex-col ">
     <div className='flex  gap-4'> 
                     <img src={Lentilles} className="w-16 h-16" />
                     <h2 className="text-3xl font-bold text-left text-green-600 mb-6 mt-2">

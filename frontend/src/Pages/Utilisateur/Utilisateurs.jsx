@@ -36,9 +36,9 @@ const fetchUsers = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    setUsers(
-      response.data && response.data.filter((user) => user.role.nom !== "admin")
-    );
+    // API returns paginated { results: [...] } or plain array
+    const list = Array.isArray(response.data) ? response.data : (response.data?.results ?? []);
+    setUsers(list.filter((u) => u.role?.nom !== "admin"));
   } catch (error) {
     console.error("Erreur lors du chargement des utilisateurs :", error);
   }
@@ -85,8 +85,8 @@ const handleDelete = async (userId) => {
   }, {});
 
   return (
- <div className="w-[80%] h-fit mt-10 mx-auto flex flex-col items-center">
-  <div className="w-[80%] flex flex-col mb-16">
+ <div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">
+  <div className="w-[85%] flex flex-col mb-16">
    <div className='flex align-center gap-4'> 
             <img src={User} className="w-8 h-8 mt-1" />
             <h2 className="text-3xl font-bold text-left text-green-600 mb-6">
