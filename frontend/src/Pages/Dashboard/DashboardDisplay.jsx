@@ -239,8 +239,8 @@ useEffect(() => {
 
 
   return (
-    <div className="w-[80%] flex overflow-hidden">
- <div className=" ml-8 mt-2 flex flex-col w-[16%] h-[98vh] gap-2 ">
+    <div className=" w-[100%] flex overflow-hidden relative">
+ <div className=" ml-8 mt-2 flex flex-col w-[12%] h-[98vh] gap-2 ">
   <StatCard 
   className="h-full"
     icon={<img src={Agriculteur} className="w-8 " />} 
@@ -309,16 +309,16 @@ useEffect(() => {
   </div>
 </div>
 
-      <div className="pl-2 pt-2 w-[25%] h-[100%] flex flex-col gap-2 absolute right-2">
-        <div className="w-full h-[40%] flex-1 min-h-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
+      <div className="pl-2 pt-2 w-[30%] h-[98vh] flex flex-col gap-2 absolute right-2 top-2">
+        <div className="w-full flex-1 min-h-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md">
           <TopWilaya/>
         </div>
-        <div className="w-full h-[40%] flex-1 min-h-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+        <div className="w-full flex-1 min-h-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
           <PrevProdVsProd/>
         </div>
       </div>
 
-<div className="pl-4 flex flex-col gap-4 w-[65%]">
+<div className=" pl-4 flex flex-col gap-4 w-[52%] flex-shrink-0">
      <div className="w-full  overflow-hidden h-[50vh] mt-2 rounded-xl shadow-lg z-10 flex-shrink-0 relative">
       {superficieData && superficieData.map((chart,chartIndex)=>{
               let position = "next-slide";
