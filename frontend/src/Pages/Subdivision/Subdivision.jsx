@@ -108,7 +108,7 @@ const filteredSubdivisions = (Array.isArray(subdivisions) ? subdivisions : []).f
       setSuccessMessage(`Subdivision est supprimée avec succès ✅`);
       setOpenSuccess(true);
       fetchSubdivisions()
-      setSubdivisions((prev) => prev.filter((s) => s.id !== id))
+      setSubdivisions((prev) => (Array.isArray(prev) ? prev : []).filter((s) => s.id !== id))
     }catch(error){
       setErrorMessage("Erreur lors de suppression");
       setOpenError(true);
