@@ -5,7 +5,7 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 import { MdOutlineNavigateBefore } from "react-icons/md";
 import Une from "../pics/Une.png";
 import Deux from "../pics/Deux.png";
-import Trois from "../pics/Trois.png";
+import Trois from "../pics/Trois.png";  
 export default function TopWilaya() {
  const [topthreeWilaya,setTopThreeWilaya] = useState("")
  const {url,user}= useGlobalContext()
@@ -100,6 +100,7 @@ export default function TopWilaya() {
               </ol>}
               {item.top_locations.length > 2 && 
               <ol className="flex gap-4 align-center mt-2">
+                <img src={Trois} alt="" className="w-7"/>
                 <li className="flex justify-between">
                   <span className="font-medium"> {item?.top_locations[2]?.label}</span>
                   <span className="absolute right-6">{item?.top_locations[2]?.total_production} </span>
@@ -109,7 +110,7 @@ export default function TopWilaya() {
           );
         })}
       
-      <div className=" flex-shrink-0 z-10 mt-[65%] flex justify-between items-center py-2 px-4">
+      <div className=" flex-shrink-0 z-10 mt-[68%] flex justify-between items-center py-2 px-4">
         <button
           className="bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition-colors"
           onClick={() => setIndex(index - 1)}

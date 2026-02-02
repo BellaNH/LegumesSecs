@@ -1,4 +1,10 @@
 backend/.env
+backend/backup.sql
+backend/clean_data.sql
+backend/fix_superficie_data.sql
+backend/seed_top_wilaya_data.sql
+backend/data.sql
+backend/local_data.sql
 frontend/.env
 docs/operations/
 docs/FIXES_IMPLEMENTED.md/

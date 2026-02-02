@@ -78,10 +78,11 @@ export default function DashboardDisplay() {
                 },
               }
             )
-          console.log("✅ [DASHBOARD] Superficie data fetched successfully");
-          console.log("📊 [DASHBOARD] Response data:", response.data);
-          console.log("📊 [DASHBOARD] Data length:", Array.isArray(response.data) ? response.data.length : "Not an array");
-          setSuperficieData(response.data)
+          const data = Array.isArray(response.data) ? response.data : (response.data?.results ?? response.data ?? []);
+          setSuperficieData(data);
+          if (!Array.isArray(data) || data.length === 0) {
+            console.log("📊 [DASHBOARD] Superficie data empty (no parcelles for current year with non-deleted especes). Run backend/fix_superficie_data.sql to add sample parcelles for existing especes.");
+          }
           } catch (error) {
             console.error("❌ [DASHBOARD] Error fetching superficie data:", error);
             console.error("❌ [DASHBOARD] Error response:", error.response?.data);
@@ -172,17 +173,9 @@ export default function DashboardDisplay() {
       }
     });
     console.log("📊 [DASHBOARD] ==========================");
-  }).then(() => {
-    console.log("📊 [DASHBOARD] ===== FETCH SUMMARY =====");
-    console.log("📊 [DASHBOARD] Total agriculteurs:", totalAgri);
-    console.log("📊 [DASHBOARD] Superficie data:", superficieData ? (Array.isArray(superficieData) ? `${superficieData.length} items` : "Set") : "Empty");
-    console.log("📊 [DASHBOARD] Yearly product:", yearlyProduct ? (Array.isArray(yearlyProduct) ? `${yearlyProduct.length} items` : "Set") : "Empty");
-    console.log("📊 [DASHBOARD] Aggregated stats:", aggregatedSupStats ? (Array.isArray(aggregatedSupStats) ? `${aggregatedSupStats.length} items` : "Set") : "Empty");
-    console.log("📊 [DASHBOARD] ==========================");
   });
 
  },[user])
-
 
 const [transformedData, setTransformedData] = useState([]);
 useEffect(() => {
@@ -320,7 +313,7 @@ useEffect(() => {
 
 <div className=" pl-4 flex flex-col gap-4 w-[52%] flex-shrink-0">
      <div className="w-full  overflow-hidden h-[50vh] mt-2 rounded-xl shadow-lg z-10 flex-shrink-0 relative">
-      {superficieData && superficieData.map((chart,chartIndex)=>{
+      {Array.isArray(superficieData) && superficieData.length > 0 ? superficieData.map((chart,chartIndex)=>{
               let position = "next-slide";
                 if (index === chartIndex) {
                   position = "active-slide";
@@ -349,7 +342,11 @@ useEffect(() => {
     );
           
               
-      })}
+      }) : (
+        <div className="flex items-center justify-center h-full text-gray-500">
+          {superficieData === "" ? "Chargement des données..." : "Aucune donnée disponible"}
+        </div>
+      )}
 
 
 <button
