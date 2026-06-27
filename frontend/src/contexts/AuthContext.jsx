@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
 import { setupApiClient } from "../services/api";
 import authService from "../services/api/authService";
+import API_BASE_URL from "../config/api";
 import axios from "axios";
 
 const AuthContext = createContext();
@@ -54,15 +55,12 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("refreshToken", refreshToken);
     }
     
-    // Use direct axios call like old version for better visibility
-    const url = "https://legumessecs.onrender.com";
-    
     try {
       // DETECTIVE LOG: Fetching user data
       console.log("📡 [AUTH] Fetching user data from /api/me/");
       console.log("🔑 [AUTH] Using token:", accessToken.substring(0, 20) + "...");
       
-      const userResponse = await axios.get(`${url}/api/me/`, {
+      const userResponse = await axios.get(`${API_BASE_URL}/api/me/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -96,8 +94,7 @@ export const AuthProvider = ({ children }) => {
     console.log("🔄 [AUTH] Checking for existing token on page load");
     if (token) {
       console.log("🔑 [AUTH] Token found, fetching user data");
-      const url = "https://legumessecs.onrender.com";
-      axios.get(`${url}/api/me/`, {
+      axios.get(`${API_BASE_URL}/api/me/`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -118,7 +115,7 @@ export const AuthProvider = ({ children }) => {
               const newToken = await refreshAccessToken();
               if (newToken) {
                 // Retry fetching user data with new token
-                const userResponse = await axios.get(`${url}/api/me/`, {
+                const userResponse = await axios.get(`${API_BASE_URL}/api/me/`, {
                   headers: {
                     Authorization: `Bearer ${newToken}`
                   }

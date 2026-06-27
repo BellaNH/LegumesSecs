@@ -1,7 +1,8 @@
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 const setupAxiosInterceptors = (refreshAccessToken, logout) => {
-  const baseUrl = 'https://legumessecs.onrender.com';
+  const baseUrl = API_BASE_URL;
 
   axios.interceptors.request.use(
     (config) => {

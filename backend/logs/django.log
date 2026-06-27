@@ -12959,3 +12959,23 @@ INFO 2026-01-31 18:23:29,349 basehttp - Broken pipe from ('127.0.0.1', 62745)
 INFO 2026-01-31 18:23:32,382 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 30492
 INFO 2026-01-31 18:23:37,651 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 8165
 INFO 2026-01-31 18:24:06,073 autoreload Watching for file changes with StatReloader
+INFO 2026-06-27 20:07:40,143 autoreload Watching for file changes with StatReloader
+WARNING 2026-06-27 20:08:43,078 log Not Found: /
+WARNING 2026-06-27 20:08:43,081 basehttp "GET / HTTP/1.1" 404 3381
+WARNING 2026-06-27 20:08:43,250 log Not Found: /favicon.ico
+WARNING 2026-06-27 20:08:43,252 basehttp "GET /favicon.ico HTTP/1.1" 404 3432
+INFO 2026-06-27 20:08:54,022 basehttp "GET /api HTTP/1.1" 301 0
+WARNING 2026-06-27 20:08:55,568 log Unauthorized: /api/
+WARNING 2026-06-27 20:08:55,569 basehttp "GET /api/ HTTP/1.1" 401 5062
+INFO 2026-06-27 20:08:56,259 basehttp "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+INFO 2026-06-27 20:08:56,324 basehttp "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+INFO 2026-06-27 20:08:56,329 basehttp "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+INFO 2026-06-27 20:08:56,903 basehttp "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+INFO 2026-06-27 20:08:57,095 basehttp "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+INFO 2026-06-27 20:08:57,234 basehttp "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+INFO 2026-06-27 20:08:57,317 basehttp "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+INFO 2026-06-27 20:08:57,501 basehttp "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+INFO 2026-06-27 20:08:57,550 basehttp "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+INFO 2026-06-27 20:08:57,784 basehttp "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+INFO 2026-06-27 20:08:57,947 basehttp "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+INFO 2026-06-27 20:08:57,979 basehttp "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533

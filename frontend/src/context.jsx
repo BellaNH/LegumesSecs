@@ -2,6 +2,7 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { DataProvider, useData } from "./contexts/DataContext";
 import { UIProvider, useUI } from "./contexts/UIContext";
 import { useMemo, useCallback } from "react";
+import API_BASE_URL from "./config/api";
 
 export const AppProvider = ({ children }) => {
   return (
@@ -40,7 +41,7 @@ export const useGlobalContext = () => {
     ...auth,
     ...data,
     ...ui,
-    url: "https://legumessecs.onrender.com",
+    url: API_BASE_URL,
     getAuthHeader,
     handleUpdateParcelle,
   }), [auth, data, ui, getAuthHeader, handleUpdateParcelle]);
