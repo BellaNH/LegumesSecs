@@ -10,9 +10,10 @@ import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Plus from "../pics/Plus.png"
 import Modifer from "../pics/Modifier.png"
+import PageLoader from "../../components/common/PageLoader"
 
 export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleId}) {
-  const {fetchExploitationWithParcelles,especes,setExploitationId,exploitationId,url,modifiedParcelle} = useGlobalContext()
+  const {fetchExploitationWithParcelles,especes,setExploitationId,exploitationId,url,modifiedParcelle,isDataLoading} = useGlobalContext()
   const [wrong,setWrong] = useState(false)
   const [selectedEspece,setSelectedEspece] = useState("")
   useEffect(()=>{console.log(exploitationId)},[exploitationId])
@@ -155,6 +156,11 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
     }
  useEffect(()=>{console.log(data)},[data])
   useEffect(()=>{console.log(modifiedParcelleId)},[modifiedParcelleId])
+
+  if (isDataLoading) {
+    return <PageLoader inline />;
+  }
+
   return (
     <div className={exploitationId 
       ? "fixed top-0 left-0 w-full h-full bg-[#00000090] z-50 flex justify-center items-center" 

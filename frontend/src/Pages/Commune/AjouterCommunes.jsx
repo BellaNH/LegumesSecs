@@ -13,11 +13,12 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context";
+import PageLoader from "../../components/common/PageLoader";
 
 const AjouterCommunes = () => {
   const [nom, setNom] = useState("");
   const [subdivisionId, setSubdivisionId] = useState("");
-  const {url,subdivisions,fetchCommunes,communes,setCommunes}= useGlobalContext()
+  const {url,subdivisions,fetchCommunes,communes,setCommunes,isDataLoading}= useGlobalContext()
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(""); 
     const [successMessage, setSuccessMessage] = useState(""); 
@@ -66,6 +67,11 @@ const AjouterCommunes = () => {
   }
   };
   useEffect(()=>{console.log(subdivisionId)},[subdivisionId])
+
+  if (isDataLoading) {
+    return <PageLoader />;
+  }
+
   return (
     <Container maxWidth="sm">
       <Paper sx={{ p: 4, mt: 5, borderRadius: 3 }}>

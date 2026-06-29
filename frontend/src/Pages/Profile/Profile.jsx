@@ -1,145 +1,104 @@
-import TextField from '@mui/material/TextField';
-import Select  from "@mui/material/Select"
-import FormControl from '@mui/material/FormControl';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState } from 'react';
+import { Snackbar, Alert } from '@mui/material';
+import { FiUser, FiLock, FiLogOut, FiCheckCircle } from 'react-icons/fi';
+import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
+import axios from 'axios';
 import { useGlobalContext } from '../../context';
-import {Snackbar, Alert } from "@mui/material";
-import axios from "axios"
-const Profile = ()=>{
-  const {url,user,setUser,roles} = useGlobalContext()
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState({
-    input1:false,
-    input2:false
-  })
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('')
-  const [selectedInputId,setSelectedInputId] = useState()
-  const [errorMessage, setErrorMessage] = useState(""); 
-const [successMessage, setSuccessMessage] = useState(""); 
-const [openError, setOpenError] = useState(false);
-const [openSuccess, setOpenSuccess] = useState(false);
+import userAvatar from '../pics/User.png';
+import PageLoader from '../../components/common/PageLoader';
+import './Profile.css';
 
-  const [currentUser,setCurrentUser] = useState({
-        id:"",
-        nom:"",
-        prenom:"",
-        email:"",
-        phoneNum:"",
-        password:"",
-        role_id:""
-  })
-useEffect(() => {
-  if (user) {
-    setCurrentUser(prevData => ({
-      ...prevData,
-      id:user.id,
+const Profile = () => {
+  const { url, user, logout } = useGlobalContext();
+  const [activeTab, setActiveTab] = useState('personal');
+  const [showPassword, setShowPassword] = useState({ input1: false, input2: false });
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
+
+  const [currentUser, setCurrentUser] = useState({
+    id: '',
+    nom: '',
+    prenom: '',
+    email: '',
+    phoneNum: '',
+    password: '',
+    role_id: '',
+  });
+
+  const resetForm = () => {
+    if (!user) return;
+    setCurrentUser({
+      id: user.id,
       nom: user.nom,
       prenom: user.prenom,
       email: user.email,
-      role_id:user.role.id,
+      role_id: user.role.id,
       phoneNum: user.phoneNum,
-      password: "" // Password should never come from API - always start empty
-    }))
-  }
-}, [user]);
-
-useEffect(() => {
-  console.log(currentUser);
-}, [currentUser]);
-
-    
-  const handleClickShowPassword = (e) => {
-    const id = e.currentTarget.id 
-    
-    setShowPassword((prev)=>({
-      ...prev,
-      [`input${id}`]: !prev[`input${id}`]
-    }
-    ))
-
-    }
-  
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+      password: '',
+    });
+    setConfirmPassword('');
+    setError('');
   };
 
-  const handleMouseUpPassword = (event) => {
-    event.preventDefault();
-  }
+  useEffect(() => {
+    resetForm();
+  }, [user]);
 
-  const handleChange = (e)=>{
+  const handleClickShowPassword = (e) => {
+    const id = e.currentTarget.id;
+    setShowPassword((prev) => ({
+      ...prev,
+      [`input${id}`]: !prev[`input${id}`],
+    }));
+  };
 
-    setCurrentUser({...currentUser,[e.target.name] : e.target.value})
-  
-   }
-
+  const handleChange = (e) => {
+    setCurrentUser({ ...currentUser, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log("🔄 [PROFILE] Form submitted");
-    console.log("📝 [PROFILE] Current user data:", currentUser);
-    console.log("🔑 [PROFILE] Password field:", currentUser.password);
-    console.log("🔑 [PROFILE] Confirm password:", confirmPassword);
+    setError('');
+    setErrorMessage('');
 
-    // Clear previous errors
-    setError("");
-    setErrorMessage("");
-
-    // Validate password fields only if user is trying to change password
-    // Both fields must be filled if password change is attempted
     const passwordFilled = currentUser.password && currentUser.password.trim();
     const confirmPasswordFilled = confirmPassword && confirmPassword.trim();
 
     if (passwordFilled || confirmPasswordFilled) {
-      // If only one field is filled, show error
       if (!passwordFilled || !confirmPasswordFilled) {
-        const errorMsg = "Veuillez remplir les deux champs de mot de passe.";
+        const errorMsg = 'Veuillez remplir les deux champs de mot de passe.';
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
-        console.error("❌ [PROFILE] Validation error: Both password fields required");
         return;
       }
-
-      // If both are filled, they must match
       if (currentUser.password !== confirmPassword) {
-        const errorMsg = "Les mots de passe ne correspondent pas.";
+        const errorMsg = 'Les mots de passe ne correspondent pas.';
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
-        console.error("❌ [PROFILE] Validation error: Passwords don't match");
         return;
       }
-
-      // Validate password length if password is being changed
       if (currentUser.password.length < 8) {
-        const errorMsg = "Le mot de passe doit contenir au moins 8 caractères.";
+        const errorMsg = 'Le mot de passe doit contenir au moins 8 caractères.';
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
-        console.error("❌ [PROFILE] Validation error: Password too short");
         return;
       }
-      // Match backend: at least one letter and one digit
       if (!/[A-Za-z]/.test(currentUser.password)) {
-        const errorMsg = "Le mot de passe doit contenir au moins une lettre.";
+        const errorMsg = 'Le mot de passe doit contenir au moins une lettre.';
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
         return;
       }
       if (!/[0-9]/.test(currentUser.password)) {
-        const errorMsg = "Le mot de passe doit contenir au moins un chiffre.";
+        const errorMsg = 'Le mot de passe doit contenir au moins un chiffre.';
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
@@ -147,252 +106,291 @@ useEffect(() => {
       }
     }
 
-    if (!currentUser || !currentUser.id) {
-      const errorMsg = "Erreur: Données utilisateur invalides.";
-      setErrorMessage(errorMsg);
+    if (!currentUser?.id) {
+      setErrorMessage('Erreur: Données utilisateur invalides.');
       setOpenError(true);
-      console.error("❌ [PROFILE] Error: Invalid user data");
       return;
     }
 
     try {
-      console.log("📡 [PROFILE] Preparing API request...");
-      
-      // Prepare payload - exclude id, convert types
       const userToSend = {
         nom: currentUser.nom,
         prenom: currentUser.prenom,
         email: currentUser.email,
         role_id: currentUser.role_id ? parseInt(currentUser.role_id, 10) : currentUser.role_id,
-        phoneNum: currentUser.phoneNum ? (typeof currentUser.phoneNum === 'string' ? parseInt(currentUser.phoneNum, 10) : currentUser.phoneNum) : null,
+        phoneNum: currentUser.phoneNum
+          ? typeof currentUser.phoneNum === 'string'
+            ? parseInt(currentUser.phoneNum, 10)
+            : currentUser.phoneNum
+          : null,
       };
 
-      // Only include password if both fields are filled and match (already validated above)
       if (passwordFilled && confirmPasswordFilled && currentUser.password === confirmPassword) {
         userToSend.password = currentUser.password;
-        console.log("🔑 [PROFILE] Password will be updated");
-      } else {
-        console.log("ℹ️ [PROFILE] No password change requested");
       }
 
-      console.log("📤 [PROFILE] Sending PATCH request to:", `${url}/api/user/${currentUser.id}/`);
-      console.log("📦 [PROFILE] Payload:", userToSend);
-
-      const response = await axios.patch(`${url}/api/user/${currentUser.id}/`, userToSend, {
+      await axios.patch(`${url}/api/user/${currentUser.id}/`, userToSend, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      
-      console.log("✅ [PROFILE] Update successful:", response.data);
-      
-      setSuccessMessage(`${currentUser.nom} modifié avec succès ✅`);
-      setOpenSuccess(true);
-      
-      // Clear password fields after successful update
-      setCurrentUser(prev => ({ ...prev, password: "" }));
-      setConfirmPassword("");
-      
-      // Update user context if needed (optional - depends on your needs)
-      if (setUser && response.data) {
-        // Only update if backend returns updated user data
-        console.log("🔄 [PROFILE] Updating user context");
-      }
 
-    } catch (error) {
-      console.error("❌ [PROFILE] Error updating user:", error);
-      console.error("❌ [PROFILE] Error response:", error.response?.data);
-      console.error("❌ [PROFILE] Error status:", error.response?.status);
-      
-      // Parse DRF-style validation errors (field names -> array of messages)
-      const data = error.response?.data;
+      setSuccessMessage(`${currentUser.nom} modifié avec succès`);
+      setOpenSuccess(true);
+      setCurrentUser((prev) => ({ ...prev, password: '' }));
+      setConfirmPassword('');
+    } catch (err) {
+      const data = err.response?.data;
       let errorMsg = "Erreur d'enregistrement.";
       if (data) {
-        if (data.error?.message) {
-          errorMsg = data.error.message;
-        } else if (data.message) {
-          errorMsg = typeof data.message === "string" ? data.message : JSON.stringify(data.message);
-        } else if (data.detail) {
-          errorMsg = typeof data.detail === "string" ? data.detail : JSON.stringify(data.detail);
-        } else if (data.non_field_errors && Array.isArray(data.non_field_errors)) {
-          errorMsg = data.non_field_errors.join(" ");
-        } else if (typeof data === "object") {
-          // DRF returns { "password": ["..."], "email": ["..."] }
+        if (data.error?.message) errorMsg = data.error.message;
+        else if (data.message) errorMsg = typeof data.message === 'string' ? data.message : JSON.stringify(data.message);
+        else if (data.detail) errorMsg = typeof data.detail === 'string' ? data.detail : JSON.stringify(data.detail);
+        else if (data.non_field_errors?.length) errorMsg = data.non_field_errors.join(' ');
+        else if (typeof data === 'object') {
           const parts = [];
-          for (const [field, messages] of Object.entries(data)) {
-            if (Array.isArray(messages)) {
-              parts.push(messages.join(" "));
-            } else if (typeof messages === "string") {
-              parts.push(messages);
-            }
+          for (const [, messages] of Object.entries(data)) {
+            if (Array.isArray(messages)) parts.push(messages.join(' '));
+            else if (typeof messages === 'string') parts.push(messages);
           }
-          if (parts.length) errorMsg = parts.join(" ");
+          if (parts.length) errorMsg = parts.join(' ');
         }
-      } else if (error.message) {
-        errorMsg = error.message;
+      } else if (err.message) {
+        errorMsg = err.message;
       }
-      
       setErrorMessage(errorMsg);
       setError(errorMsg);
       setOpenError(true);
     }
   };
-  useEffect(()=>{console.log(selectedInputId)},[selectedInputId])
 
-    return (
-<form
-  onSubmit={handleSubmit}
-  className="w-[65%] h-[98%] bg-white mx-auto my-auto rounded-2xl px-10 py-8 flex flex-col gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300"
->
-  <div className="grid grid-cols-2 gap-8 w-full">
-    <div className="flex flex-col gap-2">
-      <p className="text-gray-600 font-medium text-sm">Nom</p>
-      <input
-        onChange={handleChange}
-        type="text"
-        value={currentUser?.nom || ""}
-        name="nom"
-        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
-      />
+  const displayName = [currentUser.prenom, currentUser.nom].filter(Boolean).join(' ') || 'Utilisateur';
+  const roleName = user?.role?.nom || '';
+
+  const navItems = [
+    { id: 'personal', label: 'Informations personnelles', icon: FiUser },
+    { id: 'password', label: 'Connexion & mot de passe', icon: FiLock },
+  ];
+
+  if (!user) {
+    return <PageLoader />;
+  }
+
+  return (
+    <div className="profile-page">
+      <div className="profile-layout">
+        <aside className="profile-aside">
+          <div className="profile-aside-card">
+            <div className="profile-avatar-wrap">
+              <img
+                src={userAvatar}
+                alt=""
+                className="profile-avatar"
+                width={96}
+                height={96}
+              />
+              <h2 className="profile-user-name">{displayName}</h2>
+              <p className="profile-user-role">{roleName}</p>
+            </div>
+
+            <nav className="profile-nav">
+              {navItems.map(({ id, label, icon: Icon }) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => setActiveTab(id)}
+                  className={`profile-nav-btn ${activeTab === id ? 'profile-nav-btn--active' : ''}`}
+                >
+                  <Icon className="profile-nav-icon" />
+                  {label}
+                </button>
+              ))}
+
+              <button
+                type="button"
+                onClick={logout}
+                className="profile-nav-btn profile-nav-btn--logout"
+              >
+                <FiLogOut className="profile-nav-icon" />
+                Se déconnecter
+              </button>
+            </nav>
+          </div>
+        </aside>
+
+        <div className="profile-main">
+          <form onSubmit={handleSubmit} className="profile-form-card">
+            <div className="profile-form-inner">
+            <h1 className="profile-form-title">
+              {activeTab === 'personal' ? 'Informations personnelles' : 'Connexion & mot de passe'}
+            </h1>
+
+            {activeTab === 'personal' && (
+              <>
+                <div className="profile-field-row">
+                  <div className="profile-field-half">
+                    <label className="profile-label" htmlFor="nom">
+                      Nom
+                    </label>
+                    <input
+                      id="nom"
+                      onChange={handleChange}
+                      type="text"
+                      value={currentUser?.nom || ''}
+                      name="nom"
+                      className="profile-input"
+                    />
+                  </div>
+                  <div className="profile-field-half">
+                    <label className="profile-label" htmlFor="prenom">
+                      Prénom
+                    </label>
+                    <input
+                      id="prenom"
+                      onChange={handleChange}
+                      type="text"
+                      value={currentUser?.prenom || ''}
+                      name="prenom"
+                      className="profile-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="profile-field-group">
+                  <label className="profile-label" htmlFor="role">
+                    Rôle
+                  </label>
+                  <input
+                    id="role"
+                    type="text"
+                    disabled
+                    value={roleName}
+                    className="profile-input profile-input--full profile-input--disabled"
+                  />
+                </div>
+
+                <div className="profile-field-group">
+                  <label className="profile-label" htmlFor="email">
+                    Email
+                  </label>
+                  <div className="profile-email-wrap">
+                    <input
+                      id="email"
+                      onChange={handleChange}
+                      type="email"
+                      value={currentUser?.email || ''}
+                      name="email"
+                      className="profile-input"
+                    />
+                    <span className="profile-verified-badge">
+                      <FiCheckCircle style={{ width: 14, height: 14 }} />
+                      Vérifié
+                    </span>
+                  </div>
+                </div>
+
+                <div className="profile-field-group">
+                  <label className="profile-label" htmlFor="phoneNum">
+                    Numéro de téléphone
+                  </label>
+                  <input
+                    id="phoneNum"
+                    onChange={handleChange}
+                    type="text"
+                    value={currentUser?.phoneNum || ''}
+                    name="phoneNum"
+                    className="profile-input profile-input--full"
+                  />
+                </div>
+              </>
+            )}
+
+            {activeTab === 'password' && (
+              <>
+                <p className="profile-hint">
+                  Laissez les champs vides si vous ne souhaitez pas modifier votre mot de passe.
+                </p>
+
+                <div className="profile-field-group">
+                  <label className="profile-label" htmlFor="password">
+                    Nouveau mot de passe
+                  </label>
+                  <div className="profile-password-wrap">
+                    <input
+                      id="password"
+                      value={currentUser?.password || ''}
+                      onChange={handleChange}
+                      name="password"
+                      type={showPassword.input1 ? 'text' : 'password'}
+                      autoComplete="new-password"
+                      className="profile-input"
+                    />
+                    <button
+                      type="button"
+                      id="1"
+                      onClick={handleClickShowPassword}
+                      className="profile-toggle-pw"
+                      aria-label="Afficher le mot de passe"
+                    >
+                      {showPassword.input1 ? <HiOutlineEyeOff size={20} /> : <HiOutlineEye size={20} />}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="profile-field-group">
+                  <label className="profile-label" htmlFor="confirmPassword">
+                    Confirmer le nouveau mot de passe
+                  </label>
+                  <div className="profile-password-wrap">
+                    <input
+                      id="confirmPassword"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      type={showPassword.input2 ? 'text' : 'password'}
+                      autoComplete="new-password"
+                      className="profile-input"
+                    />
+                    <button
+                      type="button"
+                      id="2"
+                      onClick={handleClickShowPassword}
+                      className="profile-toggle-pw"
+                      aria-label="Afficher la confirmation"
+                    >
+                      {showPassword.input2 ? <HiOutlineEyeOff size={20} /> : <HiOutlineEye size={20} />}
+                    </button>
+                  </div>
+                  {error && <p className="profile-error">{error}</p>}
+                </div>
+              </>
+            )}
+
+            <div className="profile-actions">
+              <button type="button" onClick={resetForm} className="profile-btn-discard">
+                Annuler les modifications
+              </button>
+              <button type="submit" className="profile-btn-save">
+                Sauvegarder
+              </button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <Snackbar open={openSuccess} autoHideDuration={4000} onClose={() => setOpenSuccess(false)}>
+        <Alert onClose={() => setOpenSuccess(false)} severity="success" sx={{ width: '100%' }}>
+          {successMessage}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+        <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: '100%' }}>
+          {errorMessage}
+        </Alert>
+      </Snackbar>
     </div>
-    <div className="flex flex-col gap-2">
-      <p className="text-gray-600 font-medium text-sm">Prenom</p>
-      <input
-        onChange={handleChange}
-        type="text"
-        value={currentUser?.prenom || ""}
-        name="prenom"
-        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
-      />
-    </div>
-  </div>
+  );
+};
 
-  <div className="flex flex-col gap-2 w-full">
-    <p className="text-gray-600 font-medium text-sm">Role</p>
-    <TextField
-      size="small"
-      select
-      disabled
-      value={user?.role?.nom || ""}
-      name="role"
-      sx={{
-        backgroundColor: "rgba(222, 242, 255, 0.9)",
-        borderRadius: "0.375rem",
-      }}
-    >
-      <MenuItem value={user?.role?.nom || ""}>
-        {user?.role?.nom || ""}
-      </MenuItem>
-    </TextField>
-  </div>
-
-  <div className="grid grid-cols-2 gap-8 w-full">
-    <div className="flex flex-col gap-2">
-      <p className="text-gray-600 font-medium text-sm">Email</p>
-      <input
-        onChange={handleChange}
-        type="text"
-        value={currentUser?.email || ""}
-        name="email"
-        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
-      />
-    </div>
-    <div className="flex flex-col gap-2">
-      <p className="text-gray-600 font-medium text-sm">Numero de téléphone</p>
-      <input
-        onChange={handleChange}
-        type="text"
-        value={currentUser?.phoneNum || ""}
-        name="phoneNum"
-        className="bg-gray-50 border border-gray-300 outline-none h-11 rounded-md px-4 focus:ring-2 focus:ring-green-600 transition"
-      />
-    </div>
-  </div>
-
-  <div className="flex flex-col gap-2 w-full">
-    <p className="text-gray-600 font-medium text-sm">Nouveau mot de passe</p>
-    <OutlinedInput
-      id="1"
-      value={currentUser?.password || ""}
-      onChange={handleChange}
-      size="small"
-      name="password"
-      type={showPassword.input1 ? "text" : "password"}
-      autoComplete="new-password"
-      className="rounded-md outline-none bg-white"
-      endAdornment={
-        <InputAdornment position="end">
-          <IconButton
-            id="1"
-            onClick={handleClickShowPassword}
-            onMouseDown={handleMouseDownPassword}
-            onMouseUp={handleMouseUpPassword}
-            edge="end"
-          >
-            {showPassword.input1 ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
-        </InputAdornment>
-      }
-      sx={{
-        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
-      }}
-    />
-  </div>
-
-  <div className="flex flex-col gap-2 w-full">
-    <p className="text-gray-600 font-medium text-sm">Confirmer le nouveau mot de passe</p>
-    <OutlinedInput
-      id="2"
-      value={confirmPassword}
-      onChange={(e) => setConfirmPassword(e.target.value)}
-      size="small"
-      type={showPassword.input2 ? "text" : "password"}
-      autoComplete="new-password"
-      className="rounded-md outline-none bg-white"
-      endAdornment={
-        <InputAdornment position="end">
-          <IconButton
-            id="2"
-            onClick={(e) => handleClickShowPassword(e)}
-            onMouseDown={handleMouseDownPassword}
-            onMouseUp={handleMouseUpPassword}
-            edge="end"
-          >
-            {showPassword.input2 ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
-        </InputAdornment>
-      }
-      sx={{
-        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.1)",
-      }}
-    />
-    {error && (
-      <p className="text-red-500 text-sm mt-1">{error}</p>
-    )}
-  </div>
-
-  <div className="w-full flex justify-end">
-    <button
-      type="submit"
-      className="bg-blue-600 hover:bg-blue-700 transition-all duration-200 text-white font-semibold text-sm rounded-lg px-6 py-3 shadow-md"
-    >
-      Sauvegarder
-    </button>
-  </div>
-
-  <Snackbar open={openSuccess} autoHideDuration={4000} onClose={() => setOpenSuccess(false)}>
-    <Alert onClose={() => setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
-      {successMessage}
-    </Alert>
-  </Snackbar>
-
-  <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
-    <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
-      {errorMessage}
-    </Alert>
-  </Snackbar>
-</form>
-
-    )
-}
-export default Profile
+export default Profile;

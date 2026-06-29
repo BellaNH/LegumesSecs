@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
 import  { Snackbar, Alert} from "@mui/material";
+import PageLoader from '../../components/common/PageLoader';
 import Lentilles from "../pics/Lentilles.png"
 const Espece = () => {
   const [newEspece, setNewEspece] = useState('');
@@ -13,7 +14,7 @@ const Espece = () => {
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
     
-  const {especes, setEspeces,url,fetchEspeces} = useGlobalContext()
+  const {especes, setEspeces,url,fetchEspeces, isDataLoading} = useGlobalContext()
 
   const handleAdd = async () => {
     console.log(newEspece)
@@ -81,6 +82,10 @@ const Espece = () => {
       setOpenError(true);
     }
   };
+
+  if (isDataLoading) {
+    return <PageLoader />;
+  }
 
   return (
   <div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">

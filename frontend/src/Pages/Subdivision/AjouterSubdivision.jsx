@@ -13,11 +13,12 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context";
+import PageLoader from "../../components/common/PageLoader";
 const AjouterSubdivision = () => {
   const [nom, setNom] = useState("");
   const [wilayaId, setWilayaId] = useState("");
   const navigate = useNavigate();
-  const {wilayas,url,fetchSubdivisions} = useGlobalContext()
+  const {wilayas,url,fetchSubdivisions,isDataLoading} = useGlobalContext()
       const [errorMessage, setErrorMessage] = useState(""); 
     const [successMessage, setSuccessMessage] = useState(""); 
     const [openError, setOpenError] = useState(false);
@@ -51,6 +52,11 @@ const AjouterSubdivision = () => {
   }
   };
   useEffect(()=>{console.log(wilayaId)},[wilayaId])
+
+  if (isDataLoading) {
+    return <PageLoader />;
+  }
+
   return (
     <Container maxWidth="sm">
       <Paper sx={{ p: 4, mt: 5, borderRadius: 3 }}>

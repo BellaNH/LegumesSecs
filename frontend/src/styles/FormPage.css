@@ -1,0 +1,298 @@
+.form-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 48px 32px;
+  box-sizing: border-box;
+}
+
+.form-page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #14532d;
+  margin: 0 0 12px 0;
+}
+
+.form-page-subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  margin: 0;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.form-page-card {
+  width: 960px;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.form-page-aside {
+  width: 320px;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, #15803d 0%, #16a34a 55%, #22c55e 100%);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.form-page-aside-orb {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 90px;
+  background-color: rgba(255, 255, 255, 0.12);
+  bottom: -40px;
+  right: -40px;
+  pointer-events: none;
+}
+
+.form-page-aside-orb--top {
+  width: 120px;
+  height: 120px;
+  top: -30px;
+  left: -30px;
+  bottom: auto;
+  right: auto;
+}
+
+.form-page-aside-text {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.45;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.form-page-aside-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 14px 20px;
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.form-page-aside-link:hover {
+  background-color: rgba(255, 255, 255, 0.28);
+  transform: translateX(4px);
+}
+
+.form-page-aside-arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.form-page-body {
+  flex: 1;
+  padding: 40px 48px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.form-page-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-page-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+}
+
+.form-page-field {
+  margin-bottom: 28px;
+}
+
+.form-page-field--full {
+  grid-column: 1 / -1;
+}
+
+.form-page-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.form-page-input,
+.form-page-select {
+  width: 100%;
+  height: 40px;
+  padding: 8px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #14532d;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #e5e7eb;
+  border-radius: 0;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.form-page-input:focus,
+.form-page-select:focus {
+  border-bottom-color: #16a34a;
+}
+
+.form-page-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  padding-right: 20px;
+}
+
+.form-page-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 8px;
+}
+
+.form-page-btn-submit {
+  height: 48px;
+  padding: 0 32px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #16a34a;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-page-btn-submit:hover {
+  background-color: #15803d;
+}
+
+.form-page-btn-cancel {
+  height: 48px;
+  padding: 0 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b7280;
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.form-page-btn-cancel:hover {
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+.form-page-situation-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #16a34a;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-page-situation-back:hover {
+  text-decoration: underline;
+}
+
+/* Modal mode (edit from list) */
+.form-page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.form-page-overlay .form-page {
+  min-height: auto;
+  padding: 0;
+  background: transparent;
+  width: 100%;
+  max-width: 960px;
+}
+
+.form-page-overlay .form-page-header {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .form-page-card {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form-page-aside {
+    width: 100%;
+    padding: 32px 24px;
+  }
+
+  .form-page-body {
+    padding: 32px 24px;
+  }
+
+  .form-page-fields-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-page-layout {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}

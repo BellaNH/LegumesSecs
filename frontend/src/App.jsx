@@ -1,9 +1,10 @@
 import { useState, lazy, Suspense } from 'react'
 import Sidebar from "./components/Sidebar"
+import './styles/AppLayout.css'
 import {Routes,Route} from "react-router-dom"
 import { useGlobalContext } from './context.jsx'
-import { Box, CircularProgress } from '@mui/material'
 import ProtectedRoute from './components/common/ProtectedRoute'
+import PageLoader from './components/common/PageLoader'
 
 // Lazy load components for code splitting
 const FormExploi = lazy(() => import('./Pages/Exploitation/FormExploi.jsx'))
@@ -30,19 +31,7 @@ const Slider = lazy(() => import("./Pages/Utilisateur/PermissionSlider/Slider.js
 const EspeceSurfaceChart = lazy(() => import('./Pages/Dashboard/EspeceSurfaceChart .jsx'))
 const Role = lazy(() => import("./Pages/Role/Role.jsx"))
 
-const LoadingFallback = () => (
-  <Box
-    sx={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      width: '100%',
-    }}
-  >
-    <CircularProgress />
-  </Box>
-)
+const LoadingFallback = () => <PageLoader />
 
 function App() {
   const [add,setAdd]= useState(0)
@@ -51,12 +40,12 @@ function App() {
     
   
   return (
-    <div className='flex flex-col md:flex-row h-[100vh] overflow-y-auto'>
+    <div className="app-shell">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-green-600 focus:text-white focus:p-2">
         Aller au contenu principal
       </a>
-      {isAuthenticated && <Sidebar drawerWidth={147} />}
-      <main id="main-content" className="flex-1" role="main">
+      {isAuthenticated && <Sidebar />}
+      <main id="main-content" className="app-main" role="main">
         <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="" element={isAuthenticated ? <DashboardDisplayed /> : <Login />} />

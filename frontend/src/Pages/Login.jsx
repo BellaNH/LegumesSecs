@@ -1,30 +1,28 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; 
-import { useGlobalContext } from "../context";
-import authService from "../services/api/authService";
-import axios from "axios";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../context';
+import authService from '../services/api/authService';
+import axios from 'axios';
 import {
-  Box,
-  TextField,
-  Button,
-  Typography,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
-  Link,
-  IconButton,
-  InputAdornment,
-  Paper,
-} from "@mui/material";
+  Button,
+  TextField,
+  Typography,
+  Box,
+} from '@mui/material';
+import loginImage from '../assets/login.jpg';
+import './Login.css';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [welcomeMsg,setWelcomeMsg] =useState("")
-   const [newPassword, setNewPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [welcomeMsg, setWelcomeMsg] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [forgotOpen, setForgotOpen] = useState(false);
-  const [resetEmail, setResetEmail] = useState("");
+  const [resetEmail, setResetEmail] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
 
@@ -34,263 +32,251 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // DETECTIVE LOG: Starting login process
-      console.log("🔐 [LOGIN] Starting login process for:", email);
-      
-      // Use direct axios call like old version for better visibility
-      console.log("📡 [LOGIN] Calling:", `${url}/api/token/`);
       const response = await axios.post(`${url}/api/token/`, {
         email,
         password,
       });
-      
-      // DETECTIVE LOG: Token received
-      const { access, refresh, user: userFromToken } = response.data;
-      console.log("✅ [LOGIN] Token received successfully");
-      console.log("🔑 [LOGIN] Access token:", access);
-      console.log("🔄 [LOGIN] Refresh token:", refresh ? "received" : "not received");
-      console.log("👤 [LOGIN] User data from token:", userFromToken);
-      console.log("🎭 [LOGIN] Role from token:", userFromToken?.role);
-      
-      // Call login with both access and refresh tokens
-      console.log("🔄 [LOGIN] Calling login function with access and refresh tokens");
+
+      const { access, refresh } = response.data;
       await login(access, refresh);
-      
-      console.log("✅ [LOGIN] Login process completed successfully");
-      setTimeout(() => {
-        console.log("🚀 [LOGIN] Navigating to dashboard");
-        navigate("/dashboard")
-      }, 1500);
-    }
-    catch (error) {
-      console.error("❌ [LOGIN] Error during login:", error);
-      console.error("❌ [LOGIN] Error response:", error.response?.data);
-      console.error("❌ [LOGIN] Error status:", error.response?.status);
-      console.error("❌ [LOGIN] Full error:", error);
-      const errorMessage = error.response?.data?.error?.message || 
-                          error.response?.data?.detail || 
-                          error.response?.data?.error || 
-                          error.message ||
-                          "Identifiants invalides";
+
+      setPassword('');
+      setEmail('');
+      navigate('/dashboard', { replace: true });
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.error?.message ||
+        error.response?.data?.detail ||
+        error.response?.data?.error ||
+        error.message ||
+        'Identifiants invalides';
       alert(`Erreur: ${errorMessage}`);
     }
-  }
-  
+  };
+
   const handlePasswordReset = async () => {
     if (!resetEmail || !newPassword) {
-      alert("Veuillez remplir tous les champs");
+      alert('Veuillez remplir tous les champs');
       return;
     }
-    
+
     if (newPassword.length < 8) {
-      alert("Le mot de passe doit contenir au moins 8 caractères");
+      alert('Le mot de passe doit contenir au moins 8 caractères');
       return;
     }
-    
+
     try {
       await authService.resetPassword(resetEmail, newPassword);
-      alert("Mot de passe réinitialisé avec succès ✅");
+      alert('Mot de passe réinitialisé avec succès');
       setForgotOpen(false);
-      setNewPassword("");
-      setResetEmail("");
+      setNewPassword('');
+      setResetEmail('');
     } catch (error) {
-      const errorMessage = error.response?.data?.error?.message || 
-                          error.response?.data?.error || 
-                          "Erreur lors de la réinitialisation";
+      const errorMessage =
+        error.response?.data?.error?.message ||
+        error.response?.data?.error ||
+        'Erreur lors de la réinitialisation';
       alert(errorMessage);
     }
   };
-return (
-<Box
-  sx={{
-    minHeight: '100vh',
-    width: '100vw',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    bgcolor: '#f4f6f8',
-    p: 2,
-  }}
->
-  <Paper
-    elevation={6}
-    sx={{
-      p: 4,
-      borderRadius: 4,
-      width: '100%',
-      maxWidth: 420,
-      boxSizing: 'border-box',
-    }}
-  >
-        <Typography variant="h5" align="center" gutterBottom fontWeight="bold">
-          Connexion
-        </Typography>
 
-        <form onSubmit={handleLogin}>
+  return (
+    <div className="login-page">
+      <div className="login-card">
+        <div className="login-visual">
+          <img src={loginImage} alt="Agriculture" />
+          <div className="login-visual-overlay" aria-hidden="true" />
+        </div>
+
+        <div className="login-panel">
+          <div className="login-panel-inner">
+          <div className="login-brand">
+            <span className="login-brand-dot" />
+            <span className="login-brand-name">LegumeSec</span>
+          </div>
+
+          <h1 className="login-title">Connexion</h1>
+          <p className="login-subtitle">Accédez à votre espace de gestion agricole</p>
+
+          <form
+            className="login-form"
+            onSubmit={handleLogin}
+            autoComplete="off"
+            data-form-type="other"
+          >
+            <input
+              type="text"
+              name="prevent_autofill"
+              autoComplete="off"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="login-autofill-guard"
+            />
+            <input
+              type="password"
+              name="prevent_autofill_pass"
+              autoComplete="off"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="login-autofill-guard"
+            />
+
+            <div className="login-field">
+              <label className="login-label" htmlFor="login-email">
+                Adresse email
+              </label>
+              <input
+                id="login-email"
+                className="login-input"
+                type="text"
+                name="legumesec_email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="vous@exemple.com"
+                autoComplete="off"
+                autoCapitalize="off"
+                autoCorrect="off"
+                spellCheck={false}
+                readOnly
+                onFocus={(e) => e.target.removeAttribute('readOnly')}
+                data-lpignore="true"
+                data-1p-ignore
+                required
+              />
+            </div>
+
+            <div className="login-field">
+              <label className="login-label" htmlFor="login-password">
+                Mot de passe
+              </label>
+              <input
+                id="login-password"
+                className="login-input"
+                type={showPassword ? 'text' : 'password'}
+                name="legumesec_secret"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                autoComplete="one-time-code"
+                readOnly
+                onFocus={(e) => e.target.removeAttribute('readOnly')}
+                data-lpignore="true"
+                data-1p-ignore
+                required
+              />
+            </div>
+
+            <div className="login-checkbox-row">
+              <input
+                type="checkbox"
+                id="showPassword"
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)}
+              />
+              <label htmlFor="showPassword">Afficher le mot de passe</label>
+            </div>
+
+            <button type="submit" className="login-btn">
+              Se connecter
+            </button>
+          </form>
+
+          <div className="login-forgot-wrap">
+            <button type="button" className="login-forgot-btn" onClick={() => setForgotOpen(true)}>
+              Mot de passe oublié ?
+            </button>
+          </div>
+
+          {welcomeMsg && <div className="login-welcome-msg">{welcomeMsg}</div>}
+          </div>
+        </div>
+      </div>
+
+      <Dialog
+        open={forgotOpen}
+        onClose={() => setForgotOpen(false)}
+        PaperProps={{
+          sx: {
+            p: 3,
+            borderRadius: '16px',
+            minWidth: { xs: 300, sm: 400 },
+            bgcolor: '#ffffff',
+          },
+        }}
+      >
+        <DialogTitle
+          sx={{
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: '1.3rem',
+            mb: 1,
+            color: '#16a34a',
+          }}
+        >
+          Mot de passe oublié ?
+        </DialogTitle>
+
+        <DialogContent>
+          <Typography variant="body2" sx={{ mb: 2 }}>
+            Veuillez saisir votre adresse email et le nouveau mot de passe :
+          </Typography>
+
           <TextField
             fullWidth
             label="Adresse email"
-            variant="outlined"
-            margin="normal"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            value={resetEmail}
+            onChange={(e) => setResetEmail(e.target.value)}
+            margin="dense"
+            autoComplete="off"
           />
 
           <TextField
-  fullWidth
-  label="Mot de passe"
-  variant="outlined"
-  margin="normal"
-  type={showPassword ? "text" : "password"}
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-  required
-/>
-
-<Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-  <input
-    type="checkbox"
-    id="showPassword"
-    checked={showPassword}
-    onChange={() => setShowPassword(!showPassword)}
-    style={{ marginRight: 8 }}
-  />
-  <label htmlFor="showPassword" style={{ fontSize: "0.9rem" }}>
-    Afficher le mot de passe
-  </label>
-</Box>
-
-
-         <Button
-            type="submit"
             fullWidth
+            label="Nouveau mot de passe"
+            type={showNewPassword ? 'text' : 'password'}
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            margin="dense"
+            sx={{ mt: 2 }}
+            autoComplete="off"
+            inputProps={{ autoComplete: 'off', 'data-lpignore': true }}
+          />
+
+          <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+            <input
+              type="checkbox"
+              id="showNewPassword"
+              checked={showNewPassword}
+              onChange={() => setShowNewPassword(!showNewPassword)}
+              style={{ marginRight: 8 }}
+            />
+            <label htmlFor="showNewPassword" style={{ fontSize: '0.9rem' }}>
+              Afficher le mot de passe
+            </label>
+          </Box>
+        </DialogContent>
+
+        <DialogActions sx={{ mt: 2, justifyContent: 'space-between', px: 2 }}>
+          <Button
+            onClick={() => setForgotOpen(false)}
             variant="contained"
-            color="primary"
-            sx={{ mt: 3, py: 1.5 ,bgcolor:"#16a34a"}}
-          >
-            Se connecter
-          </Button>
-        </form>
-<Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-  <Link
-    component="button"
-    variant="body2"
-    onClick={() => setForgotOpen(true)}
-    sx={{ color: "#44c034ff", textDecoration: "none" }}
-  >
-    Mot de passe oublié ?
-  </Link>
-</Box>
-
-
-
-        {welcomeMsg && (
-          <Typography
-            variant="subtitle1"
-            align="center"
             sx={{
-              mt: 3,
-              bgcolor: "#e0f2f1",
-              color: "#004d40",
-              py: 1,
-              px: 2,
-              borderRadius: 2,
-              fontWeight: "bold",
+              bgcolor: '#d32f2f',
+              '&:hover': { bgcolor: '#b71c1c' },
             }}
           >
-            {welcomeMsg}
-          </Typography>
-        )}
-      </Paper>
-
-      <Dialog
-  open={forgotOpen}
-  onClose={() => setForgotOpen(false)}
-  PaperProps={{
-    sx: {
-      p: 3,
-      borderRadius: 3,
-      minWidth: { xs: 300, sm: 400 },
-      bgcolor: "#fefefe",
-    },
-  }}
->
-  <DialogTitle
-    sx={{
-      textAlign: "center",
-      fontWeight: "bold",
-      fontSize: "1.3rem",
-      mb: 1,
-      color: "#16a34a",
-    }}
-  >
-    🔐  mot de passe oublié ?
-  </DialogTitle>
-
-  <DialogContent>
-    <Typography variant="body2" sx={{ mb: 2 }}>
-      Veuillez saisir votre adresse email et le nouveau mot de passe :
-    </Typography>
-
-    <TextField
-      fullWidth
-      label="Adresse email"
-      type="email"
-      value={resetEmail}
-      onChange={(e) => setResetEmail(e.target.value)}
-      margin="dense"
-    />
-
-    <TextField
-  fullWidth
-  label="Nouveau mot de passe"
-  type={showNewPassword ? "text" : "password"}
-  value={newPassword}
-  onChange={(e) => setNewPassword(e.target.value)}
-  margin="dense"
-  sx={{ mt: 2 }}
-/>
-
-<Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-  <input
-    type="checkbox"
-    id="showNewPassword"
-    checked={showNewPassword}
-    onChange={() => setShowNewPassword(!showNewPassword)}
-    style={{ marginRight: 8 }}
-  />
-  <label htmlFor="showNewPassword" style={{ fontSize: "0.9rem" }}>
-    Afficher le mot de passe
-  </label>
-</Box>
-
-  </DialogContent>
-
-  <DialogActions sx={{ mt: 2, justifyContent: "space-between", px: 2 }}>
- <Button
-  onClick={() => setForgotOpen(false)}
-  variant="contained"
-  sx={{
-    bgcolor: "#d32f2f",
-    "&:hover": {
-      bgcolor: "#b71c1c",
-    },
-  }}
->
-  Annuler
-</Button>
-
-    <Button
-      onClick={handlePasswordReset}
-      variant="contained"
-      sx={{ bgcolor: "#16a34a", "&:hover": { bgcolor: "#139442ff" } }}
-    >
-      Réinitialiser
-    </Button>
-  </DialogActions>
-</Dialog>
-    </Box>
+            Annuler
+          </Button>
+          <Button
+            onClick={handlePasswordReset}
+            variant="contained"
+            sx={{ bgcolor: '#16a34a', '&:hover': { bgcolor: '#15803d' } }}
+          >
+            Réinitialiser
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 }

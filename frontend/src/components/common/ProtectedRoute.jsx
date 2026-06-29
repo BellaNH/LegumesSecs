@@ -1,16 +1,12 @@
 import { Navigate } from 'react-router-dom';
 import { useGlobalContext } from '../../context';
-import { Box, CircularProgress } from '@mui/material';
+import PageLoader from './PageLoader';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, authLoading } = useGlobalContext();
 
   if (authLoading) {
-    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
-        <CircularProgress />
-      </Box>
-    );
+    return <PageLoader />;
   }
 
   if (!isAuthenticated) {

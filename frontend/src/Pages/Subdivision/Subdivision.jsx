@@ -1,238 +1,224 @@
-import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  IconButton,
-  Typography,
-  TextField
-} from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import axios from "axios";
-import SearchIcon from '@mui/icons-material/Search'; 
-import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
-import { useGlobalContext } from "../../context";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { FaTrash, FaEdit } from 'react-icons/fa';
-import InputAdornment from '@mui/material/InputAdornment';
-import {Snackbar, Alert } from "@mui/material";
-import Localisation from "../pics/Localisation.png"
+import { FiSearch } from 'react-icons/fi';
+import { useGlobalContext } from '../../context';
+import { Snackbar, Alert } from '@mui/material';
+import localisationIcon from '../pics/Localisation.png';
+import ListPaginationFooter from '../../components/common/ListPaginationFooter';
+import PageLoader from '../../components/common/PageLoader';
+import { usePaginatedList } from '../../hooks/usePaginatedList';
+import '../../styles/ListPage.css';
 
 const SubdivisionManager = () => {
-
-  const {url,user} = useGlobalContext()
+  const { url } = useGlobalContext();
   const navigate = useNavigate();
-  const [subdivisions,setSubdivisions ] = useState([])
   const [editingId, setEditingId] = useState(null);
   const [editedSubdivName, setEditedSubdivName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-     const [errorMessage, setErrorMessage] = useState(""); 
-    const [successMessage, setSuccessMessage] = useState(""); 
-    const [openError, setOpenError] = useState(false);
-    const [openSuccess, setOpenSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
 
+  const {
+    items: subdivisions,
+    setItems: setSubdivisions,
+    totalCount,
+    hasMore,
+    loadedAll,
+    loading,
+    loadMore,
+    loadAll,
+    refresh,
+  } = usePaginatedList(url, '/api/subdivision/');
 
+  const filteredSubdivisions = subdivisions.filter((sub) =>
+    sub.nom?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-const fetchSubdivisions = async () => {
-  try {
-    const res = await axios.get(`${url}/api/subdivision/`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    const list = Array.isArray(res.data) ? res.data : (res.data?.results ?? []);
-    setSubdivisions(list);
-  } catch (error) {
-    console.error("Erreur de chargement des subdivisions", error);
-  }
-};
-
-useEffect(() => {
-  fetchSubdivisions();
-}, []);
-
-const filteredSubdivisions = (Array.isArray(subdivisions) ? subdivisions : []).filter(sub =>
-  sub.nom?.toLowerCase().includes(searchQuery.toLowerCase())
-);
-  const [subdiv,setSubdiv] = useState({})
-  const handleChange = (e)=>{
-    const {name,value} = e.target
-    setSubdiv({
-      ...subdiv,
-      [name]:value
-    })
-  }
   const handleEdit = (subdivision) => {
     setEditingId(subdivision.id);
     setEditedSubdivName(subdivision.nom);
   };
-  const handleUpdate = async (id) => {
-    console.log(id)
-    if(id){
-      try {
-        await axios.put(
-          `${url}/api/subdivision/${editingId}/`,
-          { nom: editedSubdivName,
-            wilaya_id:id,
-           },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        setSuccessMessage(`Subdivision est modifiée avec succès ✅`);
-        setOpenSuccess(true);
-        setEditingId(null);
-        setEditedSubdivName('');
-        fetchSubdivisions()
-      } catch (error) {
-        setErrorMessage("Erreur lors de la mise à jour");
-        setOpenError(true);
-      }
-    }
-    }
-  const handleDelete = async (id) => {
-    try{
-      await axios.delete(`${url}/api/subdivision/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      setSuccessMessage(`Subdivision est supprimée avec succès ✅`);
+
+  const handleUpdate = async (wilayaId) => {
+    if (!editingId || !wilayaId) return;
+    try {
+      await axios.put(
+        `${url}/api/subdivision/${editingId}/`,
+        { nom: editedSubdivName, wilaya_id: wilayaId },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        }
+      );
+      setSuccessMessage('Subdivision modifiée avec succès');
       setOpenSuccess(true);
-      fetchSubdivisions()
-      setSubdivisions((prev) => (Array.isArray(prev) ? prev : []).filter((s) => s.id !== id))
-    }catch(error){
-      setErrorMessage("Erreur lors de suppression");
+      setEditingId(null);
+      setEditedSubdivName('');
+      refresh();
+    } catch {
+      setErrorMessage('Erreur lors de la mise à jour');
       setOpenError(true);
     }
-    
   };
 
-return (
-<div className="w-[100%] h-fit mt-10 mx-auto flex flex-col items-center">
-  <div className="w-[85%] flex flex-col mb-16">
-    <div className='flex align-center gap-2'> 
-          <img src={Localisation} alt="localisation" className='w-10 h-10'/>
-          <h2 className="text-3xl font-bold text-left text-green-600 mb-6">
-           Subdivisions
-         </h2>
-        </div>
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${url}/api/subdivision/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      setSuccessMessage('Subdivision supprimée avec succès');
+      setOpenSuccess(true);
+      setSubdivisions(subdivisions.filter((s) => s.id !== id));
+    } catch {
+      setErrorMessage('Erreur lors de la suppression');
+      setOpenError(true);
+    }
+  };
 
-    <div className="flex items-center justify-center gap-4 mb-6">
-      <div className="relative w-full">
-        <input
-          type="text"
-          placeholder="Rechercher une subdivision"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md pl-10 focus:outline-none focus:ring-2 focus:ring-green-600"
-        />
-        <div className="absolute left-3 top-2.5 text-gray-400">
-          <SearchIcon />
+  if (loading && subdivisions.length === 0) {
+    return <PageLoader />;
+  }
+
+  return (
+    <div className="list-page">
+      <div className="list-page-layout">
+        <div className="list-page-card">
+          <div className="list-page-header">
+            <div className="list-page-header-left">
+              <img src={localisationIcon} alt="" className="list-page-header-icon" width={40} height={40} />
+              <h1 className="list-page-title">Subdivisions</h1>
+            </div>
+            <button
+              type="button"
+              className="list-page-btn-add"
+              onClick={() => navigate('/ajouter-subdivision')}
+            >
+              + Ajouter subdivision
+            </button>
+          </div>
+
+          <div className="list-page-toolbar">
+            <div className="list-page-search-wrap">
+              <FiSearch className="list-page-search-icon" />
+              <input
+                type="text"
+                placeholder="Rechercher une subdivision"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="list-page-search-input"
+              />
+            </div>
+          </div>
+
+          <div className="list-page-summary">
+            <p className="list-page-summary-label">Subdivisions enregistrées</p>
+            <p className="list-page-summary-count">{totalCount} subdivision(s)</p>
+          </div>
+
+          {filteredSubdivisions.length === 0 && !loading ? (
+            <p className="list-page-empty">Aucune subdivision trouvée.</p>
+          ) : (
+            <div className="list-page-table-wrap">
+              <table className="list-page-table">
+                <thead>
+                  <tr>
+                    <th className="list-page-th-id">ID</th>
+                    <th>Nom</th>
+                    <th>Wilaya</th>
+                    <th className="list-page-th-actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredSubdivisions.map((sub) => (
+                    <tr key={sub.id}>
+                      <td>{sub.id}</td>
+                      <td className="list-page-td-name">
+                        {editingId === sub.id ? (
+                          <input
+                            value={editedSubdivName}
+                            onChange={(e) => setEditedSubdivName(e.target.value)}
+                            className="list-page-inline-input"
+                          />
+                        ) : (
+                          sub.nom
+                        )}
+                      </td>
+                      <td>{sub.wilaya?.nom ?? '—'}</td>
+                      <td className="list-page-td-actions">
+                        <div className="list-page-actions">
+                          {editingId === sub.id ? (
+                            <button
+                              type="button"
+                              onClick={() => handleUpdate(sub.wilaya?.id)}
+                              className="list-page-btn-validate"
+                            >
+                              Valider
+                            </button>
+                          ) : (
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => handleEdit(sub)}
+                                className="list-page-action-btn list-page-action-btn--edit"
+                                aria-label="Modifier"
+                              >
+                                <FaEdit />
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handleDelete(sub.id)}
+                                className="list-page-action-btn list-page-action-btn--delete"
+                                aria-label="Supprimer"
+                              >
+                                <FaTrash />
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          <ListPaginationFooter
+            displayed={subdivisions.length}
+            totalCount={totalCount}
+            hasMore={hasMore}
+            loadedAll={loadedAll}
+            loading={loading}
+            onLoadMore={loadMore}
+            onLoadAll={loadAll}
+          />
+
+          <div className="list-page-footer">
+            <span className="list-page-footer-total">Total : {totalCount}</span>
+          </div>
         </div>
       </div>
 
-      <button
-        onClick={() => navigate("/ajouter-subdivision")}
-        className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md text-sm"
-      >
-        Ajouter
-      </button>
+      <Snackbar open={openSuccess} autoHideDuration={4000} onClose={() => setOpenSuccess(false)}>
+        <Alert onClose={() => setOpenSuccess(false)} severity="success" sx={{ width: '100%' }}>
+          {successMessage}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+        <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: '100%' }}>
+          {errorMessage}
+        </Alert>
+      </Snackbar>
     </div>
-
-    <div className="bg-white shadow-md rounded-xl overflow-hidden">
-      <table className="min-w-full table-auto text-left border border-gray-200">
-        <thead className="bg-green-600 text-white">
-          <tr>
-            <th className="px-4 py-3 text-sm font-semibold">ID</th>
-            <th className="px-4 py-3 text-sm font-semibold">Nom de la subdivision</th>
-            <th className="px-4 py-3 text-sm font-semibold">Wilaya</th>
-            <th className="px-4 py-3 text-sm font-semibold text-center">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredSubdivisions.map((sub) => (
-            <tr key={sub.id} className="even:bg-gray-50 hover:bg-green-50 transition duration-200">
-              <td className="px-4 py-3 text-sm">{sub.id}</td>
-
-              <td className="px-4 py-3 text-[16px] text-gray-800">
-                {editingId === sub.id ? (
-                  <input
-                    value={editedSubdivName}
-                    onChange={(e) => setEditedSubdivName(e.target.value)}
-                    className="w-full border border-gray-300 rounded px-3 py-1 text-sm"
-                  />
-                ) : (
-                  sub.nom
-                )}
-              </td>
-
-              <td className="px-4 py-3 text-[16px] text-gray-800">{sub.wilaya.nom}</td>
-
-              <td className="px-4 py-3 text-center">
-                {editingId === sub.id ? (
-                  <button
-                    onClick={(e) => handleUpdate(sub.wilaya.id)}
-                    className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm"
-                  >
-                    Valider
-                  </button>
-                ) : (
-                  <div className="flex justify-center items-center gap-4 text-[18px]">
-                    <button
-                      onClick={() => handleEdit(sub)}
-                      className="text-blue-600 hover:text-blue-800"
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(sub.id)}
-                      className="text-red-600 hover:text-red-800"
-                    >
-                      <FaTrash />
-                    </button>
-                  </div>
-                )}
-              </td>
-            </tr>
-          ))}
-
-          {subdivisions.length === 0 && (
-            <tr>
-              <td colSpan={4} className="text-center py-4 text-gray-500 italic">
-                Aucune subdivision trouvée.
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-
-                         <Snackbar open={openSuccess} autoHideDuration={4000} onClose={()=>setOpenSuccess(false)}>
-                            <Alert onClose={()=>setOpenSuccess(false)} severity="success" sx={{ width: "100%" }}>
-                              {successMessage}
-                            </Alert>
-                          </Snackbar>
-              
-                            <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
-                              <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: "100%" }}>
-                                {errorMessage}
-                              </Alert>
-                            </Snackbar>
-  </div>
-);
-
-  
+  );
 };
 
 export default SubdivisionManager;

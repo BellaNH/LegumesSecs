@@ -1,162 +1,216 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { useState } from 'react';
-import {IoMdInformationCircleOutline} from "react-icons/io"
+import { useState, useEffect } from 'react';
 import { useGlobalContext } from '../../context';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Snackbar, Alert } from '@mui/material';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import Plus from "../pics/Plus.png"
-import Modifer from "../pics/Modifier.png"
+import FormPageLayout from '../../components/common/FormPageLayout';
+import PageLoader from '../../components/common/PageLoader';
 
-const FormAgriculteur = ({setSelectedAgriId,selectedAgriId})=>{
-    const {url,fetchAgriculteurs} = useGlobalContext()
-    const [openForm,setOpenForm] = useState(true)
-    const navigate = useNavigate()
-    const [data,setData] = useState({
-        nom:"",
-        prenom:"",
-        phoneNum:"",
-        numero_carte_fellah:""
-       })
-       
-    
-    useEffect(()=>{
-         const fetchAgri = async ()=>{
-          console.log(selectedAgriId)
-         if(selectedAgriId){
-           try {
-             const response = await axios.get(`${url}/api/agriculteur/${selectedAgriId}/`,
-               {
-           headers: {
-             Authorization: `Bearer ${localStorage.getItem("token")}`,
-           }
-           }
-           )
-   
-           console.log(response.data)
-           setData(prevData => ({
-           ...prevData,
-           nom:response.data.nom,
-           prenom:response.data.prenom,
-           phoneNum:response.data.phoneNum,
-           numero_carte_fellah:response.data.numero_carte_fellah
-           }))
-           
-           } catch (error) {
-             console.error('Erreur lors de la mise à jour', error);
-           }
-         }
-       }
-       fetchAgri()
-       
-       },[selectedAgriId])
+const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm }) => {
+  const { url, fetchAgriculteurs, isDataLoading } = useGlobalContext();
+  const [openForm, setOpenForm] = useState(true);
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [editLoading, setEditLoading] = useState(Boolean(selectedAgriId));
+  const [data, setData] = useState({
+    nom: '',
+    prenom: '',
+    phoneNum: '',
+    numero_carte_fellah: '',
+  });
 
-      const handleModifyAgri = async (e)=>{
-    e.preventDefault()
-    if(selectedAgriId){
-      try{
-      const response =  await axios.patch(`${url}/api/agriculteur/${selectedAgriId}/`, 
-      data, 
-      {
-      headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`
+  const isEditMode = Boolean(selectedAgriId);
+
+  useEffect(() => {
+    const fetchAgri = async () => {
+      if (!selectedAgriId) {
+        setEditLoading(false);
+        return;
+      }
+      setEditLoading(true);
+      try {
+        const response = await axios.get(`${url}/api/agriculteur/${selectedAgriId}/`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        });
+        setData({
+          nom: response.data.nom,
+          prenom: response.data.prenom,
+          phoneNum: response.data.phoneNum,
+          numero_carte_fellah: response.data.numero_carte_fellah,
+        });
+      } catch (error) {
+        console.error('Erreur lors de la récupération', error);
+      } finally {
+        setEditLoading(false);
+      }
+    };
+    fetchAgri();
+  }, [selectedAgriId, url]);
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const closeEditModal = () => {
+    setOpenForm(false);
+    setSelectedAgriId?.(null);
+    setShowEditForm?.(false);
+  };
+
+  const handleModifyAgri = async (e) => {
+    e.preventDefault();
+    if (!selectedAgriId) return;
+    try {
+      await axios.patch(`${url}/api/agriculteur/${selectedAgriId}/`, data, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      fetchAgriculteurs();
+      closeEditModal();
+      setSuccessMessage('Agriculteur modifié avec succès');
+      setOpenSuccess(true);
+    } catch {
+      setErrorMessage('Erreur lors de la mise à jour');
+      setOpenError(true);
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(`${url}/api/agriculteur/`, data, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      fetchAgriculteurs();
+      setSuccessMessage('Agriculteur ajouté avec succès');
+      setOpenSuccess(true);
+      navigate('/agriculteurs');
+    } catch {
+      setErrorMessage('Erreur lors de la création');
+      setOpenError(true);
+    }
+  };
+
+  const handleCancel = () => {
+    if (isEditMode) {
+      closeEditModal();
+    } else {
+      navigate('/agriculteurs');
+    }
+  };
+
+  if (!openForm && isEditMode) return null;
+
+  if (isDataLoading || editLoading) {
+    return <PageLoader />;
   }
-)
-      console.log(response.data)
-      fetchAgriculteurs()
-      setSelectedAgriId(null)
-      setOpenForm(!openForm)
-      setShowEditForm(!showEditForm)
-    }catch(error){
-      console.log(error)
-    }
-    }
-    
-   }
 
-    const handleChange = (e)=>{
-        setData({...data,[e.target.name] : e.target.value})
-       }
-    const handleSubmit = async (e)=>{
-        e.preventDefault()
-        try{
-          const response = await axios.post(`${url}/api/agriculteur/`,data,
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
-              }
-      }
-          )
-          fetchAgriculteurs()
-          navigate("/agriculteurs")
-    
-        }catch(error){
-          console.log(error)
-        }
-        
-       }
+  const title = isEditMode ? "Modifier l'agriculteur" : 'Ajouter un agriculteur';
+  const subtitle = isEditMode
+    ? 'Mettez à jour les informations de cet agriculteur.'
+    : 'Renseignez les informations pour enregistrer un nouvel agriculteur.';
 
-       const handleCancel = ()=>{
-      setOpenForm(!openForm)
-      setData({
-        ...data,
-        nom:"",
-        prenom:"",
-        phoneNum:"",
-        numero_carte_fellah:""      
-      })
-      navigate("/agriculteurs")
-    }
-       useEffect(()=>{console.log(selectedAgriId)},[selectedAgriId])
-       useEffect(()=>{console.log(data)},[data])
-    return(
-    <div className={openForm 
-      ? "fixed top-0 left-0 w-full h-full bg-[#00000090] z-50 flex justify-center items-center" 
-     : ""}>
-      {openForm &&
-      <form onSubmit={selectedAgriId? handleModifyAgri : handleSubmit} 
-      className='relative left-16 w-[55%] h-[50vh]  z-10 rounded-md  grid grid-cols-2 '>
-        <div className=' flex flex-col gap-4 px-4 rounded-l-md bg-white '>
-          {selectedAgriId?
-                    <div className='flex gap-3 '>
-                      <img src={Modifer} alt='' className='w-6 h-6 mt-5'/>
-                    <h3 className='font-semibold text-green-600 text-xl my-4'>Modifier l'agriculteur</h3>
-                    </div> 
-                    :
-                    <div className='flex gap-3 '>
-                    <img src={Plus} alt='' className='w-6 h-6 mt-5'/>
-                    <h3 className='font-semibold text-green-600 text-xl my-4'>Ajouter un agriculteur</h3>
-                    </div>
-                    
-                    }
-            <TextField value={data.nom} name='nom' onChange={handleChange} label="Nom" variant="standard" size="small" sx={{width:'100%'}}/> 
-            <TextField value={data.prenom} name='prenom' onChange={handleChange} label="Prenom" variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}}/> 
-            
-        </div>
-        <div className='flex flex-col gap-4 bg-green-700 px-4 rounded-r-md ' >
-        <IoMdInformationCircleOutline className="text-white w-8 h-8 mt-4 ml-[85%] mb-3"/>
-            <TextField value={data.phoneNum} name='phoneNum' onChange={handleChange} InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'white'}}}} InputProps={{sx:{color:'white','&:before':{borderBottom:'1px solid white'},'&:after':{borderBottom:'1px solid white'}}}} label="Num téléphone" variant="standard" size="small" sx={{width:'100%', '& > :not(style)':{color:'white'},boxShadow:'rgba(149,157,165,0.2) 0px 8px 24px',border:'none' }}/>  
-            <TextField value={data.numero_carte_fellah} name='numero_carte_fellah' onChange={handleChange} InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'white'}}}} InputProps={{sx:{color:'white','&:before':{borderBottom:'1px solid white'},'&:after':{borderBottom:'1px solid white'}}}} label="Num Carte fellah" variant="standard" size="small" sx={{width:'100%', '& > :not(style)':{color:'white'},boxShadow:'rgba(149,157,165,0.2) 0px 8px 24px',border:'none' }}/> 
-            
-            <div className='flex justify-center py-6 gap-6 w-[100%]'>
-            <button type='button' onClick={handleCancel} className='bg-white rounded-md w-auto px-8 py-2 text-red-600 font-semibold'>Cancel</button>
-            {selectedAgriId
-            ?<button type='submit'  className='font-semibold bg-lime-600 rounded-md w-auto px-8 py-2 text-white text-base'>Modifier</button>
-            :<button type='submit'  className='font-semibold bg-green-600 rounded-md w-auto px-8 py-2 text-white text-base'>Ajouter</button>}
-
+  return (
+    <>
+      <FormPageLayout
+        title={title}
+        subtitle={subtitle}
+        listLink="/agriculteurs"
+        listLabel="Voir les agriculteurs"
+        isModal={isEditMode}
+      >
+        <form
+          className="form-page-form"
+          onSubmit={isEditMode ? handleModifyAgri : handleSubmit}
+        >
+          <div className="form-page-fields-grid">
+            <div className="form-page-field">
+              <label className="form-page-label" htmlFor="nom">
+                Nom
+              </label>
+              <input
+                id="nom"
+                className="form-page-input"
+                type="text"
+                name="nom"
+                value={data.nom}
+                onChange={handleChange}
+                required
+              />
             </div>
-      
-       
-        </div>
-        
-    </form>
-      }
-      
-    </div>
-    )
-    
-}
-export default FormAgriculteur
+
+            <div className="form-page-field">
+              <label className="form-page-label" htmlFor="prenom">
+                Prénom
+              </label>
+              <input
+                id="prenom"
+                className="form-page-input"
+                type="text"
+                name="prenom"
+                value={data.prenom}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-page-field">
+              <label className="form-page-label" htmlFor="phoneNum">
+                Numéro de téléphone
+              </label>
+              <input
+                id="phoneNum"
+                className="form-page-input"
+                type="text"
+                name="phoneNum"
+                value={data.phoneNum}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-page-field">
+              <label className="form-page-label" htmlFor="numero_carte_fellah">
+                Numéro carte fellah
+              </label>
+              <input
+                id="numero_carte_fellah"
+                className="form-page-input"
+                type="text"
+                name="numero_carte_fellah"
+                value={data.numero_carte_fellah}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-page-actions">
+            <button type="submit" className="form-page-btn-submit">
+              {isEditMode ? 'Modifier' : 'Ajouter'}
+            </button>
+            <button type="button" className="form-page-btn-cancel" onClick={handleCancel}>
+              Annuler
+            </button>
+          </div>
+        </form>
+      </FormPageLayout>
+
+      <Snackbar open={openSuccess} autoHideDuration={4000} onClose={() => setOpenSuccess(false)}>
+        <Alert onClose={() => setOpenSuccess(false)} severity="success" sx={{ width: '100%' }}>
+          {successMessage}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar open={openError} autoHideDuration={4000} onClose={() => setOpenError(false)}>
+        <Alert onClose={() => setOpenError(false)} severity="error" sx={{ width: '100%' }}>
+          {errorMessage}
+        </Alert>
+      </Snackbar>
+    </>
+  );
+};
+
+export default FormAgriculteur;

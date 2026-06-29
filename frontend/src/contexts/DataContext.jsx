@@ -16,6 +16,7 @@ export const DataProvider = ({ children }) => {
   const [agriculteurs, setAgriculteurs] = useState([]);
   const [exploitations, setExploitations] = useState([]);
   const [parcelles, setParcelles] = useState([]);
+  const [isDataLoading, setIsDataLoading] = useState(false);
 
   const fetchWilaya = useCallback(async () => {
     try {
@@ -143,21 +144,33 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (user) {
-      console.log("📊 [DATA] User authenticated, fetching all data...");
-      console.log("👤 [DATA] User:", user);
-      fetchWilaya();
-      fetchSubdivisions();
-      fetchCommunes();
-      fetchEspeces();
-      fetchRoles();
-      fetchObjectifs();
-      fetchAgriculteurs();
-      fetchExploitations();
-      fetchExploitationWithParcelles();
-    } else {
-      console.log("ℹ️ [DATA] No user, skipping data fetch");
+    if (!user) {
+      setIsDataLoading(false);
+      return undefined;
     }
+
+    let cancelled = false;
+    setIsDataLoading(true);
+
+    Promise.all([
+      fetchWilaya(),
+      fetchSubdivisions(),
+      fetchCommunes(),
+      fetchEspeces(),
+      fetchRoles(),
+      fetchObjectifs(),
+      fetchAgriculteurs(),
+      fetchExploitations(),
+      fetchExploitationWithParcelles(),
+    ]).finally(() => {
+      if (!cancelled) {
+        setIsDataLoading(false);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [user, fetchWilaya, fetchSubdivisions, fetchCommunes, fetchEspeces, fetchRoles, fetchObjectifs, fetchAgriculteurs, fetchExploitations, fetchExploitationWithParcelles]);
 
   const value = useMemo(() => ({
@@ -189,6 +202,7 @@ export const DataProvider = ({ children }) => {
     fetchExploitations,
     fetchExploitationWithParcelles,
     fetchParcelle,
+    isDataLoading,
   }), [
     wilayas,
     subdivisions,
@@ -209,6 +223,7 @@ export const DataProvider = ({ children }) => {
     fetchExploitations,
     fetchExploitationWithParcelles,
     fetchParcelle,
+    isDataLoading,
   ]);
 
   return (

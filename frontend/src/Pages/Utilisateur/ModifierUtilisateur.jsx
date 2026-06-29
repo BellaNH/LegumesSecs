@@ -6,12 +6,14 @@ import { useGlobalContext } from "../../context";
 import { Box, TextField, Button, Typography, MenuItem, Container, Paper, Snackbar, Alert } from "@mui/material";
 import Slider from './PermissionSlider/Slider'
 import Modifier from "../pics/Modifier.png"
+import PageLoader from '../../components/common/PageLoader';
 
 
 const ModifierUtilisateur = () => {
 
 
   const [showPermissionForm, setShowPermissionForm] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [initialPerm,setInitialPerm] = useState([])
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const ModifierUtilisateur = () => {
   role_id: "",
   permissions: [],
 });
- const {url,wilayas,subdivisions,roles,fetchSubdivisions
+ const {url,wilayas,subdivisions,roles,fetchSubdivisions,isDataLoading
   ,setCurrentUserPermissions,currentUserPermissions,setSliderStatus} = useGlobalContext()
    const [selectedRole, setSelectedRole] = useState('')
    const [selectedWilaya,setSelectedWilaya]= useState('')
@@ -36,6 +38,7 @@ const ModifierUtilisateur = () => {
   const token = localStorage.getItem("token");
 
   const fetchUser = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(`${url}/api/user/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -92,6 +95,8 @@ const ModifierUtilisateur = () => {
       }
     } catch (err) {
       console.error("Erreur lors du chargement de l'utilisateur :", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -197,6 +202,11 @@ const handleSubmit = async (e) => {
  useEffect(()=>{console.log(selectedRole)},[selectedRole])
   useEffect(()=>{console.log(currentUserPermissions)},[currentUserPermissions])
   useEffect(()=>{console.log(selectedSubdivision)},[selectedSubdivision])
+
+  if (loading || isDataLoading) {
+    return <PageLoader />;
+  }
+
   return (
     <div className="w-[80%] min-h-screen flex justify-center items-center px-6 py-12 bg-gray-50">
   <div className="w-[80%] h-[60vh] bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] px-10 py-8 flex flex-col gap-6 transition-all duration-300">

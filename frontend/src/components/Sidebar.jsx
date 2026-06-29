@@ -1,363 +1,240 @@
-import { useState } from "react"
-import {RiArrowDropDownLine} from "react-icons/ri"
-import {GiFarmer} from "react-icons/gi"
-import {CgProfile} from "react-icons/cg"
-import {TbLogout2} from "react-icons/tb"
-import {FaPlus} from "react-icons/fa6"
-import {IoDocumentOutline} from "react-icons/io5"
-import { NavLink } from "react-router-dom"
-import { FaUserPlus, FaUsers } from "react-icons/fa";
-import { FaClipboardList } from "react-icons/fa";
-import { FaMapMarkedAlt } from "react-icons/fa";
-import { FaSitemap } from "react-icons/fa";
-import { useGlobalContext } from "../context"
-import { useLocation } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
-import "./Sidebar.css"
-const Sidebar = ()=>{
-    const [openMenu,setOpenMenu] = useState("")
-    const {isAuthenticated,user,logout} = useGlobalContext() 
-    const [active,setActive] = useState("")
-    const [open, setOpen] = useState(false);
+import { useState } from 'react';
+import { RiArrowDropDownLine, RiArrowDropUpLine } from 'react-icons/ri';
+import { CgProfile } from 'react-icons/cg';
+import { FaPlus } from 'react-icons/fa6';
+import { IoDocumentOutline } from 'react-icons/io5';
+import { NavLink } from 'react-router-dom';
+import { useGlobalContext } from '../context';
+import './Sidebar.css';
 
-    const toggleDropDownMenu = (menuName)=>{
-        setOpenMenu(prev=>(prev===menuName?null:menuName))
-        setOpen(true)
-    }
-    const location = useLocation();
-    const path = location.pathname;
-    
-    const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
-
-    const [search, setSearch] = useState("");
-
-    return (
-<div
-  style={{
-    scrollbarWidth: "none",
-  }}
-  className="z-50 w-full md:w-[20%] h-screen sticky top-0 overflow-y-auto bg-gradient-to-b from-green-800 to-green-600 pt-8 pl-6 text-white flex flex-col gap-4 shadow-xl"
-  role="navigation"
-  aria-label="Navigation principale"
->
-
+const SidebarDropdown = ({ id, label, isOpen, isActive, onToggle, onActivate, children }) => (
   <div>
-    <NavLink
-      id="profile"
-      onClick={(e) => setActive(e.currentTarget.id)}
-      className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
-        active === "profile"
-          ? "bg-white text-green-700 shadow-inner"
-          : "hover:bg-green-500/40 hover:shadow-md"
-      }`}
-    >
-      <p>Profile</p>
-      <RiArrowDropDownLine
-        id="profile"
-        onClick={() => toggleDropDownMenu("profile")}
-        className="text-2xl"
-      />
-    </NavLink>
     <div
-      className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
-        openMenu === "profile" ? "max-h-[150px] py-2 px-3" : "max-h-0"
-      }`}
+      id={id}
+      role="button"
+      tabIndex={0}
+      onClick={onActivate}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') onActivate();
+      }}
+      className={`app-sidebar-item${isActive ? ' app-sidebar-item--active' : ''}`}
     >
-      <NavLink
-        to="/profile"
-        className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+      <span>{label}</span>
+      <button
+        type="button"
+        className="app-sidebar-toggle"
+        aria-expanded={isOpen}
+        aria-label={`${isOpen ? 'Fermer' : 'Ouvrir'} le menu ${label}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggle();
+        }}
       >
-        <CgProfile className="text-lg" />
-        <p>Voir le profil</p>
-      </NavLink>
-      <NavLink
-        to=""
-        onClick={logout}
-        className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
-      >
-        <IoDocumentOutline />
-        <p>Se déconnecter</p>
-      </NavLink>
+        {isOpen ? <RiArrowDropUpLine size={24} /> : <RiArrowDropDownLine size={24} />}
+      </button>
+    </div>
+    <div className={`app-sidebar-submenu${isOpen ? ' app-sidebar-submenu--open' : ' app-sidebar-submenu--closed'}`}>
+      {children}
     </div>
   </div>
-  
-   <NavLink 
-            onClick={(e)=>setActive(e.currentTarget.id)} 
-            id="dashboard"
-            to="/dashboard" 
-            className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
-        active === "dashboard"
-          ? "bg-white text-green-700 shadow-inner"
-          : "hover:bg-green-500/40 hover:shadow-md"
-      }`}
-          >Dashboard
-          </NavLink> 
-          
-  {user &&
-    (user.role.nom === "admin" ||
-      user.permissions.some(
-        (p) => p.model === "Utilisateur" && (p.create || p.retrieve)
-      )) && (
-      <div>
-        <div
-          onClick={(e) => setActive(e.currentTarget.id)}
-          id="utilisateur"
-          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
-            active === "utilisateur"
-              ? "bg-white text-green-700 shadow-inner"
-              : "hover:bg-green-500/40 hover:shadow-md"
-          }`}
+);
+
+const Sidebar = () => {
+  const [openMenu, setOpenMenu] = useState(null);
+  const [active, setActive] = useState('');
+  const { user, logout } = useGlobalContext();
+
+  const toggleDropDownMenu = (menuName) => {
+    setOpenMenu((prev) => (prev === menuName ? null : menuName));
+  };
+
+  const setActiveItem = (id) => {
+    setActive(id);
+  };
+
+  const canAccessUtilisateur =
+    user?.role?.nom === 'admin' ||
+    user?.permissions?.some((p) => p.model === 'Utilisateur' && (p.create || p.retrieve));
+
+  const canAccessObjectif =
+    user?.role?.nom === 'admin' ||
+    user?.permissions?.some((p) => p.model === 'Objectif' && (p.create || p.retrieve));
+
+  const canAccessAgriculteur =
+    user?.role?.nom === 'admin' ||
+    user?.permissions?.some((p) => p.model === 'Agriculteur' && (p.create || p.retrieve));
+
+  const canAccessExploitation =
+    user?.role?.nom === 'admin' ||
+    user?.permissions?.some((p) => p.model === 'Exploitation' && (p.create || p.retrieve));
+
+  return (
+    <nav className="app-sidebar" role="navigation" aria-label="Navigation principale">
+      <div className="app-sidebar-scroll">
+        <SidebarDropdown
+          id="profile"
+          label="Profile"
+          isOpen={openMenu === 'profile'}
+          isActive={active === 'profile'}
+          onToggle={() => toggleDropDownMenu('profile')}
+          onActivate={() => setActiveItem('profile')}
         >
-          <p>Utilisateur</p>
-          <RiArrowDropDownLine
+          <NavLink to="/profile" className="app-sidebar-sublink" onClick={() => setActiveItem('profile')}>
+            <CgProfile size={18} />
+            <span>Voir le profil</span>
+          </NavLink>
+          <button type="button" className="app-sidebar-sublink" onClick={logout}>
+            <IoDocumentOutline size={18} />
+            <span>Se déconnecter</span>
+          </button>
+        </SidebarDropdown>
+
+        <NavLink
+          id="dashboard"
+          to="/dashboard"
+          onClick={() => setActiveItem('dashboard')}
+          className={`app-sidebar-item${active === 'dashboard' ? ' app-sidebar-item--active' : ''}`}
+        >
+          Dashboard
+        </NavLink>
+
+        {canAccessUtilisateur && (
+          <SidebarDropdown
             id="utilisateur"
-            onClick={() => toggleDropDownMenu("utilisateur")}
-            className="text-2xl"
-          />
-        </div>
-        <div
-          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
-            openMenu === "utilisateur" ? "max-h-[150px] py-2 px-3" : "max-h-0"
-          }`}
-        >
-          <NavLink
-            to="/ajouter-utilisateur"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+            label="Utilisateur"
+            isOpen={openMenu === 'utilisateur'}
+            isActive={active === 'utilisateur'}
+            onToggle={() => toggleDropDownMenu('utilisateur')}
+            onActivate={() => setActiveItem('utilisateur')}
           >
-            <FaPlus />
-            <p>Ajouter</p>
-          </NavLink>
+            <NavLink to="/ajouter-utilisateur" className="app-sidebar-sublink">
+              <FaPlus size={16} />
+              <span>Ajouter</span>
+            </NavLink>
+            <NavLink to="/utilisateurs" className="app-sidebar-sublink">
+              <IoDocumentOutline size={18} />
+              <span>Consulter</span>
+            </NavLink>
+          </SidebarDropdown>
+        )}
+
+        {user?.role?.nom === 'admin' && (
           <NavLink
-            to="/utilisateurs"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+            id="role"
+            to="/role"
+            onClick={() => setActiveItem('role')}
+            className={`app-sidebar-item${active === 'role' ? ' app-sidebar-item--active' : ''}`}
           >
-            <IoDocumentOutline />
-            <p>Consulter</p>
+            Role
           </NavLink>
-        </div>
-      </div>
-    )}
+        )}
 
-  {user && user.role.nom === "admin" && (
-    <NavLink
-      onClick={(e) => setActive(e.currentTarget.id)}
-      id="role"
-      to="/role"
-      className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
-        active === "role"
-          ? "bg-white text-green-700 shadow-inner"
-          : "hover:bg-green-500/40 hover:shadow-md"
-      }`}
-    >
-      Role
-    </NavLink>
-  )}
-
-  {user && user.role.nom === "admin" && (
-    <NavLink
-      onClick={(e) => setActive(e.currentTarget.id)}
-      to="/wilayas"
-      id="Wilaya"
-      className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
-        active === "Wilaya"
-          ? "bg-white text-green-700 shadow-inner"
-          : "hover:bg-green-500/40 hover:shadow-md"
-      }`}
-    >
-      <p>Wilaya</p>
-    </NavLink>
-  )}
-          {user && user.role.nom==="admin"
-      &&  <NavLink 
-            onClick={(e)=>setActive(e.currentTarget.id)}
-           to="/subdivisions" 
-           id="Subdivision" 
-           className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
-        active === "Subdivision"
-          ? "bg-white text-green-700 shadow-inner"
-          : "hover:bg-green-500/40 hover:shadow-md"
-      }`}>
-          <p>Subdivision</p>
+        {user?.role?.nom === 'admin' && (
+          <NavLink
+            id="Wilaya"
+            to="/wilayas"
+            onClick={() => setActiveItem('Wilaya')}
+            className={`app-sidebar-item${active === 'Wilaya' ? ' app-sidebar-item--active' : ''}`}
+          >
+            Wilaya
           </NavLink>
-          }   
-          
-          {user && user.role.nom==="admin"
-          &&
-           <NavLink
-            onClick={(e)=>setActive(e.currentTarget.id)} 
-           to="/communes" 
-           id="commune" 
-          className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
-        active === "commune"
-          ? "bg-white text-green-700 shadow-inner"
-          : "hover:bg-green-500/40 hover:shadow-md"
-      }`}
-           >
-                    <p>Commune</p>
-               </NavLink>
-}
-    
-      {user && user.role.nom==="admin" 
-      && 
-        <NavLink 
-        onClick={(e)=>setActive(e.currentTarget.id)} 
-        id="espece"
-        to="/espece" 
-         className={`cursor-pointer font-medium py-3 px-6 rounded-xl transition-all duration-300 ${
-        active === "espece"
-          ? "bg-white text-green-700 shadow-inner"
-          : "hover:bg-green-500/40 hover:shadow-md"
-      }`}
-        >Espece
-        </NavLink> 
-}
-       {user &&
-    (user.role.nom === "admin" ||
-      user.permissions.some(
-        (p) => p.model === "Objectif" && (p.create || p.retrieve)
-      )) && (
-      <div>
-        <div
-          onClick={(e) => setActive(e.currentTarget.id)}
-          id="objectif"
-          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
-            active === "objectif"
-              ? "bg-white text-green-700 shadow-inner"
-              : "hover:bg-green-500/40 hover:shadow-md"
-          }`}
-        >
-          <p>Objectif</p>
-          <RiArrowDropDownLine
+        )}
+
+        {user?.role?.nom === 'admin' && (
+          <NavLink
+            id="Subdivision"
+            to="/subdivisions"
+            onClick={() => setActiveItem('Subdivision')}
+            className={`app-sidebar-item${active === 'Subdivision' ? ' app-sidebar-item--active' : ''}`}
+          >
+            Subdivision
+          </NavLink>
+        )}
+
+        {user?.role?.nom === 'admin' && (
+          <NavLink
+            id="commune"
+            to="/communes"
+            onClick={() => setActiveItem('commune')}
+            className={`app-sidebar-item${active === 'commune' ? ' app-sidebar-item--active' : ''}`}
+          >
+            Commune
+          </NavLink>
+        )}
+
+        {user?.role?.nom === 'admin' && (
+          <NavLink
+            id="espece"
+            to="/espece"
+            onClick={() => setActiveItem('espece')}
+            className={`app-sidebar-item${active === 'espece' ? ' app-sidebar-item--active' : ''}`}
+          >
+            Espece
+          </NavLink>
+        )}
+
+        {canAccessObjectif && (
+          <SidebarDropdown
             id="objectif"
-            onClick={() => toggleDropDownMenu("objectif")}
-            className="text-2xl"
-          />
-        </div>
-        <div
-          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
-            openMenu === "objectif" ? "max-h-[150px] py-2 px-3" : "max-h-0"
-          }`}
-        >
-          <NavLink
-            to="/ajouterobjectif"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+            label="Objectif"
+            isOpen={openMenu === 'objectif'}
+            isActive={active === 'objectif'}
+            onToggle={() => toggleDropDownMenu('objectif')}
+            onActivate={() => setActiveItem('objectif')}
           >
-            <FaPlus />
-            <p>Ajouter</p>
-          </NavLink>
-          <NavLink
-            to="/objectifs"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
-          >
-            <IoDocumentOutline />
-            <p>Consulter</p>
-          </NavLink>
-        </div>
-      </div>
-    )}
+            <NavLink to="/ajouterobjectif" className="app-sidebar-sublink">
+              <FaPlus size={16} />
+              <span>Ajouter</span>
+            </NavLink>
+            <NavLink to="/objectifs" className="app-sidebar-sublink">
+              <IoDocumentOutline size={18} />
+              <span>Consulter</span>
+            </NavLink>
+          </SidebarDropdown>
+        )}
 
-
-       {user &&
-    (user.role.nom === "admin" ||
-      user.permissions.some(
-        (p) => p.model === "Agriculteur" && (p.create || p.retrieve)
-      )) && (
-      <div>
-        <div
-          onClick={(e) => setActive(e.currentTarget.id)}
-          id="Agriculteur"
-          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
-            active === "Agriculteur"
-              ? "bg-white text-green-700 shadow-inner"
-              : "hover:bg-green-500/40 hover:shadow-md"
-          }`}
-        >
-          <p>Agriculteur</p>
-          <RiArrowDropDownLine
+        {canAccessAgriculteur && (
+          <SidebarDropdown
             id="Agriculteur"
-            onClick={() => toggleDropDownMenu("Agriculteur")}
-            className="text-2xl"
-          />
-        </div>
-        <div
-          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
-            openMenu === "Agriculteur" ? "max-h-[150px] py-2 px-3" : "max-h-0"
-          }`}
-        >
-          <NavLink
-            to="/ajouteragriculteur"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+            label="Agriculteur"
+            isOpen={openMenu === 'Agriculteur'}
+            isActive={active === 'Agriculteur'}
+            onToggle={() => toggleDropDownMenu('Agriculteur')}
+            onActivate={() => setActiveItem('Agriculteur')}
           >
-            <FaPlus />
-            <p>Ajouter</p>
-          </NavLink>
-          <NavLink
-            to="/agriculteurs"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
-          >
-            <IoDocumentOutline />
-            <p>Consulter</p>
-          </NavLink>
-        </div>
-      </div>
-    )}
+            <NavLink to="/ajouteragriculteur" className="app-sidebar-sublink">
+              <FaPlus size={16} />
+              <span>Ajouter</span>
+            </NavLink>
+            <NavLink to="/agriculteurs" className="app-sidebar-sublink">
+              <IoDocumentOutline size={18} />
+              <span>Consulter</span>
+            </NavLink>
+          </SidebarDropdown>
+        )}
 
-     {user &&
-    (user.role.nom === "admin" ||
-      user.permissions.some(
-        (p) => p.model === "Exploitation" && (p.create || p.retrieve)
-      )) && (
-      <div>
-        <div
-          onClick={(e) => setActive(e.currentTarget.id)}
-          id="Exploitation"
-          className={`cursor-pointer font-medium py-3 px-6 flex items-center justify-between rounded-xl transition-all duration-300 ${
-            active === "Exploitation"
-              ? "bg-white text-green-700 shadow-inner"
-              : "hover:bg-green-500/40 hover:shadow-md"
-          }`}
-        >
-          <p>Exploitation</p>
-          <RiArrowDropDownLine
+        {canAccessExploitation && (
+          <SidebarDropdown
             id="Exploitation"
-            onClick={() => toggleDropDownMenu("Exploitation")}
-            className="text-2xl"
-          />
-        </div>
-        <div
-          className={`overflow-hidden bg-white/90 rounded-lg mt-2 ml-4 mr-4 text-green-900 text-sm transition-all duration-300 ${
-            openMenu === "Exploitation" ? "max-h-[150px] py-2 px-3" : "max-h-0"
-          }`}
-        >
-          <NavLink
-            to="/ajouterexploitation"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
+            label="Exploitation"
+            isOpen={openMenu === 'Exploitation'}
+            isActive={active === 'Exploitation'}
+            onToggle={() => toggleDropDownMenu('Exploitation')}
+            onActivate={() => setActiveItem('Exploitation')}
           >
-            <FaPlus />
-            <p>Ajouter</p>
-          </NavLink>
-          <NavLink
-            to="/exploitations"
-            className="flex gap-3 items-center py-2 px-2 rounded-md hover:bg-green-100 transition"
-          >
-            <IoDocumentOutline />
-            <p>Consulter</p>
-          </NavLink>
-        </div>
+            <NavLink to="/ajouterexploitation" className="app-sidebar-sublink">
+              <FaPlus size={16} />
+              <span>Ajouter</span>
+            </NavLink>
+            <NavLink to="/exploitations" className="app-sidebar-sublink">
+              <IoDocumentOutline size={18} />
+              <span>Consulter</span>
+            </NavLink>
+          </SidebarDropdown>
+        )}
       </div>
-    )}
+    </nav>
+  );
+};
 
-
-            
-        </div>
-    )
-}
-export default Sidebar 
+export default Sidebar;
