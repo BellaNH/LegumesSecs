@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import Sidebar from "./components/Sidebar"
 import './styles/AppLayout.css'
 import {Routes,Route} from "react-router-dom"
@@ -15,7 +15,6 @@ const Agriculteurs = lazy(() => import('./Pages/Agriculteur/Agriculteurs.jsx'))
 const Objectifs = lazy(() => import('./Pages/Objectif/Objectifs.jsx'))
 const FormObjectif = lazy(() => import('./Pages/Objectif/FormObjectif.jsx'))
 const Login = lazy(() => import('./Pages/Login.jsx'))
-const Suiviparcelles = lazy(() => import("./Pages/Suiviparcelles.jsx"))
 const AjouterUtilisateur = lazy(() => import("./Pages/Utilisateur/AjouterUtilisateur.jsx"))
 const Utilisateurs = lazy(() => import("./Pages/Utilisateur/Utilisateurs.jsx"))
 const ModifierUtilisateur = lazy(() => import("./Pages/Utilisateur/ModifierUtilisateur.jsx"))
@@ -28,13 +27,11 @@ const Espece = lazy(() => import('./Pages/Espece/Espece.jsx'))
 const DashboardDisplayed = lazy(() => import('./Pages/Dashboard/DashboardDisplay.jsx'))
 const Profile = lazy(() => import('./Pages/Profile/Profile.jsx'))
 const Slider = lazy(() => import("./Pages/Utilisateur/PermissionSlider/Slider.jsx"))
-const EspeceSurfaceChart = lazy(() => import('./Pages/Dashboard/EspeceSurfaceChart .jsx'))
 const Role = lazy(() => import("./Pages/Role/Role.jsx"))
 
 const LoadingFallback = () => <PageLoader />
 
 function App() {
-  const [add,setAdd]= useState(0)
   const {isAuthenticated} = useGlobalContext()
 
     

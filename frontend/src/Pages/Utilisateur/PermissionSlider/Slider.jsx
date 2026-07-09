@@ -63,8 +63,6 @@ function Slider({formData,setFormData,setShowPermissionForm}) {
   
 
   }
-  useEffect(()=>{console.log(currentUserPermissions)},[currentUserPermissions])
-  console.log(defaultPermissions)
   const handlePause = () => setIsPaused(true);
   const handleresume = () => setIsPaused(false);
   return (

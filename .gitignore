@@ -1,13 +1,44 @@
+# Environment and secrets
+.env
+.env.*
+.env.example
 backend/.env
-backend/backup.sql
-backend/clean_data.sql
-backend/fix_superficie_data.sql
-backend/seed_top_wilaya_data.sql
-backend/data.sql
-backend/local_data.sql
+backend/.env.example
 frontend/.env
-docs/operations/
-docs/FIXES_IMPLEMENTED.md/
-docs/CORS_OLD_VS_NEW_ANALYSIS.md/
-docs/instagram-content-strategy.md/
-docs/PROJECT_ANALYSIS.md/
+frontend/.env.example
+backend/old_crud/
+
+# Python
+backend/venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+.eggs/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+dist/
+
+# Logs and runtime artifacts
+*.log
+backend/logs/
+
+# Local database dumps, seeds, and exports (kept locally, not in repo)
+backend/*.sql
+backend/data.json
+backend/extra_data.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Build caches
+.cache/
+coverage/
+htmlcov/

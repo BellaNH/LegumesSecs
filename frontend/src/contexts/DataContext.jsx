@@ -20,15 +20,10 @@ export const DataProvider = ({ children }) => {
 
   const fetchWilaya = useCallback(async () => {
     try {
-      console.log("📡 [DATA] Fetching wilayas...");
       const data = await locationService.getWilayas();
-      // Handle paginated responses
       const wilayasData = Array.isArray(data) ? data : (data?.results || []);
-      console.log("✅ [DATA] Wilayas fetched:", wilayasData.length, "items");
       setWilayas(wilayasData);
-    } catch (error) {
-      console.error("❌ [DATA] Error fetching wilayas:", error);
-      console.error("❌ [DATA] Error response:", error.response?.data);
+    } catch {
       setWilayas([]);
     }
   }, []);
@@ -57,15 +52,10 @@ export const DataProvider = ({ children }) => {
 
   const fetchEspeces = useCallback(async () => {
     try {
-      console.log("📡 [DATA] Fetching especes...");
       const data = await especeService.getAll();
-      // Handle paginated responses
       const especesData = Array.isArray(data) ? data : (data?.results || []);
-      console.log("✅ [DATA] Especes fetched:", especesData.length, "items");
       setEspeces(especesData);
-    } catch (error) {
-      console.error("❌ [DATA] Error fetching especes:", error);
-      console.error("❌ [DATA] Error response:", error.response?.data);
+    } catch {
       setEspeces([]);
     }
   }, []);
@@ -83,30 +73,20 @@ export const DataProvider = ({ children }) => {
 
   const fetchAgriculteurs = useCallback(async () => {
     try {
-      console.log("📡 [DATA] Fetching agriculteurs...");
       const data = await agriculteurService.getAll();
-      // Handle paginated responses
       const agriculteursData = Array.isArray(data) ? data : (data?.results || []);
-      console.log("✅ [DATA] Agriculteurs fetched:", agriculteursData.length, "items");
       setAgriculteurs(agriculteursData);
-    } catch (error) {
-      console.error("❌ [DATA] Error fetching agriculteurs:", error);
-      console.error("❌ [DATA] Error response:", error.response?.data);
+    } catch {
       setAgriculteurs([]);
     }
   }, []);
 
   const fetchRoles = useCallback(async () => {
     try {
-      console.log("📡 [DATA] Fetching roles...");
       const data = await roleService.getAll();
-      // Handle paginated responses
       const rolesData = Array.isArray(data) ? data : (data?.results || []);
-      console.log("✅ [DATA] Roles fetched:", rolesData.length, "items");
       setRoles(rolesData);
-    } catch (error) {
-      console.error("❌ [DATA] Error fetching roles:", error);
-      console.error("❌ [DATA] Error response:", error.response?.data);
+    } catch {
       setRoles([]);
     }
   }, []);

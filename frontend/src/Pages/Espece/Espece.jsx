@@ -17,11 +17,9 @@ const Espece = () => {
   const {especes, setEspeces,url,fetchEspeces, isDataLoading} = useGlobalContext()
 
   const handleAdd = async () => {
-    console.log(newEspece)
     if (!newEspece) return;
-     newEspece.trim().toLowerCase();
     try {
-      const response = await axios.post(`${url}/api/espece/`,
+      await axios.post(`${url}/api/espece/`,
         { nom: newEspece },
         {
           headers: {
@@ -29,7 +27,6 @@ const Espece = () => {
           },
         }
       );
-      console.log(response.data)
       setSuccessMessage(`Espece ajouté avec succès ✅`);
       setOpenSuccess(true);
       setNewEspece('');

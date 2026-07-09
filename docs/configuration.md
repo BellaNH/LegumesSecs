@@ -4,7 +4,7 @@ Configure LegumeSec for your environment.
 
 ## Environment Variables
 
-LegumeSec uses environment variables for configuration. Copy `env.example` to `.env` and configure:
+LegumeSec uses environment variables for configuration. Copy `.env.example` to `.env` in each app folder:
 
 ### Backend Environment Variables
 

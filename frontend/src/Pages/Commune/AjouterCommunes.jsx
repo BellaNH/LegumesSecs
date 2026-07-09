@@ -43,7 +43,6 @@ const AjouterCommunes = () => {
           },
         }
       );
-      console.log(response.data)
       setSuccessMessage(`Commune est ajouté avec succès ✅`);
       setOpenSuccess(true);
       fetchCommunes()
@@ -66,7 +65,6 @@ const AjouterCommunes = () => {
     }
   }
   };
-  useEffect(()=>{console.log(subdivisionId)},[subdivisionId])
 
   if (isDataLoading) {
     return <PageLoader />;

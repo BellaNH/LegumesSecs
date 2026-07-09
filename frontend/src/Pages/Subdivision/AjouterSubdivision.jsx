@@ -28,8 +28,7 @@ const AjouterSubdivision = () => {
     e.preventDefault();
     if(wilayaId){
     try {
-      console.log({ nom, wilaya: wilayaId });
-      const response =  await axios.post(
+      await axios.post(
         `${url}/api/subdivision/`,
         {
           nom: nom,
@@ -51,7 +50,6 @@ const AjouterSubdivision = () => {
     }
   }
   };
-  useEffect(()=>{console.log(wilayaId)},[wilayaId])
 
   if (isDataLoading) {
     return <PageLoader />;

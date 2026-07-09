@@ -43,7 +43,6 @@ const ModifierUtilisateur = () => {
       const res = await axios.get(`${url}/api/user/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(res.data);
       setInitialPerm(res.data.permissions);
       setFormData((prev)=>(
         {...prev,
@@ -54,11 +53,9 @@ const ModifierUtilisateur = () => {
           permissions:res.data.permissions,
         }
       ))
-      console.log(res.data.permissions)
       setSelectedRole(res.data.role.id)
       setSliderStatus("edit")
       setCurrentUserPermissions(res.data.permissions)
-      console.log(res.data.role.permissions)
       const roleId = Number(res.data.role?.id);
       if (roleId === 3) {
         const locationRes = await axios.get(`${url}/api/userWilaya/?user=${id}`, {
@@ -179,7 +176,6 @@ const handleSubmit = async (e) => {
     });
     setSuccessMessage(`${formData.nom} modifié avec succés ✅`);
     setOpenSnackbar(true)
-    console.log("Update successful", res.data);
     navigate("/utilisateurs");
   } catch (error) {
      const backendMessage = error.response?.data?.detail || "Erreur inconnue.";
@@ -196,12 +192,6 @@ const handleSubmit = async (e) => {
   const handleCancel = () => {
     navigate("/utilisateurs");
   };
- useEffect(()=>{console.log(formData)},[formData])
- useEffect(()=>{console.log(location)},[location])
- useEffect(()=>{console.log(subdivisions)},[subdivisions])
- useEffect(()=>{console.log(selectedRole)},[selectedRole])
-  useEffect(()=>{console.log(currentUserPermissions)},[currentUserPermissions])
-  useEffect(()=>{console.log(selectedSubdivision)},[selectedSubdivision])
 
   if (loading || isDataLoading) {
     return <PageLoader />;

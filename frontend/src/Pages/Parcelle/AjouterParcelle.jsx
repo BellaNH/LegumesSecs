@@ -16,7 +16,6 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
   const {fetchExploitationWithParcelles,especes,setExploitationId,exploitationId,url,modifiedParcelle,isDataLoading} = useGlobalContext()
   const [wrong,setWrong] = useState(false)
   const [selectedEspece,setSelectedEspece] = useState("")
-  useEffect(()=>{console.log(exploitationId)},[exploitationId])
   const [data,setData] = useState({         
     exploitation:exploitationId,
     espece_id:"",  
@@ -48,7 +47,6 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
         }
         )
 
-       console.log(response.data)
         setData(prevData => ({
         ...prevData,
         exploitation:exploitationId,
@@ -72,7 +70,7 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
       }
     }
     fetchModifiedParcelle()
-    },[exploitationId])
+    },[exploitationId, modifiedParcelleId, url, fetchExploitationWithParcelles])
  
 
 
@@ -80,7 +78,7 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
     e.preventDefault()
     if(modifiedParcelleId){
       try{
-      const response =  await axios.patch(`${url}/api/parcelle/${modifiedParcelleId}/`, 
+      await axios.patch(`${url}/api/parcelle/${modifiedParcelleId}/`, 
       data, 
       {
       headers: {
@@ -89,18 +87,15 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
   }
 )
 
-
-      console.log(response.data)
       fetchExploitationWithParcelles()
       setExploitationId(null)
       setModifiedParcelleId(null)
-    }catch(error){
-      console.log(error)
+    }catch{
+      // Error handled by interceptor
     }
     }
     
    }
-   useEffect(()=>{console.log(data)},[data])
   const isValid = (e)=>{
     const value = e.target.value
     if(value===null || (isNaN(value) || isNaN(parseFloat(value)))){
@@ -114,22 +109,20 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
     setData({...data,[e.target.name] : e.target.value})
    }
    const handleSubmit = async (e)=>{
-    console.log(data)
     e.preventDefault()
     try{
-      const response = await axios.post(`${url}/api/parcelle/`,data,
+      await axios.post(`${url}/api/parcelle/`,data,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
      }
       )
-      console.log(response.data)
       fetchExploitationWithParcelles()
       setExploitationId(null)
 
-    }catch(error){
-      console.log(error)
+    }catch{
+      // Error handled by interceptor
     }
     
    }
@@ -154,8 +147,6 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
       
       })
     }
- useEffect(()=>{console.log(data)},[data])
-  useEffect(()=>{console.log(modifiedParcelleId)},[modifiedParcelleId])
 
   if (isDataLoading) {
     return <PageLoader inline />;

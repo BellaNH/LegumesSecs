@@ -14768,3 +14768,625 @@ INFO 2026-06-29 19:03:28,148 middleware API Request: GET /api/superficie_espece_
 INFO 2026-06-29 19:03:28,452 middleware API Request: GET /api/yearly_production/
 INFO 2026-06-29 19:03:28,785 middleware API Request: GET /api/sup_lab_sin_prod/
 INFO 2026-06-29 19:03:49,602 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:19:45,520 middleware API Request: POST /api/logout/
+INFO 2026-06-29 19:19:46,573 views Refresh token blacklisted successfully
+INFO 2026-06-29 19:22:40,217 middleware API Request: POST /api/token/
+ERROR 2026-06-29 19:22:42,506 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:22:42,508 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:22:42,510 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:22:42,514 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:22:42,514 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:22:42,515 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:22:42,515 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:22:42,515 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:22:42,516 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:22:42,516 middleware Is authenticated: False
+ERROR 2026-06-29 19:22:42,516 middleware Is anonymous: True
+INFO 2026-06-29 19:22:43,392 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:22:43,411 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:22:43,413 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:22:43,414 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:22:43,415 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:22:43,420 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:22:43,838 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:22:43,840 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:22:43,841 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:22:43,926 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:22:43,949 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:22:43,976 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:22:43,994 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:22:43,997 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:22:44,009 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:22:44,770 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:22:45,063 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:22:45,067 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:22:45,088 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:22:45,089 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:22:45,095 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:22:45,714 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:22:45,976 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:22:45,979 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:22:47,816 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:22:49,364 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:22:50,044 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:22:50,098 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:22:50,616 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:22:50,872 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:22:50,923 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:22:51,120 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:22:51,884 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:22:51,935 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:22:52,937 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:22:52,993 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:22:53,255 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:22:54,080 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:22:54,357 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:22:54,406 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:22:55,383 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:22:55,401 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:22:56,038 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:22:57,337 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:23:18,363 middleware API Request: GET /api/exploitation-parcelles/
+ERROR 2026-06-29 19:24:54,295 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:24:54,296 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:24:54,298 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:24:54,311 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:24:54,312 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:24:54,313 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:24:54,314 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:24:54,314 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:24:54,315 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:24:54,320 middleware Is authenticated: False
+ERROR 2026-06-29 19:24:54,321 middleware Is anonymous: True
+INFO 2026-06-29 19:24:55,118 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:24:55,124 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:24:55,125 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:24:55,125 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:24:55,126 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:24:55,126 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:24:55,233 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:24:55,238 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:24:55,239 views CurrentUserView - Returning user data successfully
+ERROR 2026-06-29 19:24:55,243 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:24:55,245 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:24:55,247 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:24:55,256 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:24:55,257 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:24:55,258 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:24:55,258 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:24:55,259 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:24:55,260 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:24:55,261 middleware Is authenticated: False
+ERROR 2026-06-29 19:24:55,261 middleware Is anonymous: True
+INFO 2026-06-29 19:24:56,163 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:24:56,164 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:24:56,165 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:24:56,165 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:24:56,166 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:24:56,734 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:24:56,747 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:24:56,748 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:24:56,749 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:24:56,750 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:24:56,751 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:24:57,038 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:24:57,044 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:24:57,048 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:24:57,049 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:24:57,151 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:24:57,726 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:24:57,999 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:24:59,565 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:25:00,651 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:25:01,660 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:25:01,663 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:25:01,887 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:25:02,375 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:25:03,368 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:25:04,483 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:25:06,142 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:25:06,344 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:25:09,757 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:25:10,181 middleware API Request: GET /api/objectif/
+ERROR 2026-06-29 19:25:10,820 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:25:10,860 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:25:10,903 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:25:10,939 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:25:10,949 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:25:10,949 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:25:10,950 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:25:10,951 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:25:10,952 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:25:10,952 middleware Is authenticated: False
+ERROR 2026-06-29 19:25:10,953 middleware Is anonymous: True
+INFO 2026-06-29 19:25:11,516 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:25:11,528 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:25:11,529 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:25:11,531 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:25:11,532 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:25:11,534 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:25:11,640 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:25:11,645 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:25:11,646 views CurrentUserView - Returning user data successfully
+ERROR 2026-06-29 19:25:11,650 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:25:11,653 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:25:11,655 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:25:11,678 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:25:11,681 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:25:11,685 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:25:11,687 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:25:11,694 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:25:11,700 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:25:11,702 middleware Is authenticated: False
+ERROR 2026-06-29 19:25:11,703 middleware Is anonymous: True
+INFO 2026-06-29 19:25:11,744 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:25:11,747 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:25:12,080 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:25:12,348 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:25:12,351 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:25:12,351 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:25:12,352 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:25:12,352 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:25:12,352 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:25:12,454 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:25:12,456 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:25:12,457 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:25:12,465 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:25:12,943 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:25:13,045 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:25:13,330 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:25:13,613 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:25:13,797 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:25:13,826 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:25:14,348 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:25:14,596 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:25:14,894 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:25:15,531 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:25:16,423 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:25:17,352 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:25:18,137 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:25:18,279 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:25:18,839 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:25:18,933 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:25:19,533 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:25:19,560 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:25:19,598 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:25:20,620 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:25:20,629 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:25:20,671 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:25:21,503 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:25:23,191 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:25:23,492 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:25:26,332 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:25:27,281 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:25:27,377 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:25:27,988 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:25:28,259 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:25:28,417 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:25:28,548 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:25:31,439 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:25:31,444 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:25:32,480 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:25:32,799 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:25:34,026 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:25:39,828 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:25:48,325 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:25:56,431 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:26:03,514 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:26:10,060 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:10,061 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:10,063 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:26:10,064 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:26:10,065 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:26:11,406 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:11,407 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:26:11,642 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:26:11,859 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:26:11,860 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:12,215 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:26:12,779 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:26:13,421 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:26:13,640 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:26:13,641 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:13,851 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:26:13,855 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:26:13,856 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:14,041 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:26:14,133 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:26:14,187 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:14,518 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:26:15,155 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:26:15,412 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:15,413 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:15,500 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:26:16,021 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:26:16,054 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:26:16,382 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:26:16,477 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:16,486 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:16,534 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:26:16,885 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:26:17,052 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:26:17,097 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:17,153 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:17,429 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:26:17,608 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:17,982 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:18,119 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:18,656 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:19,374 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:26:19,534 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:26:20,347 middleware API Request: GET /api/prev_vs_prod/
+ERROR 2026-06-29 19:33:45,242 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:33:45,252 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:33:45,276 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:33:45,421 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:33:45,421 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:33:45,471 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:33:45,496 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:33:45,498 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:33:45,500 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:33:45,501 middleware Is authenticated: False
+ERROR 2026-06-29 19:33:45,502 middleware Is anonymous: True
+INFO 2026-06-29 19:33:56,394 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:33:56,409 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:33:56,411 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:33:56,413 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:33:56,415 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:33:56,416 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:33:57,677 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:33:57,742 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:33:57,744 views CurrentUserView - Returning user data successfully
+ERROR 2026-06-29 19:33:57,976 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:33:57,977 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:33:57,978 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:33:57,983 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:33:57,984 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:33:57,985 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:33:57,986 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:33:57,986 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:33:57,987 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:33:57,988 middleware Is authenticated: False
+ERROR 2026-06-29 19:33:57,988 middleware Is anonymous: True
+INFO 2026-06-29 19:33:58,696 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:33:58,704 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:33:58,706 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:33:58,707 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:33:58,707 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:33:58,708 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:33:59,138 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:33:59,142 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:33:59,145 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:33:59,148 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:33:59,175 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:33:59,190 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:33:59,344 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:33:59,344 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:33:59,351 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:34:01,362 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:34:01,368 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:34:01,473 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:34:03,148 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:34:04,252 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:34:04,281 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:34:04,681 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:34:04,985 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:34:04,986 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:34:06,338 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:34:06,340 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:34:06,411 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:34:07,185 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:34:07,248 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:34:07,249 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:34:08,092 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:34:09,544 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:34:10,273 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:34:10,412 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:34:10,788 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:34:11,008 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:34:11,133 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:34:11,178 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:34:11,508 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:34:11,670 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:34:11,771 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:34:16,256 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:34:19,436 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:34:30,147 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:34:45,633 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:34:54,578 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:34:54,579 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:34:54,592 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:34:54,593 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:34:54,593 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:34:54,795 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:34:56,318 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:34:56,319 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:34:56,324 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:34:56,329 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:34:56,361 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:34:56,448 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:35:05,835 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:35:09,791 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:35:23,192 middleware API Request: GET /api/filterCommuneBywilaya/
+INFO 2026-06-29 19:35:23,194 middleware API Request: GET /api/filterSubdivBywilaya/
+INFO 2026-06-29 19:35:23,196 middleware API Request: GET /api/agriculteur-filter/
+ERROR 2026-06-29 19:35:25,811 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:35:25,811 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:35:25,813 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:35:25,823 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:35:25,823 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:35:25,824 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:35:25,825 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:35:25,826 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:35:25,827 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:35:25,827 middleware Is authenticated: False
+ERROR 2026-06-29 19:35:25,828 middleware Is anonymous: True
+INFO 2026-06-29 19:35:26,239 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:35:26,244 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:35:26,244 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:35:26,246 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:35:26,247 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:35:26,248 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:35:26,381 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:35:26,384 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:35:26,384 views CurrentUserView - Returning user data successfully
+ERROR 2026-06-29 19:35:26,387 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:35:26,388 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:35:26,391 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:35:26,408 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:35:26,409 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:35:26,410 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:35:26,411 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:35:26,412 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:35:26,412 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:35:26,413 middleware Is authenticated: False
+ERROR 2026-06-29 19:35:26,413 middleware Is anonymous: True
+INFO 2026-06-29 19:35:26,429 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:35:26,431 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:35:26,433 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:35:26,434 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:35:26,809 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:35:26,811 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:35:26,812 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:35:26,812 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:35:26,812 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:35:26,813 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:35:26,921 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:35:26,929 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:35:26,937 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:35:26,938 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:35:26,942 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:35:26,961 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:35:28,193 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:35:28,229 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:35:29,341 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:35:30,026 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:35:30,705 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:35:30,817 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:35:31,403 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:35:31,454 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:35:33,025 middleware API Request: GET /api/objectif/
+ERROR 2026-06-29 19:42:36,891 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:42:36,894 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:42:36,908 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:42:36,949 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:42:36,952 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:42:36,957 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:42:36,960 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:42:36,961 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:42:36,961 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:42:36,962 middleware Is authenticated: False
+ERROR 2026-06-29 19:42:36,962 middleware Is anonymous: True
+INFO 2026-06-29 19:42:37,793 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:42:37,809 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:42:37,813 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:42:37,815 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:42:37,815 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:42:37,816 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:42:37,941 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:42:37,945 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:42:37,947 views CurrentUserView - Returning user data successfully
+ERROR 2026-06-29 19:42:37,961 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:42:37,963 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:42:37,967 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:42:37,982 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:42:37,984 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:42:37,990 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:42:37,991 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:42:37,992 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:42:37,993 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:42:37,994 middleware Is authenticated: False
+ERROR 2026-06-29 19:42:37,995 middleware Is anonymous: True
+INFO 2026-06-29 19:42:38,164 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:42:38,167 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:42:38,173 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:42:38,184 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:42:38,193 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:42:38,578 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:42:38,580 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:42:38,580 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:42:38,581 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:42:38,581 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:42:38,581 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:42:38,689 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:42:38,692 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:42:38,693 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:42:38,699 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:42:39,086 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:42:39,819 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:42:40,503 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:42:42,971 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:42:42,973 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:42:42,974 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:42:45,831 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:42:46,374 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:42:46,383 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:42:47,130 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:42:48,081 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:42:48,354 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:42:49,098 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:42:49,168 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:42:49,947 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:42:50,027 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:42:50,901 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:42:51,265 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:42:51,442 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:42:52,061 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:42:52,871 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:42:52,927 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:42:53,226 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:42:53,438 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:42:53,649 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:42:53,955 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:42:54,163 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:42:55,111 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:42:55,757 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:42:56,040 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:42:56,490 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:42:56,957 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:42:57,445 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:42:57,761 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:42:57,765 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:42:57,990 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:42:58,344 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:42:58,358 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:42:59,195 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:42:59,505 middleware API Request: GET /api/active_this_year/
+INFO 2026-06-29 19:42:59,508 middleware API Request: GET /api/superficie_espece_comparaision/
+INFO 2026-06-29 19:43:00,186 middleware API Request: GET /api/yearly_production/
+INFO 2026-06-29 19:43:00,590 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:43:00,859 middleware API Request: GET /api/sup_lab_sin_prod/
+INFO 2026-06-29 19:43:01,352 middleware API Request: GET /api/prev_vs_prod/
+INFO 2026-06-29 19:43:01,705 middleware API Request: GET /api/top_wilayas/
+INFO 2026-06-29 19:43:10,305 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:43:26,754 middleware API Request: GET /api/exploitation-parcelles/
+ERROR 2026-06-29 19:44:43,040 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:44:43,041 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:44:43,042 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:44:43,047 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:44:43,048 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:44:43,048 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:44:43,049 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:44:43,050 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:44:43,051 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:44:43,051 middleware Is authenticated: False
+ERROR 2026-06-29 19:44:43,052 middleware Is anonymous: True
+INFO 2026-06-29 19:44:43,577 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:44:43,582 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:44:43,582 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:44:43,582 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:44:43,583 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:44:43,584 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:44:43,740 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:44:43,747 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:44:43,751 views CurrentUserView - Returning user data successfully
+ERROR 2026-06-29 19:44:43,763 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:44:43,765 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:44:43,771 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:44:43,787 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:44:43,788 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:44:43,789 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:44:43,791 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:44:43,792 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:44:43,792 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:44:43,793 middleware Is authenticated: False
+ERROR 2026-06-29 19:44:43,794 middleware Is anonymous: True
+INFO 2026-06-29 19:44:43,883 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:44:43,884 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:44:43,885 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:44:43,891 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:44:43,895 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:44:44,395 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:44:44,399 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:44:44,399 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:44:44,400 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:44:44,400 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:44:44,401 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:44:44,516 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:44:44,522 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:44:44,524 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:44:44,530 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:44:44,620 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:44:44,676 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:44:45,076 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:44:46,342 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:44:47,956 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:44:48,192 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:44:48,488 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:44:48,526 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:44:50,030 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:44:50,149 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:44:51,162 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:44:52,983 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:44:53,816 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:44:54,955 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:44:57,636 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:45:04,552 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:45:14,784 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:45:29,647 middleware API Request: GET /api/exploitation-parcelles/
+ERROR 2026-06-29 19:46:49,375 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:46:49,379 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:46:49,382 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:46:49,396 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:46:49,398 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:46:49,400 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:46:49,401 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:46:49,401 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:46:49,402 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:46:49,402 middleware Is authenticated: False
+ERROR 2026-06-29 19:46:49,403 middleware Is anonymous: True
+INFO 2026-06-29 19:46:50,103 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:46:50,121 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:46:50,123 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:46:50,126 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:46:50,127 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:46:50,132 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:46:50,247 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:46:50,256 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:46:50,258 views CurrentUserView - Returning user data successfully
+ERROR 2026-06-29 19:46:50,267 middleware === AUTHENTICATION DEBUG for /api/me/ ===
+ERROR 2026-06-29 19:46:50,274 middleware Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY
+ERROR 2026-06-29 19:46:50,286 middleware Request META keys: ['ALLOWED_HOSTS', 'ALLUSERSPROFILE', 'APPDATA', 'CHROME_CRASHPAD_PIPE_NAME', 'COLORTERM', 'COMMONPROGRAMFILES', 'COMMONPROGRAMFILES(X86)', 'COMMONPROGRAMW6432', 'COMPUTERNAME', 'COMSPEC', 'CORS_ALLOWED_ORIGINS', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'DB_USER', 'DJANGO_SETTINGS_MODULE', 'DRIVERDATA', 'GIT_ASKPASS', 'HOMEDRIVE', 'HOMEPATH', 'JAVA_HOME', 'LANG', 'LOCALAPPDATA', 'LOGONSERVER', 'NUMBER_OF_PROCESSORS', 'ONEDRIVE', 'ONEDRIVECONSUMER', 'OPENSSL_CONF', 'OS', 'PATH', 'PATHEXT', 'PROCESSOR_ARCHITECTURE', 'PROCESSOR_IDENTIFIER', 'PROCESSOR_LEVEL', 'PROCESSOR_REVISION', 'PROGRAMDATA', 'PROGRAMFILES', 'PROGRAMFILES(X86)', 'PROGRAMW6432', 'PSMODULEPATH', 'PUBLIC', 'RUN_MAIN', 'SESSIONNAME', 'SYSTEMDRIVE', 'SYSTEMROOT', 'TEMP', 'TERM_PROGRAM', 'TERM_PROGRAM_VERSION', 'TMP', 'USERDOMAIN', 'USERDOMAIN_ROAMINGPROFILE', 'USERNAME', 'USERPROFILE', 'VIRTUAL_ENV', 'VIRTUAL_ENV_PROMPT', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS', 'VSCODE_GIT_ASKPASS_MAIN', 'VSCODE_GIT_ASKPASS_NODE', 'VSCODE_GIT_IPC_AUTH_TOKEN', 'VSCODE_GIT_IPC_HANDLE', 'VSCODE_INJECTION', 'WINDIR', '_OLD_VIRTUAL_PATH', 'SERVER_NAME', 'GATEWAY_INTERFACE', 'SERVER_PORT', 'REMOTE_HOST', 'CONTENT_LENGTH', 'SCRIPT_NAME', 'SERVER_PROTOCOL', 'SERVER_SOFTWARE', 'REQUEST_METHOD', 'PATH_INFO', 'QUERY_STRING', 'REMOTE_ADDR', 'CONTENT_TYPE', 'HTTP_HOST', 'HTTP_CONNECTION', 'HTTP_SEC_CH_UA_PLATFORM', 'HTTP_AUTHORIZATION', 'HTTP_USER_AGENT', 'HTTP_ACCEPT', 'HTTP_SEC_CH_UA', 'HTTP_SEC_CH_UA_MOBILE', 'HTTP_ORIGIN', 'HTTP_SEC_FETCH_SITE', 'HTTP_SEC_FETCH_MODE', 'HTTP_SEC_FETCH_DEST', 'HTTP_REFERER', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE', 'wsgi.input', 'wsgi.errors', 'wsgi.version', 'wsgi.run_once', 'wsgi.url_scheme', 'wsgi.multithread', 'wsgi.multiprocess', 'wsgi.file_wrapper']
+ERROR 2026-06-29 19:46:50,315 middleware User before auth: AnonymousUser
+ERROR 2026-06-29 19:46:50,316 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+INFO 2026-06-29 19:46:50,320 middleware API Request: GET /api/me/
+ERROR 2026-06-29 19:46:50,323 middleware === AFTER AUTHENTICATION MIDDLEWARE ===
+ERROR 2026-06-29 19:46:50,325 middleware User after auth: AnonymousUser
+ERROR 2026-06-29 19:46:50,327 middleware User type: <class 'django.utils.functional.SimpleLazyObject'>
+ERROR 2026-06-29 19:46:50,333 middleware Is authenticated: False
+ERROR 2026-06-29 19:46:50,334 middleware Is anonymous: True
+INFO 2026-06-29 19:46:50,399 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:46:50,400 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:46:50,401 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:46:50,402 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:46:50,403 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:46:50,734 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyNzYwOTYyLCJpYXQiOjE3ODI3NTczNjIsImp0aSI6ImY5ZmMwNjhhOGYxMzQ1Y2JhZThjNzVkOTIwZGJmNGVkIiwidXNlcl9pZCI6MX0.B4qdD4JEP3JmlxyZXsFsCEVH0wqhUf5GkcE5U1_RMVY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-06-29 19:46:50,747 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-06-29 19:46:50,749 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-06-29 19:46:50,749 views CurrentUserView - Is authenticated: True
+INFO 2026-06-29 19:46:50,750 views CurrentUserView - Is anonymous: False
+INFO 2026-06-29 19:46:50,750 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-06-29 19:46:50,866 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-06-29 19:46:50,868 views CurrentUserView - User role: admin
+INFO 2026-06-29 19:46:50,869 views CurrentUserView - Returning user data successfully
+INFO 2026-06-29 19:46:50,872 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:46:51,140 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:46:51,142 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:46:51,418 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:46:53,265 middleware API Request: GET /api/wilaya/
+INFO 2026-06-29 19:46:54,004 middleware API Request: GET /api/espece/
+INFO 2026-06-29 19:46:55,059 middleware API Request: GET /api/role/
+INFO 2026-06-29 19:46:55,351 middleware API Request: GET /api/subdivision/
+INFO 2026-06-29 19:46:55,581 middleware API Request: GET /api/commune/
+INFO 2026-06-29 19:46:55,795 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:46:57,021 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:46:57,242 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:46:59,845 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:46:59,858 middleware API Request: POST /api/logout/
+INFO 2026-06-29 19:47:00,684 middleware API Request: GET /api/agriculteur/
+INFO 2026-06-29 19:47:01,339 views Refresh token blacklisted successfully
+INFO 2026-06-29 19:47:01,571 middleware API Request: GET /api/objectif/
+INFO 2026-06-29 19:47:04,700 middleware API Request: GET /api/exploitation/
+INFO 2026-06-29 19:47:10,896 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:47:20,753 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-06-29 19:47:42,593 middleware API Request: GET /api/exploitation-parcelles/

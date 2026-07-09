@@ -31,12 +31,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'api.middleware.AuthenticationDebugMiddleware',  # DEBUG: Log auth details
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'api.middleware.RequestLoggingMiddleware',  # Re-enabled for debugging
-    # ErrorHandlingMiddleware disabled - let errors show naturally
-    # 'api.middleware.ErrorHandlingMiddleware',
 ]
 
 # CORS Configuration

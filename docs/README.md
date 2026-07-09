@@ -1,86 +1,36 @@
 # LegumeSec Documentation
 
-Comprehensive technical documentation for the LegumeSec agricultural data management system - an official MVP developed for the Ministry of Agriculture.
+Technical documentation for the LegumeSec agricultural data management platform.
 
-## 📋 About This Project
+## Getting started
 
-LegumeSec is a full-stack web application designed to manage complex, hierarchical agricultural datasets. 
+- [Installation](installation.md) — system requirements and setup
+- [Quick start](getting-started.md) — condensed setup guide
+- [Configuration](configuration.md) — environment variables and database
+- [Architecture](architecture.md) — system design and technology choices
+- [Fixes implemented](FIXES_IMPLEMENTED.md) — notable improvements and bug fixes
 
-**The Problem:** Traditional Excel spreadsheet workflows are error-prone, difficult to maintain, and lack proper data validation and collaboration features.
+## Backend
 
-**The Solution:** LegumeSec provides a centralized, scalable platform that replaces these manual processes with a modern web application featuring role-based access control, location-based filtering, and real-time analytics.
+- [API reference](backend/api-reference.md)
+- [Authentication & authorization](backend/authentication.md)
+- [Validation & security](backend/validation-security.md)
 
-**The Benefits:** 
-- **For Staff:** A centralized, scalable platform that streamlines data management and reduces errors
-- **Better Insights:** Advanced data visualization and analytics help staff get better insights from agricultural data
-- **Informed Decisions:** Reliable, validated agricultural data enables data-driven decision-making
+## Frontend
 
-**Project Type:** Official MVP  
+- [Service layer](frontend/service-layer.md)
+- [Components](frontend/components.md)
 
+## Operations
 
-## 📚 Documentation Structure
+- [Deployment](operations/deployment.md)
 
-### Getting Started
-- [Quick Start Guide](./getting-started.md) - Get up and running quickly
-- [Installation Guide](./installation.md) - Detailed installation instructions
-- [Configuration Guide](./configuration.md) - Environment setup and configuration
+## Data setup
 
-### Architecture & Design
-- [System Architecture](./architecture.md) - Overview of the system design and technology stack
+Location reference data (wilayas, subdivisions, communes) is seeded via:
 
-### Backend Documentation
-- [API Reference](./backend/api-reference.md) - Complete API endpoint documentation
-- [Authentication & Authorization](./backend/authentication.md) - JWT authentication, roles, and permissions
-- [Validation & Security](./backend/validation-security.md) - Input validation and security measures
+```bash
+python manage.py import_data
+```
 
-### Frontend Documentation
-- [Service Layer](./frontend/service-layer.md) - API client architecture and service methods
-- [Components](./frontend/components.md) - Reusable React components and patterns
-
-### Operations
-- [Deployment Guide](./operations/deployment.md) - Production deployment instructions
-
-## 🚀 Quick Links
-
-- **New to the project?** Start with the [Quick Start Guide](./getting-started.md)
-- **Setting up locally?** See [Installation Guide](./installation.md)
-- **Deploying to production?** Check [Deployment Guide](./operations/deployment.md)
-- **Using the API?** Read [API Reference](./backend/api-reference.md)
-- **Building components?** See [Components Guide](./frontend/components.md)
-
-## 🛠️ Technology Stack
-
-### Frontend
-- React 18.3 with Context API for state management
-- Material-UI 7.0 for UI components
-- Tailwind CSS 3.4 for styling
-- Recharts 2.15 for data visualization
-- Vite 6.2 for build tooling
-
-### Backend
-- Django 4.2+ with Django REST Framework
-- PostgreSQL 12+ for data persistence
-- JWT authentication (djangorestframework-simplejwt)
-- Modular settings architecture (development/production)
-
-## 📖 Documentation Standards
-
-This documentation follows these principles:
-- **Clear and concise** - Easy to understand for developers and stakeholders
-- **Example-driven** - Code examples for every concept
-- **Task-oriented** - Focused on getting things done
-- **Well-organized** - Logical structure and navigation
-- **Up-to-date** - Maintained with the codebase
-
-## 🔍 Finding Information
-
-- Browse the documentation sections above
-- Use your editor's search functionality (Ctrl/Cmd + F) to find specific topics
-- Check the [Configuration Guide](./configuration.md) for environment setup
-- Review [Deployment Guide](./operations/deployment.md) for production setup
-
----
-
-**Last Updated:** 2024  
-**Current Version:** 1.0.0  
-**Project Status:** Production MVP
+Optional SQL seed scripts for dashboard demo data are in `backend/` (`seed_top_wilaya_data.sql`, etc.).
