@@ -7,6 +7,7 @@ import { Box, TextField, Button, Typography, MenuItem, Container, Paper, Snackba
 import Slider from './PermissionSlider/Slider'
 import Modifier from "../pics/Modifier.png"
 import PageLoader from '../../components/common/PageLoader';
+import { useLanguage } from '../../i18n/LanguageContext';
 
 
 const ModifierUtilisateur = () => {
@@ -26,6 +27,7 @@ const ModifierUtilisateur = () => {
 });
  const {url,wilayas,subdivisions,roles,fetchSubdivisions,isDataLoading
   ,setCurrentUserPermissions,currentUserPermissions,setSliderStatus} = useGlobalContext()
+  const { t } = useLanguage()
    const [selectedRole, setSelectedRole] = useState('')
    const [selectedWilaya,setSelectedWilaya]= useState('')
    const [selectedSubdivision,setSelectedSubdivision]= useState('')
@@ -174,11 +176,11 @@ const handleSubmit = async (e) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    setSuccessMessage(`${formData.nom} modifié avec succés ✅`);
+    setSuccessMessage(t('user.updated', { name: formData.nom }));
     setOpenSnackbar(true)
     navigate("/utilisateurs");
   } catch (error) {
-     const backendMessage = error.response?.data?.detail || "Erreur inconnue.";
+     const backendMessage = error.response?.data?.detail || t('user.unknownError');
     console.error("Erreur lors de la mise à jour :", backendMessage);
     setErrorMessage(backendMessage);
     setOpenSnackbar(true)
@@ -203,7 +205,7 @@ const handleSubmit = async (e) => {
     <div className='flex align-center gap-4'> 
                        <img src={Modifier} className="w-8 h-8 mt-1" />
                        <h2 className="text-3xl font-bold text-left text-green-600 mb-6 mt-1">
-                        Modifier utilisateur
+                        {t('user.editTitle')}
                       </h2>
      </div>
 
@@ -211,7 +213,7 @@ const handleSubmit = async (e) => {
       <TextField
         value={formData?.email}
         size="small"
-        label="Email"
+        label={t('common.email')}
         name="email"
         type="email"
         fullWidth
@@ -225,7 +227,7 @@ const handleSubmit = async (e) => {
 
       <TextField
         select
-        label="Rôle"
+        label={t('common.role')}
         name="role_id"
         value={selectedRole || ""}
         onChange={(e) => handleChange(e)}
@@ -246,7 +248,7 @@ const handleSubmit = async (e) => {
         {selectedRole && Number(selectedRole) === 3 && (
           <TextField
             select
-            label="Wilaya"
+            label={t('nav.wilaya')}
             name="wilaya"
             value={selectedWilaya || ""}
             onChange={(e) => handleChange(e)}
@@ -275,7 +277,7 @@ const handleSubmit = async (e) => {
           return (
           <TextField
             select
-            label="Subdivision"
+            label={t('nav.subdivision')}
             name="subdivision"
             value={selectedSubdivision !== "" && selectedSubdivision != null ? selectedSubdivision : ""}
             onChange={(e) => handleChange(e)}
@@ -301,22 +303,22 @@ const handleSubmit = async (e) => {
           className="bg-green-100 text-green-700 font-semibold rounded-md h-10 w-full shadow-sm hover:bg-green-200 transition"
           onClick={() => (setSliderStatus("edit"), setShowPermissionForm(true))}
         >
-          Permissions
+          {t('permissions.manage')}
         </button>
       </div>
 
       <div className="flex justify-end gap-4 mt-4">
         <button type='button' className='bg-red-600 rounded-md w-auto px-8 py-1 text-white font-semibold' 
-        onClick={handleCancel}>Cancel
+        onClick={handleCancel}>{t('common.cancel')}
         </button>
-        <button type='submit'  className='bg-lime-600 rounded-md w-auto px-8 py-2 text-white text-base'>Modifier</button>
+        <button type='submit'  className='bg-lime-600 rounded-md w-auto px-8 py-2 text-white text-base'>{t('common.edit')}</button>
 
       </div>
     </form>
   </div>
 
   {showPermissionForm && (
-    <div className="fixed top-0 left-0 w-full h-full bg-[#00000090] z-50 flex justify-center items-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(20,83,45,0.45)] backdrop-blur-[2px] p-6 box-border">
       <Slider
         formData={formData}
         setFormData={setFormData}

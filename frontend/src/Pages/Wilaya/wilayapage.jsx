@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { Snackbar, Alert } from '@mui/material';
 import localisationIcon from '../pics/Localisation.png';
 import ListPaginationFooter from '../../components/common/ListPaginationFooter';
@@ -18,6 +19,7 @@ const WilayasPage = () => {
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
   const { user, fetchWilaya, setWilayas, url } = useGlobalContext();
+  const { t } = useLanguage();
 
   const {
     items: wilayaList,
@@ -58,12 +60,12 @@ const WilayasPage = () => {
     if (!newWilaya.trim()) return;
     try {
       await axios.post(`${url}/api/wilaya/`, { nom: newWilaya.trim() }, getAuthHeader());
-      setSuccessMessage('Wilaya ajoutée avec succès');
+      setSuccessMessage(t('wilaya.added'));
       setOpenSuccess(true);
       setNewWilaya('');
       syncContext();
     } catch {
-      setErrorMessage("Erreur lors de l'ajout d'une wilaya");
+      setErrorMessage(t('wilaya.addError'));
       setOpenError(true);
     }
   };
@@ -73,11 +75,11 @@ const WilayasPage = () => {
       await axios.delete(`${url}/api/wilaya/${id}/`, getAuthHeader());
       setWilayaList(wilayaList.filter((w) => w.id !== id));
       setWilayas(wilayaList.filter((w) => w.id !== id));
-      setSuccessMessage('Wilaya supprimée avec succès');
+      setSuccessMessage(t('wilaya.deleted'));
       setOpenSuccess(true);
       fetchWilaya();
     } catch {
-      setErrorMessage('Erreur lors de la suppression.');
+      setErrorMessage(t('wilaya.deleteError'));
       setOpenError(true);
     }
   };
@@ -90,13 +92,13 @@ const WilayasPage = () => {
   const handleUpdate = async () => {
     try {
       await axios.put(`${url}/api/wilaya/${editingId}/`, { nom: editingName }, getAuthHeader());
-      setSuccessMessage('Wilaya modifiée avec succès');
+      setSuccessMessage(t('wilaya.updated'));
       setOpenSuccess(true);
       setEditingId(null);
       setEditingName('');
       syncContext();
     } catch {
-      setErrorMessage('Erreur lors de la mise à jour');
+      setErrorMessage(t('wilaya.updateError'));
       setOpenError(true);
     }
   };
@@ -112,37 +114,37 @@ const WilayasPage = () => {
           <div className="list-page-header">
             <div className="list-page-header-left">
               <img src={localisationIcon} alt="" className="list-page-header-icon" width={40} height={40} />
-              <h1 className="list-page-title">Wilayas</h1>
+              <h1 className="list-page-title">{t('wilaya.title')}</h1>
             </div>
           </div>
 
           <div className="list-page-toolbar">
             <input
               type="text"
-              placeholder="Nouvelle wilaya"
+              placeholder={t('wilaya.new')}
               value={newWilaya}
               onChange={(e) => setNewWilaya(e.target.value)}
               className="list-page-field-input"
             />
             <button type="button" onClick={addWilaya} className="list-page-btn-add">
-              + Ajouter
+              + {t('common.add')}
             </button>
           </div>
 
           <div className="list-page-summary">
-            <p className="list-page-summary-label">Wilayas enregistrées</p>
-            <p className="list-page-summary-count">{totalCount} wilaya(s)</p>
+            <p className="list-page-summary-label">{t('wilaya.recorded')}</p>
+            <p className="list-page-summary-count">{t('wilaya.count', { n: totalCount })}</p>
           </div>
 
           {wilayaList.length === 0 && !loading ? (
-            <p className="list-page-empty">Aucune wilaya disponible.</p>
+            <p className="list-page-empty">{t('wilaya.empty')}</p>
           ) : (
             <div className="list-page-table-wrap">
               <table className="list-page-table">
                 <thead>
                   <tr>
-                    <th>Nom</th>
-                    {canManageActions && <th className="list-page-th-actions">Actions</th>}
+                    <th>{t('common.name')}</th>
+                    {canManageActions && <th className="list-page-th-actions">{t('common.actions')}</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -164,7 +166,7 @@ const WilayasPage = () => {
                           <div className="list-page-actions">
                             {editingId === wilaya.id ? (
                               <button type="button" onClick={handleUpdate} className="list-page-btn-validate">
-                                Valider
+                                {t('common.confirm')}
                               </button>
                             ) : (
                               <>
@@ -173,7 +175,7 @@ const WilayasPage = () => {
                                     type="button"
                                     onClick={() => handleEdit(wilaya)}
                                     className="list-page-action-btn list-page-action-btn--edit"
-                                    aria-label="Modifier"
+                                    aria-label={t('common.edit')}
                                   >
                                     <FaEdit />
                                   </button>
@@ -183,7 +185,7 @@ const WilayasPage = () => {
                                     type="button"
                                     onClick={() => handleDelete(wilaya.id)}
                                     className="list-page-action-btn list-page-action-btn--delete"
-                                    aria-label="Supprimer"
+                                    aria-label={t('common.delete')}
                                   >
                                     <FaTrash />
                                   </button>
@@ -211,7 +213,7 @@ const WilayasPage = () => {
           />
 
           <div className="list-page-footer">
-            <span className="list-page-footer-total">Total : {totalCount}</span>
+            <span className="list-page-footer-total">{t('common.total')} : {totalCount}</span>
           </div>
         </div>
       </div>

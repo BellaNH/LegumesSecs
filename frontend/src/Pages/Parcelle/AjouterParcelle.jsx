@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import {IoMdInformationCircleOutline} from "react-icons/io"
 import { useGlobalContext } from "../../context"
+import { useLanguage } from "../../i18n/LanguageContext"
 import MenuItem from "@mui/material/MenuItem"
 import axios from "axios";
 import { useEffect } from 'react';
@@ -14,6 +15,7 @@ import PageLoader from "../../components/common/PageLoader"
 
 export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleId}) {
   const {fetchExploitationWithParcelles,especes,setExploitationId,exploitationId,url,modifiedParcelle,isDataLoading} = useGlobalContext()
+  const { t } = useLanguage();
   const [wrong,setWrong] = useState(false)
   const [selectedEspece,setSelectedEspece] = useState("")
   const [data,setData] = useState({         
@@ -165,24 +167,24 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
     {modifiedParcelleId?
               <div className='flex gap-3 '>
                 <img src={Modifer} alt='' className='w-6 h-6 mt-5'/>
-              <h3 className='font-semibold text-green-600 text-xl my-4'>Modifier la parcelle</h3>
+              <h3 className='font-semibold text-green-600 text-xl my-4'>{t('parcel.editTitle')}</h3>
               </div> 
               :
               <div className='flex gap-3 '>
               <img src={Plus} alt='' className='w-6 h-6 mt-5'/>
-              <h3 className='font-semibold text-green-600 text-xl my-4'>Ajouter une parcelle</h3>
+              <h3 className='font-semibold text-green-600 text-xl my-4'>{t('parcel.addTitle')}</h3>
               </div>
               
               }
       
-      <TextField value={data.annee} onChange={handleChange} name="annee" label="Annee" variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%','& > :not(style)':{height:'4.5ch'}}}/>
-      <TextField value={data.superficie}  onChange={handleChange} name="superficie" id="standard-basic" label="Superficie" variant="standard"  />
-      <TextField value={data.sup_labouree}  onChange={handleChange} name="sup_labouree" id="standard-basic" label="Superficie labourée" variant="standard" />
+      <TextField value={data.annee} onChange={handleChange} name="annee" label={t('parcel.year')} variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%','& > :not(style)':{height:'4.5ch'}}}/>
+      <TextField value={data.superficie}  onChange={handleChange} name="superficie" id="standard-basic" label={t('parcel.area')} variant="standard"  />
+      <TextField value={data.sup_labouree}  onChange={handleChange} name="sup_labouree" id="standard-basic" label={t('parcel.worked')} variant="standard" />
       <div className='flex justify-center gap-4'>
-      <TextField value={data.engrais_de_fond} onChange={handleChange} name="engrais_de_fond" label="engrais de fond" variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%','& > :not(style)':{height:'4.5ch'}}}/>  
-      <TextField value={data.engrais_de_couverture} onChange={handleChange} name="engrais_de_couverture" label="engrais de couverture" variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%','& > :not(style)':{height:'4.5ch'}}} />
+      <TextField value={data.engrais_de_fond} onChange={handleChange} name="engrais_de_fond" label={t('parcel.baseFertilizer')} variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%','& > :not(style)':{height:'4.5ch'}}}/>  
+      <TextField value={data.engrais_de_couverture} onChange={handleChange} name="engrais_de_couverture" label={t('parcel.topFertilizer')} variant="outlined" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%','& > :not(style)':{height:'4.5ch'}}} />
       </div>
-      <TextField value={data.sup_emblavee} onChange={handleChange} name="sup_emblavee" id="standard-basic" label="Superficie emblavée" variant="standard"  />
+      <TextField value={data.sup_emblavee} onChange={handleChange} name="sup_emblavee" id="standard-basic" label={t('parcel.sown')} variant="standard"  />
         </div>
       <div className='flex flex-col gap-4 bg-green-700 px-4 rounded-r-md'>
         <IoMdInformationCircleOutline className="text-white w-8 h-8 mt-4 ml-[88%] mb-3"/>
@@ -191,7 +193,7 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
   onChange={handleChange}
   name="sup_deserbee"
   id="standard-basic"
-  label="Superficie deserbée"
+  label={t('parcel.weeded')}
   variant="standard"
   InputLabelProps={{
     sx: {
@@ -213,7 +215,7 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
   value={data.prev_de_production}
   onChange={handleChange}
   name="prev_de_production"
-  label="prev de production"
+  label={t('parcel.forecast')}
   variant="outlined"
   size="small"
   InputLabelProps={{
@@ -238,13 +240,13 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
 />
 
       <div className='flex justify-center gap-4'>
-      <TextField value={data.sup_sinsitree}  onChange={handleChange} name="sup_sinsitree" InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'#e9e7e8'}}}} InputProps={{sx:{color:'#e9e7e8','&:before':{borderBottom:'1px solid #e9e7e8'}}}} label="Superficie sinistrée" variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}} />
-      <TextField value={data.sup_recoltee} onChange={handleChange} name="sup_recoltee" InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'#e9e7e8'}}}} InputProps={{sx:{color:'#e9e7e8','&:before':{borderBottom:'1px solid #e9e7e8'}}}} label="Superficie récoltée" variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}}/>  
+      <TextField value={data.sup_sinsitree}  onChange={handleChange} name="sup_sinsitree" InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'#e9e7e8'}}}} InputProps={{sx:{color:'#e9e7e8','&:before':{borderBottom:'1px solid #e9e7e8'}}}} label={t('parcel.damaged')} variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}} />
+      <TextField value={data.sup_recoltee} onChange={handleChange} name="sup_recoltee" InputLabelProps={{sx:{color:'white','&.Mui-focused':{color:'#e9e7e8'}}}} InputProps={{sx:{color:'#e9e7e8','&:before':{borderBottom:'1px solid #e9e7e8'}}}} label={t('parcel.harvested')} variant="standard" size="small" sx={{ '& .MuiFilledInput-root': { backgroundColor:'#f7fafc' },width:'100%'}}/>  
       </div>
       <div className='flex justify-center gap-4 mt-3'>
 <TextField
   select
-  label="espece"
+  label={t('parcel.crop')}
   name="espece_id"
   value={exploitationId ? data.espece_id : selectedEspece}
   fullWidth
@@ -280,7 +282,7 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
   value={data.production}
   onChange={handleChange}
   name="production"
-  label="Production"
+  label={t('parcel.production')}
   variant="outlined"
   size="small"
   InputLabelProps={{
@@ -306,10 +308,10 @@ export default function AjouterParcelle({modifiedParcelleId,setModifiedParcelleI
 
       </div> 
       <div className='flex justify-center gap-4 mt-4'>
-        <button type='button' onClick={handleCancel} className='bg-white rounded-md w-auto px-8 py-1'>Cancel</button>
+        <button type='button' onClick={handleCancel} className='bg-white rounded-md w-auto px-8 py-1'>{t('common.cancel')}</button>
         {modifiedParcelleId
-        ?<button type="submit" className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>Modifier</button>
-        :<button type="submit" className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>Ajouter</button>
+        ?<button type="submit" className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>{t('common.edit')}</button>
+        :<button type="submit" className='bg-lime-600 rounded-md w-auto px-8 py-1 text-white text-base'>{t('common.add')}</button>
         }
         
       </div> 

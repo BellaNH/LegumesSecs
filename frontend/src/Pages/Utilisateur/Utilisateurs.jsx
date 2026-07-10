@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import { Snackbar, Alert } from '@mui/material';
 import { FaTrash, FaEdit } from 'react-icons/fa';
@@ -12,6 +13,7 @@ const Utilisateurs = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const { url, user } = useGlobalContext();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -55,11 +57,11 @@ const Utilisateurs = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setSuccessMessage('Utilisateur supprimé avec succès');
+      setSuccessMessage(t('user.deleted'));
       setOpenSuccess(true);
       fetchUsers();
     } catch {
-      setErrorMessage('Erreur lors de la suppression.');
+      setErrorMessage(t('user.deleteError'));
       setOpenError(true);
     }
   };
@@ -81,35 +83,35 @@ const Utilisateurs = () => {
           <div className="list-page-header">
             <div className="list-page-header-left">
               <img src={userIcon} alt="" className="list-page-header-icon" width={40} height={40} />
-              <h1 className="list-page-title">Liste des utilisateurs</h1>
+              <h1 className="list-page-title">{t('user.listTitle')}</h1>
             </div>
             <button
               type="button"
               className="list-page-btn-add"
               onClick={() => navigate('/ajouter-utilisateur')}
             >
-              + Ajouter utilisateur
+              {t('user.addBtn')}
             </button>
           </div>
 
           <div className="list-page-summary">
-            <p className="list-page-summary-label">Utilisateurs enregistrés</p>
-            <p className="list-page-summary-count">{filteredUsers.length} utilisateur(s)</p>
+            <p className="list-page-summary-label">{t('user.recorded')}</p>
+            <p className="list-page-summary-count">{t('user.count', { n: filteredUsers.length })}</p>
           </div>
 
           {filteredUsers.length === 0 ? (
-            <p className="list-page-empty">Aucun utilisateur trouvé.</p>
+            <p className="list-page-empty">{t('user.empty')}</p>
           ) : (
             <div className="list-page-table-wrap">
               <table className="list-page-table">
                 <thead>
                   <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Email</th>
-                    <th className="list-page-th-id">Téléphone</th>
-                    <th className="list-page-th-id">Rôle</th>
-                    <th className="list-page-th-actions">Actions</th>
+                    <th>{t('common.name')}</th>
+                    <th>{t('common.firstName')}</th>
+                    <th>{t('common.email')}</th>
+                    <th className="list-page-th-id">{t('common.phone')}</th>
+                    <th className="list-page-th-id">{t('common.role')}</th>
+                    <th className="list-page-th-actions">{t('common.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -126,7 +128,7 @@ const Utilisateurs = () => {
                             type="button"
                             className="list-page-action-btn list-page-action-btn--edit"
                             onClick={() => handleEditClick(row)}
-                            aria-label="Modifier"
+                            aria-label={t('common.edit')}
                           >
                             <FaEdit />
                           </button>
@@ -134,7 +136,7 @@ const Utilisateurs = () => {
                             type="button"
                             className="list-page-action-btn list-page-action-btn--delete"
                             onClick={() => handleDelete(row.id)}
-                            aria-label="Supprimer"
+                            aria-label={t('common.delete')}
                           >
                             <FaTrash />
                           </button>
@@ -148,7 +150,7 @@ const Utilisateurs = () => {
           )}
 
           <div className="list-page-footer">
-            <span className="list-page-footer-total">Total : {filteredUsers.length}</span>
+            <span className="list-page-footer-total">{t('common.total')} : {filteredUsers.length}</span>
           </div>
         </div>
       </div>

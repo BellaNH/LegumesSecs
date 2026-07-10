@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useState } from 'react'; 
 import axios from 'axios';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
-import  { Snackbar, Alert} from "@mui/material";
+import { useLanguage } from '../../i18n/LanguageContext';
+import { Snackbar, Alert} from "@mui/material";
 import PageLoader from '../../components/common/PageLoader';
 import Lentilles from "../pics/Lentilles.png"
+
 const Espece = () => {
   const [newEspece, setNewEspece] = useState('');
   const [editingId, setEditingId] = useState(null);
@@ -13,6 +15,7 @@ const Espece = () => {
   const [successMessage, setSuccessMessage] = useState(""); 
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
+  const { t } = useLanguage();
     
   const {especes, setEspeces,url,fetchEspeces, isDataLoading} = useGlobalContext()
 
@@ -27,28 +30,28 @@ const Espece = () => {
           },
         }
       );
-      setSuccessMessage(`Espece ajouté avec succès ✅`);
+      setSuccessMessage(t('crop.added'));
       setOpenSuccess(true);
       setNewEspece('');
       fetchEspeces()
     } catch (error) {
-      setErrorMessage("Erreur lors de l’ajout d'un espece");
+      setErrorMessage(t('crop.addError'));
       setOpenError(true);
     }
   };
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`${url}/api/espece/${id}/`,{
+      await axios.delete(`${url}/api/espece/${id}/`,{
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      setSuccessMessage(`Espece supprimé avec succès ✅`);
+      setSuccessMessage(t('crop.deleted'));
       setOpenSuccess(true);
       setEspeces(especes.filter((wilaya) => wilaya.id !== id));
     } catch (error) {
-      setErrorMessage("Erreur lors de la suppression d'espece");
+      setErrorMessage(t('crop.deleteError'));
       setOpenError(true);
     }
   };  
@@ -69,13 +72,13 @@ const Espece = () => {
           },
         }
       );
-      setSuccessMessage(`Espece modifié avec succès ✅`);
+      setSuccessMessage(t('crop.updated'));
       setOpenSuccess(true);
       setEditingId(null);
       setEditingName('');
       fetchEspeces()
     } catch (error) {
-      setErrorMessage("Erreur lors de la mise à jour");
+      setErrorMessage(t('crop.updateError'));
       setOpenError(true);
     }
   };
@@ -90,14 +93,14 @@ const Espece = () => {
     <div className='flex  gap-4'> 
                     <img src={Lentilles} className="w-16 h-16" />
                     <h2 className="text-3xl font-bold text-left text-green-600 mb-6 mt-2">
-                     Espece
+                     {t('crop.title')}
                    </h2>
             </div>
 
     <div className="flex items-center justify-center gap-4 mb-6">
       <input
         type="text"
-        placeholder="Nouveau Espece"
+        placeholder={t('crop.new')}
         value={newEspece}
         onChange={(e) => setNewEspece(e.target.value)}
         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -106,7 +109,7 @@ const Espece = () => {
         onClick={handleAdd}
         className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md text-sm"
       >
-        Ajouter
+        {t('common.add')}
       </button>
     </div>
 
@@ -114,8 +117,8 @@ const Espece = () => {
       <table className="min-w-full table-auto text-left border border-gray-200">
         <thead className="bg-green-600 text-white">
           <tr>
-            <th className="px-4 py-3 text-sm font-semibold">Nom</th>
-            <th className="px-4 py-3 text-sm font-semibold text-right">Actions</th>
+            <th className="px-4 py-3 text-sm font-semibold">{t('common.name')}</th>
+            <th className="px-4 py-3 text-sm font-semibold text-right">{t('common.actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -138,19 +141,21 @@ const Espece = () => {
                     onClick={handleUpdate}
                     className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm"
                   >
-                    Valider
+                    {t('common.confirm')}
                   </button>
                 ) : (
                   <div className="flex justify-end items-center gap-4 text-[18px]">
                     <button
                       onClick={() => handleEdit(espece)}
                       className="text-blue-600 hover:text-blue-800"
+                      aria-label={t('common.edit')}
                     >
                       <FaEdit />
                     </button>
                     <button
                       onClick={() => handleDelete(espece.id)}
                       className="text-red-600 hover:text-red-800"
+                      aria-label={t('common.delete')}
                     >
                       <FaTrash />
                     </button>
@@ -162,7 +167,7 @@ const Espece = () => {
           {especes.length === 0 && (
             <tr>
               <td colSpan={2} className="text-center py-4 text-gray-500 italic">
-                Aucun Espece disponible.
+                {t('crop.empty')}
               </td>
             </tr>
           )}

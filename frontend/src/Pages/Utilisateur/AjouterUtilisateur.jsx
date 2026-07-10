@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Snackbar, Alert } from '@mui/material';
 import axios from 'axios';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import Slider from './PermissionSlider/Slider';
 import userIcon from '../pics/User.png';
 import PageLoader from '../../components/common/PageLoader';
@@ -18,6 +19,7 @@ const AjouterUtilisateur = () => {
     setCurrentUserPermissions,
     defaultPermissions,
   } = useGlobalContext();
+  const { t } = useLanguage();
 
   useEffect(() => {
     setSliderStatus('create');
@@ -118,7 +120,7 @@ const AjouterUtilisateur = () => {
         },
       });
 
-      setSuccessMessage(`${formData.nom} est ajouté avec succès`);
+      setSuccessMessage(t('user.added', { name: formData.nom }));
       setOpenSuccess(true);
 
       setFormData({
@@ -142,7 +144,7 @@ const AjouterUtilisateur = () => {
         error.response?.data?.detail ||
         error.response?.data?.error?.details ||
         error.message ||
-        "Erreur d'enregistrement.";
+        t('user.saveError');
 
       setErrorMessage(errorMsg);
       setOpenError(true);
@@ -160,7 +162,7 @@ const AjouterUtilisateur = () => {
           <form onSubmit={handleSubmit} className="add-user-form-inner">
             <div className="add-user-header">
               <img src={userIcon} alt="" className="add-user-header-icon" width={40} height={40} />
-              <h1 className="add-user-title">Ajouter utilisateur</h1>
+              <h1 className="add-user-title">{t('user.addTitle')}</h1>
             </div>
 
             <div className="add-user-form-grid">
@@ -168,7 +170,7 @@ const AjouterUtilisateur = () => {
               <div className="add-user-col">
                 <div className="add-user-field-group">
                   <label className="add-user-label" htmlFor="nom">
-                    Nom
+                    {t('common.name')}
                   </label>
                   <input
                     id="nom"
@@ -182,7 +184,7 @@ const AjouterUtilisateur = () => {
 
                 <div className="add-user-field-group">
                   <label className="add-user-label" htmlFor="prenom">
-                    Prénom
+                    {t('common.firstName')}
                   </label>
                   <input
                     id="prenom"
@@ -196,7 +198,7 @@ const AjouterUtilisateur = () => {
 
                 <div className="add-user-field-group">
                   <label className="add-user-label" htmlFor="email">
-                    Email
+                    {t('common.email')}
                   </label>
                   <input
                     id="email"
@@ -211,7 +213,7 @@ const AjouterUtilisateur = () => {
 
                 <div className="add-user-field-group">
                   <label className="add-user-label" htmlFor="password">
-                    Mot de passe
+                    {t('common.password')}
                   </label>
                   <input
                     id="password"
@@ -229,7 +231,7 @@ const AjouterUtilisateur = () => {
               <div className="add-user-col">
                 <div className="add-user-field-group">
                   <label className="add-user-label" htmlFor="phoneNum">
-                    Numéro de téléphone
+                    {t('common.phone')}
                   </label>
                   <input
                     id="phoneNum"
@@ -244,7 +246,7 @@ const AjouterUtilisateur = () => {
 
                 <div className="add-user-field-group">
                   <label className="add-user-label" htmlFor="role_id">
-                    Rôle
+                    {t('common.role')}
                   </label>
                   <select
                     id="role_id"
@@ -255,7 +257,7 @@ const AjouterUtilisateur = () => {
                     required
                   >
                     <option value="" disabled>
-                      Sélectionner un rôle
+                      {t('user.selectRole')}
                     </option>
                     {Array.isArray(roles) &&
                       roles
@@ -269,20 +271,20 @@ const AjouterUtilisateur = () => {
                 </div>
 
                 <div className="add-user-field-group">
-                  <label className="add-user-label">Permissions</label>
+                  <label className="add-user-label">{t('user.permissions')}</label>
                   <button
                     type="button"
                     onClick={() => setShowPermissionForm(true)}
                     className="add-user-btn-permissions"
                   >
-                    Gérer les permissions
+                    {t('permissions.manage')}
                   </button>
                 </div>
 
                 {Number(formData.role_id) === 3 && (
                   <div className="add-user-field-group">
                     <label className="add-user-label" htmlFor="wilaya">
-                      Wilaya
+                      {t('nav.wilaya')}
                     </label>
                     <select
                       id="wilaya"
@@ -293,7 +295,7 @@ const AjouterUtilisateur = () => {
                       onChange={handleChange}
                     >
                       <option value="" disabled>
-                        Sélectionner une wilaya
+                        {t('user.selectWilaya')}
                       </option>
                       {Array.isArray(wilayas) &&
                         wilayas.map((w) => (
@@ -308,7 +310,7 @@ const AjouterUtilisateur = () => {
                 {Number(formData.role_id) === 4 && (
                   <div className="add-user-field-group">
                     <label className="add-user-label" htmlFor="subdivision">
-                      Subdivision
+                      {t('nav.subdivision')}
                     </label>
                     <select
                       id="subdivision"
@@ -319,7 +321,7 @@ const AjouterUtilisateur = () => {
                       onChange={handleChange}
                     >
                       <option value="" disabled>
-                        Sélectionner une subdivision
+                        {t('user.selectSubdivision')}
                       </option>
                       {Array.isArray(subdivisions) &&
                         subdivisions.map((s) => (
@@ -335,7 +337,7 @@ const AjouterUtilisateur = () => {
 
             <div className="add-user-actions">
               <button type="submit" className="add-user-btn-submit">
-                Ajouter
+                {t('common.add')}
               </button>
             </div>
           </form>

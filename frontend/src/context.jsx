@@ -1,18 +1,21 @@
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { DataProvider, useData } from "./contexts/DataContext";
 import { UIProvider, useUI } from "./contexts/UIContext";
+import { LanguageProvider } from "./i18n/LanguageContext";
 import { useMemo, useCallback } from "react";
 import API_BASE_URL from "./config/api";
 
 export const AppProvider = ({ children }) => {
   return (
-    <AuthProvider>
-      <DataProvider>
-        <UIProvider>
-          {children}
-        </UIProvider>
-      </DataProvider>
-    </AuthProvider>
+    <LanguageProvider>
+      <AuthProvider>
+        <DataProvider>
+          <UIProvider>
+            {children}
+          </UIProvider>
+        </DataProvider>
+      </AuthProvider>
+    </LanguageProvider>
   );
 };
 

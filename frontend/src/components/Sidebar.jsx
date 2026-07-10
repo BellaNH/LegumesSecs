@@ -5,9 +5,10 @@ import { FaPlus } from 'react-icons/fa6';
 import { IoDocumentOutline } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
 import { useGlobalContext } from '../context';
+import { useLanguage } from '../i18n/LanguageContext';
 import './Sidebar.css';
 
-const SidebarDropdown = ({ id, label, isOpen, isActive, onToggle, onActivate, children }) => (
+const SidebarDropdown = ({ id, label, isOpen, isActive, onToggle, onActivate, openLabel, closeLabel, children }) => (
   <div>
     <div
       id={id}
@@ -24,7 +25,7 @@ const SidebarDropdown = ({ id, label, isOpen, isActive, onToggle, onActivate, ch
         type="button"
         className="app-sidebar-toggle"
         aria-expanded={isOpen}
-        aria-label={`${isOpen ? 'Fermer' : 'Ouvrir'} le menu ${label}`}
+        aria-label={isOpen ? closeLabel : openLabel}
         onClick={(e) => {
           e.stopPropagation();
           onToggle();
@@ -43,6 +44,7 @@ const Sidebar = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const [active, setActive] = useState('');
   const { user, logout } = useGlobalContext();
+  const { t } = useLanguage();
 
   const toggleDropDownMenu = (menuName) => {
     setOpenMenu((prev) => (prev === menuName ? null : menuName));
@@ -68,24 +70,30 @@ const Sidebar = () => {
     user?.role?.nom === 'admin' ||
     user?.permissions?.some((p) => p.model === 'Exploitation' && (p.create || p.retrieve));
 
+  const menuAria = (label) => ({
+    openLabel: t('nav.openMenu', { label }),
+    closeLabel: t('nav.closeMenu', { label }),
+  });
+
   return (
-    <nav className="app-sidebar" role="navigation" aria-label="Navigation principale">
+    <nav className="app-sidebar" role="navigation" aria-label={t('nav.main')}>
       <div className="app-sidebar-scroll">
         <SidebarDropdown
           id="profile"
-          label="Profile"
+          label={t('nav.profile')}
           isOpen={openMenu === 'profile'}
           isActive={active === 'profile'}
           onToggle={() => toggleDropDownMenu('profile')}
           onActivate={() => setActiveItem('profile')}
+          {...menuAria(t('nav.profile'))}
         >
           <NavLink to="/profile" className="app-sidebar-sublink" onClick={() => setActiveItem('profile')}>
             <CgProfile size={18} />
-            <span>Voir le profil</span>
+            <span>{t('nav.viewProfile')}</span>
           </NavLink>
           <button type="button" className="app-sidebar-sublink" onClick={logout}>
             <IoDocumentOutline size={18} />
-            <span>Se déconnecter</span>
+            <span>{t('nav.logout')}</span>
           </button>
         </SidebarDropdown>
 
@@ -95,25 +103,26 @@ const Sidebar = () => {
           onClick={() => setActiveItem('dashboard')}
           className={`app-sidebar-item${active === 'dashboard' ? ' app-sidebar-item--active' : ''}`}
         >
-          Dashboard
+          {t('nav.dashboard')}
         </NavLink>
 
         {canAccessUtilisateur && (
           <SidebarDropdown
             id="utilisateur"
-            label="Utilisateur"
+            label={t('nav.user')}
             isOpen={openMenu === 'utilisateur'}
             isActive={active === 'utilisateur'}
             onToggle={() => toggleDropDownMenu('utilisateur')}
             onActivate={() => setActiveItem('utilisateur')}
+            {...menuAria(t('nav.user'))}
           >
             <NavLink to="/ajouter-utilisateur" className="app-sidebar-sublink">
               <FaPlus size={16} />
-              <span>Ajouter</span>
+              <span>{t('nav.add')}</span>
             </NavLink>
             <NavLink to="/utilisateurs" className="app-sidebar-sublink">
               <IoDocumentOutline size={18} />
-              <span>Consulter</span>
+              <span>{t('nav.browse')}</span>
             </NavLink>
           </SidebarDropdown>
         )}
@@ -125,7 +134,7 @@ const Sidebar = () => {
             onClick={() => setActiveItem('role')}
             className={`app-sidebar-item${active === 'role' ? ' app-sidebar-item--active' : ''}`}
           >
-            Role
+            {t('nav.role')}
           </NavLink>
         )}
 
@@ -136,7 +145,7 @@ const Sidebar = () => {
             onClick={() => setActiveItem('Wilaya')}
             className={`app-sidebar-item${active === 'Wilaya' ? ' app-sidebar-item--active' : ''}`}
           >
-            Wilaya
+            {t('nav.wilaya')}
           </NavLink>
         )}
 
@@ -147,7 +156,7 @@ const Sidebar = () => {
             onClick={() => setActiveItem('Subdivision')}
             className={`app-sidebar-item${active === 'Subdivision' ? ' app-sidebar-item--active' : ''}`}
           >
-            Subdivision
+            {t('nav.subdivision')}
           </NavLink>
         )}
 
@@ -158,7 +167,7 @@ const Sidebar = () => {
             onClick={() => setActiveItem('commune')}
             className={`app-sidebar-item${active === 'commune' ? ' app-sidebar-item--active' : ''}`}
           >
-            Commune
+            {t('nav.commune')}
           </NavLink>
         )}
 
@@ -169,26 +178,27 @@ const Sidebar = () => {
             onClick={() => setActiveItem('espece')}
             className={`app-sidebar-item${active === 'espece' ? ' app-sidebar-item--active' : ''}`}
           >
-            Espece
+            {t('nav.crop')}
           </NavLink>
         )}
 
         {canAccessObjectif && (
           <SidebarDropdown
             id="objectif"
-            label="Objectif"
+            label={t('nav.goal')}
             isOpen={openMenu === 'objectif'}
             isActive={active === 'objectif'}
             onToggle={() => toggleDropDownMenu('objectif')}
             onActivate={() => setActiveItem('objectif')}
+            {...menuAria(t('nav.goal'))}
           >
             <NavLink to="/ajouterobjectif" className="app-sidebar-sublink">
               <FaPlus size={16} />
-              <span>Ajouter</span>
+              <span>{t('nav.add')}</span>
             </NavLink>
             <NavLink to="/objectifs" className="app-sidebar-sublink">
               <IoDocumentOutline size={18} />
-              <span>Consulter</span>
+              <span>{t('nav.browse')}</span>
             </NavLink>
           </SidebarDropdown>
         )}
@@ -196,19 +206,20 @@ const Sidebar = () => {
         {canAccessAgriculteur && (
           <SidebarDropdown
             id="Agriculteur"
-            label="Agriculteur"
+            label={t('nav.farmer')}
             isOpen={openMenu === 'Agriculteur'}
             isActive={active === 'Agriculteur'}
             onToggle={() => toggleDropDownMenu('Agriculteur')}
             onActivate={() => setActiveItem('Agriculteur')}
+            {...menuAria(t('nav.farmer'))}
           >
             <NavLink to="/ajouteragriculteur" className="app-sidebar-sublink">
               <FaPlus size={16} />
-              <span>Ajouter</span>
+              <span>{t('nav.add')}</span>
             </NavLink>
             <NavLink to="/agriculteurs" className="app-sidebar-sublink">
               <IoDocumentOutline size={18} />
-              <span>Consulter</span>
+              <span>{t('nav.browse')}</span>
             </NavLink>
           </SidebarDropdown>
         )}
@@ -216,19 +227,20 @@ const Sidebar = () => {
         {canAccessExploitation && (
           <SidebarDropdown
             id="Exploitation"
-            label="Exploitation"
+            label={t('nav.farm')}
             isOpen={openMenu === 'Exploitation'}
             isActive={active === 'Exploitation'}
             onToggle={() => toggleDropDownMenu('Exploitation')}
             onActivate={() => setActiveItem('Exploitation')}
+            {...menuAria(t('nav.farm'))}
           >
             <NavLink to="/ajouterexploitation" className="app-sidebar-sublink">
               <FaPlus size={16} />
-              <span>Ajouter</span>
+              <span>{t('nav.add')}</span>
             </NavLink>
             <NavLink to="/exploitations" className="app-sidebar-sublink">
               <IoDocumentOutline size={18} />
-              <span>Consulter</span>
+              <span>{t('nav.browse')}</span>
             </NavLink>
           </SidebarDropdown>
         )}

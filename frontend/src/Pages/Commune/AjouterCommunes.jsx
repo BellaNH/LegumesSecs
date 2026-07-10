@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   TextField,
@@ -13,17 +13,19 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context";
+import { useLanguage } from "../../i18n/LanguageContext";
 import PageLoader from "../../components/common/PageLoader";
 
 const AjouterCommunes = () => {
   const [nom, setNom] = useState("");
   const [subdivisionId, setSubdivisionId] = useState("");
-  const {url,subdivisions,fetchCommunes,communes,setCommunes,isDataLoading}= useGlobalContext()
+  const {url,subdivisions,fetchCommunes,isDataLoading}= useGlobalContext()
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(""); 
-    const [successMessage, setSuccessMessage] = useState(""); 
-    const [openError, setOpenError] = useState(false);
-    const [openSuccess, setOpenSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(""); 
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
   
 
   const handleSubmit = async (e) => {
@@ -31,7 +33,7 @@ const AjouterCommunes = () => {
     if(subdivisionId){
     try {
       const token = localStorage.getItem("token");
-      const response =  await axios.post(
+      await axios.post(
         `${url}/api/commune/`,
         {
           nom: nom,
@@ -43,7 +45,7 @@ const AjouterCommunes = () => {
           },
         }
       );
-      setSuccessMessage(`Commune est ajouté avec succès ✅`);
+      setSuccessMessage(t('commune.added'));
       setOpenSuccess(true);
       fetchCommunes()
       navigate("/communes");
@@ -53,12 +55,11 @@ const AjouterCommunes = () => {
       console.error("❌ [AJOUTER_COMMUNE] Error status:", error.response?.status);
       console.error("❌ [AJOUTER_COMMUNE] Full error:", error);
       
-      // Extract detailed error message from response
       const errorMsg = error.response?.data?.error?.message 
         || error.response?.data?.message 
         || error.response?.data?.detail
         || error.message 
-        || "Erreur lors de l'ajout de la commune";
+        || t('commune.addError');
       
       setErrorMessage(errorMsg);
       setOpenError(true);
@@ -74,7 +75,7 @@ const AjouterCommunes = () => {
     <Container maxWidth="sm">
       <Paper sx={{ p: 4, mt: 5, borderRadius: 3 }}>
         <Typography variant="h6" gutterBottom>
-          Ajouter une nouvelle commune
+          {t('commune.formTitle')}
         </Typography>
         <Box
           component="form"
@@ -82,14 +83,14 @@ const AjouterCommunes = () => {
           sx={{ display: "flex", flexDirection: "column", gap: 2 }}
         >
           <TextField
-            label="Nom de la commune"
+            label={t('commune.formName')}
             value={nom}
             onChange={(e) => setNom(e.target.value)}
             required
           />
           <TextField
             select
-            label="Subdivision"
+            label={t('nav.subdivision')}
             value={subdivisionId}
             onChange={(e) => setSubdivisionId(e.target.value)}
             required
@@ -101,7 +102,7 @@ const AjouterCommunes = () => {
             ))}
           </TextField>
           <Button variant="contained" color="success" type="submit">
-            Ajouter
+            {t('common.add')}
           </Button>
         </Box>
       </Paper>

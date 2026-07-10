@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import FormObjectif from './FormObjectif';
 import axios from 'axios';
 import { Snackbar, Alert } from '@mui/material';
@@ -12,6 +13,7 @@ import '../../styles/ListPage.css';
 
 const Objectifs = () => {
   const { url, fetchObjectifs } = useGlobalContext();
+  const { t } = useLanguage();
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedObjId, setSelectedObjId] = useState();
   const [errorMessage, setErrorMessage] = useState('');
@@ -45,13 +47,13 @@ const Objectifs = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setSuccessMessage('Objectif supprimé avec succès');
+      setSuccessMessage(t('objectif.deleted'));
       setOpenSuccess(true);
       setObjectifs(objectifs.filter((o) => o.id !== id));
       fetchObjectifs();
       refresh();
     } catch {
-      setErrorMessage("Erreur lors de la suppression d'objectif");
+      setErrorMessage(t('objectif.deleteError'));
       setOpenError(true);
     }
   };
@@ -67,28 +69,28 @@ const Objectifs = () => {
           <div className="list-page-header">
             <div className="list-page-header-left">
               <img src={Cible} alt="" className="list-page-header-icon" width={40} height={40} />
-              <h1 className="list-page-title">Objectifs</h1>
+              <h1 className="list-page-title">{t('objectif.title')}</h1>
             </div>
           </div>
 
           <div className="list-page-summary">
-            <p className="list-page-summary-label">Objectifs enregistrés</p>
-            <p className="list-page-summary-count">{totalCount} objectif(s)</p>
+            <p className="list-page-summary-label">{t('objectif.recorded')}</p>
+            <p className="list-page-summary-count">{t('objectif.count', { n: totalCount })}</p>
           </div>
 
           {objectifs.length === 0 && !loading ? (
-            <p className="list-page-empty">Aucun objectif trouvé.</p>
+            <p className="list-page-empty">{t('objectif.empty')}</p>
           ) : (
             <div className="list-page-table-wrap">
               <table className="list-page-table">
                 <thead>
                   <tr>
-                    <th className="list-page-th-id">ID</th>
-                    <th>Année</th>
-                    <th>Wilaya</th>
-                    <th>Espèce</th>
-                    <th>Production</th>
-                    <th className="list-page-th-actions">Actions</th>
+                    <th className="list-page-th-id">{t('common.id')}</th>
+                    <th>{t('common.year')}</th>
+                    <th>{t('nav.wilaya')}</th>
+                    <th>{t('nav.crop')}</th>
+                    <th>{t('objectif.production')}</th>
+                    <th className="list-page-th-actions">{t('common.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -105,7 +107,7 @@ const Objectifs = () => {
                             type="button"
                             onClick={() => handleModifyObjectif(objectif.id)}
                             className="list-page-action-btn list-page-action-btn--edit"
-                            aria-label="Modifier"
+                            aria-label={t('common.edit')}
                           >
                             <FaEdit />
                           </button>
@@ -113,7 +115,7 @@ const Objectifs = () => {
                             type="button"
                             onClick={() => handleDelete(objectif.id)}
                             className="list-page-action-btn list-page-action-btn--delete"
-                            aria-label="Supprimer"
+                            aria-label={t('common.delete')}
                           >
                             <FaTrash />
                           </button>
@@ -137,7 +139,7 @@ const Objectifs = () => {
           />
 
           <div className="list-page-footer">
-            <span className="list-page-footer-total">Total : {totalCount}</span>
+            <span className="list-page-footer-total">{t('common.total')} : {totalCount}</span>
           </div>
         </div>
       </div>
@@ -148,13 +150,13 @@ const Objectifs = () => {
           selectedObjId={selectedObjId}
           setShowEditForm={setShowEditForm}
           onSuccess={() => {
-            setSuccessMessage('Objectif modifié avec succès');
+            setSuccessMessage(t('objectif.updated'));
             setOpenSuccess(true);
             refresh();
             fetchObjectifs();
           }}
           onError={(msg) => {
-            setErrorMessage(msg || 'Erreur lors de la mise à jour');
+            setErrorMessage(msg || t('objectif.updateError'));
             setOpenError(true);
           }}
         />

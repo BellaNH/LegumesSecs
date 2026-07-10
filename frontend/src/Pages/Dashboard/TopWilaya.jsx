@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from 'react-icons/md';
+import { useLanguage } from '../../i18n/LanguageContext';
 import Une from '../pics/Une.png';
 import Deux from '../pics/Deux.png';
 import Trois from '../pics/Trois.png';
 
 export default function TopWilaya({ data = [] }) {
+  const { t } = useLanguage();
   const [index, setIndex] = useState(0);
   const topthreeWilaya = Array.isArray(data) ? data : [];
 
@@ -16,7 +18,7 @@ export default function TopWilaya({ data = [] }) {
   }, [index, topthreeWilaya]);
 
   if (!topthreeWilaya.length) {
-    return <div className="dashboard-prev-prod-empty">Aucune donnée disponible</div>;
+    return <div className="dashboard-prev-prod-empty">{t('common.noData')}</div>;
   }
 
   return (
@@ -58,7 +60,7 @@ export default function TopWilaya({ data = [] }) {
           type="button"
           className="dashboard-nav-btn"
           onClick={() => setIndex(index - 1)}
-          aria-label="Précédent"
+          aria-label={t('common.previous')}
         >
           <MdOutlineNavigateBefore size={18} />
         </button>
@@ -66,7 +68,7 @@ export default function TopWilaya({ data = [] }) {
           type="button"
           className="dashboard-nav-btn"
           onClick={() => setIndex(index + 1)}
-          aria-label="Suivant"
+          aria-label={t('common.next')}
         >
           <MdOutlineNavigateNext size={18} />
         </button>

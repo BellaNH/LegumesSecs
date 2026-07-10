@@ -1,12 +1,15 @@
+import { useLanguage } from '../../i18n/LanguageContext';
+
 export default function PrevProdVsProd({ data = [] }) {
+  const { t } = useLanguage();
   const prevProdVsProductionData = Array.isArray(data) ? data : [];
 
   return (
     <div className="dashboard-prev-prod">
       <div className="dashboard-prev-prod-header">
-        <span>Espèce</span>
-        <span>Prévision</span>
-        <span>Production</span>
+        <span>{t('dashboard.crop')}</span>
+        <span>{t('dashboard.forecast')}</span>
+        <span>{t('dashboard.production')}</span>
       </div>
 
       <div className="dashboard-prev-prod-body">
@@ -19,7 +22,7 @@ export default function PrevProdVsProd({ data = [] }) {
             </div>
           ))
         ) : (
-          <div className="dashboard-prev-prod-empty">Aucune donnée disponible</div>
+          <div className="dashboard-prev-prod-empty">{t('common.noData')}</div>
         )}
       </div>
     </div>

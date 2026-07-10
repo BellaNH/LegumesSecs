@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   TextField,
@@ -13,16 +13,19 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context";
+import { useLanguage } from "../../i18n/LanguageContext";
 import PageLoader from "../../components/common/PageLoader";
+
 const AjouterSubdivision = () => {
   const [nom, setNom] = useState("");
   const [wilayaId, setWilayaId] = useState("");
   const navigate = useNavigate();
   const {wilayas,url,fetchSubdivisions,isDataLoading} = useGlobalContext()
-      const [errorMessage, setErrorMessage] = useState(""); 
-    const [successMessage, setSuccessMessage] = useState(""); 
-    const [openError, setOpenError] = useState(false);
-    const [openSuccess, setOpenSuccess] = useState(false);
+  const { t } = useLanguage();
+  const [errorMessage, setErrorMessage] = useState(""); 
+  const [successMessage, setSuccessMessage] = useState(""); 
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,12 +43,12 @@ const AjouterSubdivision = () => {
           },
         }
       );
-      setSuccessMessage(`Subdivision est ajoutée avec succès ✅`);
+      setSuccessMessage(t('subdivision.added'));
       setOpenSuccess(true);
       fetchSubdivisions()
       navigate("/subdivisions");
     } catch (error) {
-      setErrorMessage("Erreur lors de l'ajout de la subdivision");
+      setErrorMessage(t('subdivision.addError'));
       setOpenError(true)
     }
   }
@@ -59,7 +62,7 @@ const AjouterSubdivision = () => {
     <Container maxWidth="sm">
       <Paper sx={{ p: 4, mt: 5, borderRadius: 3 }}>
         <Typography variant="h6" gutterBottom>
-          Ajouter une nouvelle subdivision
+          {t('subdivision.formTitle')}
         </Typography>
         <Box
           component="form"
@@ -67,14 +70,14 @@ const AjouterSubdivision = () => {
           sx={{ display: "flex", flexDirection: "column", gap: 2 }}
         >
           <TextField
-            label="Nom de la subdivision"
+            label={t('subdivision.formName')}
             value={nom}
             onChange={(e) => setNom(e.target.value)}
             required
           />
           <TextField
             select
-            label="Wilaya"
+            label={t('nav.wilaya')}
             value={wilayaId}
             onChange={(e) => setWilayaId(e.target.value)}
             required
@@ -86,7 +89,7 @@ const AjouterSubdivision = () => {
             ))}
           </TextField>
           <Button variant="contained" color="success" type="submit">
-            Ajouter
+            {t('common.add')}
           </Button>
         </Box>
       </Paper>

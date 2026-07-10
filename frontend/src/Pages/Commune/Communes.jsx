@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { Snackbar, Alert } from '@mui/material';
 import localisationIcon from '../pics/Localisation.png';
 import ListPaginationFooter from '../../components/common/ListPaginationFooter';
@@ -14,6 +15,7 @@ import '../../styles/ListPage.css';
 const Commune = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const { url, fetchCommunes } = useGlobalContext();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [editingId, setEditingId] = useState(null);
   const [editedCommuneName, setEditedCommuneName] = useState('');
@@ -49,12 +51,12 @@ const Commune = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setSuccessMessage('Commune supprimée avec succès');
+      setSuccessMessage(t('commune.deleted'));
       setOpenSuccess(true);
       setCommunes(communes.filter((c) => c.id !== id));
       fetchCommunes();
     } catch {
-      setErrorMessage('Erreur lors de la suppression');
+      setErrorMessage(t('commune.deleteError'));
       setOpenError(true);
     }
   };
@@ -88,14 +90,14 @@ const Commune = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setSuccessMessage('Commune modifiée avec succès');
+      setSuccessMessage(t('commune.updated'));
       setOpenSuccess(true);
       setEditingId(null);
       setEditedCommuneName('');
       refresh();
       fetchCommunes();
     } catch {
-      setErrorMessage('Erreur lors de la mise à jour');
+      setErrorMessage(t('commune.updateError'));
       setOpenError(true);
     }
   };
@@ -111,14 +113,14 @@ const Commune = () => {
           <div className="list-page-header">
             <div className="list-page-header-left">
               <img src={localisationIcon} alt="" className="list-page-header-icon" width={40} height={40} />
-              <h1 className="list-page-title">Communes</h1>
+              <h1 className="list-page-title">{t('commune.title')}</h1>
             </div>
             <button
               type="button"
               className="list-page-btn-add"
               onClick={() => navigate('/ajouter-commune')}
             >
-              + Ajouter commune
+              {t('commune.addBtn')}
             </button>
           </div>
 
@@ -127,7 +129,7 @@ const Commune = () => {
               <FiSearch className="list-page-search-icon" />
               <input
                 type="text"
-                placeholder="Rechercher une commune"
+                placeholder={t('commune.search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="list-page-search-input"
@@ -136,21 +138,21 @@ const Commune = () => {
           </div>
 
           <div className="list-page-summary">
-            <p className="list-page-summary-label">Communes enregistrées</p>
-            <p className="list-page-summary-count">{totalCount} commune(s)</p>
+            <p className="list-page-summary-label">{t('commune.recorded')}</p>
+            <p className="list-page-summary-count">{t('commune.count', { n: totalCount })}</p>
           </div>
 
           {filterCommunes.length === 0 && !loading ? (
-            <p className="list-page-empty">Aucune commune trouvée.</p>
+            <p className="list-page-empty">{t('commune.empty')}</p>
           ) : (
             <div className="list-page-table-wrap">
               <table className="list-page-table">
                 <thead>
                   <tr>
-                    <th className="list-page-th-id">ID</th>
-                    <th>Nom</th>
-                    <th>Subdivision</th>
-                    <th className="list-page-th-actions">Actions</th>
+                    <th className="list-page-th-id">{t('common.id')}</th>
+                    <th>{t('common.name')}</th>
+                    <th>{t('nav.subdivision')}</th>
+                    <th className="list-page-th-actions">{t('common.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -177,7 +179,7 @@ const Commune = () => {
                               onClick={() => handleUpdate(com.id)}
                               className="list-page-btn-validate"
                             >
-                              Valider
+                              {t('common.confirm')}
                             </button>
                           ) : (
                             <>
@@ -185,7 +187,7 @@ const Commune = () => {
                                 type="button"
                                 onClick={() => handleEdit(com)}
                                 className="list-page-action-btn list-page-action-btn--edit"
-                                aria-label="Modifier"
+                                aria-label={t('common.edit')}
                               >
                                 <FaEdit />
                               </button>
@@ -193,7 +195,7 @@ const Commune = () => {
                                 type="button"
                                 onClick={() => handleDelete(com.id)}
                                 className="list-page-action-btn list-page-action-btn--delete"
-                                aria-label="Supprimer"
+                                aria-label={t('common.delete')}
                               >
                                 <FaTrash />
                               </button>
@@ -219,7 +221,7 @@ const Commune = () => {
           />
 
           <div className="list-page-footer">
-            <span className="list-page-footer-total">Total : {totalCount}</span>
+            <span className="list-page-footer-total">{t('common.total')} : {totalCount}</span>
           </div>
         </div>
       </div>

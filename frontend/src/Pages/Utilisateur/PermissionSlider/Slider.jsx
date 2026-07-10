@@ -1,178 +1,196 @@
-import React, { useState } from 'react'
-import { GrCaretNext } from "react-icons/gr";
-import { GrCaretPrevious } from "react-icons/gr";
-import Agriculteurs from '../../Agriculteur/Agriculteurs';
-import { useEffect } from 'react';
-import Checkbox from '@mui/material/Checkbox';
+import { useMemo, useState } from 'react';
+import { IoClose } from 'react-icons/io5';
+import { Snackbar, Alert } from '@mui/material';
 import { useGlobalContext } from '../../../context';
-import {Snackbar, Alert } from "@mui/material";
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+import { useLanguage } from '../../../i18n/LanguageContext';
+import './PermissionSlider.css';
 
-function Slider({formData,setFormData,setShowPermissionForm}) {
-  
-  const [index, setIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const {currentUserPermissions,setCurrentUserPermissions,defaultPermissions} = useGlobalContext()
-  const [errorMessage,setErrorMessage] = useState("")
-  const [successMessage,setSuccessMessage] = useState("")
-  
+const CRUD_KEYS = ['retrieve', 'create', 'update', 'destroy'];
 
-  useEffect(() => {
-    let lastIndex = currentUserPermissions.length - 1;
-    if (index < 0) {
-      setIndex(lastIndex);
+function Slider({ setFormData, setShowPermissionForm }) {
+  const {
+    currentUserPermissions,
+    setCurrentUserPermissions,
+    defaultPermissions,
+  } = useGlobalContext();
+  const { t } = useLanguage();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const crudOptions = useMemo(
+    () => [
+      { key: 'retrieve', label: t('permissions.read') },
+      { key: 'create', label: t('permissions.create') },
+      { key: 'update', label: t('permissions.update') },
+      { key: 'destroy', label: t('permissions.destroy') },
+    ],
+    [t]
+  );
+
+  const selectedCount = useMemo(() => {
+    if (!Array.isArray(currentUserPermissions)) return 0;
+    return currentUserPermissions.reduce((total, perm) => {
+      return total + CRUD_KEYS.filter((key) => perm[key]).length;
+    }, 0);
+  }, [currentUserPermissions]);
+
+  const handleChange = (e, modelName) => {
+    const { name, checked } = e.target;
+    setCurrentUserPermissions((prev) =>
+      prev.map((perm) =>
+        perm.model === modelName ? { ...perm, [name]: checked } : perm
+      )
+    );
+  };
+
+  const handleClose = () => {
+    setShowPermissionForm(false);
+  };
+
+  const handleSubmitPermissions = () => {
+    if (
+      JSON.stringify(currentUserPermissions) ===
+      JSON.stringify(defaultPermissions)
+    ) {
+      setErrorMessage(t('permissions.mustSelect'));
+      return;
     }
-    if (index > lastIndex) {
-      setIndex(0);
-    }
-  }, [index, currentUserPermissions]);
-  useEffect(() => {
-    if (isPaused) return;
-    let slider = setInterval(() => {
-      setIndex(index + 1);
-    }, 5000);
-    return () => {
-      clearInterval(slider);
-    };
-  }, [isPaused, index]);
 
-  const handleChange = (e,Model)=>{
-    const {name,checked} = e.target
-    setCurrentUserPermissions((prev)=>
-    prev.map((perm)=>(
-      perm.model===Model ? 
-      {...perm,[name]:checked}
-      :perm
+    setFormData((prev) => ({
+      ...prev,
+      permissions: currentUserPermissions,
+    }));
+    setSuccessMessage(t('permissions.saved'));
+    setTimeout(() => {
+      setShowPermissionForm(false);
+    }, 900);
+  };
 
-    )))
-  }
+  const modelActiveCount = (perm) =>
+    CRUD_KEYS.filter((key) => perm[key]).length;
 
-  const handleSubmitPermissions= ()=>{
-    setFormData((prev)=>(
-    {...prev,["permissions"]:currentUserPermissions
-    }))
-    if(JSON.stringify(currentUserPermissions)===JSON.stringify(defaultPermissions)){
-      setErrorMessage("Vous devez saisir les permissions d'utilisateur")
-    }else{
-      setTimeout(()=>{
-        setShowPermissionForm(false)
-        },1500)
-      setSuccessMessage("Permissions bien saisies")
-      
-    }
-  
+  const activeCountLabel =
+    selectedCount === 1
+      ? t('permissions.activeCount', { count: selectedCount })
+      : t('permissions.activeCount_plural', { count: selectedCount });
 
-  }
-  const handlePause = () => setIsPaused(true);
-  const handleresume = () => setIsPaused(false);
   return (
-<div className="relative left-20 mx-auto my-auto w-[60%] h-[50vh] bg-white rounded-xl shadow-lg px-12 py-8 overflow-hidden">
-  <GrCaretPrevious
-    onClick={() => setIndex(index - 1)}
-    className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-2xl text-gray-600 hover:text-green-600 transition"
-  />
-
-  <div
-    className="grid grid-cols-2 relative h-full"
-    onMouseDown={handlePause}
-    onMouseUp={handleresume}
-  >
-    {currentUserPermissions && currentUserPermissions.map((Model, modelIndex) => {
-      let position = "next-slide";
-      if (index === modelIndex) position = "active-slide";
-      else if (modelIndex === (index + 1) % currentUserPermissions.length) position = "second-active-slide";
-      if (modelIndex === index - 1 || (index === 0 && modelIndex === currentUserPermissions.length - 1))
-        position = "last-slide";
-
-      return (
-        <div
-        style={{
-      boxShadow: "rgba(0,0,0,0.16) 0px 1px 4px"
-    }}
-          className={`absolute top-[7%] w-[20vw] h-[90%] p-6 bg-white rounded-xl shadow-md transition-all duration-500 ease-in-out
-          ${position === "active-slide" ? "left-4 opacity-100 translate-x-0 ml-8" : ""}
-          ${position === "second-active-slide" ? "left-8 opacity-100 translate-x-[125%]" : ""}
-          ${position === "last-slide" ? "opacity-0 translate-x-[-100%]" : ""}
-          ${position === "next-slide" ? "opacity-0 translate-x-[200%]" : ""}
-        `}
-          key={modelIndex}
-        >
-          <p className="font-semibold text-green-700 text-lg mb-4">{Model.model}</p>
-          <div  className="flex flex-col gap-3 text-sm text-gray-700">
-            <div className="flex items-center gap-2">
-              <Checkbox
-                size="small"
-                name="retrieve"
-                color="primary"
-                checked={Model.retrieve}
-                onChange={(e) => handleChange(e, Model.model)}
-              />
-              <p>Lire</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox
-                size="small"
-                name="create"
-                checked={Model.create}
-                onChange={(e) => handleChange(e, Model.model)}
-              />
-              <p>Créer</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox
-                size="small"
-                name="update"
-                checked={Model.update}
-                onChange={(e) => handleChange(e, Model.model)}
-              />
-              <p>Modifier</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox
-                size="small"
-                name="destroy"
-                checked={Model.destroy}
-                onChange={(e) => handleChange(e, Model.model)}
-              />
-              <p>Supprimer</p>
-            </div>
-          </div>
+    <div
+      className="perm-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="perm-modal-title"
+    >
+      <header className="perm-modal-header">
+        <div className="perm-modal-header-text">
+          <span className="perm-modal-eyebrow">{t('permissions.eyebrow')}</span>
+          <h2 id="perm-modal-title" className="perm-modal-title">
+            {t('permissions.title')}
+          </h2>
+          <p className="perm-modal-subtitle">
+            {t('permissions.subtitle')}
+          </p>
         </div>
-      );
-    })}
+        <button
+          type="button"
+          className="perm-modal-close"
+          onClick={handleClose}
+          aria-label={t('common.close')}
+        >
+          <IoClose size={20} />
+        </button>
+      </header>
 
-      <button
-        type="button"
-        onClick={handleSubmitPermissions}
-        className="absolute bottom-2 right-0 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm px-8 py-2 rounded-lg shadow-md transition"
+      <div className="perm-modal-body">
+        <div className="perm-modal-summary">
+          <p className="perm-modal-summary-label">
+            {t('permissions.summary')}
+          </p>
+          <span className="perm-modal-summary-count">
+            {activeCountLabel}
+          </span>
+        </div>
+
+        <div className="perm-grid">
+          {Array.isArray(currentUserPermissions) &&
+            currentUserPermissions.map((perm) => {
+              const active = modelActiveCount(perm);
+              return (
+                <article
+                  key={perm.model}
+                  className={`perm-card${active > 0 ? ' perm-card--active' : ''}`}
+                >
+                  <div className="perm-card-top">
+                    <h3 className="perm-card-model">{perm.model}</h3>
+                    <span className="perm-card-badge">
+                      {active}/4
+                    </span>
+                  </div>
+                  <div className="perm-card-actions">
+                    {crudOptions.map((opt) => (
+                      <label key={opt.key} className="perm-check">
+                        <input
+                          type="checkbox"
+                          name={opt.key}
+                          checked={Boolean(perm[opt.key])}
+                          onChange={(e) => handleChange(e, perm.model)}
+                        />
+                        <span className="perm-check-label">{opt.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
+        </div>
+      </div>
+
+      <footer className="perm-modal-footer">
+        <button
+          type="button"
+          className="perm-btn perm-btn--ghost"
+          onClick={handleClose}
+        >
+          {t('common.cancel')}
+        </button>
+        <button
+          type="button"
+          className="perm-btn perm-btn--primary"
+          onClick={handleSubmitPermissions}
+        >
+          {t('permissions.save')}
+        </button>
+      </footer>
+
+      <Snackbar
+        open={Boolean(errorMessage)}
+        autoHideDuration={4000}
+        onClose={() => setErrorMessage('')}
       >
-        Ok
-      </button>
-  
-  </div>
+        <Alert
+          onClose={() => setErrorMessage('')}
+          severity="error"
+          sx={{ width: '100%' }}
+        >
+          {errorMessage}
+        </Alert>
+      </Snackbar>
 
-  <GrCaretNext
-    onClick={() => setIndex(index + 1)}
-    className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-2xl text-gray-600 hover:text-green-600 transition"
-  />
-
-  {errorMessage && (
-    <Snackbar open={true} autoHideDuration={4000} onClose={() => setErrorMessage("")}>
-      <Alert onClose={() => setMessage("")} severity="error" sx={{ width: "100%" }}>
-        {errorMessage}
-      </Alert>
-    </Snackbar>
-  )}
-  {successMessage && (
-    <Snackbar open={true} autoHideDuration={4000} onClose={() => setSuccessMessage("")}>
-      <Alert onClose={() => setMessage("")} severity="success" sx={{ width: "100%" }}>
-        {successMessage}
-      </Alert>
-    </Snackbar>
-  )}
-</div>
-
-  )
+      <Snackbar
+        open={Boolean(successMessage)}
+        autoHideDuration={3000}
+        onClose={() => setSuccessMessage('')}
+      >
+        <Alert
+          onClose={() => setSuccessMessage('')}
+          severity="success"
+          sx={{ width: '100%' }}
+        >
+          {successMessage}
+        </Alert>
+      </Snackbar>
+    </div>
+  );
 }
 
-export default Slider
+export default Slider;

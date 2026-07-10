@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FormAgriculteur from './FormAgriculteur';
@@ -30,6 +31,7 @@ const Agriculteurs = () => {
     subdivisions,
     communes,
   } = useGlobalContext();
+  const { t } = useLanguage();
 
   const [openedAgriculteurId, setOpenedAgriculteurId] = useState(null);
   const [targetWilaya, setTargetWilaya] = useState('');
@@ -71,11 +73,11 @@ const Agriculteurs = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setSuccessMessage('Agriculteur supprimé avec succès');
+      setSuccessMessage(t('farmer.deleted'));
       setOpenSuccess(true);
       fetchAgriculteurs();
     } catch {
-      setErrorMessage("Erreur lors de la suppression d'agriculteur");
+      setErrorMessage(t('farmer.deleteError'));
       setOpenError(true);
     }
   };
@@ -185,18 +187,18 @@ const Agriculteurs = () => {
           <div className="list-page-header">
             <div className="list-page-header-left">
               <img src={Agriculteur} alt="" className="list-page-header-icon" width={40} height={40} />
-              <h1 className="list-page-title">Agriculteurs</h1>
+              <h1 className="list-page-title">{t('farmer.title')}</h1>
             </div>
           </div>
 
           <p className="list-page-summary-label" style={{ marginBottom: '12px' }}>
-            {openedAgriculteurId ? 'Localisation' : 'Filtrage par localisation'}
+            {openedAgriculteurId ? t('farmer.location') : t('farmer.filterByLocation')}
           </p>
 
           <div className="list-page-filters">
             <div className="list-page-filter-field">
               <label className="list-page-filter-label" htmlFor="filter-wilaya">
-                Wilaya
+                {t('nav.wilaya')}
               </label>
               <select
                 id="filter-wilaya"
@@ -217,7 +219,7 @@ const Agriculteurs = () => {
 
             <div className="list-page-filter-field">
               <label className="list-page-filter-label" htmlFor="filter-subdiv">
-                Subdivision
+                {t('nav.subdivision')}
               </label>
               <select
                 id="filter-subdiv"
@@ -238,7 +240,7 @@ const Agriculteurs = () => {
 
             <div className="list-page-filter-field">
               <label className="list-page-filter-label" htmlFor="filter-commune">
-                Commune
+                {t('nav.commune')}
               </label>
               <select
                 id="filter-commune"
@@ -259,24 +261,24 @@ const Agriculteurs = () => {
           </div>
 
           <div className="list-page-summary">
-            <p className="list-page-summary-label">Agriculteurs enregistrés</p>
-            <p className="list-page-summary-count">{agriculteurs?.length ?? 0} agriculteur(s)</p>
+            <p className="list-page-summary-label">{t('farmer.recorded')}</p>
+            <p className="list-page-summary-count">{t('farmer.count', { n: agriculteurs?.length ?? 0 })}</p>
           </div>
 
           {!agriculteurs || agriculteurs.length === 0 ? (
-            <p className="list-page-empty">Aucun agriculteur trouvé.</p>
+            <p className="list-page-empty">{t('farmer.empty')}</p>
           ) : (
             <div className="list-page-table-wrap">
               <table className="list-page-table">
                 <thead>
                   <tr>
-                    <th className="list-page-th-id">ID</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Téléphone</th>
-                    <th>Carte Fellah</th>
-                    <th>Exploitation</th>
-                    <th className="list-page-th-actions">Actions</th>
+                    <th className="list-page-th-id">{t('common.id')}</th>
+                    <th>{t('common.name')}</th>
+                    <th>{t('common.firstName')}</th>
+                    <th>{t('common.phone')}</th>
+                    <th>{t('farmer.fellahCard')}</th>
+                    <th>{t('farmer.farm')}</th>
+                    <th className="list-page-th-actions">{t('common.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -316,7 +318,7 @@ const Agriculteurs = () => {
                               type="button"
                               onClick={(e) => handleModifyAgri(agri.id, e)}
                               className="list-page-action-btn list-page-action-btn--edit"
-                              aria-label="Modifier"
+                              aria-label={t('common.edit')}
                             >
                               <FaEdit />
                             </button>
@@ -324,7 +326,7 @@ const Agriculteurs = () => {
                               type="button"
                               onClick={(e) => handleDelete(agri.id, e)}
                               className="list-page-action-btn list-page-action-btn--delete"
-                              aria-label="Supprimer"
+                              aria-label={t('common.delete')}
                             >
                               <FaTrash />
                             </button>
@@ -339,7 +341,7 @@ const Agriculteurs = () => {
           )}
 
           <div className="list-page-footer">
-            <span className="list-page-footer-total">Total : {agriculteurs?.length ?? 0}</span>
+            <span className="list-page-footer-total">{t('common.total')} : {agriculteurs?.length ?? 0}</span>
           </div>
         </div>
       </div>

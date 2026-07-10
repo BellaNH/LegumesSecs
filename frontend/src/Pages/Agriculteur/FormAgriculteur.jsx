@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import { Snackbar, Alert } from '@mui/material';
 import axios from 'axios';
@@ -8,6 +9,7 @@ import PageLoader from '../../components/common/PageLoader';
 
 const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm }) => {
   const { url, fetchAgriculteurs, isDataLoading } = useGlobalContext();
+  const { t } = useLanguage();
   const [openForm, setOpenForm] = useState(true);
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
@@ -69,10 +71,10 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
       });
       fetchAgriculteurs();
       closeEditModal();
-      setSuccessMessage('Agriculteur modifié avec succès');
+      setSuccessMessage(t('farmer.updated'));
       setOpenSuccess(true);
     } catch {
-      setErrorMessage('Erreur lors de la mise à jour');
+      setErrorMessage(t('farmer.updateError'));
       setOpenError(true);
     }
   };
@@ -84,11 +86,11 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       fetchAgriculteurs();
-      setSuccessMessage('Agriculteur ajouté avec succès');
+      setSuccessMessage(t('farmer.added'));
       setOpenSuccess(true);
       navigate('/agriculteurs');
     } catch {
-      setErrorMessage('Erreur lors de la création');
+      setErrorMessage(t('farmer.createError'));
       setOpenError(true);
     }
   };
@@ -107,10 +109,8 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
     return <PageLoader />;
   }
 
-  const title = isEditMode ? "Modifier l'agriculteur" : 'Ajouter un agriculteur';
-  const subtitle = isEditMode
-    ? 'Mettez à jour les informations de cet agriculteur.'
-    : 'Renseignez les informations pour enregistrer un nouvel agriculteur.';
+  const title = isEditMode ? t('farmer.editTitle') : t('farmer.addTitle');
+  const subtitle = isEditMode ? t('farmer.editSubtitle') : t('farmer.addSubtitle');
 
   return (
     <>
@@ -118,7 +118,7 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
         title={title}
         subtitle={subtitle}
         listLink="/agriculteurs"
-        listLabel="Voir les agriculteurs"
+        listLabel={t('farmer.viewList')}
         isModal={isEditMode}
       >
         <form
@@ -128,7 +128,7 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
           <div className="form-page-fields-grid">
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="nom">
-                Nom
+                {t('common.name')}
               </label>
               <input
                 id="nom"
@@ -143,7 +143,7 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
 
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="prenom">
-                Prénom
+                {t('common.firstName')}
               </label>
               <input
                 id="prenom"
@@ -158,7 +158,7 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
 
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="phoneNum">
-                Numéro de téléphone
+                {t('farmer.phone')}
               </label>
               <input
                 id="phoneNum"
@@ -173,7 +173,7 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
 
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="numero_carte_fellah">
-                Numéro carte fellah
+                {t('farmer.fellahNumber')}
               </label>
               <input
                 id="numero_carte_fellah"
@@ -189,10 +189,10 @@ const FormAgriculteur = ({ setSelectedAgriId, selectedAgriId, setShowEditForm })
 
           <div className="form-page-actions">
             <button type="submit" className="form-page-btn-submit">
-              {isEditMode ? 'Modifier' : 'Ajouter'}
+              {isEditMode ? t('common.edit') : t('common.add')}
             </button>
             <button type="button" className="form-page-btn-cancel" onClick={handleCancel}>
-              Annuler
+              {t('common.cancel')}
             </button>
           </div>
         </form>

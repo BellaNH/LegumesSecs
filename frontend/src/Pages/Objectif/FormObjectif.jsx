@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import { Snackbar, Alert } from '@mui/material';
 import axios from 'axios';
@@ -8,6 +9,7 @@ import PageLoader from '../../components/common/PageLoader';
 
 const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSuccess, onError }) => {
   const { wilayas, especes, url, fetchObjectifs, isDataLoading } = useGlobalContext();
+  const { t } = useLanguage();
   const [openForm, setOpenForm] = useState(true);
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
@@ -74,7 +76,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
     } catch (error) {
       const msg =
         error?.response?.data?.detail ||
-        (typeof error?.response?.data === 'string' ? error.response.data : 'Erreur lors de la mise à jour');
+        (typeof error?.response?.data === 'string' ? error.response.data : t('objectif.updateError'));
       if (onError) onError(msg);
       else {
         setErrorMessage(msg);
@@ -89,12 +91,12 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
       await axios.post(`${url}/api/objectif/`, data, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
-      setSuccessMessage('Objectif ajouté avec succès');
+      setSuccessMessage(t('objectif.added'));
       setOpenSuccess(true);
       await fetchObjectifs();
       navigate('/objectifs');
     } catch {
-      setErrorMessage('Erreur lors de la création');
+      setErrorMessage(t('objectif.createError'));
       setOpenError(true);
     }
   };
@@ -113,10 +115,8 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
     return <PageLoader />;
   }
 
-  const title = isEditMode ? "Modifier l'objectif" : 'Ajouter un objectif';
-  const subtitle = isEditMode
-    ? 'Mettez à jour les informations de cet objectif de production.'
-    : 'Renseignez les détails pour définir un nouvel objectif de production.';
+  const title = isEditMode ? t('objectif.editTitle') : t('objectif.addTitle');
+  const subtitle = isEditMode ? t('objectif.editSubtitle') : t('objectif.addSubtitle');
 
   return (
     <>
@@ -124,7 +124,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
         title={title}
         subtitle={subtitle}
         listLink="/objectifs"
-        listLabel="Voir les objectifs"
+        listLabel={t('objectif.viewList')}
         isModal={isEditMode}
       >
         <form
@@ -134,7 +134,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
           <div className="form-page-fields-grid">
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="annee">
-                Année
+                {t('common.year')}
               </label>
               <input
                 id="annee"
@@ -149,7 +149,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
 
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="wilaya_id">
-                Wilaya
+                {t('nav.wilaya')}
               </label>
               <select
                 id="wilaya_id"
@@ -159,7 +159,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
                 onChange={handleChange}
                 required
               >
-                <option value="">Sélectionner</option>
+                <option value="">{t('common.select')}</option>
                 {wilayas.map((wilaya) => (
                   <option key={wilaya.id} value={wilaya.id}>
                     {wilaya.nom}
@@ -170,7 +170,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
 
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="espece_id">
-                Espèce
+                {t('nav.crop')}
               </label>
               <select
                 id="espece_id"
@@ -180,7 +180,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
                 onChange={handleChange}
                 required
               >
-                <option value="">Sélectionner</option>
+                <option value="">{t('common.select')}</option>
                 {especes.map((espece) => (
                   <option key={espece.id} value={espece.id}>
                     {espece.nom}
@@ -191,7 +191,7 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
 
             <div className="form-page-field">
               <label className="form-page-label" htmlFor="objectif_production">
-                Objectif de production
+                {t('objectif.productionGoal')}
               </label>
               <input
                 id="objectif_production"
@@ -207,10 +207,10 @@ const FormObjectif = ({ setSelectedObjId, selectedObjId, setShowEditForm, onSucc
 
           <div className="form-page-actions">
             <button type="submit" className="form-page-btn-submit">
-              {isEditMode ? 'Modifier' : 'Ajouter'}
+              {isEditMode ? t('common.edit') : t('common.add')}
             </button>
             <button type="button" className="form-page-btn-cancel" onClick={handleCancel}>
-              Annuler
+              {t('common.cancel')}
             </button>
           </div>
         </form>

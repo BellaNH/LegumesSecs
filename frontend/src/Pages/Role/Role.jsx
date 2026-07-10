@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { Snackbar, Alert } from '@mui/material';
 import userIcon from '../pics/User.png';
 import PageLoader from '../../components/common/PageLoader';
@@ -16,6 +17,7 @@ const Role = () => {
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
   const { roles, url, fetchRoles, isDataLoading } = useGlobalContext();
+  const { t } = useLanguage();
 
   const handleAdd = async () => {
     if (!newRole.trim()) return;
@@ -29,12 +31,12 @@ const Role = () => {
           },
         }
       );
-      setSuccessMessage('Rôle ajouté avec succès');
+      setSuccessMessage(t('role.added'));
       setOpenSuccess(true);
       setNewRole('');
       fetchRoles();
     } catch {
-      setErrorMessage("Erreur d'enregistrement.");
+      setErrorMessage(t('role.saveError'));
       setOpenError(true);
     }
   };
@@ -46,11 +48,11 @@ const Role = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setSuccessMessage('Rôle supprimé avec succès');
+      setSuccessMessage(t('role.deleted'));
       setOpenSuccess(true);
       fetchRoles();
     } catch {
-      setErrorMessage('Erreur lors de la suppression');
+      setErrorMessage(t('role.deleteError'));
       setOpenError(true);
     }
   };
@@ -71,13 +73,13 @@ const Role = () => {
           },
         }
       );
-      setSuccessMessage('Rôle modifié avec succès');
+      setSuccessMessage(t('role.updated'));
       setOpenSuccess(true);
       setEditingId(null);
       setEditingName('');
       fetchRoles();
     } catch {
-      setErrorMessage('Erreur lors de la modification');
+      setErrorMessage(t('role.updateError'));
       setOpenError(true);
     }
   };
@@ -95,37 +97,37 @@ const Role = () => {
           <div className="list-page-header">
             <div className="list-page-header-left">
               <img src={userIcon} alt="" className="list-page-header-icon" width={40} height={40} />
-              <h1 className="list-page-title">Rôles</h1>
+              <h1 className="list-page-title">{t('role.title')}</h1>
             </div>
           </div>
 
           <div className="list-page-toolbar">
             <input
               type="text"
-              placeholder="Nouveau rôle"
+              placeholder={t('role.new')}
               value={newRole}
               onChange={(e) => setNewRole(e.target.value)}
               className="list-page-field-input"
             />
             <button type="button" onClick={handleAdd} className="list-page-btn-add">
-              + Ajouter
+              + {t('common.add')}
             </button>
           </div>
 
           <div className="list-page-summary">
-            <p className="list-page-summary-label">Rôles enregistrés</p>
-            <p className="list-page-summary-count">{roleList.length} rôle(s)</p>
+            <p className="list-page-summary-label">{t('role.recorded')}</p>
+            <p className="list-page-summary-count">{t('role.count', { n: roleList.length })}</p>
           </div>
 
           {roleList.length === 0 ? (
-            <p className="list-page-empty">Aucun rôle disponible.</p>
+            <p className="list-page-empty">{t('role.empty')}</p>
           ) : (
             <div className="list-page-table-wrap">
               <table className="list-page-table">
                 <thead>
                   <tr>
-                    <th>Nom</th>
-                    <th className="list-page-th-actions">Actions</th>
+                    <th>{t('common.name')}</th>
+                    <th className="list-page-th-actions">{t('common.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -146,7 +148,7 @@ const Role = () => {
                         <div className="list-page-actions">
                           {editingId === role.id ? (
                             <button type="button" onClick={handleUpdate} className="list-page-btn-validate">
-                              Valider
+                              {t('common.confirm')}
                             </button>
                           ) : (
                             <>
@@ -154,7 +156,7 @@ const Role = () => {
                                 type="button"
                                 onClick={() => handleEdit(role)}
                                 className="list-page-action-btn list-page-action-btn--edit"
-                                aria-label="Modifier"
+                                aria-label={t('common.edit')}
                               >
                                 <FaEdit />
                               </button>
@@ -162,7 +164,7 @@ const Role = () => {
                                 type="button"
                                 onClick={() => handleDelete(role.id)}
                                 className="list-page-action-btn list-page-action-btn--delete"
-                                aria-label="Supprimer"
+                                aria-label={t('common.delete')}
                               >
                                 <FaTrash />
                               </button>
@@ -178,7 +180,7 @@ const Role = () => {
           )}
 
           <div className="list-page-footer">
-            <span className="list-page-footer-total">Total : {roleList.length}</span>
+            <span className="list-page-footer-total">{t('common.total')} : {roleList.length}</span>
           </div>
         </div>
       </div>

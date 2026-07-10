@@ -4,6 +4,7 @@ import ProductionChart from './ProductionChart.jsx';
 import TopWilaya from './TopWilaya.jsx';
 import axios from 'axios';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { FaArrowDown } from 'react-icons/fa';
 import Agriculteur from '../pics/Agriculteur.png';
@@ -12,10 +13,12 @@ import Amande from '../pics/Amande.png';
 import Feu from '../pics/Feu.png';
 import Jardinage from '../pics/Jardinage.png';
 import PageLoader from '../../components/common/PageLoader';
+import LanguageToggle from '../../components/common/LanguageToggle';
 import './Dashboard.css';
 
 export default function DashboardDisplay() {
   const { url, user } = useGlobalContext();
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(true);
   const [totalAgri, setTotalAgri] = useState(0);
   const [superficieData, setSuperficieData] = useState([]);
@@ -115,7 +118,7 @@ export default function DashboardDisplay() {
     if (agrSupStatsIndex > lastIndex) setAgrSupStatsIndex(0);
   }, [agrSupStatsIndex, aggregatedSupStats]);
 
-  const userName = user?.prenom || user?.nom || 'utilisateur';
+  const userName = user?.prenom || user?.nom || t('dashboard.userFallback');
 
   if (loading) {
     return <PageLoader />;
@@ -124,7 +127,8 @@ export default function DashboardDisplay() {
   return (
     <div className="dashboard-page">
       <header className="dashboard-header">
-        <h1 className="dashboard-greeting">Bienvenue, {userName}</h1>
+        <h1 className="dashboard-greeting">{t('dashboard.welcome', { name: userName })}</h1>
+        <LanguageToggle />
       </header>
 
       <div className="dashboard-grid">
@@ -135,7 +139,7 @@ export default function DashboardDisplay() {
               <img src={Agriculteur} alt="" />
             </div>
             <div className="dashboard-stat-agri-text">
-              <p className="dashboard-stat-label">Agriculteurs Active</p>
+              <p className="dashboard-stat-label">{t('dashboard.activeFarmers')}</p>
               <p className="dashboard-stat-value">{totalAgri}</p>
             </div>
           </div>
@@ -167,17 +171,17 @@ export default function DashboardDisplay() {
                   >
                     <StatCard
                       icon={<img src={Jardinage} alt="" />}
-                      title="Superficie labouree"
+                      title={t('dashboard.areaWorked')}
                       value={statCard.total_production}
                     />
                     <StatCard
                       icon={<img src={Feu} alt="" />}
-                      title="Superficie sinistree"
+                      title={t('dashboard.areaDamaged')}
                       value={statCard.total_sup_labouree}
                     />
                     <StatCard
                       icon={<img src={Amande} alt="" />}
-                      title="Total production"
+                      title={t('dashboard.totalProduction')}
                       value={statCard.total_sup_sinistree}
                     />
                   </div>
@@ -222,14 +226,14 @@ export default function DashboardDisplay() {
                 </div>
               ))
             ) : (
-              <div className="dashboard-chart-empty">Aucune donnée disponible</div>
+              <div className="dashboard-chart-empty">{t('common.noData')}</div>
             )}
             {Array.isArray(superficieData) && superficieData.length > 1 && (
               <button
                 type="button"
                 className="dashboard-chart-nav"
                 onClick={() => setIndex(index + 1)}
-                aria-label="Graphique suivant"
+                aria-label={t('dashboard.nextChart')}
               >
                 <MdOutlineNavigateNext size={18} />
               </button>
@@ -244,11 +248,11 @@ export default function DashboardDisplay() {
         {/* Right column — top wilayas & prev vs prod */}
         <div className="dashboard-col">
           <div className="dashboard-card dashboard-card--grow">
-            <h2 className="dashboard-panel-title">Top Wilayas</h2>
+            <h2 className="dashboard-panel-title">{t('dashboard.topWilayas')}</h2>
             <TopWilaya data={topWilayaData} />
           </div>
           <div className="dashboard-card dashboard-card--grow">
-            <h2 className="dashboard-panel-title">Prévision vs Production</h2>
+            <h2 className="dashboard-panel-title">{t('dashboard.forecastVsProduction')}</h2>
             <PrevProdVsProd data={prevProdData} />
           </div>
         </div>

@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
 import { IoArrowForward } from 'react-icons/io5';
+import { useLanguage } from '../../i18n/LanguageContext';
 import '../../styles/FormPage.css';
 
 const FormPageLayout = ({
   title,
   subtitle,
   listLink,
-  listLabel = 'Voir la liste',
+  listLabel,
   isModal = false,
   children,
 }) => {
+  const { t } = useLanguage();
+  const resolvedListLabel = listLabel || t('form.viewList');
+
   const content = (
     <div className="form-page">
       <div className="form-page-header">
@@ -21,11 +25,9 @@ const FormPageLayout = ({
         <aside className="form-page-aside">
           <div className="form-page-aside-orb form-page-aside-orb--top" aria-hidden="true" />
           <div className="form-page-aside-orb" aria-hidden="true" />
-          <p className="form-page-aside-text">
-            Vous pouvez gérer vos données librement.
-          </p>
+          <p className="form-page-aside-text">{t('form.aside')}</p>
           <Link to={listLink} className="form-page-aside-link">
-            <span>{listLabel}</span>
+            <span>{resolvedListLabel}</span>
             <IoArrowForward className="form-page-aside-arrow" />
           </Link>
         </aside>

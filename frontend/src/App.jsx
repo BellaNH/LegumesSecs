@@ -5,6 +5,7 @@ import {Routes,Route} from "react-router-dom"
 import { useGlobalContext } from './context.jsx'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import PageLoader from './components/common/PageLoader'
+import { useLanguage } from './i18n/LanguageContext'
 
 // Lazy load components for code splitting
 const FormExploi = lazy(() => import('./Pages/Exploitation/FormExploi.jsx'))
@@ -33,13 +34,12 @@ const LoadingFallback = () => <PageLoader />
 
 function App() {
   const {isAuthenticated} = useGlobalContext()
+  const { t } = useLanguage()
 
-    
-  
   return (
     <div className="app-shell">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-green-600 focus:text-white focus:p-2">
-        Aller au contenu principal
+        {t('skipLink')}
       </a>
       {isAuthenticated && <Sidebar />}
       <main id="main-content" className="app-main" role="main">

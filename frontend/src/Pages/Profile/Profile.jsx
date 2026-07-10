@@ -4,12 +4,14 @@ import { FiUser, FiLock, FiLogOut, FiCheckCircle } from 'react-icons/fi';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 import axios from 'axios';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import userAvatar from '../pics/User.png';
 import PageLoader from '../../components/common/PageLoader';
 import './Profile.css';
 
 const Profile = () => {
   const { url, user, logout } = useGlobalContext();
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState('personal');
   const [showPassword, setShowPassword] = useState({ input1: false, input2: false });
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -70,35 +72,35 @@ const Profile = () => {
 
     if (passwordFilled || confirmPasswordFilled) {
       if (!passwordFilled || !confirmPasswordFilled) {
-        const errorMsg = 'Veuillez remplir les deux champs de mot de passe.';
+        const errorMsg = t('profile.fillBoth');
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
         return;
       }
       if (currentUser.password !== confirmPassword) {
-        const errorMsg = 'Les mots de passe ne correspondent pas.';
+        const errorMsg = t('profile.mismatch');
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
         return;
       }
       if (currentUser.password.length < 8) {
-        const errorMsg = 'Le mot de passe doit contenir au moins 8 caractères.';
+        const errorMsg = t('profile.minLength');
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
         return;
       }
       if (!/[A-Za-z]/.test(currentUser.password)) {
-        const errorMsg = 'Le mot de passe doit contenir au moins une lettre.';
+        const errorMsg = t('profile.needLetter');
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
         return;
       }
       if (!/[0-9]/.test(currentUser.password)) {
-        const errorMsg = 'Le mot de passe doit contenir au moins un chiffre.';
+        const errorMsg = t('profile.needDigit');
         setError(errorMsg);
         setErrorMessage(errorMsg);
         setOpenError(true);
@@ -107,7 +109,7 @@ const Profile = () => {
     }
 
     if (!currentUser?.id) {
-      setErrorMessage('Erreur: Données utilisateur invalides.');
+      setErrorMessage(t('profile.invalidUser'));
       setOpenError(true);
       return;
     }
@@ -135,13 +137,13 @@ const Profile = () => {
         },
       });
 
-      setSuccessMessage(`${currentUser.nom} modifié avec succès`);
+      setSuccessMessage(t('profile.updated', { name: currentUser.nom }));
       setOpenSuccess(true);
       setCurrentUser((prev) => ({ ...prev, password: '' }));
       setConfirmPassword('');
     } catch (err) {
       const data = err.response?.data;
-      let errorMsg = "Erreur d'enregistrement.";
+      let errorMsg = t('profile.saveError');
       if (data) {
         if (data.error?.message) errorMsg = data.error.message;
         else if (data.message) errorMsg = typeof data.message === 'string' ? data.message : JSON.stringify(data.message);
@@ -164,12 +166,12 @@ const Profile = () => {
     }
   };
 
-  const displayName = [currentUser.prenom, currentUser.nom].filter(Boolean).join(' ') || 'Utilisateur';
+  const displayName = [currentUser.prenom, currentUser.nom].filter(Boolean).join(' ') || t('profile.userFallback');
   const roleName = user?.role?.nom || '';
 
   const navItems = [
-    { id: 'personal', label: 'Informations personnelles', icon: FiUser },
-    { id: 'password', label: 'Connexion & mot de passe', icon: FiLock },
+    { id: 'personal', label: t('profile.personal'), icon: FiUser },
+    { id: 'password', label: t('profile.security'), icon: FiLock },
   ];
 
   if (!user) {
@@ -212,7 +214,7 @@ const Profile = () => {
                 className="profile-nav-btn profile-nav-btn--logout"
               >
                 <FiLogOut className="profile-nav-icon" />
-                Se déconnecter
+                {t('profile.logout')}
               </button>
             </nav>
           </div>
@@ -222,7 +224,7 @@ const Profile = () => {
           <form onSubmit={handleSubmit} className="profile-form-card">
             <div className="profile-form-inner">
             <h1 className="profile-form-title">
-              {activeTab === 'personal' ? 'Informations personnelles' : 'Connexion & mot de passe'}
+              {activeTab === 'personal' ? t('profile.personal') : t('profile.security')}
             </h1>
 
             {activeTab === 'personal' && (
@@ -230,7 +232,7 @@ const Profile = () => {
                 <div className="profile-field-row">
                   <div className="profile-field-half">
                     <label className="profile-label" htmlFor="nom">
-                      Nom
+                      {t('common.name')}
                     </label>
                     <input
                       id="nom"
@@ -243,7 +245,7 @@ const Profile = () => {
                   </div>
                   <div className="profile-field-half">
                     <label className="profile-label" htmlFor="prenom">
-                      Prénom
+                      {t('common.firstName')}
                     </label>
                     <input
                       id="prenom"
@@ -258,7 +260,7 @@ const Profile = () => {
 
                 <div className="profile-field-group">
                   <label className="profile-label" htmlFor="role">
-                    Rôle
+                    {t('common.role')}
                   </label>
                   <input
                     id="role"
@@ -271,7 +273,7 @@ const Profile = () => {
 
                 <div className="profile-field-group">
                   <label className="profile-label" htmlFor="email">
-                    Email
+                    {t('common.email')}
                   </label>
                   <div className="profile-email-wrap">
                     <input
@@ -284,14 +286,14 @@ const Profile = () => {
                     />
                     <span className="profile-verified-badge">
                       <FiCheckCircle style={{ width: 14, height: 14 }} />
-                      Vérifié
+                      {t('profile.verified')}
                     </span>
                   </div>
                 </div>
 
                 <div className="profile-field-group">
                   <label className="profile-label" htmlFor="phoneNum">
-                    Numéro de téléphone
+                    {t('common.phone')}
                   </label>
                   <input
                     id="phoneNum"
@@ -308,12 +310,12 @@ const Profile = () => {
             {activeTab === 'password' && (
               <>
                 <p className="profile-hint">
-                  Laissez les champs vides si vous ne souhaitez pas modifier votre mot de passe.
+                  {t('profile.passwordHint')}
                 </p>
 
                 <div className="profile-field-group">
                   <label className="profile-label" htmlFor="password">
-                    Nouveau mot de passe
+                    {t('profile.newPassword')}
                   </label>
                   <div className="profile-password-wrap">
                     <input
@@ -330,7 +332,7 @@ const Profile = () => {
                       id="1"
                       onClick={handleClickShowPassword}
                       className="profile-toggle-pw"
-                      aria-label="Afficher le mot de passe"
+                      aria-label={t('common.showPassword')}
                     >
                       {showPassword.input1 ? <HiOutlineEyeOff size={20} /> : <HiOutlineEye size={20} />}
                     </button>
@@ -339,7 +341,7 @@ const Profile = () => {
 
                 <div className="profile-field-group">
                   <label className="profile-label" htmlFor="confirmPassword">
-                    Confirmer le nouveau mot de passe
+                    {t('profile.confirmPassword')}
                   </label>
                   <div className="profile-password-wrap">
                     <input
@@ -355,7 +357,7 @@ const Profile = () => {
                       id="2"
                       onClick={handleClickShowPassword}
                       className="profile-toggle-pw"
-                      aria-label="Afficher la confirmation"
+                      aria-label={t('profile.showConfirm')}
                     >
                       {showPassword.input2 ? <HiOutlineEyeOff size={20} /> : <HiOutlineEye size={20} />}
                     </button>
@@ -367,10 +369,10 @@ const Profile = () => {
 
             <div className="profile-actions">
               <button type="button" onClick={resetForm} className="profile-btn-discard">
-                Annuler les modifications
+                {t('profile.discard')}
               </button>
               <button type="submit" className="profile-btn-save">
-                Sauvegarder
+                {t('profile.save')}
               </button>
             </div>
             </div>

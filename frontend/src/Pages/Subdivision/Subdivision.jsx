@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 import { useGlobalContext } from '../../context';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { Snackbar, Alert } from '@mui/material';
 import localisationIcon from '../pics/Localisation.png';
 import ListPaginationFooter from '../../components/common/ListPaginationFooter';
@@ -13,6 +14,7 @@ import '../../styles/ListPage.css';
 
 const SubdivisionManager = () => {
   const { url } = useGlobalContext();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [editingId, setEditingId] = useState(null);
   const [editedSubdivName, setEditedSubdivName] = useState('');
@@ -55,13 +57,13 @@ const SubdivisionManager = () => {
           },
         }
       );
-      setSuccessMessage('Subdivision modifiée avec succès');
+      setSuccessMessage(t('subdivision.updated'));
       setOpenSuccess(true);
       setEditingId(null);
       setEditedSubdivName('');
       refresh();
     } catch {
-      setErrorMessage('Erreur lors de la mise à jour');
+      setErrorMessage(t('subdivision.updateError'));
       setOpenError(true);
     }
   };
@@ -73,11 +75,11 @@ const SubdivisionManager = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setSuccessMessage('Subdivision supprimée avec succès');
+      setSuccessMessage(t('subdivision.deleted'));
       setOpenSuccess(true);
       setSubdivisions(subdivisions.filter((s) => s.id !== id));
     } catch {
-      setErrorMessage('Erreur lors de la suppression');
+      setErrorMessage(t('subdivision.deleteError'));
       setOpenError(true);
     }
   };
@@ -93,14 +95,14 @@ const SubdivisionManager = () => {
           <div className="list-page-header">
             <div className="list-page-header-left">
               <img src={localisationIcon} alt="" className="list-page-header-icon" width={40} height={40} />
-              <h1 className="list-page-title">Subdivisions</h1>
+              <h1 className="list-page-title">{t('subdivision.title')}</h1>
             </div>
             <button
               type="button"
               className="list-page-btn-add"
               onClick={() => navigate('/ajouter-subdivision')}
             >
-              + Ajouter subdivision
+              {t('subdivision.addBtn')}
             </button>
           </div>
 
@@ -109,7 +111,7 @@ const SubdivisionManager = () => {
               <FiSearch className="list-page-search-icon" />
               <input
                 type="text"
-                placeholder="Rechercher une subdivision"
+                placeholder={t('subdivision.search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="list-page-search-input"
@@ -118,21 +120,21 @@ const SubdivisionManager = () => {
           </div>
 
           <div className="list-page-summary">
-            <p className="list-page-summary-label">Subdivisions enregistrées</p>
-            <p className="list-page-summary-count">{totalCount} subdivision(s)</p>
+            <p className="list-page-summary-label">{t('subdivision.recorded')}</p>
+            <p className="list-page-summary-count">{t('subdivision.count', { n: totalCount })}</p>
           </div>
 
           {filteredSubdivisions.length === 0 && !loading ? (
-            <p className="list-page-empty">Aucune subdivision trouvée.</p>
+            <p className="list-page-empty">{t('subdivision.empty')}</p>
           ) : (
             <div className="list-page-table-wrap">
               <table className="list-page-table">
                 <thead>
                   <tr>
-                    <th className="list-page-th-id">ID</th>
-                    <th>Nom</th>
-                    <th>Wilaya</th>
-                    <th className="list-page-th-actions">Actions</th>
+                    <th className="list-page-th-id">{t('common.id')}</th>
+                    <th>{t('common.name')}</th>
+                    <th>{t('nav.wilaya')}</th>
+                    <th className="list-page-th-actions">{t('common.actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -159,7 +161,7 @@ const SubdivisionManager = () => {
                               onClick={() => handleUpdate(sub.wilaya?.id)}
                               className="list-page-btn-validate"
                             >
-                              Valider
+                              {t('common.confirm')}
                             </button>
                           ) : (
                             <>
@@ -167,7 +169,7 @@ const SubdivisionManager = () => {
                                 type="button"
                                 onClick={() => handleEdit(sub)}
                                 className="list-page-action-btn list-page-action-btn--edit"
-                                aria-label="Modifier"
+                                aria-label={t('common.edit')}
                               >
                                 <FaEdit />
                               </button>
@@ -175,7 +177,7 @@ const SubdivisionManager = () => {
                                 type="button"
                                 onClick={() => handleDelete(sub.id)}
                                 className="list-page-action-btn list-page-action-btn--delete"
-                                aria-label="Supprimer"
+                                aria-label={t('common.delete')}
                               >
                                 <FaTrash />
                               </button>
@@ -201,7 +203,7 @@ const SubdivisionManager = () => {
           />
 
           <div className="list-page-footer">
-            <span className="list-page-footer-total">Total : {totalCount}</span>
+            <span className="list-page-footer-total">{t('common.total')} : {totalCount}</span>
           </div>
         </div>
       </div>
