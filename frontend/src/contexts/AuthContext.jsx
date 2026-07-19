@@ -1,8 +1,7 @@
-import { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
-import { setupApiClient } from "../services/api";
-import authService from "../services/api/authService";
-import API_BASE_URL from "../config/api";
-import axios from "axios";
+import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
+import { setupApiClient } from '../services/api';
+import authService from '../services/api/authService';
+import { clearAccessToken, getAccessToken, setAccessToken } from '../services/api/tokenStorage';
 
 const AuthContext = createContext();
 
@@ -12,100 +11,70 @@ export const AuthProvider = ({ children }) => {
   const [authLoading, setAuthLoading] = useState(true);
 
   const logout = useCallback(async () => {
-    const refreshToken = localStorage.getItem("refreshToken");
-
-    if (refreshToken) {
-      await authService.logout(refreshToken);
-    }
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
+    await authService.logout();
+    clearAccessToken();
     setUser(null);
     setIsAuthenticated(false);
   }, []);
 
-  const refreshAccessToken = useCallback(async () => {
-    const refreshToken = localStorage.getItem("refreshToken");
-    if (!refreshToken) {
-      logout();
-      return null;
-    }
-
-    try {
-      const { access, refresh: newRefresh } = await authService.refreshToken(refreshToken);
-      localStorage.setItem("token", access);
-      if (newRefresh) {
-        localStorage.setItem("refreshToken", newRefresh);
-      }
-      return access;
-    } catch {
-      logout();
-      return null;
-    }
-  }, [logout]);
-
-  const login = useCallback(async (accessToken, refreshToken) => {
-    localStorage.setItem("token", accessToken);
-
-    if (refreshToken) {
-      localStorage.setItem("refreshToken", refreshToken);
-    }
-
-    const userResponse = await axios.get(`${API_BASE_URL}/api/me/`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    setUser(userResponse.data);
+  const loadCurrentUser = useCallback(async () => {
+    const userData = await authService.getCurrentUser();
+    setUser(userData);
     setIsAuthenticated(true);
+    return userData;
+  }, []);
+
+  const login = useCallback(async (accessToken) => {
+    setAccessToken(accessToken);
+    await loadCurrentUser();
+  }, [loadCurrentUser]);
+
+  const refreshAccessToken = useCallback(async () => {
+    try {
+      const session = await authService.refreshSession();
+      setAccessToken(session.accessToken);
+      return session.accessToken;
+    } catch {
+      clearAccessToken();
+      setUser(null);
+      setIsAuthenticated(false);
+      return null;
+    }
   }, []);
 
   useEffect(() => {
-    setupApiClient(refreshAccessToken, logout);
+    setupApiClient(refreshAccessToken, () => {
+      clearAccessToken();
+      setUser(null);
+      setIsAuthenticated(false);
+    });
 
-    const token = localStorage.getItem("token");
-    if (!token) {
-      setAuthLoading(false);
-      return;
-    }
+    let active = true;
 
-    axios
-      .get(`${API_BASE_URL}/api/me/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setUser(response.data);
-        setIsAuthenticated(true);
-      })
-      .catch(async (error) => {
-        if (error.response?.status === 401) {
-          try {
-            const newToken = await refreshAccessToken();
-            if (newToken) {
-              const userResponse = await axios.get(`${API_BASE_URL}/api/me/`, {
-                headers: {
-                  Authorization: `Bearer ${newToken}`,
-                },
-              });
-              setUser(userResponse.data);
-              setIsAuthenticated(true);
-              return;
-            }
-          } catch {
-            logout();
-            return;
-          }
+    const restoreSession = async () => {
+      try {
+        const session = await authService.refreshSession();
+        if (!active) return;
+        setAccessToken(session.accessToken);
+        await loadCurrentUser();
+      } catch {
+        if (!active) return;
+        clearAccessToken();
+        setUser(null);
+        setIsAuthenticated(false);
+      } finally {
+        if (active) {
+          setAuthLoading(false);
         }
+      }
+    };
 
-        logout();
-      })
-      .finally(() => {
-        setAuthLoading(false);
-      });
-  }, [logout, refreshAccessToken]);
+    restoreSession();
+
+    return () => {
+      active = false;
+    };
+  }, [loadCurrentUser, refreshAccessToken]);
 
   const value = useMemo(
     () => ({
@@ -117,6 +86,7 @@ export const AuthProvider = ({ children }) => {
       login,
       logout,
       refreshAccessToken,
+      getAccessToken,
     }),
     [user, isAuthenticated, authLoading, login, logout, refreshAccessToken]
   );
@@ -127,7 +97,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
 };

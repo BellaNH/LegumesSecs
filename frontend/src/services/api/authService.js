@@ -1,65 +1,53 @@
 import apiClient from './client';
 
 const authService = {
-  login: async (email, password) => {
-    const response = await apiClient.post('/api/token/', {
+  register: async ({ email, password, fullName }) => {
+    const response = await apiClient.post('/auth/register', {
       email,
       password,
+      fullName,
     });
-    return response.data;
+    return response.data.data;
   },
 
-  logout: async (refreshToken) => {
+  verifyEmail: async (token) => {
+    await apiClient.post('/auth/verify-email', { token });
+  },
+
+  resendVerificationEmail: async (email) => {
+    await apiClient.post('/auth/resend-verification-email', { email });
+  },
+
+  login: async (email, password) => {
+    const response = await apiClient.post('/auth/login', { email, password });
+    return response.data.data;
+  },
+
+  refreshSession: async () => {
+    const response = await apiClient.post('/auth/refresh');
+    return response.data.data;
+  },
+
+  logout: async () => {
     try {
-      await apiClient.post('/api/logout/', {
-        refresh_token: refreshToken,
-      });
-    } catch (error) {
-      // Continue with logout even if API call fails
+      await apiClient.post('/auth/logout');
+    } catch {
+      // Continue with local logout even if API call fails
     }
   },
 
-  refreshToken: async (refreshToken) => {
-    const response = await apiClient.post('/api/token/refresh/', {
-      refresh: refreshToken,
-    });
-    return response.data;
+  forgotPassword: async (email) => {
+    await apiClient.post('/auth/forgot-password', { email });
+  },
+
+  resetPassword: async (token, password) => {
+    await apiClient.post('/auth/reset-password', { token, password });
   },
 
   getCurrentUser: async () => {
     const response = await apiClient.get('/api/me/');
     return response.data;
   },
-
-  resetPassword: async (email, newPassword) => {
-    const response = await apiClient.post('/api/reset-password/', {
-      email,
-      new_password: newPassword,
-    });
-    return response.data;
-  },
 };
 
 export default authService;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

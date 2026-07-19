@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import Sidebar from "./components/Sidebar"
 import './styles/AppLayout.css'
-import {Routes,Route} from "react-router-dom"
+import {Routes,Route, Navigate} from "react-router-dom"
 import { useGlobalContext } from './context.jsx'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import PageLoader from './components/common/PageLoader'
@@ -16,6 +16,10 @@ const Agriculteurs = lazy(() => import('./Pages/Agriculteur/Agriculteurs.jsx'))
 const Objectifs = lazy(() => import('./Pages/Objectif/Objectifs.jsx'))
 const FormObjectif = lazy(() => import('./Pages/Objectif/FormObjectif.jsx'))
 const Login = lazy(() => import('./Pages/Login.jsx'))
+const Register = lazy(() => import('./Pages/Register.jsx'))
+const ForgotPassword = lazy(() => import('./Pages/ForgotPassword.jsx'))
+const ResetPassword = lazy(() => import('./Pages/ResetPassword.jsx'))
+const VerifyEmail = lazy(() => import('./Pages/VerifyEmail.jsx'))
 const AjouterUtilisateur = lazy(() => import("./Pages/Utilisateur/AjouterUtilisateur.jsx"))
 const Utilisateurs = lazy(() => import("./Pages/Utilisateur/Utilisateurs.jsx"))
 const ModifierUtilisateur = lazy(() => import("./Pages/Utilisateur/ModifierUtilisateur.jsx"))
@@ -33,8 +37,12 @@ const Role = lazy(() => import("./Pages/Role/Role.jsx"))
 const LoadingFallback = () => <PageLoader />
 
 function App() {
-  const {isAuthenticated} = useGlobalContext()
+  const {isAuthenticated, authLoading} = useGlobalContext()
   const { t } = useLanguage()
+
+  if (authLoading) {
+    return <PageLoader />
+  }
 
   return (
     <div className="app-shell">
@@ -45,6 +53,11 @@ function App() {
       <main id="main-content" className="app-main" role="main">
         <Suspense fallback={<LoadingFallback />}>
         <Routes>
+          <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />} />
+          <Route path="/register" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Register />} />
+          <Route path="/forgot-password" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="" element={isAuthenticated ? <DashboardDisplayed /> : <Login />} />
           <Route path="/slider" element={<ProtectedRoute><Slider /></ProtectedRoute>} />
           <Route path="/role" element={<ProtectedRoute><Role /></ProtectedRoute>} />

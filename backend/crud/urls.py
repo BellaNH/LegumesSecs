@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import path, include 
 from api.views import TokenObtainPairView, CurrentUserView  # Use custom views
 urlpatterns = [
+    path('auth/', include('api.auth_urls')),
     path('api/', include('api.urls',namespace='api')),
     path('', include('rest_framework.urls',namespace='rest_framework')),
     path('api/me/', CurrentUserView.as_view(), name='current-user'),

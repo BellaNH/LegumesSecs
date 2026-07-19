@@ -4,6 +4,7 @@ import { UIProvider, useUI } from "./contexts/UIContext";
 import { LanguageProvider } from "./i18n/LanguageContext";
 import { useMemo, useCallback } from "react";
 import API_BASE_URL from "./config/api";
+import { getAccessToken } from "./services/api/tokenStorage";
 
 export const AppProvider = ({ children }) => {
   return (
@@ -32,7 +33,7 @@ export const useGlobalContext = () => {
   }, [data, ui]);
 
   const getAuthHeader = useCallback(() => {
-    const token = localStorage.getItem("token");
+    const token = getAccessToken();
     return {
       headers: {
         Authorization: `Bearer ${token}`,

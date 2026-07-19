@@ -14831,3 +14831,2564 @@ INFO 2026-07-10 19:24:03,981 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4
 INFO 2026-07-10 19:24:18,538 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
 INFO 2026-07-10 19:24:18,548 basehttp "OPTIONS /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 0
 INFO 2026-07-10 19:24:24,247 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325
+INFO 2026-07-10 20:02:06,437 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:02:07,351 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:02:07,361 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:02:07,373 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:02:07,396 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:02:09,020 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:02:09,534 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:02:10,349 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:02:11,028 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:02:11,795 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:02:11,795 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:02:12,156 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-10 20:02:12,466 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:02:12,718 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:02:13,030 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:02:13,284 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:02:13,539 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:02:13,641 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:02:14,796 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:02:15,179 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:02:15,329 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:02:15,535 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:02:15,535 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:02:15,949 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:02:16,204 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:02:16,421 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:02:17,638 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:02:18,286 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:02:18,614 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-10 20:02:18,735 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:02:18,824 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-10 20:02:19,082 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-10 20:02:19,219 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:02:19,321 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:02:19,764 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:02:19,926 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:02:20,087 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:02:25,414 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-10 20:02:25,469 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-10 20:02:27,245 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:02:34,582 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+INFO 2026-07-10 20:02:40,346 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325
+INFO 2026-07-10 20:02:48,661 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+INFO 2026-07-10 20:02:53,805 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325
+INFO 2026-07-10 20:04:42,414 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:04:43,673 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:04:43,682 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:04:43,842 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:04:44,042 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:04:44,063 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:04:44,182 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:04:44,499 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:04:44,531 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:04:44,694 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:04:45,011 basehttp "GET /api/role/ HTTP/1.1" 200 335
+ERROR 2026-07-10 20:05:08,816 log Internal Server Error: /api/commune/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'wilaya'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 525, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 437, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 104, in get_attribute
+    instance = getattr(instance, attr)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:05:08,829 log Internal Server Error: /api/agriculteur/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:05:08,853 log Internal Server Error: /api/subdivision/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'wilaya'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 525, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 437, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 104, in get_attribute
+    instance = getattr(instance, attr)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:05:08,885 log Internal Server Error: /api/objectif/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'wilaya'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 525, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 437, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 104, in get_attribute
+    instance = getattr(instance, attr)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:05:08,885 log Internal Server Error: /api/exploitation/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 40, in list
+    page = self.paginate_queryset(queryset)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\generics.py", line 175, in paginate_queryset
+    return self.paginator.paginate_queryset(queryset, self.request, view=self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\pagination.py", line 222, in paginate_queryset
+    return list(self.page)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\paginator.py", line 191, in __len__
+    return len(self.object_list)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:05:08,994 basehttp "GET /api/commune/ HTTP/1.1" 500 209598
+ERROR 2026-07-10 20:05:09,035 basehttp "GET /api/agriculteur/ HTTP/1.1" 500 189215
+ERROR 2026-07-10 20:05:09,065 basehttp "GET /api/subdivision/ HTTP/1.1" 500 205063
+ERROR 2026-07-10 20:05:09,086 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 500 205925
+ERROR 2026-07-10 20:05:09,101 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 500 171601
+INFO 2026-07-10 20:06:06,944 basehttp - Broken pipe from ('127.0.0.1', 51787)
+INFO 2026-07-10 20:06:06,945 basehttp - Broken pipe from ('127.0.0.1', 51786)
+ERROR 2026-07-10 20:06:28,468 log Internal Server Error: /api/sup_lab_sin_prod/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\api\views.py", line 716, in get
+    if user.role.nom.lower() == "agent_dsa":
+       ^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+INFO 2026-07-10 20:06:28,484 basehttp - Broken pipe from ('127.0.0.1', 51785)
+INFO 2026-07-10 20:06:32,662 basehttp - Broken pipe from ('127.0.0.1', 52102)
+INFO 2026-07-10 20:06:37,293 basehttp - Broken pipe from ('127.0.0.1', 52104)
+ERROR 2026-07-10 20:06:37,758 log Internal Server Error: /api/active_this_year/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+INFO 2026-07-10 20:06:37,775 basehttp - Broken pipe from ('127.0.0.1', 51784)
+ERROR 2026-07-10 20:06:38,035 log Internal Server Error: /api/yearly_production/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+INFO 2026-07-10 20:06:38,058 basehttp - Broken pipe from ('127.0.0.1', 51788)
+INFO 2026-07-10 20:06:50,376 basehttp - Broken pipe from ('127.0.0.1', 52108)
+ERROR 2026-07-10 20:06:57,260 log Internal Server Error: /api/me/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:06:57,279 basehttp "GET /api/me/ HTTP/1.1" 500 188353
+INFO 2026-07-10 20:06:57,286 basehttp "OPTIONS /api/logout/ HTTP/1.1" 200 0
+ERROR 2026-07-10 20:06:57,390 log Internal Server Error: /api/espece/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 40, in list
+    page = self.paginate_queryset(queryset)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\generics.py", line 175, in paginate_queryset
+    return self.paginator.paginate_queryset(queryset, self.request, view=self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\pagination.py", line 222, in paginate_queryset
+    return list(self.page)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\paginator.py", line 191, in __len__
+    return len(self.object_list)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+INFO 2026-07-10 20:06:57,408 basehttp - Broken pipe from ('127.0.0.1', 52103)
+ERROR 2026-07-10 20:07:41,434 log Internal Server Error: /api/token/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\api\views.py", line 320, in post
+    response = super().post(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\LegumeSec\LegumeSec\backend\api\serializers.py", line 374, in validate
+    user = authenticate(email=email, password=password)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\debug.py", line 75, in sensitive_variables_wrapper
+    return func(*func_args, **func_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 79, in authenticate
+    user = backend.authenticate(request, **credentials)
+  File "C:\LegumeSec\LegumeSec\backend\api\authenticate.py", line 10, in authenticate
+    user = User.objects.get(email=email)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+INFO 2026-07-10 20:07:41,456 basehttp - Broken pipe from ('127.0.0.1', 52106)
+INFO 2026-07-10 20:07:46,089 basehttp "POST /api/token/ HTTP/1.1" 200 554
+ERROR 2026-07-10 20:07:46,200 log Internal Server Error: /api/me/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:07:46,249 basehttp "GET /api/me/ HTTP/1.1" 500 230714
+INFO 2026-07-10 20:07:47,686 basehttp "POST /api/logout/ HTTP/1.1" 200 36
+INFO 2026-07-10 20:07:57,532 basehttp "GET /api/me/ HTTP/1.1" 200 172
+WARNING 2026-07-10 20:07:57,950 log Unauthorized: /api/active_this_year/
+WARNING 2026-07-10 20:07:57,950 log Unauthorized: /api/superficie_espece_comparaision/
+WARNING 2026-07-10 20:07:57,953 log Unauthorized: /api/yearly_production/
+WARNING 2026-07-10 20:07:57,954 basehttp "GET /api/active_this_year/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:57,954 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:57,957 log Unauthorized: /api/sup_lab_sin_prod/
+WARNING 2026-07-10 20:07:57,960 log Unauthorized: /api/prev_vs_prod/
+WARNING 2026-07-10 20:07:57,963 log Unauthorized: /api/wilaya/
+WARNING 2026-07-10 20:07:57,965 log Unauthorized: /api/top_wilayas/
+WARNING 2026-07-10 20:07:57,966 basehttp "GET /api/yearly_production/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:57,967 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:57,970 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:57,971 basehttp "GET /api/wilaya/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:57,974 basehttp "GET /api/top_wilayas/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:57,978 log Unauthorized: /api/subdivision/
+WARNING 2026-07-10 20:07:57,997 log Unauthorized: /api/commune/
+WARNING 2026-07-10 20:07:57,999 log Unauthorized: /api/espece/
+WARNING 2026-07-10 20:07:58,004 log Unauthorized: /api/role/
+WARNING 2026-07-10 20:07:58,006 log Unauthorized: /api/objectif/
+WARNING 2026-07-10 20:07:58,007 basehttp "GET /api/subdivision/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,009 basehttp "GET /api/commune/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,010 basehttp "GET /api/espece/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,011 basehttp "GET /api/role/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,012 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,015 log Unauthorized: /api/agriculteur/
+WARNING 2026-07-10 20:07:58,018 log Unauthorized: /api/exploitation/
+WARNING 2026-07-10 20:07:58,020 log Unauthorized: /api/exploitation-parcelles/
+WARNING 2026-07-10 20:07:58,023 log Unauthorized: /api/active_this_year/
+WARNING 2026-07-10 20:07:58,026 log Unauthorized: /api/superficie_espece_comparaision/
+WARNING 2026-07-10 20:07:58,028 basehttp "GET /api/agriculteur/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,031 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,031 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,032 basehttp "GET /api/active_this_year/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,035 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,043 log Unauthorized: /api/yearly_production/
+WARNING 2026-07-10 20:07:58,046 log Unauthorized: /api/sup_lab_sin_prod/
+WARNING 2026-07-10 20:07:58,049 log Unauthorized: /api/prev_vs_prod/
+WARNING 2026-07-10 20:07:58,053 log Unauthorized: /api/top_wilayas/
+WARNING 2026-07-10 20:07:58,056 basehttp "GET /api/yearly_production/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,057 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,059 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,062 basehttp "GET /api/top_wilayas/ HTTP/1.1" 401 172
+INFO 2026-07-10 20:07:58,323 basehttp "GET /api/me/ HTTP/1.1" 200 172
+WARNING 2026-07-10 20:07:58,387 log Unauthorized: /api/active_this_year/
+WARNING 2026-07-10 20:07:58,389 log Unauthorized: /api/superficie_espece_comparaision/
+WARNING 2026-07-10 20:07:58,391 log Unauthorized: /api/yearly_production/
+WARNING 2026-07-10 20:07:58,396 log Unauthorized: /api/sup_lab_sin_prod/
+WARNING 2026-07-10 20:07:58,397 basehttp "GET /api/active_this_year/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,399 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,401 basehttp "GET /api/yearly_production/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,402 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,407 log Unauthorized: /api/top_wilayas/
+WARNING 2026-07-10 20:07:58,410 log Unauthorized: /api/prev_vs_prod/
+WARNING 2026-07-10 20:07:58,411 basehttp "GET /api/top_wilayas/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,411 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,419 log Unauthorized: /api/active_this_year/
+WARNING 2026-07-10 20:07:58,421 log Unauthorized: /api/superficie_espece_comparaision/
+WARNING 2026-07-10 20:07:58,422 basehttp "GET /api/active_this_year/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,423 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,429 log Unauthorized: /api/yearly_production/
+WARNING 2026-07-10 20:07:58,432 log Unauthorized: /api/sup_lab_sin_prod/
+WARNING 2026-07-10 20:07:58,434 basehttp "GET /api/yearly_production/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,436 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,443 log Unauthorized: /api/top_wilayas/
+WARNING 2026-07-10 20:07:58,445 log Unauthorized: /api/prev_vs_prod/
+WARNING 2026-07-10 20:07:58,448 log Unauthorized: /api/wilaya/
+WARNING 2026-07-10 20:07:58,448 basehttp "GET /api/top_wilayas/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,449 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 401 172
+WARNING 2026-07-10 20:07:58,450 basehttp "GET /api/wilaya/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,456 log Unauthorized: /api/subdivision/
+WARNING 2026-07-10 20:07:58,458 log Unauthorized: /api/commune/
+WARNING 2026-07-10 20:07:58,461 log Unauthorized: /api/espece/
+WARNING 2026-07-10 20:07:58,464 log Unauthorized: /api/role/
+WARNING 2026-07-10 20:07:58,466 log Unauthorized: /api/objectif/
+WARNING 2026-07-10 20:07:58,467 basehttp "GET /api/subdivision/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,469 log Unauthorized: /api/agriculteur/
+WARNING 2026-07-10 20:07:58,470 basehttp "GET /api/commune/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,470 basehttp "GET /api/espece/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,471 basehttp "GET /api/role/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,472 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,474 log Unauthorized: /api/exploitation/
+WARNING 2026-07-10 20:07:58,475 basehttp "GET /api/agriculteur/ HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,482 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 401 58
+WARNING 2026-07-10 20:07:58,489 log Unauthorized: /api/exploitation-parcelles/
+WARNING 2026-07-10 20:07:58,490 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 401 58
+INFO 2026-07-10 20:08:23,188 basehttp "POST /api/token/ HTTP/1.1" 200 554
+INFO 2026-07-10 20:08:32,540 basehttp "POST /api/token/ HTTP/1.1" 200 554
+ERROR 2026-07-10 20:08:41,164 log Internal Server Error: /api/me/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+INFO 2026-07-10 20:08:41,190 basehttp - Broken pipe from ('127.0.0.1', 52107)
+ERROR 2026-07-10 20:08:41,691 log Internal Server Error: /api/exploitation-parcelles/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+SSL SYSCALL error: Connection reset by peer (0x00002746/10054)
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+SSL SYSCALL error: Connection reset by peer (0x00002746/10054)
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.71.225.44), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "aws-1-eu-central-1.pooler.supabase.com" (3.65.151.229), port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+INFO 2026-07-10 20:08:41,721 basehttp - Broken pipe from ('127.0.0.1', 51776)
+INFO 2026-07-10 20:08:45,363 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:08:48,594 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:08:51,245 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:08:51,267 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:08:51,296 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:08:52,332 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:08:56,143 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:08:56,242 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:08:56,987 basehttp "GET /api/role/ HTTP/1.1" 200 335
+ERROR 2026-07-10 20:09:05,704 log Internal Server Error: /api/active_this_year/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:09:05,755 basehttp "GET /api/active_this_year/ HTTP/1.1" 500 229759
+ERROR 2026-07-10 20:09:11,881 log Internal Server Error: /api/subdivision/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'wilaya'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 525, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 437, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 104, in get_attribute
+    instance = getattr(instance, attr)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:09:11,910 basehttp "GET /api/subdivision/ HTTP/1.1" 500 205111
+INFO 2026-07-10 20:09:12,090 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:09:12,826 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+ERROR 2026-07-10 20:09:12,971 log Internal Server Error: /api/prev_vs_prod/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-eu-central-1.pooler.supabase.com" (18.196.8.182), port 5432 failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:09:13,002 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 500 229689
+INFO 2026-07-10 20:09:13,497 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:09:13,603 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:09:14,268 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:09:14,330 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+ERROR 2026-07-10 20:09:16,481 log Internal Server Error: /api/objectif/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'wilaya'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 525, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 437, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 104, in get_attribute
+    instance = getattr(instance, attr)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:09:16,509 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 500 205937
+INFO 2026-07-10 20:09:19,040 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:09:19,170 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:09:19,738 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:09:19,759 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:09:19,875 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:09:25,098 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:09:25,120 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:09:25,406 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:09:25,406 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:09:25,642 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:09:25,774 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:09:25,774 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:09:31,815 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:09:42,787 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:09:42,802 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:09:52,881 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:09:52,905 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:09:53,173 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-10 20:09:54,056 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:09:54,418 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:09:59,672 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:10:00,144 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:10:00,853 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:10:01,009 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:10:01,050 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:10:01,375 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:10:01,446 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:10:10,502 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:10:11,117 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:10:11,553 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-10 20:10:11,733 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-10 20:10:12,406 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+ERROR 2026-07-10 20:10:31,748 log Internal Server Error: /api/exploitation-parcelles/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'subdivision'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 525, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 437, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 104, in get_attribute
+    instance = getattr(instance, attr)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:10:31,779 log Internal Server Error: /api/exploitation-parcelles/
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 239, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'commune'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\rest_framework\fields.py", line 1870, in to_representation
+    return method(value)
+  File "C:\LegumeSec\LegumeSec\backend\api\serializers.py", line 644, in get_commune
+    return {"id": exploitation.commune.id, "nom": exploitation.commune.nom}
+                  ^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 257, in __get__
+    rel_obj = self.get_object(instance)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 220, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\LegumeSec\LegumeSec\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+ERROR 2026-07-10 20:10:31,808 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 500 213508
+ERROR 2026-07-10 20:10:31,860 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 500 214736
+INFO 2026-07-10 20:10:49,094 basehttp - Broken pipe from ('127.0.0.1', 52105)
+INFO 2026-07-10 20:15:40,680 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:15:41,230 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:15:41,303 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:15:41,308 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:15:41,326 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:15:42,611 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:15:43,389 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:15:44,047 basehttp - Broken pipe from ('127.0.0.1', 52706)
+INFO 2026-07-10 20:15:44,048 basehttp - Broken pipe from ('127.0.0.1', 52705)
+INFO 2026-07-10 20:15:44,069 basehttp - Broken pipe from ('127.0.0.1', 52726)
+INFO 2026-07-10 20:15:45,652 basehttp - Broken pipe from ('127.0.0.1', 52702)
+INFO 2026-07-10 20:15:46,981 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:15:47,420 basehttp - Broken pipe from ('127.0.0.1', 52707)
+INFO 2026-07-10 20:15:47,852 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:15:48,577 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:15:48,577 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:15:48,945 basehttp - Broken pipe from ('127.0.0.1', 52709)
+INFO 2026-07-10 20:15:50,630 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:16:09,082 basehttp - Broken pipe from ('127.0.0.1', 52736)
+INFO 2026-07-10 20:16:09,224 basehttp - Broken pipe from ('127.0.0.1', 52732)
+INFO 2026-07-10 20:16:09,624 basehttp - Broken pipe from ('127.0.0.1', 52734)
+INFO 2026-07-10 20:16:10,268 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:16:11,522 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:16:11,726 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:16:11,767 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:16:11,780 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:16:11,916 basehttp - Broken pipe from ('127.0.0.1', 52735)
+INFO 2026-07-10 20:16:13,092 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:16:13,905 basehttp - Broken pipe from ('127.0.0.1', 52729)
+INFO 2026-07-10 20:16:14,239 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:16:14,723 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:16:15,101 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:16:15,402 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-10 20:16:15,807 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:16:15,911 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:16:16,250 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:16:16,758 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:16:16,758 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:16:17,007 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:16:17,426 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:16:17,621 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:16:17,876 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:16:18,695 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:16:18,926 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:16:20,044 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:16:20,714 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:16:20,838 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:16:21,173 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:16:21,591 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-10 20:16:22,354 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-10 20:16:22,405 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:16:22,811 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:16:23,035 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-10 20:16:23,696 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:16:24,616 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:16:24,949 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:16:26,738 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:16:28,358 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-10 20:16:28,439 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-10 20:16:28,614 basehttp - Broken pipe from ('127.0.0.1', 52708)
+INFO 2026-07-10 20:16:29,926 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:16:31,699 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:16:32,040 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:16:33,667 basehttp - Broken pipe from ('127.0.0.1', 52733)
+INFO 2026-07-10 20:16:36,643 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:16:38,157 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+INFO 2026-07-10 20:16:44,213 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325
+INFO 2026-07-10 20:16:55,201 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+INFO 2026-07-10 20:17:01,460 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325
+INFO 2026-07-10 20:17:14,765 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:17:16,294 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-10 20:17:17,216 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:17:17,260 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:17:17,469 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:17:19,104 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:17:19,913 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:17:20,470 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:17:20,525 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-10 20:17:20,543 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:17:21,156 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:17:21,407 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:17:21,407 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:17:22,167 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:17:22,428 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-10 20:17:22,440 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-10 20:17:22,924 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:17:22,982 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-10 20:17:23,092 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-10 20:17:23,956 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-10 20:17:25,862 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-10 20:17:26,369 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-10 20:17:27,235 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:17:27,686 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-10 20:17:27,767 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-10 20:17:28,349 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-10 20:17:28,358 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-10 20:17:30,359 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-10 20:17:32,909 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-10 20:17:33,975 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-10 20:17:34,610 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-10 20:17:34,922 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-10 20:17:45,323 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+INFO 2026-07-10 20:17:48,922 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-10 20:17:49,346 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-10 20:17:56,221 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325
+INFO 2026-07-10 20:18:04,243 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+INFO 2026-07-10 20:18:10,710 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325
+INFO 2026-07-19 13:09:14,597 autoreload Watching for file changes with StatReloader
+INFO 2026-07-19 13:09:54,686 autoreload C:\LegumeSec\LegumeSec\backend\api\models.py changed, reloading.
+INFO 2026-07-19 13:09:59,890 autoreload Watching for file changes with StatReloader
+INFO 2026-07-19 13:10:59,495 autoreload C:\LegumeSec\LegumeSec\backend\crud\urls.py changed, reloading.
+INFO 2026-07-19 13:11:02,960 autoreload Watching for file changes with StatReloader
+INFO 2026-07-19 13:11:15,387 autoreload C:\LegumeSec\LegumeSec\backend\api\services\auth_email.py changed, reloading.
+INFO 2026-07-19 13:11:19,468 autoreload Watching for file changes with StatReloader
+WARNING 2026-07-19 13:11:51,339 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:11:51,347 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:11:51,349 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+WARNING 2026-07-19 13:11:51,351 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+WARNING 2026-07-19 13:12:51,627 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:12:51,628 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:12:51,631 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+WARNING 2026-07-19 13:12:51,635 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+WARNING 2026-07-19 13:13:24,479 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:13:24,481 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:13:24,483 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+WARNING 2026-07-19 13:13:24,484 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+WARNING 2026-07-19 13:13:26,785 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:13:26,824 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+WARNING 2026-07-19 13:13:26,788 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:13:26,906 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+INFO 2026-07-19 13:34:55,490 basehttp "OPTIONS /auth/refresh HTTP/1.1" 200 0
+INFO 2026-07-19 13:34:55,529 basehttp "OPTIONS /auth/refresh HTTP/1.1" 200 0
+WARNING 2026-07-19 13:34:56,417 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:34:56,419 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:34:56,421 basehttp "POST /auth/refresh HTTP/1.1" 401 172
+WARNING 2026-07-19 13:34:56,423 basehttp "POST /auth/refresh HTTP/1.1" 401 172
+INFO 2026-07-19 13:35:07,660 basehttp "OPTIONS /auth/login HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:10,203 basehttp "POST /auth/login HTTP/1.1" 200 491
+INFO 2026-07-19 13:35:10,219 basehttp "OPTIONS /api/me/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,134 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-19 13:35:11,246 basehttp "OPTIONS /api/wilaya/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,248 basehttp "OPTIONS /api/subdivision/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,275 basehttp "OPTIONS /api/commune/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,278 basehttp "OPTIONS /api/espece/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,283 basehttp "OPTIONS /api/role/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,289 basehttp "OPTIONS /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,289 basehttp "OPTIONS /api/objectif/?page=1 HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,297 basehttp "OPTIONS /api/agriculteur/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,297 basehttp "OPTIONS /api/exploitation/?page=1 HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:11,874 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-19 13:35:11,886 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-19 13:35:12,052 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-19 13:35:13,207 basehttp "OPTIONS /api/superficie_espece_comparaision/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,210 basehttp "OPTIONS /api/sup_lab_sin_prod/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,210 basehttp "OPTIONS /api/yearly_production/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,210 basehttp "OPTIONS /api/active_this_year/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,211 basehttp "OPTIONS /api/prev_vs_prod/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,211 basehttp "OPTIONS /api/top_wilayas/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,215 basehttp "OPTIONS /api/active_this_year/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,220 basehttp "OPTIONS /api/superficie_espece_comparaision/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,223 basehttp "OPTIONS /api/sup_lab_sin_prod/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,223 basehttp "OPTIONS /api/top_wilayas/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,223 basehttp "OPTIONS /api/yearly_production/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:13,235 basehttp "OPTIONS /api/prev_vs_prod/ HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:14,628 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-19 13:35:15,177 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-19 13:35:15,181 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-19 13:35:15,182 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-19 13:35:15,182 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-19 13:35:15,556 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-19 13:35:15,607 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-19 13:35:16,005 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-19 13:35:16,049 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-19 13:35:16,065 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-19 13:35:16,204 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-19 13:35:16,379 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-19 13:35:16,810 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-19 13:35:16,820 basehttp "OPTIONS /api/objectif/?page=2 HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:17,205 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-19 13:35:17,520 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-19 13:35:19,468 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-19 13:35:21,605 basehttp "OPTIONS /auth/logout HTTP/1.1" 200 0
+INFO 2026-07-19 13:35:24,948 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-19 13:35:25,335 basehttp "POST /auth/logout HTTP/1.1" 200 53
+INFO 2026-07-19 13:35:25,550 basehttp "POST /auth/logout HTTP/1.1" 200 53
+INFO 2026-07-19 13:35:36,874 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+WARNING 2026-07-19 13:35:36,890 log Unauthorized: /api/exploitation/
+WARNING 2026-07-19 13:35:36,891 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 401 58
+WARNING 2026-07-19 13:35:36,896 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:35:36,897 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+INFO 2026-07-19 13:35:40,955 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+WARNING 2026-07-19 13:35:40,965 log Unauthorized: /api/exploitation-parcelles/
+WARNING 2026-07-19 13:35:40,967 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 401 58
+WARNING 2026-07-19 13:35:40,975 log Unauthorized: /auth/refresh
+WARNING 2026-07-19 13:35:40,977 basehttp "POST /auth/refresh HTTP/1.1" 401 96
+INFO 2026-07-19 13:36:05,821 basehttp "POST /auth/login HTTP/1.1" 200 491
+INFO 2026-07-19 13:36:06,362 basehttp "GET /api/me/ HTTP/1.1" 200 172
+INFO 2026-07-19 13:36:08,122 basehttp "GET /api/wilaya/ HTTP/1.1" 200 1434
+INFO 2026-07-19 13:36:08,155 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-19 13:36:08,156 basehttp "GET /api/espece/ HTTP/1.1" 200 610
+INFO 2026-07-19 13:36:08,194 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-19 13:36:08,645 basehttp "GET /api/active_this_year/ HTTP/1.1" 200 11
+INFO 2026-07-19 13:36:08,665 basehttp "GET /api/prev_vs_prod/ HTTP/1.1" 200 512
+INFO 2026-07-19 13:36:09,284 basehttp "GET /api/subdivision/ HTTP/1.1" 200 2992
+INFO 2026-07-19 13:36:09,639 basehttp "GET /api/role/ HTTP/1.1" 200 335
+INFO 2026-07-19 13:36:09,640 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-19 13:36:09,641 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-19 13:36:09,728 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-19 13:36:10,110 basehttp "GET /api/yearly_production/ HTTP/1.1" 200 2951
+INFO 2026-07-19 13:36:10,676 basehttp "GET /api/sup_lab_sin_prod/ HTTP/1.1" 200 758
+INFO 2026-07-19 13:36:14,606 basehttp "GET /api/commune/ HTTP/1.1" 200 4610
+INFO 2026-07-19 13:36:14,798 basehttp "GET /api/exploitation/?page=1 HTTP/1.1" 200 8628
+INFO 2026-07-19 13:36:14,810 basehttp "OPTIONS /api/exploitation/?page=2 HTTP/1.1" 200 0
+INFO 2026-07-19 13:36:16,078 basehttp "GET /api/exploitation/?page=2 HTTP/1.1" 200 2318
+INFO 2026-07-19 13:36:27,001 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-19 13:36:28,031 basehttp "GET /api/superficie_espece_comparaision/ HTTP/1.1" 200 1249
+INFO 2026-07-19 13:36:31,135 basehttp "GET /api/top_wilayas/ HTTP/1.1" 200 1207
+INFO 2026-07-19 13:36:31,707 basehttp "GET /api/objectif/?page=1 HTTP/1.1" 200 5107
+INFO 2026-07-19 13:36:34,236 basehttp "OPTIONS /api/objectif/?page=1&page_size=20 HTTP/1.1" 200 0
+INFO 2026-07-19 13:36:34,236 basehttp "OPTIONS /api/objectif/?page=1&page_size=20 HTTP/1.1" 200 0
+INFO 2026-07-19 13:36:36,077 basehttp "GET /api/objectif/?page=2 HTTP/1.1" 200 4628
+INFO 2026-07-19 13:36:37,232 basehttp "GET /api/exploitation-parcelles/?page=1 HTTP/1.1" 200 37514
+INFO 2026-07-19 13:36:37,237 basehttp "OPTIONS /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 0
+INFO 2026-07-19 13:36:37,519 basehttp "GET /api/agriculteur/ HTTP/1.1" 200 2533
+INFO 2026-07-19 13:36:37,970 basehttp "GET /api/objectif/?page=1&page_size=20 HTTP/1.1" 200 5120
+INFO 2026-07-19 13:36:40,759 basehttp "GET /api/objectif/?page=1&page_size=20 HTTP/1.1" 200 5120
+INFO 2026-07-19 13:36:42,543 basehttp "GET /api/exploitation-parcelles/?page=2 HTTP/1.1" 200 10325

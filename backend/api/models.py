@@ -121,6 +121,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin,SoftDeleteBaseModel):
     email = models.EmailField(unique=True,null=False, blank=False)
     phoneNum = models.IntegerField(null=True, blank=True, unique=True)
     createDate = models.DateTimeField(default=timezone.now)
+    email_verified = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
@@ -132,7 +133,53 @@ class CustomUser(AbstractBaseUser,PermissionsMixin,SoftDeleteBaseModel):
     class Meta:
         ordering=["id"]
     def __str__(self):
-        return f"{self.nom} {self.prenom} - {self.email}"     
+        return f"{self.nom} {self.prenom} - {self.email}"
+
+
+class EmailVerificationToken(models.Model):
+    user = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name="email_verification_tokens"
+    )
+    token_hash = models.CharField(max_length=64, unique=True)
+    expires_at = models.DateTimeField()
+    used = models.BooleanField(default=False)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["user"]),
+            models.Index(fields=["expires_at"]),
+        ]
+
+
+class AuthRefreshToken(models.Model):
+    user = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name="auth_refresh_tokens"
+    )
+    token_hash = models.CharField(max_length=64, unique=True)
+    expires_at = models.DateTimeField()
+    revoked = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["user"]),
+            models.Index(fields=["expires_at"]),
+        ]
+
+
+class PasswordResetToken(models.Model):
+    user = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name="password_reset_tokens"
+    )
+    token_hash = models.CharField(max_length=64, unique=True)
+    expires_at = models.DateTimeField()
+    used = models.BooleanField(default=False)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["user"]),
+            models.Index(fields=["expires_at"]),
+        ]
 
 
 class Permissions(SoftDeleteBaseModel):

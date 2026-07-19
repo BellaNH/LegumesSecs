@@ -15390,3 +15390,167 @@ INFO 2026-06-29 19:47:04,700 middleware API Request: GET /api/exploitation/
 INFO 2026-06-29 19:47:10,896 middleware API Request: GET /api/exploitation-parcelles/
 INFO 2026-06-29 19:47:20,753 middleware API Request: GET /api/exploitation-parcelles/
 INFO 2026-06-29 19:47:42,593 middleware API Request: GET /api/exploitation-parcelles/
+INFO 2026-07-10 19:23:51,831 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzExNDMwLCJpYXQiOjE3ODM3MDc4MzAsImp0aSI6IjcyNTUxMjAwYTM1NjQxMGE5N2MyMzdlZjYwZjFjYTVhIiwidXNlcl9pZCI6MX0.soPOpy9Mzx4pAYsHgbn2Z_mMNTNKrqo9jPLwAtT0Na8', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 19:23:51,848 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 19:23:51,849 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 19:23:51,850 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 19:23:51,850 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 19:23:51,851 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 19:23:52,139 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 19:23:52,140 views CurrentUserView - User role: admin
+INFO 2026-07-10 19:23:52,141 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:02:06,083 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzExNDMwLCJpYXQiOjE3ODM3MDc4MzAsImp0aSI6IjcyNTUxMjAwYTM1NjQxMGE5N2MyMzdlZjYwZjFjYTVhIiwidXNlcl9pZCI6MX0.soPOpy9Mzx4pAYsHgbn2Z_mMNTNKrqo9jPLwAtT0Na8', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:02:06,189 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:02:06,190 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:02:06,191 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:02:06,192 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:02:06,193 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:02:06,411 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:02:06,419 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:02:06,429 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:02:07,255 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzExNDMwLCJpYXQiOjE3ODM3MDc4MzAsImp0aSI6IjcyNTUxMjAwYTM1NjQxMGE5N2MyMzdlZjYwZjFjYTVhIiwidXNlcl9pZCI6MX0.soPOpy9Mzx4pAYsHgbn2Z_mMNTNKrqo9jPLwAtT0Na8', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:02:07,258 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:02:07,258 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:02:07,258 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:02:07,259 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:02:07,259 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:02:07,357 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:02:07,359 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:02:07,360 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:04:42,014 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzExNDMwLCJpYXQiOjE3ODM3MDc4MzAsImp0aSI6IjcyNTUxMjAwYTM1NjQxMGE5N2MyMzdlZjYwZjFjYTVhIiwidXNlcl9pZCI6MX0.soPOpy9Mzx4pAYsHgbn2Z_mMNTNKrqo9jPLwAtT0Na8', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:04:42,019 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:04:42,020 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:04:42,021 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:04:42,021 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:04:42,022 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:04:42,408 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:04:42,410 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:04:42,412 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:04:43,037 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzExNDMwLCJpYXQiOjE3ODM3MDc4MzAsImp0aSI6IjcyNTUxMjAwYTM1NjQxMGE5N2MyMzdlZjYwZjFjYTVhIiwidXNlcl9pZCI6MX0.soPOpy9Mzx4pAYsHgbn2Z_mMNTNKrqo9jPLwAtT0Na8', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:04:43,040 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:04:43,041 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:04:43,041 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:04:43,041 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:04:43,042 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:04:43,674 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:04:43,679 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:04:43,680 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:06:50,260 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzExNDMwLCJpYXQiOjE3ODM3MDc4MzAsImp0aSI6IjcyNTUxMjAwYTM1NjQxMGE5N2MyMzdlZjYwZjFjYTVhIiwidXNlcl9pZCI6MX0.soPOpy9Mzx4pAYsHgbn2Z_mMNTNKrqo9jPLwAtT0Na8', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:06:50,262 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:06:50,262 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:06:50,263 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:06:50,263 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:06:50,264 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:06:50,371 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:06:50,373 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:06:50,374 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:07:47,611 views Refresh token blacklisted successfully
+INFO 2026-07-10 20:07:57,371 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzExNDMwLCJpYXQiOjE3ODM3MDc4MzAsImp0aSI6IjcyNTUxMjAwYTM1NjQxMGE5N2MyMzdlZjYwZjFjYTVhIiwidXNlcl9pZCI6MX0.soPOpy9Mzx4pAYsHgbn2Z_mMNTNKrqo9jPLwAtT0Na8', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:07:57,409 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:07:57,412 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:07:57,413 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:07:57,414 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:07:57,415 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:07:57,527 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:07:57,529 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:07:57,531 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:07:58,204 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"iOS"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MDYwLCJpYXQiOjE3ODM3MTA0NjAsImp0aSI6ImQ2NGJjMWY4OTFhOTRkNjk4NjNhZWExZDI4NDMwZThkIiwidXNlcl9pZCI6MX0.zBTI5J62eMABsRoiv8wF3ZIE5DLBiFOav0r4LLX_LQM', 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?1', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:07:58,206 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:07:58,207 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:07:58,207 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:07:58,208 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:07:58,208 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:07:58,320 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:07:58,321 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:07:58,322 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:08:45,252 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"iOS"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTAyLCJpYXQiOjE3ODM3MTA1MDIsImp0aSI6IjQxM2E1ZGU5MTBjZDQzMzY5MDNlNWM5NjRhZjcyNmQyIiwidXNlcl9pZCI6MX0.eWXHCXGYEc8bgk9J_DhgGf6Af96XLL4INhXGFGXyYdU', 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?1', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:08:45,256 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:08:45,257 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:08:45,259 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:08:45,260 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:08:45,261 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:08:45,360 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:08:45,362 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:08:45,362 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:08:45,997 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"iOS"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?1', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:08:46,032 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:08:46,033 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:08:46,035 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:08:46,035 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:08:46,036 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:08:48,559 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:08:48,565 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:08:48,572 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:10:49,092 views Refresh token blacklisted successfully
+INFO 2026-07-10 20:15:40,561 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:15:40,563 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:15:40,564 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:15:40,564 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:15:40,565 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:15:40,566 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:15:40,668 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:15:40,676 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:15:40,678 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:15:41,039 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:15:41,110 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:15:41,119 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:15:41,121 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:15:41,121 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:15:41,125 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:15:41,228 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:15:41,229 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:15:41,230 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:15:46,873 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:15:46,879 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:15:46,879 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:15:46,880 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:15:46,880 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:15:46,881 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:15:46,978 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:15:46,979 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:15:46,980 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:15:47,667 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:15:47,669 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:15:47,669 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:15:47,670 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:15:47,670 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:15:47,670 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:15:47,844 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:15:47,850 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:15:47,850 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:16:09,448 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:16:09,519 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:16:09,597 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:16:09,601 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:16:09,602 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:16:09,606 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:16:09,715 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:16:10,252 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:16:10,267 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:16:11,200 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:16:11,216 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:16:11,217 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:16:11,218 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:16:11,218 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:16:11,218 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:16:11,518 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:16:11,520 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:16:11,521 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:17:14,639 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:17:14,643 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:17:14,644 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:17:14,645 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:17:14,646 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:17:14,647 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:17:14,759 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:17:14,761 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:17:14,762 views CurrentUserView - Returning user data successfully
+INFO 2026-07-10 20:17:16,171 views CurrentUserView - Request headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua-Platform': '"Windows"', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNzE0MTEyLCJpYXQiOjE3ODM3MTA1MTIsImp0aSI6ImExNmY3ZDJhMjZiNzRmMTU4ZTI1ODBmOWJjNjI5ZTRiIiwidXNlcl9pZCI6MX0.5oXUkrKC-zxcJ35UQ1pSryIDwm4pcKqZcb2LRw5VblY', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*', 'Sec-Ch-Ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://localhost:5173', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://localhost:5173/', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6'}
+INFO 2026-07-10 20:17:16,181 views CurrentUserView - User type: <class 'api.models.CustomUser'>
+INFO 2026-07-10 20:17:16,182 views CurrentUserView - User: admin admin - admin@gmail.com
+INFO 2026-07-10 20:17:16,183 views CurrentUserView - Is authenticated: True
+INFO 2026-07-10 20:17:16,184 views CurrentUserView - Is anonymous: False
+INFO 2026-07-10 20:17:16,185 views CurrentUserView - Authenticated user ID: 1, Email: admin@gmail.com
+INFO 2026-07-10 20:17:16,292 views CurrentUserView - User data serialized successfully: 1
+INFO 2026-07-10 20:17:16,293 views CurrentUserView - User role: admin
+INFO 2026-07-10 20:17:16,293 views CurrentUserView - Returning user data successfully
