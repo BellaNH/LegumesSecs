@@ -35,11 +35,19 @@ export default function Login() {
     setShowResendVerification(false);
     setIsSubmitting(true);
 
+    const emailValue = email.trim();
+    const passwordValue = password;
+
     try {
-      const session = await authService.login(email, password);
-      await login(session.accessToken);
+      const session = await authService.login(emailValue, passwordValue);
+
+      // Clear fields and demote password input so Chrome does not open
+      // "Verifier vos mots de passe enregistres" / save-password UI.
       setPassword('');
       setEmail('');
+      setShowPassword(true);
+
+      await login(session.accessToken);
       navigate('/dashboard', { replace: true });
     } catch (requestError) {
       setError(getApiErrorMessage(requestError, t('login.invalidCredentials')));
@@ -73,57 +81,62 @@ export default function Login() {
 
   return (
     <AuthShell title={t('login.title')} description={t('login.subtitle')}>
-      <form className="login-form" onSubmit={handleLogin} autoComplete="off" data-form-type="other">
+      <form
+        className="login-form"
+        onSubmit={handleLogin}
+        autoComplete="off"
+        data-lpignore="true"
+        data-1p-ignore="true"
+        data-bwignore="true"
+        data-form-type="other"
+      >
         {error ? <div className="auth-message error">{error}</div> : null}
         {success ? <div className="auth-message success">{success}</div> : null}
 
-        <input
-          type="text"
-          name="prevent_autofill"
-          autoComplete="off"
-          tabIndex={-1}
-          aria-hidden="true"
-          className="login-autofill-guard"
-        />
-        <input
-          type="password"
-          name="prevent_autofill_pass"
-          autoComplete="off"
-          tabIndex={-1}
-          aria-hidden="true"
-          className="login-autofill-guard"
-        />
-
         <div className="login-field">
-          <label className="login-label" htmlFor="login-email">
+          <label className="login-label" htmlFor="ls-account">
             {t('login.email')}
           </label>
           <input
-            id="login-email"
+            id="ls-account"
             className="login-input"
             type="text"
-            name="legumesec_email"
+            name="ls_account_id"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t('login.emailPlaceholder')}
             autoComplete="off"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            inputMode="email"
+            readOnly
+            onFocus={(e) => e.target.removeAttribute('readOnly')}
+            data-lpignore="true"
+            data-1p-ignore="true"
+            data-form-type="other"
             required
           />
         </div>
 
         <div className="login-field">
-          <label className="login-label" htmlFor="login-password">
+          <label className="login-label" htmlFor="ls-secret">
             {t('login.password')}
           </label>
           <input
-            id="login-password"
-            className="login-input"
-            type={showPassword ? 'text' : 'password'}
-            name="legumesec_secret"
+            id="ls-secret"
+            className={`login-input${showPassword ? '' : ' login-input-secret'}`}
+            type="text"
+            name="ls_secret_value"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
-            autoComplete="one-time-code"
+            autoComplete="off"
+            readOnly
+            onFocus={(e) => e.target.removeAttribute('readOnly')}
+            data-lpignore="true"
+            data-1p-ignore="true"
+            data-form-type="other"
             required
           />
         </div>

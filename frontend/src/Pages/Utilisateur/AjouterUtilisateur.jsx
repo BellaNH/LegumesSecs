@@ -18,12 +18,17 @@ const AjouterUtilisateur = () => {
     setSliderStatus,
     setCurrentUserPermissions,
     defaultPermissions,
+    fetchSubdivisions,
   } = useGlobalContext();
   const { t } = useLanguage();
 
   useEffect(() => {
     setSliderStatus('create');
   }, [setSliderStatus]);
+
+  useEffect(() => {
+    fetchSubdivisions();
+  }, [fetchSubdivisions]);
 
   const [formData, setFormData] = useState({
     nom: '',

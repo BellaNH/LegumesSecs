@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   TextField,
@@ -19,13 +19,25 @@ import PageLoader from "../../components/common/PageLoader";
 const AjouterCommunes = () => {
   const [nom, setNom] = useState("");
   const [subdivisionId, setSubdivisionId] = useState("");
-  const {url,subdivisions,fetchCommunes,isDataLoading}= useGlobalContext()
+  const {url,subdivisions,fetchCommunes,fetchSubdivisions,isDataLoading}= useGlobalContext()
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(""); 
   const [successMessage, setSuccessMessage] = useState(""); 
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    setPageLoading(true);
+    fetchSubdivisions().finally(() => {
+      if (!cancelled) setPageLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [fetchSubdivisions]);
   
 
   const handleSubmit = async (e) => {
@@ -67,7 +79,7 @@ const AjouterCommunes = () => {
   }
   };
 
-  if (isDataLoading) {
+  if (isDataLoading || pageLoading) {
     return <PageLoader />;
   }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useGlobalContext } from '../../context';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -17,6 +17,7 @@ const Agriculteurs = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
 
   const {
     url,
@@ -32,6 +33,17 @@ const Agriculteurs = () => {
     communes,
   } = useGlobalContext();
   const { t } = useLanguage();
+
+  useEffect(() => {
+    let cancelled = false;
+    setPageLoading(true);
+    fetchAgriculteurs().finally(() => {
+      if (!cancelled) setPageLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [fetchAgriculteurs]);
 
   const [openedAgriculteurId, setOpenedAgriculteurId] = useState(null);
   const [targetWilaya, setTargetWilaya] = useState('');
@@ -176,7 +188,7 @@ const Agriculteurs = () => {
   const communeOptions =
     !openedAgriculteurId && filteredCommune.length > 0 ? filteredCommune : communes;
 
-  if (isDataLoading) {
+  if (isDataLoading || pageLoading) {
     return <PageLoader />;
   }
 
